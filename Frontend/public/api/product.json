@@ -1,0 +1,154 @@
+{
+  "id": 1,
+  "sku": "N/A", 
+  "name": "پسرانه قرمز مانیاک",
+  "slug": "maniac-red-boys",
+  "description": "لباس کودکان/پوشاک کودکان معمولاً نسبت به لباس بزرگسالان راحت‌تر است و مناسب بازی و استراحت است. معمولاً از جوراب استفاده می‌شود. اخیراً، بسیاری از لباس‌های کودکان به شدت تحت تأثیر روندهای مد بزرگسالان قرار گرفته‌اند",
+  "category": {
+    "id": 1,
+    "name": "کودکان",
+    "slug": "kids"
+  },
+  "tags": [
+    {
+      "id": 1,
+      "name": "راحتی",
+      "slug": "casual"
+    },
+    {
+      "id": 2,
+      "name": "نخی",
+      "slug": "cotton"
+    },
+    {
+      "id": 3,
+      "name": "قرمز",
+      "slug": "red"
+    }
+  ],
+  "image": {
+    "id": 1,
+    "thumbnail": "/assets/images/products/p-20.png",
+    "original": "/assets/images/products/p-20-m.png"
+  },
+  "gallery": [
+    {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-20-1.png",
+      "original": "/assets/images/products/p-20-1.png"
+    },
+    {
+      "id": 2,
+      "thumbnail": "/assets/images/products/p-20-2.png",
+      "original": "/assets/images/products/p-20-2.png"
+    },
+    {
+      "id": 3,
+      "thumbnail": "/assets/images/products/p-20-3.png",
+      "original": "/assets/images/products/p-20-3.png"
+    },
+    {
+      "id": 4,
+      "thumbnail": "/assets/images/products/p-20-4.png",
+      "original": "/assets/images/products/p-20-4.png"
+    }
+  ],
+  "price": 50,
+  "sale_price": 40,
+  "quantity": 20,
+  "variations": [
+    {
+      "id": 1,
+      "value": "کوچک",
+      "attribute": {
+        "id": 1,
+        "name": "سایز",
+        "slug": "size"
+      }
+    },
+    {
+      "id": 2,
+      "value": "متوسط",
+      "attribute": {
+        "id": 1,
+        "name": "سایز",
+        "slug": "size"
+      }
+    },
+    {
+      "id": 3,
+      "value": "بزرگ",
+      "attribute": {
+        "id": 1,
+        "name": "سایز",
+        "slug": "size"
+      }
+    },
+    {
+      "id": 4,
+      "value": "خیلی بزرگ",
+      "attribute": {
+        "id": 1,
+        "name": "سایز",
+        "slug": "size"
+      }
+    },
+    {
+      "id": 5,
+      "value": "نارنجی",
+      "meta": "#e86c25",
+      "attribute": {
+        "id": 1,
+        "name": "رنگ",
+        "slug": "color"
+      }
+    },
+    {
+      "id": 6,
+      "value": "صورتی",
+      "meta": "#ffa5b4",
+      "attribute": {
+        "id": 1,
+        "name": "رنگ",
+        "slug": "color"
+      }
+    },
+    {
+      "id": 7,
+      "value": "بنفش",
+      "meta": "#8224e3",
+      "attribute": {
+        "id": 1,
+        "name": "رنگ",
+        "slug": "color"
+      }
+    },
+    {
+      "id": 8,
+      "value": "قرمز",
+      "meta": "#dd3333",
+      "attribute": {
+        "id": 1,
+        "name": "رنگ",
+        "slug": "color"
+      }
+    }
+  ],
+  "meta": [
+    {
+      "id": 1,
+      "title": "جزئیات محصول",
+      "content": "تیم تجربه مشتری ما 7 روز هفته در دسترس است و ما 2 راه برای تماس ارائه می‌دهیم: ایمیل و چت. ما سعی می‌کنیم سریع پاسخ دهیم، بنابراین نیازی نیست برای دریافت پاسخ مدت زیادی منتظر بمانید!"
+    },
+    {
+      "id": 2,
+      "title": "اطلاعات تکمیلی",
+      "content": "لطفاً مستندات را با دقت مطالعه کنید. ما همچنین برخی آموزش‌های ویدیویی آنلاین در مورد این مسئله داریم. اگر مشکل همچنان باقی است، لطفاً یک تیکت در انجمن پشتیبانی باز کنید"
+    },
+    {
+      "id": 3,
+      "title": "نظرات مشتریان",
+      "content": "در ابتدا، لطفاً اتصال اینترنت خود را بررسی کنید. ما همچنین برخی آموزش‌های ویدیویی آنلاین در مورد این مسئله داریم. اگر مشکل همچنان باقی است، لطفاً یک تیکت در انجمن پشتیبانی باز کنید."
+    }
+  ]
+}

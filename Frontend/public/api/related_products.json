@@ -1,0 +1,547 @@
+[
+  {
+    "id": 1,
+    "name": "پسرانه قرمز مانیاک",
+    "description": "ضروریات ورزشی، این شورت ورزشی آندر آرمور نرم و سبک با پارچه جاذب رطوبت است.",
+    "slug": "maniac-red-boys",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-20.png",
+      "original": "/assets/images/products/p-20-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-20-1.png",
+        "original": "/assets/images/products/p-20-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-20-2.png",
+        "original": "/assets/images/products/p-20-2.png"
+      }
+    ],
+    "price": 20.00,
+    "sale_price": 15.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "۱۲ برند لباس سازگار با محیط زیست",
+    "description": "۱۲ برند لباس سازگار با محیط زیست، دارای یقه قایقی، بدون آستین، لبه صاف",
+    "slug": "eco-friendly-clothing-brands-that",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-5.png",
+      "original": "/assets/images/products/p-5-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-5-1.png",
+        "original": "/assets/images/products/p-5-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-5-2.png",
+        "original": "/assets/images/products/p-5-2.png"
+      },
+      {
+        "id": 3,
+        "thumbnail": "/assets/images/products/p-5-3.png",
+        "original": "/assets/images/products/p-5-3.png"
+      },
+      {
+        "id": 4,
+        "thumbnail": "/assets/images/products/p-5-4.png",
+        "original": "/assets/images/products/p-5-4.png"
+      }
+    ],
+    "price": 28.00,
+    "sale_price": 20.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "تی شرت پسرانه آستین بلند",
+    "description": "پارچه ۱۰۰٪ نخ، آستین‌های قابل تا شدن و اپولت، جیب دوبل جلو",
+    "slug": "long-sleeve-boy-t-shirt",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-23.png",
+      "original": "/assets/images/products/p-23-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-23-1.png",
+        "original": "/assets/images/products/p-23-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-23-2.png",
+        "original": "/assets/images/products/p-23-2.png"
+      }
+    ],
+    "price": 30.00,
+    "sale_price": 20.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "پیراهن فلانل اندازه معمولی",
+    "description": "لباس‌های دارای برچسب متعهد، محصولاتی هستند که با استفاده از الیاف یا فرآیندهای پایدار تولید شده‌اند و تأثیر زیست‌محیطی آنها کاهش یافته است. هدف مانگو حمایت از اجرای شیوه‌های متعهدتر به محیط زیست است.",
+    "slug": "regular-fit-flannel-shirt",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-4.png",
+      "original": "/assets/images/products/p-4-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-4-1.png",
+        "original": "/assets/images/products/p-4-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-4-2.png",
+        "original": "/assets/images/products/p-4-2.png"
+      },
+      {
+        "id": 3,
+        "thumbnail": "/assets/images/products/p-4-3.png",
+        "original": "/assets/images/products/p-4-3.png"
+      },
+      {
+        "id": 4,
+        "thumbnail": "/assets/images/products/p-4-4.png",
+        "original": "/assets/images/products/p-4-4.png"
+      }
+    ],
+    "price": "",
+    "sale_price": 8.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "گوچی کارلتون انگلستان",
+    "description": "لباس بافتنی مدل A خط تا زانو، یقه قایقی، بدون آستین، لبه صاف",
+    "slug": "gucci-carlton-uk",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-8.png",
+      "original": "/assets/images/products/p-8-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-8-1.png",
+        "original": "/assets/images/products/p-8-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-8-2.png",
+        "original": "/assets/images/products/p-8-2.png"
+      },
+      {
+        "id": 3,
+        "thumbnail": "/assets/images/products/p-8-3.png",
+        "original": "/assets/images/products/p-8-3.png"
+      },
+      {
+        "id": 4,
+        "thumbnail": "/assets/images/products/p-8-4.png",
+        "original": "/assets/images/products/p-8-4.png"
+      }
+    ],
+    "price": 19.99,
+    "sale_price": 14.99,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  }
+]

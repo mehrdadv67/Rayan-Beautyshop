@@ -1,0 +1,851 @@
+{
+  "productFlashSellGridTwo": [
+    {
+      "id": 1,
+      "name": "ضریب سبک",
+      "description": "گاون بدون آستین مشکی مردانه",
+      "slug": "adidas-shoes-black",
+      "soldBy": "فرنالدو",
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-26-md.png",
+        "original": "/assets/images/products/p-26-m.png"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/p-26-1.png",
+          "original": "/assets/images/products/p-26-1.png"
+        },
+        {
+          "id": 2,
+          "thumbnail": "/assets/images/products/p-26-2.png",
+          "original": "/assets/images/products/p-26-2.png"
+        }
+      ],
+      "sale_price": 45.0,
+      "quantity": 320,
+      "sold": 180,
+      "variations": [
+        {
+          "id": 1,
+          "value": "S",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 2,
+          "value": "M",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 3,
+          "value": "L",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 4,
+          "value": "XL",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 5,
+          "value": "نارنجی",
+          "meta": "#e86c25",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 6,
+          "value": "صورتی",
+          "meta": "#ffa5b4",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 7,
+          "value": "بنفش",
+          "meta": "#8224e3",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 8,
+          "value": "قرمز",
+          "meta": "#dd3333",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "شلوار گشاد آرمانی",
+      "description": "زیبایی تک رنگ. این شلوارها با پاچه‌های گشاد و از پنبه ارگانیک نرم و پایدار با کشش مکانیکی ساخته شده‌اند که بازیافت آن را آسان می‌کند.",
+      "slug": "armani-wide-leg-trousers",
+      "soldBy": "فرنالدو",
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-16-md.png",
+        "original": "/assets/images/products/p-16-m.png"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/p-16-1.png",
+          "original": "/assets/images/products/p-16-1.png"
+        },
+        {
+          "id": 2,
+          "thumbnail": "/assets/images/products/p-16-2.png",
+          "original": "/assets/images/products/p-16-2.png"
+        }
+      ],
+      "price": 16.0,
+      "sale_price": 12.0,
+      "quantity": 320,
+      "sold": 180,
+      "variations": [
+        {
+          "id": 1,
+          "value": "S",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 2,
+          "value": "M",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 3,
+          "value": "L",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 4,
+          "value": "XL",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 5,
+          "value": "نارنجی",
+          "meta": "#e86c25",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 6,
+          "value": "صورتی",
+          "meta": "#ffa5b4",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 7,
+          "value": "بنفش",
+          "meta": "#8224e3",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 8,
+          "value": "قرمز",
+          "meta": "#dd3333",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "کفش زارا سبز",
+      "description": "کفش به پوشاکی اطلاق می‌شود که بر روی پاها پوشیده می‌شود و در اصل برای محافظت در برابر سختی‌های محیط، معمولاً در مورد بافت‌های زمین و دما طراحی شده است.",
+      "slug": "style-quotient",
+      "soldBy": "فرنالدو",
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-3.png",
+        "original": "/assets/images/products/p-3-m.png"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/p-3-1.png",
+          "original": "/assets/images/products/p-3-1.png"
+        },
+        {
+          "id": 2,
+          "thumbnail": "/assets/images/products/p-3-2.png",
+          "original": "/assets/images/products/p-3-2.png"
+        }
+      ],
+      "price": "16.38",
+      "sale_price": 50.0,
+      "quantity": 320,
+      "sold": 180,
+      "variations": [
+        {
+          "id": 1,
+          "value": "S",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 2,
+          "value": "M",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 3,
+          "value": "L",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 4,
+          "value": "XL",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 5,
+          "value": "نارنجی",
+          "meta": "#e86c25",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 6,
+          "value": "صورتی",
+          "meta": "#ffa5b4",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 7,
+          "value": "بنفش",
+          "meta": "#8224e3",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 8,
+          "value": "قرمز",
+          "meta": "#dd3333",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "عینک آفتابی ویفری",
+      "description": "مهندسان اپتیک ما این عینک‌ها را برای کوهنوردی طراحی کرده‌اند. ایده‌آل برای استفاده گاه به گاه در کوه‌ها.",
+      "slug": "wayfarer-sunglasses",
+      "soldBy": "فرنالدو",
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-25-md.png",
+        "original": "/assets/images/products/p-25-m.png"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/p-25-1.png",
+          "original": "/assets/images/products/p-25-1.png"
+        },
+        {
+          "id": 2,
+          "thumbnail": "/assets/images/products/p-25-2.png",
+          "original": "/assets/images/products/p-25-2.png"
+        }
+      ],
+      "price": 18.0,
+      "sale_price": 15.0,
+      "quantity": 320,
+      "sold": 180,
+      "variations": [
+        {
+          "id": 1,
+          "value": "S",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 2,
+          "value": "M",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 3,
+          "value": "L",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 4,
+          "value": "XL",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 5,
+          "value": "نارنجی",
+          "meta": "#e86c25",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 6,
+          "value": "صورتی",
+          "meta": "#ffa5b4",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 7,
+          "value": "بنفش",
+          "meta": "#8224e3",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 8,
+          "value": "قرمز",
+          "meta": "#dd3333",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "تیسوت کلاسیک",
+      "description": "مدل جدید سابمارینر اکنون دارای حرکت دائمی کالیبر 3235 رولکس است. ارتقاء از حرکت کالیبر 3135.",
+      "slug": "سبک-نسبت",
+      "soldBy": "فرنالدو",
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-30-md.png",
+        "original": "/assets/images/products/p-30-m.png"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/p-30-1.png",
+          "original": "/assets/images/products/p-30-1.png"
+        },
+        {
+          "id": 2,
+          "thumbnail": "/assets/images/products/p-30-2.png",
+          "original": "/assets/images/products/p-30-2.png"
+        }
+      ],
+      "price": "",
+      "sale_price": 600.0,
+      "quantity": 320,
+      "sold": 180,
+      "variations": [
+        {
+          "id": 1,
+          "value": "S",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 2,
+          "value": "M",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 3,
+          "value": "L",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 4,
+          "value": "XL",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 5,
+          "value": "نارنجی",
+          "meta": "#e86c25",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 6,
+          "value": "صورتی",
+          "meta": "#ffa5b4",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 7,
+          "value": "بنفش",
+          "meta": "#8224e3",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 8,
+          "value": "قرمز",
+          "meta": "#dd3333",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "هرمس کارلتون لندن",
+      "description": "پیراهن میدی آ-لاین با بافت خودرنگ و بدون آستین، دارای یقه گرد و لبه صاف.",
+      "slug": "هرمس-کارلتون-لندن",
+      "soldBy": "فرنالدو",
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-14-md.png",
+        "original": "/assets/images/products/p-14-m.png"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/p-14-1.png",
+          "original": "/assets/images/products/p-14-1.png"
+        },
+        {
+          "id": 2,
+          "thumbnail": "/assets/images/products/p-14-2.png",
+          "original": "/assets/images/products/p-14-2.png"
+        }
+      ],
+      "price": "",
+      "sale_price": 15.0,
+      "quantity": 320,
+      "sold": 180,
+      "variations": [
+        {
+          "id": 1,
+          "value": "S",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 2,
+          "value": "M",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 3,
+          "value": "L",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 4,
+          "value": "XL",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 5,
+          "value": "نارنجی",
+          "meta": "#e86c25",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 6,
+          "value": "صورتی",
+          "meta": "#ffa5b4",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 7,
+          "value": "بنفش",
+          "meta": "#8224e3",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 8,
+          "value": "قرمز",
+          "meta": "#dd3333",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "عینک آفتابی پلاریزه",
+      "description": "این کالا فقط قابل تعویض برای همان یا اندازه متفاوت، در صورت موجود بودن، است و نمی‌توان آن را بازگرداند.",
+      "slug": "عینک-آفتابی-پلاریزه",
+      "soldBy": "فرنالدو",
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-27-md.png",
+        "original": "/assets/images/products/p-27-m.png"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/p-27-1.png",
+          "original": "/assets/images/products/p-27-1.png"
+        },
+        {
+          "id": 2,
+          "thumbnail": "/assets/images/products/p-27-2.png",
+          "original": "/assets/images/products/p-27-2.png"
+        }
+      ],
+      "price": 35.0,
+      "sale_price": 20.0,
+      "quantity": 320,
+      "sold": 180,
+      "variations": [
+        {
+          "id": 1,
+          "value": "S",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 2,
+          "value": "M",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 3,
+          "value": "L",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 4,
+          "value": "XL",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 5,
+          "value": "نارنجی",
+          "meta": "#e86c25",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 6,
+          "value": "صورتی",
+          "meta": "#ffa5b4",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 7,
+          "value": "بنفش",
+          "meta": "#8224e3",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 8,
+          "value": "قرمز",
+          "meta": "#dd3333",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "گوچی کارلتون انگلستان",
+      "description": "پیراهن میدی بافتنی آ-لاین، دارای یقه گرد، بدون آستین و لبه صاف.",
+      "slug": "گوچی-کارلتون-انگلستان",
+      "soldBy": "فرنالدو",
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-8-md.png",
+        "original": "/assets/images/products/p-8-m.png"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/p-8-1.png",
+          "original": "/assets/images/products/p-8-1.png"
+        },
+        {
+          "id": 2,
+          "thumbnail": "/assets/images/products/p-8-2.png",
+          "original": "/assets/images/products/p-8-2.png"
+        }
+      ],
+      "price": 19.99,
+      "sale_price": 14.99,
+      "quantity": 320,
+      "sold": 180,
+      "variations": [
+        {
+          "id": 1,
+          "value": "S",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 2,
+          "value": "M",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 3,
+          "value": "L",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 4,
+          "value": "XL",
+          "attribute": {
+            "id": 1,
+            "name": "اندازه",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 5,
+          "value": "نارنجی",
+          "meta": "#e86c25",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 6,
+          "value": "صورتی",
+          "meta": "#ffa5b4",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 7,
+          "value": "بنفش",
+          "meta": "#8224e3",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 8,
+          "value": "قرمز",
+          "meta": "#dd3333",
+          "attribute": {
+            "id": 1,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        }
+      ]
+    }
+  ]
+}

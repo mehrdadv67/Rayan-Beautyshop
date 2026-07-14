@@ -1,0 +1,1008 @@
+[
+  {
+    "id": 1,
+    "name": "کیف نایک",
+    "description": "موتور قدرتمند کالیبر 3235 پرپچوال رولکس. یک ارتقا نسبت به موتور کالیبر 3135",
+    "slug": "nike-bag",
+    "isNewArrival": true,
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/featured/1.png",
+      "original": "/assets/images/products/featured/1.png"
+    },
+    "price": 20.38,
+    "sale_price": 16.38,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "کلاه پشمی آدیداس",
+    "description": "لباس راحتی (لباس غیر رسمی) یک کد پوشش غربی است که راحت، گاه به گاه، خودجوش و مناسب برای استفاده روزمره است. لباس راحتی پس از ضد فرهنگ دهه 1960 در جهان غرب محبوب شد.",
+    "slug": "adidas-woolen-cap",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/featured/2.png",
+      "original": "/assets/images/products/featured/2.png"
+    },
+    "price": 20.0,
+    "sale_price": 16.0,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "نایک لیدر وی تی",
+    "description": "کفش به پوشاکی گفته می‌شود که روی پا پوشیده می‌شود و در اصل برای محافظت در برابر نامساعد بودن محیط، معمولاً در رابطه با بافت و دمای زمین به کار می‌رود.",
+    "slug": "nike-leader-vt",
+    "isNewArrival": true,
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/featured/3.png",
+      "original": "/assets/images/products/featured/3.png"
+    },
+    "price": "",
+    "sale_price": 16.38,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "عینک آفتابی ری بن",
+    "description": "عینک‌های آفتابی پلاریزه، درخشش منعکس شده از جاده‌ها، سطوح آب، برف و سایر سطوح افقی را کاهش می‌دهند. رنگ واقعی را بازیابی می‌کنند. لنزهای Vision دارای رتبه 400UV هستند، به این معنی که می‌توانند اشعه UVA و UVB را مسدود کنند.",
+    "slug": "ray-ban-aviator",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/featured/4.png",
+      "original": "/assets/images/products/featured/4.png"
+    },
+    "price": 850.0,
+    "sale_price": 720.0,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "ساعت کلاسیک تیسوت",
+    "description": "مدل جدید سابمارینر اکنون دارای موتور قدرتمند کالیبر 3235 پرپچوال رولکس است. این یک ارتقا نسبت به موتور کالیبر 3135 است.",
+    "slug": "tissot-classic",
+    "isNewArrival": true,
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/featured/5.png",
+      "original": "/assets/images/products/featured/5.png"
+    },
+    "price": "20.38",
+    "sale_price": 600.0,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "نایک لیدر وی تی",
+    "description": "کفش به پوشاکی گفته می‌شود که روی پا پوشیده می‌شود و در اصل برای محافظت در برابر نامساعد بودن محیط، معمولاً در رابطه با بافت و دمای زمین به کار می‌رود.",
+    "slug": "nike-leader-vt",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/featured/3.png",
+      "original": "/assets/images/products/featured/3.png"
+    },
+    "price": "",
+    "sale_price": 16.38,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "عینک آفتابی ری بن",
+    "description": "عینک‌های آفتابی پلاریزه، درخشش منعکس شده از جاده‌ها، سطوح آب، برف و سایر سطوح افقی را کاهش می‌دهند. رنگ واقعی را بازیابی می‌کنند. لنزهای Vision دارای رتبه 400UV هستند، به این معنی که می‌توانند اشعه UVA و UVB را مسدود کنند.",
+    "slug": "ray-ban-aviator",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/featured/4.png",
+      "original": "/assets/images/products/featured/4.png"
+    },
+    "price": 850.0,
+    "sale_price": 720.0,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "ساعت کلاسیک تیسوت",
+    "description": "مدل جدید سابمارینر اکنون دارای موتور قدرتمند کالیبر 3235 پرپچوال رولکس است. این یک ارتقا نسبت به موتور کالیبر 3135 است.",
+    "slug": "tissot-classic",
+    "isNewArrival": true,
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/featured/5.png",
+      "original": "/assets/images/products/featured/5.png"
+    },
+    "price": "20.38",
+    "sale_price": 600.0,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "نایک لیدر وی تی",
+    "description": "کفش به پوشاکی گفته می‌شود که روی پا پوشیده می‌شود و در اصل برای محافظت در برابر نامساعد بودن محیط، معمولاً در رابطه با بافت و دمای زمین به کار می‌رود.",
+    "slug": "nike-leader-vt",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/featured/7.png",
+      "original": "/assets/images/products/featured/7.png"
+    },
+    "price": "",
+    "sale_price": 16.38,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "عینک آفتابی ری بن",
+    "description": "عینک‌های آفتابی پلاریزه، درخشش منعکس شده از جاده‌ها، سطوح آب، برف و سایر سطوح افقی را کاهش می‌دهند. رنگ واقعی را بازیابی می‌کنند. لنزهای Vision دارای رتبه 400UV هستند، به این معنی که می‌توانند اشعه UVA و UVB را مسدود کنند.",
+    "slug": "ray-ban-aviator",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/featured/8.png",
+      "original": "/assets/images/products/featured/8.png"
+    },
+    "price": 850.0,
+    "sale_price": 720.0,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "ساعت کلاسیک تیسوت",
+    "description": "مدل جدید سابمارینر اکنون دارای موتور قدرتمند کالیبر 3235 پرپچوال رولکس است. این یک ارتقا نسبت به موتور کالیبر 3135 است.",
+    "slug": "tissot-classic",
+    "isNewArrival": true,
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/featured/9.png",
+      "original": "/assets/images/products/featured/9.png"
+    },
+    "price": "20.38",
+    "sale_price": 600.0,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "Size",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "M",
+        "attribute": {
+          "id": 1,
+          "name": "Size",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "L",
+        "attribute": {
+          "id": 1,
+          "name": "Size",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "XL",
+        "attribute": {
+          "id": 1,
+          "name": "Size",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "Orange",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "Color",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "Pink",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "Color",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "Purple",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "Color",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "Red",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "Color",
+          "slug": "color"
+        }
+      }
+    ]
+  }
+]

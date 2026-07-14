@@ -1,0 +1,2235 @@
+[
+  {
+    "id": 1,
+    "name": "آرمانی ونی ویدی ویکی",
+    "description": "فندی در سال 1925 به عنوان یک فروشگاه تخصصی پوست و چرم در رم آغاز به کار کرد.",
+    "slug": "armani-veni-vidi-vici",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-11.png",
+      "original": "/assets/images/products/p-11-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-11-1.png",
+        "original": "/assets/images/products/p-11-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-11-2.png",
+        "original": "/assets/images/products/p-11-2.png"
+      },
+      {
+        "id": 3,
+        "thumbnail": "/assets/images/products/p-11-3.png",
+        "original": "/assets/images/products/p-11-3.png"
+      },
+      {
+        "id": 4,
+        "thumbnail": "/assets/images/products/p-11-4.png",
+        "original": "/assets/images/products/p-11-4.png"
+      }
+    ],
+    "price": 20.00,
+    "sale_price": 17.99,
+    "variations": [
+      {
+        "id": 1,
+        "value": "S",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "M",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "L",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "XL",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "اچ اند ام گلوبال دیسی",
+    "description": "تاپ بافتنی آبی رنگ، لبه منحنی با جزئیات تاسل، دارای بند شانه و بدون آستین",
+    "slug": "hm-global-desi",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-22.png",
+      "original": "/assets/images/products/p-22-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-22-1.png",
+        "original": "/assets/images/products/p-22-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-22-2.png",
+        "original": "/assets/images/products/p-22-2.png"
+      },
+      {
+        "id": 3,
+        "thumbnail": "/assets/images/products/p-12-3.png",
+        "original": "/assets/images/products/p-12-3.png"
+      },
+      {
+        "id": 4,
+        "thumbnail": "/assets/images/products/p-12-4.png",
+        "original": "/assets/images/products/p-12-4.png"
+      }
+    ],
+    "price": 40.00,
+    "sale_price": 30.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "S",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "M",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "L",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "XL",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "پیراهن سفید زارا سالی",
+    "description": "برای ظاهری شیک و هوشمند، این پیراهن سفید از سالی توسط آلن سالی را بپوشید. این طراحی از ترکیب پنبه و نایلون با کمی کشش ساخته شده و دارای الگوی نقطه‌ای است. این پیراهن با آستین‌های 3/4 را با شلوار و کفش پاشنه‌دار به یک جلسه کاری بپوشید.",
+    "slug": "zara-solly-white-shirt",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-18.png",
+      "original": "/assets/images/products/p-18-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-18-1.png",
+        "original": "/assets/images/products/p-18-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-18-2.png",
+        "original": "/assets/images/products/p-18-2.png"
+      },
+      {
+        "id": 3,
+        "thumbnail": "/assets/images/products/p-18-3.png",
+        "original": "/assets/images/products/p-18-3.png"
+      },
+      {
+        "id": 4,
+        "thumbnail": "/assets/images/products/p-18-4.png",
+        "original": "/assets/images/products/p-18-4.png"
+      }
+    ],
+    "price": 32.00,
+    "sale_price": 25.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "S",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "M",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "L",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "XL",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "هرمس کارلتون لندن",
+    "description": "پیراهن میدی آستین‌دار خودخطی به رنگ کرم، دارای گردن برش، بدون آستین و لبه صاف",
+    "slug": "hermes-carlton-london",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-14.png",
+      "original": "/assets/images/products/p-14-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-14-1.png",
+        "original": "/assets/images/products/p-14-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-14-2.png",
+        "original": "/assets/images/products/p-14-2.png"
+      },
+      {
+        "id": 3,
+        "thumbnail": "/assets/images/products/p-14-3.png",
+        "original": "/assets/images/products/p-14-3.png"
+      },
+      {
+        "id": 4,
+        "thumbnail": "/assets/images/products/p-14-4.png",
+        "original": "/assets/images/products/p-14-4.png"
+      }
+    ],
+    "price": "",
+    "sale_price": 15.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "S",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "M",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "L",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "XL",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "کت جاکت یقه ایستاده اسکیوبا",
+    "description": "زارا تنها بهترین انتخاب از پیراهن‌ها، کت و شلوارهای زنانه و جداکننده‌های مناسب را ارائه می‌دهد.",
+    "slug": "scuba-stand-collar-topper-jacket",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-15.png",
+      "original": "/assets/images/products/p-15-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-15-1.png",
+        "original": "/assets/images/products/p-15-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-15-2.png",
+        "original": "/assets/images/products/p-15-2.png"
+      },
+      {
+        "id": 3,
+        "thumbnail": "/assets/images/products/p-15-3.png",
+        "original": "/assets/images/products/p-15-3.png"
+      },
+      {
+        "id": 4,
+        "thumbnail": "/assets/images/products/p-15-4.png",
+        "original": "/assets/images/products/p-15-4.png"
+      }
+    ],
+    "price": 16.00,
+    "sale_price": 12.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "S",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "M",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "L",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "XL",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+
+  {
+    "id": 6,
+    "name": "شلوار گشاد آرمانی",
+    "description": "زیبایی تک رنگ. این شلوارها با پاچه‌های گشاد و راحت، از پنبه ارگانیک نرم و پایدار با کشش مکانیکی ساخته شده‌اند که باعث می‌شود لباس به راحتی بازیافت شود.",
+    "slug": "sholvar-gashad-armani",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-16.png",
+      "original": "/assets/images/products/p-16-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-16-1.png",
+        "original": "/assets/images/products/p-16-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-16-2.png",
+        "original": "/assets/images/products/p-16-2.png"
+      },
+      {
+        "id": 3,
+        "thumbnail": "/assets/images/products/p-16-3.png",
+        "original": "/assets/images/products/p-16-3.png"
+      },
+      {
+        "id": 4,
+        "thumbnail": "/assets/images/products/p-16-4.png",
+        "original": "/assets/images/products/p-16-4.png"
+      }
+    ],
+    "price": 80.00,
+    "sale_price": 60.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "S",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "M",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "L",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "XL",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "پیراهن آستین کوتاه مردانه",
+    "description": "از روزهای غیررسمی تا مهمانی‌ها، شام‌ها و سایر رویدادهایی که نیاز به ظاهری شیک دارند، یک پیراهن آستین کوتاه یک قطعه چندمنظوره است که برای همه نوع مناسبت‌ها مناسب است.",
+    "slug": "pirahan-astin-kotah-mardane",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-17.png",
+      "original": "/assets/images/products/p-17-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-17-1.png",
+        "original": "/assets/images/products/p-17-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-17-2.png",
+        "original": "/assets/images/products/p-17-2.png"
+      },
+      {
+        "id": 3,
+        "thumbnail": "/assets/images/products/p-17-3.png",
+        "original": "/assets/images/products/p-17-3.png"
+      },
+      {
+        "id": 4,
+        "thumbnail": "/assets/images/products/p-17-4.png",
+        "original": "/assets/images/products/p-17-4.png"
+      }
+    ],
+    "price": 18.99,
+    "sale_price": 12.99,
+    "variations": [
+      {
+        "id": 1,
+        "value": "S",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "M",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "L",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "XL",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "بلزر و شال گردن",
+    "description": "پیراهن میدی آبی آستین کوتاه با یقه گرد در پارچه جرس.",
+    "slug": "blazer-va-shal-gardan",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-13.png",
+      "original": "/assets/images/products/p-13-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-13-1.png",
+        "original": "/assets/images/products/p-13-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-13-2.png",
+        "original": "/assets/images/products/p-13-2.png"
+      },
+      {
+        "id": 3,
+        "thumbnail": "/assets/images/products/p-13-1.png",
+        "original": "/assets/images/products/p-13-1.png"
+      },
+      {
+        "id": 4,
+        "thumbnail": "/assets/images/products/p-13-2.png",
+        "original": "/assets/images/products/p-13-2.png"
+      }
+    ],
+    "price": 23.00,
+    "sale_price": 13.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "S",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "M",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "L",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "XL",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "کفش زارا سبز",
+    "description": "کفش‌ها به لباس‌هایی اطلاق می‌شود که بر روی پا پوشیده می‌شوند و در اصل برای محافظت در برابر سختی‌های محیط، معمولاً در مورد بافت‌های زمین و دما طراحی شده‌اند.",
+    "slug": "kafsh-zara-sabz",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-19.png",
+      "original": "/assets/images/products/p-19-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-19-1.png",
+        "original": "/assets/images/products/p-19-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-19-2.png",
+        "original": "/assets/images/products/p-19-2.png"
+      },
+      {
+        "id": 3,
+        "thumbnail": "/assets/images/products/p-19-3.png",
+        "original": "/assets/images/products/p-19-3.png"
+      },
+      {
+        "id": 4,
+        "thumbnail": "/assets/images/products/p-19-4.png",
+        "original": "/assets/images/products/p-19-4.png"
+      }
+    ],
+    "price": 300.00,
+    "sale_price": 250.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "S",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "M",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "L",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "XL",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+
+  {
+    "id": 10,
+    "name": "قرمز دیوانه پسران",
+    "description": "این شلوارک‌های ورزشی Under Armour از مواد سبک و نرم با قابلیت جذب رطوبت ساخته شده‌اند.",
+    "slug": "hermes-carlton-london",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-20.png",
+      "original": "/assets/images/products/p-20-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-20-1.png",
+        "original": "/assets/images/products/p-20-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-20-2.png",
+        "original": "/assets/images/products/p-20-2.png"
+      }
+    ],
+    "price": 20.00,
+    "sale_price": 15.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "S",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "M",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "L",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "XL",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "مشکی نایک",
+    "description": "پوشاک غیررسمی (لباس‌های غیررسمی) ممکن است کدی غربی باشد که راحت، گاه به گاه، خودجوش و مناسب استفاده روزمره است. پوشاک غیررسمی در جهان غرب محبوب شد.",
+    "slug": "nike-black",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-1.png",
+      "original": "/assets/images/products/p-1-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-1-1.png",
+        "original": "/assets/images/products/p-1-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-1-2.png",
+        "original": "/assets/images/products/p-1-2.png"
+      },
+      {
+        "id": 3,
+        "thumbnail": "/assets/images/products/p-1-3.png",
+        "original": "/assets/images/products/p-1-3.png"
+      },
+      {
+        "id": 4,
+        "thumbnail": "/assets/images/products/p-1-4.png",
+        "original": "/assets/images/products/p-1-4.png"
+      }
+    ],
+    "price": 15.00,
+    "sale_price": 11.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "S",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "M",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "L",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "XL",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "هرمس کارلتون لندن",
+    "description": "پیراهن میدی با بافت خودخطی رنگ کرم، دارای یقه گرد، بدون آستین و لبه صاف.",
+    "slug": "hermes-carlton-london",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-2.png",
+      "original": "/assets/images/products/p-2-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-2-1.png",
+        "original": "/assets/images/products/p-2-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-2-2.png",
+        "original": "/assets/images/products/p-2-2.png"
+      },
+      {
+        "id": 3,
+        "thumbnail": "/assets/images/products/p-2-3.png",
+        "original": "/assets/images/products/p-2-3.png"
+      },
+      {
+        "id": 4,
+        "thumbnail": "/assets/images/products/p-2-4.png",
+        "original": "/assets/images/products/p-2-4.png"
+      }
+    ],
+    "price": 16.38,
+    "sale_price": 12.3,
+    "variations": [
+      {
+        "id": 1,
+        "value": "S",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "M",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "L",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "XL",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "گوچی کارلتون انگلستان",
+    "description": "پیراهن میدی بافتنی، دارای یقه گرد، بدون آستین و لبه صاف.",
+    "slug": "gucci-carlton-uk",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-8.png",
+      "original": "/assets/images/products/p-8-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-8-1.png",
+        "original": "/assets/images/products/p-8-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-8-2.png",
+        "original": "/assets/images/products/p-8-2.png"
+      },
+      {
+        "id": 3,
+        "thumbnail": "/assets/images/products/p-8-3.png",
+        "original": "/assets/images/products/p-8-3.png"
+      },
+      {
+        "id": 4,
+        "thumbnail": "/assets/images/products/p-8-4.png",
+        "original": "/assets/images/products/p-8-4.png"
+      }
+    ],
+    "price": 19.99,
+    "sale_price": 14.99,
+    "variations": [
+      {
+        "id": 1,
+        "value": "S",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "M",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "L",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "XL",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "پیراهن فلانل فیت معمولی",
+    "description": "محصولات برچسب‌گذاری شده به عنوان متعهد، محصولاتی هستند که با استفاده از الیاف یا فرآیندهای پایدار تولید شده‌اند و تأثیرات زیست‌محیطی آن‌ها کاهش یافته است. هدف مانگو حمایت از اجرای شیوه‌های متعهدتر به محیط زیست است.",
+    "slug": "regular-fit-flannel-shirt",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-4.png",
+      "original": "/assets/images/products/p-4-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-4-1.png",
+        "original": "/assets/images/products/p-4-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-4-2.png",
+        "original": "/assets/images/products/p-4-2.png"
+      },
+      {
+        "id": 3,
+        "thumbnail": "/assets/images/products/p-4-3.png",
+        "original": "/assets/images/products/p-4-3.png"
+      },
+      {
+        "id": 4,
+        "thumbnail": "/assets/images/products/p-4-4.png",
+        "original": "/assets/images/products/p-4-4.png"
+      }
+    ],
+    "price": "",
+    "sale_price": 8.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "S",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "M",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "L",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "XL",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  
+  {
+    "id": 15,
+    "name": "12 برند لباس دوستدار محیط زیست",
+    "description": "12 برند لباس دوستدار محیط زیست، دارای یقه گرد، بدون آستین و لبه صاف است",
+    "slug": "eco-friendly-clothing-brands-that",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-5.png",
+      "original": "/assets/images/products/p-5-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-5-1.png",
+        "original": "/assets/images/products/p-5-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-5-2.png",
+        "original": "/assets/images/products/p-5-2.png"
+      },
+      {
+        "id": 3,
+        "thumbnail": "/assets/images/products/p-5-3.png",
+        "original": "/assets/images/products/p-5-3.png"
+      },
+      {
+        "id": 4,
+        "thumbnail": "/assets/images/products/p-5-4.png",
+        "original": "/assets/images/products/p-5-4.png"
+      }
+    ],
+    "price": 28.00,
+    "sale_price": 20.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "S",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "M",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "L",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "XL",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "سویشرت بزرگ W",
+    "description": "این قطعه زیبا از پارچه کتان ساخته شده است، lacus eu mattis auctor، dolor lectus venenatis nulla، at tristique eros sem vel ante. Sed leo enim، iaculis ornare tristique non، vulputate sit amet ante.",
+    "slug": "oversized-w-sweater",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-6.png",
+      "original": "/assets/images/products/p-6-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-6-1.png",
+        "original": "/assets/images/products/p-6-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-6-2.png",
+        "original": "/assets/images/products/p-6-2.png"
+      },
+      {
+        "id": 3,
+        "thumbnail": "/assets/images/products/p-6-3.png",
+        "original": "/assets/images/products/p-6-3.png"
+      },
+      {
+        "id": 4,
+        "thumbnail": "/assets/images/products/p-6-4.png",
+        "original": "/assets/images/products/p-6-4.png"
+      }
+    ],
+    "price": 70.00,
+    "sale_price": 55.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "S",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "M",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "L",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "XL",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "تی شرت گردن Crew Regular Fit",
+    "description": "پیراهن میدی A-line با بافت خودخطی، دارای یقه گرد، تی شرت، لبه صاف است",
+    "slug": "regular-fit-crew-neck-t-shirt",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-7.png",
+      "original": "/assets/images/products/p-7-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-7-1.png",
+        "original": "/assets/images/products/p-7-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-7-2.png",
+        "original": "/assets/images/products/p-7-2.png"
+      },
+      {
+        "id": 3,
+        "thumbnail": "/assets/images/products/p-7-3.png",
+        "original": "/assets/images/products/p-7-3.png"
+      },
+      {
+        "id": 4,
+        "thumbnail": "/assets/images/products/p-7-4.png",
+        "original": "/assets/images/products/p-7-4.png"
+      }
+    ],
+    "price": 16.38,
+    "sale_price": 12.3,
+    "variations": [
+      {
+        "id": 1,
+        "value": "S",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "M",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "L",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "XL",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "کفش زارا سبز",
+    "description": "کفش به لباس‌هایی اطلاق می‌شود که بر روی پا پوشیده می‌شوند و در اصل برای محافظت در برابر سختی‌های محیط، معمولاً در مورد بافت‌های زمین و دما طراحی شده‌اند.",
+    "slug": "zara-shoes-green",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-3.png",
+      "original": "/assets/images/products/p-3-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-3-1.png",
+        "original": "/assets/images/products/p-3-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-3-2.png",
+        "original": "/assets/images/products/p-3-2.png"
+      }
+    ],
+    "price": "",
+    "sale_price": 50.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "S",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "M",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "L",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "XL",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "تی شرت گردن V زنانه",
+    "description": "همه چیز درباره برش تیز و کیفیت استثنایی پنبه، تی شرت زنانه گردن V Rib L/S هرگز دور نخواهد افتاد.",
+    "slug": "women-fitted-neck-t-shirt",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-9.png",
+      "original": "/assets/images/products/p-9-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-9-1.png",
+        "original": "/assets/images/products/p-9-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-9-2.png",
+        "original": "/assets/images/products/p-9-2.png"
+      },
+      {
+        "id": 3,
+        "thumbnail": "/assets/images/products/p-9-3.png",
+        "original": "/assets/images/products/p-9-3.png"
+      },
+      {
+        "id": 4,
+        "thumbnail": "/assets/images/products/p-9-4.png",
+        "original": "/assets/images/products/p-9-4.png"
+      }
+    ],
+    "price": 30.00,
+    "sale_price": 28.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "S",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "M",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "L",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "XL",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "کفش NIKE",
+    "description": "NIKE 2020 سیاه و سفید یک رنگ تمیز و تک رنگ از آخرین سیلوئت با تکنولوژی بالا این برند است. این مدل برای اولین بار اواخر سال گذشته معرفی شد و در حال حاضر پرچمدار برند Jordan است.",
+    "slug": "nike-shoes",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-10.png",
+      "original": "/assets/images/products/p-10-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-10-1.png",
+        "original": "/assets/images/products/p-10-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-10-2.png",
+        "original": "/assets/images/products/p-10-2.png"
+      }
+    ],
+    "price": "",
+    "sale_price": 39.99,
+    "variations": [
+      {
+        "id": 1,
+        "value": "S",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "M",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "L",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "XL",
+        "attribute": {
+          "id": 1,
+          "name": "اندازه",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,762 @@
+{
+  "productFlashSellList": [
+    {
+      "id": 1,
+      "name": "کرم مرطوب‌کننده هیدرا لایف دیور",
+      "description": "کرم آبرسان Hydra Life Dior با بافت سبک و مناسب انواع پوست، حفظ رطوبت تا 24 ساعت.",
+      "slug": "dior-hydra-life-cream",
+      "isNewArrival": true,
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/dior-hydra-life-sm.jpg",
+        "original": "/assets/images/products/dior-hydra-life.jpg"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/dior-hydra-life-1.jpg",
+          "original": "/assets/images/products/dior-hydra-life-1.jpg"
+        },
+        {
+          "id": 2,
+          "thumbnail": "/assets/images/products/dior-hydra-life-2.jpg",
+          "original": "/assets/images/products/dior-hydra-life-2.jpg"
+        }
+      ],
+      "price": 2450000,
+      "sale_price": 2150000,
+      "quantity": 120,
+      "sold": 35,
+      "variations": [
+        {
+          "id": 1,
+          "value": "50ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 2,
+          "value": "100ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "سرم جوانساز لانکوم Génifique",
+      "description": "سرم Advanced Génifique با فرمول پروبیوتیک برای شفافیت و کاهش چین و چروک.",
+      "slug": "lancome-genifique-serum",
+      "isNewArrival": false,
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/lancome-genifique-sm.jpg",
+        "original": "/assets/images/products/lancome-genifique.jpg"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/lancome-genifique-1.jpg",
+          "original": "/assets/images/products/lancome-genifique-1.jpg"
+        },
+        {
+          "id": 2,
+          "thumbnail": "/assets/images/products/lancome-genifique-2.jpg",
+          "original": "/assets/images/products/lancome-genifique-2.jpg"
+        }
+      ],
+      "price": 3700000,
+      "sale_price": 3350000,
+      "quantity": 80,
+      "sold": 42,
+      "variations": [
+        {
+          "id": 1,
+          "value": "30ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 2,
+          "value": "50ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 3,
+          "value": "75ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "ادکلن زنانه شنل Chance Eau Tendre",
+      "description": "عطر زنانه Chanel Chance Eau Tendre با رایحه ملایم و گل‌دار، مناسب استفاده روزانه.",
+      "slug": "chanel-chance-tendre",
+      "isNewArrival": true,
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/chanel-chance-sm.jpg",
+        "original": "/assets/images/products/chanel-chance.jpg"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/chanel-chance-1.jpg",
+          "original": "/assets/images/products/chanel-chance-1.jpg"
+        }
+      ],
+      "price": 5200000,
+      "sale_price": 4950000,
+      "quantity": 50,
+      "sold": 20,
+      "variations": [
+        {
+          "id": 1,
+          "value": "50ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 2,
+          "value": "100ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        }
+      ]
+    }
+  ],
+  "productFlashSellGrid": [
+    {
+      "id": 4,
+      "name": "کرم ضدآفتاب بیودرما Photoderm",
+      "description": "ضدآفتاب بیودرما SPF50 مناسب انواع پوست، محافظت بالا در برابر اشعه UVA/UVB.",
+      "slug": "bioderma-photoderm",
+      "isNewArrival": true,
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/bioderma-photoderm-sm.jpg",
+        "original": "/assets/images/products/bioderma-photoderm.jpg"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/bioderma-photoderm-1.jpg",
+          "original": "/assets/images/products/bioderma-photoderm-1.jpg"
+        }
+      ],
+      "price": 890000,
+      "sale_price": 790000,
+      "quantity": 150,
+      "sold": 60,
+      "variations": [
+        {
+          "id": 1,
+          "value": "40ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 2,
+          "value": "100ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "شامپو ترمیم‌کننده لورآل Elseve",
+      "description": "شامپو L'Oréal Paris Elseve Total Repair 5 برای موهای آسیب‌دیده و خشک.",
+      "slug": "loreal-elseve-shampoo",
+      "isNewArrival": false,
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/loreal-elseve-sm.jpg",
+        "original": "/assets/images/products/loreal-elseve.jpg"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/loreal-elseve-1.jpg",
+          "original": "/assets/images/products/loreal-elseve-1.jpg"
+        }
+      ],
+      "price": 320000,
+      "sale_price": 280000,
+      "quantity": 300,
+      "sold": 150,
+      "variations": [
+        {
+          "id": 1,
+          "value": "250ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 2,
+          "value": "400ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        }
+      ]
+    }
+  ],
+  "productFlashSellGridOne": [
+    {
+      "id": 6,
+      "name": "رژ لب مایع استی لادر Pure Color",
+      "description": "رژ لب مایع مات Estée Lauder Pure Color Envy با ماندگاری بالا و رنگدانه قوی.",
+      "slug": "estee-lauder-pure-color-lipstick",
+      "isNewArrival": false,
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/estee-lauder-lipstick-sm.jpg",
+        "original": "/assets/images/products/estee-lauder-lipstick.jpg"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/estee-lauder-lipstick-1.jpg",
+          "original": "/assets/images/products/estee-lauder-lipstick-1.jpg"
+        }
+      ],
+      "price": 1250000,
+      "sale_price": 1100000,
+      "quantity": 200,
+      "sold": 95,
+      "variations": [
+        {
+          "id": 1,
+          "value": "Red",
+          "attribute": {
+            "id": 2,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 2,
+          "value": "Nude",
+          "attribute": {
+            "id": 2,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "ریمل حجم‌دهنده میبلین Lash Sensational",
+      "description": "ریمل Maybelline Lash Sensational برای حجم و تفکیک مژه‌ها با ماندگاری بالا.",
+      "slug": "maybelline-lash-sensational",
+      "isNewArrival": true,
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/maybelline-mascara-sm.jpg",
+        "original": "/assets/images/products/maybelline-mascara.jpg"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/maybelline-mascara-1.jpg",
+          "original": "/assets/images/products/maybelline-mascara-1.jpg"
+        }
+      ],
+      "price": 450000,
+      "sale_price": 399000,
+      "quantity": 220,
+      "sold": 120,
+      "variations": [
+        {
+          "id": 1,
+          "value": "Black",
+          "attribute": {
+            "id": 2,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 2,
+          "value": "Brown",
+          "attribute": {
+            "id": 2,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        }
+      ]
+    }
+  ],
+  "productFlashSellGridTwo": [
+    {
+      "id": 1,
+      "name": "کرم مرطوب‌کننده هیدرا لایف دیور",
+      "description": "کرم آبرسان Hydra Life Dior با بافت سبک و مناسب انواع پوست، حفظ رطوبت تا 24 ساعت.",
+      "slug": "dior-hydra-life-cream",
+      "isNewArrival": true,
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/dior-hydra-life-sm.jpg",
+        "original": "/assets/images/products/dior-hydra-life.jpg"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/dior-hydra-life-1.jpg",
+          "original": "/assets/images/products/dior-hydra-life-1.jpg"
+        },
+        {
+          "id": 2,
+          "thumbnail": "/assets/images/products/dior-hydra-life-2.jpg",
+          "original": "/assets/images/products/dior-hydra-life-2.jpg"
+        }
+      ],
+      "price": 2450000,
+      "sale_price": 2150000,
+      "quantity": 120,
+      "sold": 35,
+      "variations": [
+        {
+          "id": 1,
+          "value": "50ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 2,
+          "value": "100ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "سرم جوانساز لانکوم Génifique",
+      "description": "سرم Advanced Génifique با فرمول پروبیوتیک برای شفافیت و کاهش چین و چروک.",
+      "slug": "lancome-genifique-serum",
+      "isNewArrival": false,
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/lancome-genifique-sm.jpg",
+        "original": "/assets/images/products/lancome-genifique.jpg"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/lancome-genifique-1.jpg",
+          "original": "/assets/images/products/lancome-genifique-1.jpg"
+        },
+        {
+          "id": 2,
+          "thumbnail": "/assets/images/products/lancome-genifique-2.jpg",
+          "original": "/assets/images/products/lancome-genifique-2.jpg"
+        }
+      ],
+      "price": 3700000,
+      "sale_price": 3350000,
+      "quantity": 80,
+      "sold": 42,
+      "variations": [
+        {
+          "id": 1,
+          "value": "30ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 2,
+          "value": "50ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 3,
+          "value": "75ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "ادکلن زنانه شنل Chance Eau Tendre",
+      "description": "عطر زنانه Chanel Chance Eau Tendre با رایحه ملایم و گل‌دار، مناسب استفاده روزانه.",
+      "slug": "chanel-chance-tendre",
+      "isNewArrival": true,
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/chanel-chance-sm.jpg",
+        "original": "/assets/images/products/chanel-chance.jpg"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/chanel-chance-1.jpg",
+          "original": "/assets/images/products/chanel-chance-1.jpg"
+        }
+      ],
+      "price": 5200000,
+      "sale_price": 4950000,
+      "quantity": 50,
+      "sold": 20,
+      "variations": [
+        {
+          "id": 1,
+          "value": "50ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 2,
+          "value": "100ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "کرم ضدآفتاب بیودرما Photoderm",
+      "description": "ضدآفتاب بیودرما SPF50 مناسب انواع پوست، محافظت بالا در برابر اشعه UVA/UVB.",
+      "slug": "bioderma-photoderm",
+      "isNewArrival": true,
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/bioderma-photoderm-sm.jpg",
+        "original": "/assets/images/products/bioderma-photoderm.jpg"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/bioderma-photoderm-1.jpg",
+          "original": "/assets/images/products/bioderma-photoderm-1.jpg"
+        }
+      ],
+      "price": 890000,
+      "sale_price": 790000,
+      "quantity": 150,
+      "sold": 60,
+      "variations": [
+        {
+          "id": 1,
+          "value": "40ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 2,
+          "value": "100ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "شامپو ترمیم‌کننده لورآل Elseve",
+      "description": "شامپو L'Oréal Paris Elseve Total Repair 5 برای موهای آسیب‌دیده و خشک.",
+      "slug": "loreal-elseve-shampoo",
+      "isNewArrival": false,
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/loreal-elseve-sm.jpg",
+        "original": "/assets/images/products/loreal-elseve.jpg"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/loreal-elseve-1.jpg",
+          "original": "/assets/images/products/loreal-elseve-1.jpg"
+        }
+      ],
+      "price": 320000,
+      "sale_price": 280000,
+      "quantity": 300,
+      "sold": 150,
+      "variations": [
+        {
+          "id": 1,
+          "value": "250ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 2,
+          "value": "400ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "رژ لب مایع استی لادر Pure Color",
+      "description": "رژ لب مایع مات Estée Lauder Pure Color Envy با ماندگاری بالا و رنگدانه قوی.",
+      "slug": "estee-lauder-pure-color-lipstick",
+      "isNewArrival": false,
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/estee-lauder-lipstick-sm.jpg",
+        "original": "/assets/images/products/estee-lauder-lipstick.jpg"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/estee-lauder-lipstick-1.jpg",
+          "original": "/assets/images/products/estee-lauder-lipstick-1.jpg"
+        }
+      ],
+      "price": 1250000,
+      "sale_price": 1100000,
+      "quantity": 200,
+      "sold": 95,
+      "variations": [
+        {
+          "id": 1,
+          "value": "Red",
+          "attribute": {
+            "id": 2,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 2,
+          "value": "Nude",
+          "attribute": {
+            "id": 2,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        }
+      ]
+    },
+
+    {
+      "id": 7,
+      "name": "ریمل حجم‌دهنده میبلین Lash Sensational",
+      "description": "ریمل Maybelline Lash Sensational برای حجم و تفکیک مژه‌ها با ماندگاری بالا.",
+      "slug": "maybelline-lash-sensational",
+      "isNewArrival": true,
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/maybelline-mascara-sm.jpg",
+        "original": "/assets/images/products/maybelline-mascara.jpg"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/maybelline-mascara-1.jpg",
+          "original": "/assets/images/products/maybelline-mascara-1.jpg"
+        }
+      ],
+      "price": 450000,
+      "sale_price": 399000,
+      "quantity": 220,
+      "sold": 120,
+      "variations": [
+        {
+          "id": 1,
+          "value": "Black",
+          "attribute": {
+            "id": 2,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        },
+        {
+          "id": 2,
+          "value": "Brown",
+          "attribute": {
+            "id": 2,
+            "name": "رنگ",
+            "slug": "color"
+          }
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "کرم دور چشم کلینیک All About Eyes",
+      "description": "کرم دور چشم Clinique All About Eyes برای کاهش پف و تیرگی دور چشم.",
+      "slug": "clinique-all-about-eyes",
+      "isNewArrival": true,
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/clinique-eyecream-sm.jpg",
+        "original": "/assets/images/products/clinique-eyecream.jpg"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/clinique-eyecream-1.jpg",
+          "original": "/assets/images/products/clinique-eyecream-1.jpg"
+        }
+      ],
+      "price": 2100000,
+      "sale_price": 1890000,
+      "quantity": 90,
+      "sold": 38,
+      "variations": [
+        {
+          "id": 1,
+          "value": "15ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "عطر زنانه ایو سن لوران Libre",
+      "description": "عطر زنانه Yves Saint Laurent Libre با رایحه گل‌های لاوندر و شکوفه پرتقال.",
+      "slug": "ysl-libre-perfume",
+      "isNewArrival": false,
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/ysl-libre-sm.jpg",
+        "original": "/assets/images/products/ysl-libre.jpg"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/ysl-libre-1.jpg",
+          "original": "/assets/images/products/ysl-libre-1.jpg"
+        }
+      ],
+      "price": 4800000,
+      "sale_price": 4450000,
+      "quantity": 70,
+      "sold": 32,
+      "variations": [
+        {
+          "id": 1,
+          "value": "50ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        },
+        {
+          "id": 2,
+          "value": "90ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "کرم ضدچروک شب نیوآ Q10 Plus",
+      "description": "کرم شب Nivea Q10 Plus ضدچروک و بازسازی‌کننده پوست در طول شب.",
+      "slug": "nivea-q10-night-cream",
+      "isNewArrival": true,
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/products/nivea-q10-sm.jpg",
+        "original": "/assets/images/products/nivea-q10.jpg"
+      },
+      "gallery": [
+        {
+          "id": 1,
+          "thumbnail": "/assets/images/products/nivea-q10-1.jpg",
+          "original": "/assets/images/products/nivea-q10-1.jpg"
+        }
+      ],
+      "price": 650000,
+      "sale_price": 590000,
+      "quantity": 140,
+      "sold": 80,
+      "variations": [
+        {
+          "id": 1,
+          "value": "50ml",
+          "attribute": {
+            "id": 1,
+            "name": "حجم",
+            "slug": "size"
+          }
+        }
+      ]
+    }
+  ]
+}

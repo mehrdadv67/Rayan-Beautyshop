@@ -1,0 +1,929 @@
+[
+  {
+    "id": 1,
+    "name": "آرمانی ونی ویدی ویچی",
+    "description": "فندی در سال 1925 به عنوان یک فروشگاه تخصصی خز و چرم در رم آغاز به کار کرد.",
+    "slug": "armani-veni-vidi-vici",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-11-xs.png", 
+      "original": "/assets/images/products/p-11-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-11-1.png",
+        "original": "/assets/images/products/p-11-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-11-2.png",
+        "original": "/assets/images/products/p-11-2.png"
+      }
+    ],
+    "price": 20.00,
+    "sale_price": 17.99,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "کفش آدیداس مشکی",
+    "description": "کفش مردانه مشکی",
+    "slug": "adidas-shoes-black",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-26-xs.png",
+      "original": "/assets/images/products/p-26-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-26-1.png",
+        "original": "/assets/images/products/p-26-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-26-2.png",
+        "original": "/assets/images/products/p-26-2.png"
+      }
+    ],
+    "price": 99.99,
+    "sale_price": 45.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "گوچی کارلتون انگلیس",
+    "description": "لباس بافتنی میدی خط A، یقه قایقی، بدون آستین، لبه صاف",
+    "slug": "gucci-carlton-uk",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-8-xs.png",
+      "original": "/assets/images/products/p-8-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-26-1.png",
+        "original": "/assets/images/products/p-26-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-26-2.png",
+        "original": "/assets/images/products/p-26-2.png"
+      }
+    ],
+    "price": 19.99,
+    "sale_price": 14.99,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "ژاکت یقه ایستاده اسکوبا",
+    "description": "زارا تنها بهترین انتخاب لباس‌های زنانه، کت و شلوارهای زنانه و لباس‌های مجلسی را ارائه می‌دهد.",
+    "slug": "scuba-stand-collar-topper-jacket",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-15-xs.png",
+      "original": "/assets/images/products/p-15-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-15-1.png",
+        "original": "/assets/images/products/p-15-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-15-2.png",
+        "original": "/assets/images/products/p-15-2.png"
+      }
+    ],
+    "price": 16.00,
+    "sale_price": 12.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "تی شرت یقه گرد راحت",
+    "description": "لباس میدی راه راه بافتنی، یقه قایقی، تی شرت، لبه صاف",
+    "slug": "regular-fit-crew-neck-t-shirt",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-7-xs.png",
+      "original": "/assets/images/products/p-7-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-7-1.png",
+        "original": "/assets/images/products/p-7-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-7-2.png",
+        "original": "/assets/images/products/p-7-2.png"
+      }
+    ],
+    "price": 16.38,
+    "sale_price": 12.3,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "هرمس کارلتون لندن",
+    "description": "لباس میدی راه راه سفید، یقه قایقی، بدون آستین، لبه صاف",
+    "slug": "hermes-carlton-london",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-14-xs.png",
+      "original": "/assets/images/products/p-14-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-14-1.png",
+        "original": "/assets/images/products/p-14-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-14-2.png",
+        "original": "/assets/images/products/p-14-2.png"
+      }
+    ],
+    "price": "",
+    "sale_price": 15.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "عینک آفتابی ویفرر",
+    "description": "مهندسان اپتیک ما این عینک آفتابی را برای کوهنوردی طراحی کرده‌اند. ایده‌آل برای استفاده گاه‌به‌گاه در کوهستان.",
+    "slug": "wayfarer-sunglasses",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-27-xs.png",
+      "original": "/assets/images/products/p-27-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-27-1.png",
+        "original": "/assets/images/products/p-27-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-27-2.png",
+        "original": "/assets/images/products/p-27-2.png"
+      }
+    ],
+    "price": 25.00,
+    "sale_price": 20.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "شلوار پاچه گشاد آرمانی",
+    "description": "شیک تک رنگ. با پاچه گشاد راحت، این شلوار از پنبه ارگانیک نرم و پایدار با کشش مکانیکی ساخته شده که بازیافت آسان پوشاک را امکان‌پذیر می‌کند.",
+    "slug": "armani-wide-leg-trousers",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-16-xs.png",
+      "original": "/assets/images/products/p-16-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-16-1.png",
+        "original": "/assets/images/products/p-16-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-16-2.png",
+        "original": "/assets/images/products/p-16-2.png"
+      }
+    ],
+    "price": 80.00,
+    "sale_price": 60.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "ساعت استیل REDQ",
+    "description": "بلک بی 60 سال ساعت‌های غواصی با میراث فوق‌العاده را جشن می‌گیرد. مدل نمادین خطوط کلی را به ارث می‌برد.",
+    "slug": "redq-steel-watch",
+    "image": {
+      "id": 1,
+      "thumbnail": "/assets/images/products/p-28-xs.png",
+      "original": "/assets/images/products/p-28-m.png"
+    },
+    "gallery": [
+      {
+        "id": 1,
+        "thumbnail": "/assets/images/products/p-26-1.png",
+        "original": "/assets/images/products/p-26-1.png"
+      },
+      {
+        "id": 2,
+        "thumbnail": "/assets/images/products/p-26-2.png",
+        "original": "/assets/images/products/p-26-2.png"
+      }
+    ],
+    "price": 120.00,
+    "sale_price": 80.00,
+    "variations": [
+      {
+        "id": 1,
+        "value": "کوچک",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 2,
+        "value": "متوسط",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 3,
+        "value": "بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 4,
+        "value": "خیلی بزرگ",
+        "attribute": {
+          "id": 1,
+          "name": "سایز",
+          "slug": "size"
+        }
+      },
+      {
+        "id": 5,
+        "value": "نارنجی",
+        "meta": "#e86c25",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 6,
+        "value": "صورتی",
+        "meta": "#ffa5b4",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 7,
+        "value": "بنفش",
+        "meta": "#8224e3",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      },
+      {
+        "id": 8,
+        "value": "قرمز",
+        "meta": "#dd3333",
+        "attribute": {
+          "id": 1,
+          "name": "رنگ",
+          "slug": "color"
+        }
+      }
+    ]
+  }
+]

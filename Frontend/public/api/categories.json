@@ -1,0 +1,108 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "زنانه",
+      "slug": "زنانه",
+      "productCount": 20,
+      "icon": "/assets/images/category/icons/women.jpg",
+      "tags": ["shovia", "fusion", "elegance", "fashadil", "blaze"],
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/category/women.jpg",
+        "original": "/assets/images/category/women.jpg"
+      }
+    },
+    {
+      "id": 2,
+      "name": "مردانه",
+      "slug": "مردانه",
+      "productCount": 20,
+      "icon": "/assets/images/category/icons/men.jpg",
+      "tags": ["shovia", "fusion", "elegance", "blaze"],
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/category/men.jpg",
+        "original": "/assets/images/category/men.jpg"
+      }
+    },
+    {
+      "id": 3,
+      "name": "لاک ناخن",
+      "slug": "لاک-ناخن",
+      "productCount": 20,
+      "icon": "/assets/images/category/icons/nailPolish.jpg",
+      "tags": ["fusion", "elegance", "blaze"],
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/category/nailPolish.jpg",
+        "original": "/assets/images/category/nailPolish.jpg"
+      }
+    },
+    {
+      "id": 4,
+      "name": "رژ لب",
+      "slug": "رژ-لب",
+      "productCount": 20,
+      "icon": "/assets/images/category/icons/lipstick.jpg",
+      "tags": ["shovia", "fusion", "elegance", "fashadil", "blaze"],
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/category/lipstick.jpg",
+        "original": "/assets/images/category/lipstick.jpg"
+      }
+    },
+    {
+      "id": 5,
+      "name": "ریش تراش",
+      "slug": "ریش تراش",
+      "productCount": 20,
+      "icon": "/assets/images/category/icons/electricShaver.jpg",
+      "tags": ["fusion", "elegance", "blaze"],
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/category/electricShaver.jpg",
+        "original": "/assets/images/category/electricShaver.jpg"
+      }
+    },
+    {
+      "id": 6,
+      "name": "ریمل",
+      "slug": "ریمل",
+      "productCount": 20,
+      "icon": "/assets/images/category/icons/mascara.jpg",
+      "tags": ["shovia", "fusion", "elegance", "fashadil", "blaze"],
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/category/mascara.jpg",
+        "original": "/assets/images/category/mascara.jpg"
+      }
+    },
+    {
+      "id": 7,
+      "name": "خمیر و فوم اصلاح",
+      "slug": "خمیر و فوم اصلاح",
+      "productCount": 20,
+      "icon": "/assets/images/category/icons/shavingFoam.jpg",
+      "tags": ["shovia", "fusion", "elegance", "blaze"],
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/category/shavingFoam.jpg",
+        "original": "/assets/images/category/shavingFoam.jpg"
+      }
+    },
+    {
+      "id": 8,
+      "name": "انواع کرم",
+      "slug": "انواع کرم",
+      "productCount": 20,
+      "icon": "/assets/images/category/icons/cream.jpg",
+      "tags": ["shovia", "fusion", "elegance", "fashadil", "blaze", "club"],
+      "image": {
+        "id": 1,
+        "thumbnail": "/assets/images/category/cream.jpg",
+        "original": "/assets/images/category/cream.jpg"
+      }
+    }
+  ]
+}
