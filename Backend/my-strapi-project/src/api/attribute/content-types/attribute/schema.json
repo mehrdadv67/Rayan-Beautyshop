@@ -4,7 +4,7 @@
   "info": {
     "singularName": "attribute",
     "pluralName": "attributes",
-    "displayName": "Attribute"
+    "displayName": "ویژگی"
   },
   "options": {
     "draftAndPublish": true

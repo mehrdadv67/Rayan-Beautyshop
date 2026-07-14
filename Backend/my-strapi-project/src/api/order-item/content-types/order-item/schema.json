@@ -4,7 +4,7 @@
   "info": {
     "singularName": "order-item",
     "pluralName": "order-items",
-    "displayName": "orderItem"
+    "displayName": "آیتم سفارش"
   },
   "options": {
     "draftAndPublish": true

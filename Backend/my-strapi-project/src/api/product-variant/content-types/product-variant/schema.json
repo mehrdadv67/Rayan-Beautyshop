@@ -4,7 +4,7 @@
   "info": {
     "singularName": "product-variant",
     "pluralName": "product-variants",
-    "displayName": "ProductVariant"
+    "displayName": "تنوع محصول"
   },
   "options": {
     "draftAndPublish": true

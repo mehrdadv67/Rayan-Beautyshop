@@ -4,7 +4,7 @@
   "info": {
     "singularName": "attribute-value",
     "pluralName": "attribute-values",
-    "displayName": "AttributeValue"
+    "displayName": "مقدار ویژگی"
   },
   "options": {
     "draftAndPublish": true

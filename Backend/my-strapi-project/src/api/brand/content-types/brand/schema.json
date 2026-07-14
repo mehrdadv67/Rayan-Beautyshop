@@ -4,7 +4,7 @@
   "info": {
     "singularName": "brand",
     "pluralName": "brands",
-    "displayName": "brand"
+    "displayName": "برند"
   },
   "options": {
     "draftAndPublish": true

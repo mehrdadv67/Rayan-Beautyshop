@@ -444,7 +444,7 @@ export interface ApiAttributeValueAttributeValue
   extends Struct.CollectionTypeSchema {
   collectionName: 'attribute_values';
   info: {
-    displayName: 'AttributeValue';
+    displayName: '\u0645\u0642\u062F\u0627\u0631 \u0648\u06CC\u0698\u06AF\u06CC';
     pluralName: 'attribute-values';
     singularName: 'attribute-value';
   };
@@ -481,7 +481,7 @@ export interface ApiAttributeValueAttributeValue
 export interface ApiAttributeAttribute extends Struct.CollectionTypeSchema {
   collectionName: 'attributes';
   info: {
-    displayName: 'Attribute';
+    displayName: '\u0648\u06CC\u0698\u06AF\u06CC';
     pluralName: 'attributes';
     singularName: 'attribute';
   };
@@ -511,10 +511,52 @@ export interface ApiAttributeAttribute extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiBannerBanner extends Struct.CollectionTypeSchema {
+  collectionName: 'banners';
+  info: {
+    displayName: 'Banner';
+    pluralName: 'banners';
+    singularName: 'banner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    alt: Schema.Attribute.String;
+    code: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    desktopImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    isActive: Schema.Attribute.Boolean;
+    link: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::banner.banner'
+    > &
+      Schema.Attribute.Private;
+    mobileImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    position: Schema.Attribute.Enumeration<
+      ['home_top', 'home_middle', 'home_bottom']
+    >;
+    priority: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
   collectionName: 'brands';
   info: {
-    displayName: 'brand';
+    displayName: '\u0628\u0631\u0646\u062F';
     pluralName: 'brands';
     singularName: 'brand';
   };
@@ -544,7 +586,7 @@ export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
 export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
-    displayName: 'category';
+    displayName: '\u062F\u0633\u062A\u0647\u200C\u0628\u0646\u062F\u06CC';
     pluralName: 'categories';
     singularName: 'category';
   };
@@ -578,7 +620,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
 export interface ApiMenuItemMenuItem extends Struct.CollectionTypeSchema {
   collectionName: 'menu_items';
   info: {
-    displayName: 'Menu Item';
+    displayName: '\u0622\u06CC\u062A\u0645 \u0645\u0646\u0648';
     pluralName: 'menu-items';
     singularName: 'menu-item';
   };
@@ -619,7 +661,7 @@ export interface ApiMenuItemMenuItem extends Struct.CollectionTypeSchema {
 export interface ApiOrderItemOrderItem extends Struct.CollectionTypeSchema {
   collectionName: 'order_items';
   info: {
-    displayName: 'orderItem';
+    displayName: '\u0622\u06CC\u062A\u0645 \u0633\u0641\u0627\u0631\u0634';
     pluralName: 'order-items';
     singularName: 'order-item';
   };
@@ -650,7 +692,7 @@ export interface ApiOrderItemOrderItem extends Struct.CollectionTypeSchema {
 export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
   collectionName: 'orders';
   info: {
-    displayName: 'order';
+    displayName: '\u0633\u0641\u0627\u0631\u0634';
     pluralName: 'orders';
     singularName: 'order';
   };
@@ -684,7 +726,7 @@ export interface ApiProductVariantProductVariant
   extends Struct.CollectionTypeSchema {
   collectionName: 'product_variants';
   info: {
-    displayName: 'ProductVariant';
+    displayName: '\u062A\u0646\u0648\u0639 \u0645\u062D\u0635\u0648\u0644';
     pluralName: 'product-variants';
     singularName: 'product-variant';
   };
@@ -718,7 +760,7 @@ export interface ApiProductVariantProductVariant
 export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   collectionName: 'products';
   info: {
-    displayName: 'product';
+    displayName: '\u0645\u062D\u0635\u0648\u0644';
     pluralName: 'products';
     singularName: 'product';
   };
@@ -1286,6 +1328,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::attribute-value.attribute-value': ApiAttributeValueAttributeValue;
       'api::attribute.attribute': ApiAttributeAttribute;
+      'api::banner.banner': ApiBannerBanner;
       'api::brand.brand': ApiBrandBrand;
       'api::category.category': ApiCategoryCategory;
       'api::menu-item.menu-item': ApiMenuItemMenuItem;

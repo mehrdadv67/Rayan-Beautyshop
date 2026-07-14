@@ -1,68 +1,37 @@
 import type { StrapiApp } from "@strapi/strapi/admin";
 
 export default {
-  config: {
-    locales: [
-      // 'ar',
-      // 'fr',
-      // 'cs',
-      // 'de',
-      // 'da',
-      // 'es',
-      // 'he',
-      // 'id',
-      // 'it',
-      // 'ja',
-      // 'ko',
-      // 'ms',
-      // 'nl',
-      // 'no',
-      // 'pl',
-      // 'pt-BR',
-      // 'pt',
-      // 'ru',
-      // 'sk',
-      // 'sv',
-      // 'th',
-      // 'tr',
-      // 'uk',
-      // 'vi',
-      // 'zh-Hans',
-      // 'zh',
-    ],
-  },
+  config: {},
   bootstrap(app: StrapiApp) {
-    // Inject CSS to move the main navigation menu from left to right
+    // Force the Strapi admin panel into RTL (Persian) so the main navigation
+    // sits on the right-hand side for the employer. This only changes the UI
+    // direction; it does NOT alter the admin language, API IDs or content
+    // types, so the frontend <-> backend connection keeps working as before.
+    const forceRtl = () => {
+      const el = document.documentElement;
+      if (el.getAttribute("dir") !== "rtl") el.setAttribute("dir", "rtl");
+      if (el.getAttribute("lang") !== "fa") el.setAttribute("lang", "fa");
+    };
+
+    forceRtl();
+
+    // Strapi may re-apply a direction when the active locale changes,
+    // so keep enforcing RTL whenever the attribute is mutated.
+    const observer = new MutationObserver(forceRtl);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["dir", "lang"],
+    });
+
     const style = document.createElement("style");
     style.textContent = `
-      /* Move the main sidebar navigation from left to right */
+      /* Keep the main sidebar navigation pinned to the right in RTL mode */
       [data-strapi-layout="main"] {
-        flex-direction: row-reverse !important;
+        direction: rtl;
       }
-      
-      /* Ensure the main content stays properly positioned */
-      [data-strapi-layout="main"] > main,
-      [data-strapi-layout="main"] > div:last-child {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-      }
-      
-      /* Fix any left-to-right specific styles for RTL support */
-      [direction="ltr"] {
-        direction: ltr;
-      }
-      
-      /* Adjust the main nav wrapper */
-      nav[aria-label="Main"],
-      nav[role="navigation"],
-      header + nav,
-      aside {
-        order: 1 !important;
-      }
-      
-      /* Content area should come first visually */
-      [data-strapi-layout="main"] > *:not(nav):not(aside):not([role="navigation"]) {
-        order: 0 !important;
+      [data-strapi-layout="main"] > aside,
+      [data-strapi-layout="main"] > nav {
+        order: 2;
       }
     `;
     document.head.appendChild(style);

@@ -4,7 +4,7 @@
   "info": {
     "singularName": "menu-item",
     "pluralName": "menu-items",
-    "displayName": "Menu Item"
+    "displayName": "آیتم منو"
   },
   "options": {
     "draftAndPublish": true
