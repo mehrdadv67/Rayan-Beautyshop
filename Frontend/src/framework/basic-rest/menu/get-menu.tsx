@@ -63,7 +63,9 @@ const fetchMenu = async (): Promise<SiteMenu> => {
     (i) => i.menu_type === "mobile" || i.menu_type === "both",
   );
 
-  const menu = buildDesktopMenu(desktopItems);
+  const menu = buildDesktopMenu(desktopItems).filter(
+    (m) => m.label !== "جستجو" && m.path !== "/search",
+  );
 
   console.log(
     menu.map((m) => ({
@@ -75,8 +77,10 @@ const fetchMenu = async (): Promise<SiteMenu> => {
   console.log("Top level count:", menu.length);
 
   return {
-    menu: buildDesktopMenu(desktopItems),
-    mobileMenu: buildMobileMenu(mobileItems),
+    menu,
+    mobileMenu: buildMobileMenu(mobileItems).filter(
+      (m) => m.label !== "جستجو" && m.path !== "/search",
+    ),
   };
 };
 

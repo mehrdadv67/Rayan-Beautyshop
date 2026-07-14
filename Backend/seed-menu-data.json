@@ -397,8 +397,7 @@
           "children": []
         }
       ]
-    },
-    { "label": "جستجو", "path": "/search", "children": [] }
+    }
   ],
   "mobile": [
     {
@@ -662,7 +661,6 @@
         { "label": "ادکلن کودک", "path": "/search?q=ادکلن-کودک" },
         { "label": "عطر جیبی (مینی سایز)", "path": "/search?q=عطر-جیبی" }
       ]
-    },
-    { "label": "جستجو", "path": "/search", "subMenu": [] }
+    }
   ]
 }

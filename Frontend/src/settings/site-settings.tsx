@@ -870,11 +870,6 @@ export const siteSettings = {
           },
         ],
       },
-      {
-        id: 8,
-        path: "/search",
-        label: "جستجو",
-      },
     ],
     mobileMenu: [
       {
@@ -1317,11 +1312,6 @@ export const siteSettings = {
             label: "عطر جیبی (مینی سایز)",
           },
         ],
-      },
-      {
-        id: 8,
-        path: "/search",
-        label: "جستجو",
       },
     ],
     languageMenu: [
