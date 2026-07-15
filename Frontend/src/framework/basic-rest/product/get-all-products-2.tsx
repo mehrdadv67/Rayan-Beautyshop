@@ -13,7 +13,7 @@ export const fetchProducts = async () => {
 
 export const useProductsQuery = (options: QueryOptionsType) => {
   return useQuery<Product[], Error>({
-    queryKey: [API_ENDPOINTS.PRODUCTS_2, options],
+    queryKey: ["products2", options],
     queryFn: fetchProducts,
   });
 };

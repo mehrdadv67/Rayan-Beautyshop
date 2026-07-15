@@ -13,7 +13,7 @@ export const fetchRelatedProducts = async () => {
 
 export const useRelatedProductsQuery = (options: QueryOptionsType) => {
   return useQuery<Product[], Error>({
-    queryKey: [API_ENDPOINTS.RELATED_PRODUCTS, options],
+    queryKey: ["relatedProducts", options],
     queryFn: fetchRelatedProducts,
   });
 };

@@ -149,6 +149,45 @@ export function normalizeBrand(item: any): Brand {
   };
 }
 
+/**
+ * Strapi banner entry -> template Banner shape consumed by BannerCard /
+ * BannerBlock. `type` (medium|small) is derived from the desktop image aspect
+ * ratio so the masonry grid keeps the original wide/narrow layout without
+ * needing an extra field in the content type.
+ */
+export function normalizeBanner(item: any): any {
+  const desktop = item?.desktopImage;
+  const mobile = item?.mobileImage;
+  const desktopImg = desktop ?? mobile ?? {};
+  const mobileImg = mobile ?? desktop ?? {};
+  const dWidth = desktop?.width ?? desktopImg?.width ?? 0;
+  const dHeight = desktop?.height ?? desktopImg?.height ?? 0;
+  const mWidth = mobile?.width ?? mobileImg?.width ?? 0;
+  const mHeight = mobile?.height ?? mobileImg?.height ?? 0;
+  const type =
+    dWidth && dHeight && dWidth / dHeight >= 1.5 ? "medium" : "small";
+  return {
+    id: item?.id,
+    documentId: item?.documentId,
+    title: item?.title ?? item?.alt ?? "",
+    slug: item?.code ? String(item.code) : "",
+    link: item?.link ?? "",
+    type,
+    image: {
+      mobile: {
+        url: absoluteUrl(mobileImg?.url),
+        width: mWidth,
+        height: mHeight,
+      },
+      desktop: {
+        url: absoluteUrl(desktopImg?.url),
+        width: dWidth,
+        height: dHeight,
+      },
+    },
+  };
+}
+
 /** Strip the Strapi { data, meta } envelope from a list response and map entries. */
 export function unwrapList<T>(
   response: { data: any[] } | any[],

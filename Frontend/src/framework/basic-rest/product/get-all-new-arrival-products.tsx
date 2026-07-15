@@ -20,7 +20,7 @@ const fetchNewArrivalAncientProducts = fetchNewArrivalProducts;
 
 export const useNewArrivalProductsQuery = (options: QueryOptionsType) => {
   return useQuery<Product[], Error>({
-    queryKey: [API_ENDPOINTS.NEW_ARRIVAL_PRODUCTS, options],
+    queryKey: ["newArrivalProducts", options],
     queryFn: fetchNewArrivalProducts,
   });
 };

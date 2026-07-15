@@ -18,7 +18,7 @@ export const fetchTopSellerProducts = async () => {
 
 export const useTopSellerProductsQuery = (options: QueryOptionsType) => {
   return useQuery<Product[], Error>({
-    queryKey: [API_ENDPOINTS.TOP_SELLER_PRODUCTS, options],
+    queryKey: ["topSellerProducts", options],
     queryFn: fetchTopSellerProducts,
   });
 };

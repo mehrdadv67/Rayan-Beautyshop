@@ -13,14 +13,16 @@ export const fetchFlashSaleProducts = async () => {
       "is_flash_sale"
     )}`
   );
-  return unwrapList(data, normalizeProduct) as Product[];
+  return {
+    productFlashSellGridTwo: unwrapList(data, normalizeProduct) as Product[],
+  };
 };
 
 const fetchAncientFlashSaleProducts = fetchFlashSaleProducts;
 
 export const useFlashSaleProductsQuery = (options: QueryOptionsType) => {
   return useQuery<any, Error>({
-    queryKey: [API_ENDPOINTS.FLASH_SALE_PRODUCTS, options],
+    queryKey: ["flashSaleProducts", options],
     queryFn: fetchFlashSaleProducts,
   });
 };

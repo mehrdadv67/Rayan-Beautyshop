@@ -28,7 +28,7 @@ const fetchProducts = async () => {
 
 const useProductsQuery = (options: QueryOptionsType) => {
   return useInfiniteQuery<PaginatedProduct, Error>({
-    queryKey: [API_ENDPOINTS.PRODUCTS, options],
+    queryKey: ["products", options],
     queryFn: fetchProducts,
     initialPageParam: 1,
     getNextPageParam: () => undefined,

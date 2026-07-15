@@ -12,6 +12,7 @@ export const API_ENDPOINTS = {
   BRANDS: "/api/brands",
   BRANDS_ANCIENT: "/api/brands",
   MENU_ITEMS: "/api/menu-items",
+  BANNERS: "/api/banners",
   PRODUCTS: "/api/products",
   PRODUCTS_2: "/api/products",
   PRODUCTS_ANCIENT: "/api/products",
@@ -66,6 +67,17 @@ export const strapiCategoryParams = () =>
 /** Full list query for Brands (has image only). */
 export const strapiBrandParams = () =>
   `?${MEDIA_ONLY_POPULATE}${POPULATED_PAGE}`;
+
+/**
+ * Banner query: populate both media fields, show only active banners for the
+ * requested position (home_top = the masonry block at the top of the home
+ * page), sorted by priority ascending.
+ */
+export const strapiBannerParams = (position = "home_top") =>
+  `?populate[0]=desktopImage&populate[1]=mobileImage` +
+  `&filters[position][$eq]=${position}` +
+  `&filters[isActive][$eq]=true` +
+  `&sort[0]=priority:asc&pagination[pageSize]=100`;
 
 /** List query filtered by a boolean flag on the product (e.g. is_featured). */
 export const strapiFlaggedParams = (flag: string) =>

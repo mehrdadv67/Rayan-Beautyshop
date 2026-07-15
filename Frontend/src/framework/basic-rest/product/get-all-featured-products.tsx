@@ -18,7 +18,7 @@ const fetchAncientFeaturedProducts = fetchFeaturedProducts;
 
 export const useFeaturedProductsQuery = (options: QueryOptionsType) => {
   return useQuery<Product[], Error>({
-    queryKey: [API_ENDPOINTS.FEATURED_PRODUCTS, options],
+    queryKey: ["featuredProducts", options],
     queryFn: fetchFeaturedProducts,
   });
 };
