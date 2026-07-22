@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@components/ui/button";
 import Counter from "@components/common/counter";
 import { useRouter } from "next/router";
 import { useProductQuery } from "@framework/product/get-product";
-import { getVariations } from "@framework/utils/get-variations";
+import { getVariations, findVariant } from "@framework/utils/get-variations";
 import usePrice from "@framework/product/use-price";
 import { useCart } from "@contexts/cart/cart.context";
 import { generateCartItem } from "@utils/generate-cart-item";
-import { ProductAttributes } from "./product-attributes";
+import ProductAttributesDropdown from "./product-attributes-dropdown";
 import isEmpty from "lodash/isEmpty";
 import Link from "@components/ui/link";
 import { toast } from "react-toastify";
@@ -36,24 +36,48 @@ const ProductSingleDetails: React.FC = () => {
   const [attributes, setAttributes] = useState<{ [key: string]: string }>({});
   const [quantity, setQuantity] = useState(1);
   const [addToCartLoader, setAddToCartLoader] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!data?.variations?.length || !isEmpty(attributes)) return;
+    const defaultVariant =
+      data.display_price && !data.sale_price
+        ? data.variations.find(
+            (v: any) => v.price === data.display_price,
+          )
+        : undefined;
+    const fallbackVariant = data.variations.find(
+      (v: any) => v.isActive !== false,
+    );
+    const target = defaultVariant || fallbackVariant;
+    if (target?.value) {
+      setAttributes({ [target.title as string]: target.value });
+    }
+  }, [data, attributes]);
+
+  const variations = getVariations(data?.variations);
+  const selectedVariant = findVariant(data?.variations, attributes);
+
   const { price, basePrice, discount } = usePrice(
     data && {
-      amount: data.sale_price ? data.sale_price : data.price,
-      baseAmount: data.price,
-      // currencyCode: "USD",
+      amount: selectedVariant
+        ? (selectedVariant.sale_price ?? selectedVariant.price)
+        : data.sale_price
+          ? data.sale_price
+          : data.price,
+      baseAmount: selectedVariant ? selectedVariant.price : data.price,
       currencyCode: "IRR",
-    }
+    },
   );
-  if (isLoading) return <p>Loading...</p>;
-  if (!data) return <p>محصول یافت نشد.</p>;
-  const variations = getVariations(data?.variations);
 
   const isSelected = !isEmpty(variations)
     ? !isEmpty(attributes) &&
       Object.keys(variations).every((variation) =>
-        attributes.hasOwnProperty(variation)
+        attributes.hasOwnProperty(variation),
       )
     : true;
+
+  if (isLoading) return <p>Loading...</p>;
+  if (!data) return <p>محصول یافت نشد.</p>;
 
   function addToCart() {
     if (!isSelected) return;
@@ -63,7 +87,12 @@ const ProductSingleDetails: React.FC = () => {
       setAddToCartLoader(false);
     }, 600);
 
-    const item = generateCartItem(data!, attributes);
+    const item = generateCartItem(
+      data!,
+      attributes,
+      selectedVariant?.price,
+      selectedVariant?.sale_price,
+    );
     addItemToCart(item, quantity);
     toast("به سبد خرید اضافه شد", {
       progressClassName: "fancy-progress-bar",
@@ -155,7 +184,7 @@ const ProductSingleDetails: React.FC = () => {
         <div className='pb-3 border-b border-gray-300'>
           {Object.keys(variations).map((variation) => {
             return (
-              <ProductAttributes
+              <ProductAttributesDropdown
                 key={variation}
                 title={variation}
                 attributes={variations[variation]}
@@ -192,7 +221,13 @@ const ProductSingleDetails: React.FC = () => {
               <span className='font-semibold text-heading inline-block ltr:pr-2 rtl:pl-2'>
                 کد محصول:
               </span>
-              {data?.sku}
+              {selectedVariant?.sku ?? data?.sku}
+            </li>
+            <li>
+              <span className='font-semibold text-heading inline-block ltr:pr-2 rtl:pl-2'>
+                موجودی:
+              </span>
+              {selectedVariant ? selectedVariant.stock : data?.quantity}
             </li>
             <li>
               <span className='font-semibold text-heading inline-block ltr:pr-2 rtl:pl-2'>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import isEmpty from "lodash/isEmpty";
 import { ROUTES } from "@utils/routes";
@@ -6,10 +6,10 @@ import { useUI } from "@contexts/ui.context";
 import Button from "@components/ui/button";
 import Counter from "@components/common/counter";
 import { useCart } from "@contexts/cart/cart.context";
-import { ProductAttributes } from "@components/product/product-attributes";
+import ProductAttributesDropdown from "@components/product/product-attributes-dropdown";
 import { generateCartItem } from "@utils/generate-cart-item";
 import usePrice from "@framework/product/use-price";
-import { getVariations } from "@framework/utils/get-variations";
+import { getVariations, findVariant } from "@framework/utils/get-variations";
 import { useTranslation } from "next-i18next";
 
 export default function ProductPopup() {
@@ -25,31 +25,61 @@ export default function ProductPopup() {
   const [attributes, setAttributes] = useState<{ [key: string]: string }>({});
   const [viewCartBtn, setViewCartBtn] = useState<boolean>(false);
   const [addToCartLoader, setAddToCartLoader] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!data?.variations?.length || !isEmpty(attributes)) return;
+    const defaultVariant =
+      data.display_price && !data.sale_price
+        ? data.variations.find(
+            (v: any) => v.price === data.display_price,
+          )
+        : undefined;
+    const fallbackVariant = data.variations.find(
+      (v: any) => v.isActive !== false,
+    );
+    const target = defaultVariant || fallbackVariant;
+    if (target?.value) {
+      setAttributes({ [target.title as string]: target.value });
+    }
+  }, [data, attributes]);
+
+  const variations = getVariations(data.variations);
+
+  const selectedVariant = findVariant(data.variations, attributes);
+
   const { price, basePrice, discount } = usePrice({
-    amount: data.sale_price ? data.sale_price : data.price,
-    baseAmount: data.price,
+    amount: selectedVariant
+      ? selectedVariant.sale_price ?? selectedVariant.price
+      : data.sale_price
+      ? data.sale_price
+      : data.price,
+    baseAmount: selectedVariant ? selectedVariant.price : data.price,
     // currencyCode: "USD",
     currencyCode: "IRR",
   });
-  const variations = getVariations(data.variations);
+
   const { slug, image, name, description } = data;
 
   const isSelected = !isEmpty(variations)
     ? !isEmpty(attributes) &&
       Object.keys(variations).every((variation) =>
-        attributes.hasOwnProperty(variation)
+        attributes.hasOwnProperty(variation),
       )
     : true;
 
   function addToCart() {
     if (!isSelected) return;
-    // to show btn feedback while product carting
     setAddToCartLoader(true);
     setTimeout(() => {
       setAddToCartLoader(false);
       setViewCartBtn(true);
     }, 600);
-    const item = generateCartItem(data!, attributes);
+    const item = generateCartItem(
+      data!,
+      attributes,
+      selectedVariant?.price,
+      selectedVariant?.sale_price,
+    );
     addItemToCart(item, quantity);
     console.log(item, "item");
   }
@@ -119,7 +149,7 @@ export default function ProductPopup() {
 
           {Object.keys(variations).map((variation) => {
             return (
-              <ProductAttributes
+              <ProductAttributesDropdown
                 key={`popup-attribute-key${variation}`}
                 title={variation}
                 attributes={variations[variation]}

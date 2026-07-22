@@ -97,6 +97,37 @@ function buildProductMeta(item: any): any[] {
   return sections;
 }
 
+/** Build variant options from a product's attribute_values + linked product_variants.
+ *  Each option carries the variant pricing (price/sale_price/stock/sku) so the
+ *  product detail page can switch price/stock when the customer picks a value. */
+function buildVariations(item: any): any[] {
+  const attributeValues = Array.isArray(item?.attribute_values)
+    ? item.attribute_values
+    : [];
+  return attributeValues
+    .map((av: any) => {
+      const variant =
+        av?.product_variants && av.product_variants.length > 0
+          ? av.product_variants[0]
+          : undefined;
+      return {
+        id: av?.id,
+        title: av?.attribute?.slug || av?.attribute?.name || "",
+        attributeName: av?.attribute?.name ?? "",
+        value: av?.value ?? "",
+        meta: av?.meta,
+        price: variant?.price != null ? Number(variant.price) : undefined,
+        sale_price:
+          variant?.sale_price != null ? Number(variant.sale_price) : undefined,
+        stock: variant?.stock != null ? Number(variant.stock) : undefined,
+        sku: variant?.sku,
+        isActive: variant?.isActive !== false,
+        attributeValues: [av?.id],
+      };
+    })
+    .filter((v: any) => v.isActive);
+}
+
 /** Strapi product entry -> flat template Product. */
 export function normalizeProduct(item: any): Product {
   const { image, gallery } = splitMedia(item?.image);
@@ -107,6 +138,7 @@ export function normalizeProduct(item: any): Product {
     name: item?.name ?? "",
     slug: item?.slug ?? "",
     price: Number(item?.price ?? 0),
+    display_price: item?.display_price ? Number(item.display_price) : undefined,
     sale_price: item?.sale_price ? Number(item?.sale_price) : undefined,
     quantity: Number(item?.stock ?? 0),
     image,
@@ -114,6 +146,7 @@ export function normalizeProduct(item: any): Product {
     sku: item?.sku,
     description,
     meta: buildProductMeta(item),
+    variations: buildVariations(item),
     // relations come back already populated because we request populate=*
     brand: item?.brand ? normalizeBrand(item.brand) : undefined,
     category: Array.isArray(item?.categories)

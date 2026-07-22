@@ -12,8 +12,14 @@ interface Item {
   sale_price?: number;
   [key: string]: unknown;
 }
-export function generateCartItem(item: Item, attributes: object) {
-  const { id, name, slug, image, price, sale_price } = item;
+export function generateCartItem(
+  item: Item,
+  attributes: object,
+  variantPrice?: number,
+  variantSalePrice?: number,
+) {
+  const { id, name, slug, image } = item;
+  const price = variantSalePrice ?? variantPrice ?? item.sale_price ?? item.price;
   return {
     id: !isEmpty(attributes)
       ? `${id}.${Object.values(attributes).join(".")}`
@@ -21,7 +27,7 @@ export function generateCartItem(item: Item, attributes: object) {
     name,
     slug,
     image: image.thumbnail,
-    price: sale_price ? sale_price : price,
+    price,
     attributes,
   };
 }

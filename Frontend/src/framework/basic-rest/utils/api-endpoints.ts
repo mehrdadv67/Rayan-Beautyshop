@@ -52,7 +52,9 @@ const POPULATED_PAGE = `&pagination[pageSize]=${PAGE_SIZE}`;
 
 /** Product populate: image (media), brand (relation), categories (relation). */
 const PRODUCT_POPULATE =
-  "populate[0]=image&populate[1]=brand&populate[2]=categories";
+  "populate[0]=image&populate[1]=brand&populate[2]=categories" +
+  "&populate[3]=attribute_values.attribute" +
+  "&populate[4]=attribute_values.product_variants";
 
 /** Category/Brand populate: image (media) only. */
 const MEDIA_ONLY_POPULATE = "populate[0]=image";

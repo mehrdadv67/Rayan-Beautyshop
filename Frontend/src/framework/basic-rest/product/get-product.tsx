@@ -9,7 +9,9 @@ import { useQuery } from "@tanstack/react-query";
  * filter the collection by slug (always returns at most one) and take [0].
  */
 const POPULATE =
-  "populate[0]=image&populate[1]=brand&populate[2]=categories&pagination[pageSize]=1";
+  "populate[0]=image&populate[1]=brand&populate[2]=categories" +
+  "&populate[3]=attribute_values.attribute" +
+  "&populate[4]=attribute_values.product_variants&pagination[pageSize]=1";
 
 export const fetchProduct = async (slug: string) => {
   const { data } = await http.get(

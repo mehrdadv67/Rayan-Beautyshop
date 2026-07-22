@@ -741,6 +741,7 @@ export interface ApiProductVariantProductVariant
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -749,6 +750,7 @@ export interface ApiProductVariantProductVariant
       Schema.Attribute.Private;
     price: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
+    sale_price: Schema.Attribute.Decimal;
     sku: Schema.Attribute.String;
     stock: Schema.Attribute.Integer;
     updatedAt: Schema.Attribute.DateTime;
@@ -785,6 +787,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Blocks;
+    display_price: Schema.Attribute.Decimal & Schema.Attribute.DefaultTo<0>;
     image: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true

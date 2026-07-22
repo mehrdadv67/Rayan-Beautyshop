@@ -84,11 +84,25 @@ export type Tag = {
   name: string;
   slug: string;
 };
+export type Variation = {
+  id?: number | string;
+  title?: string;
+  attributeName?: string;
+  value: string;
+  meta?: string;
+  price?: number;
+  sale_price?: number;
+  stock?: number;
+  sku?: string;
+  isActive?: boolean;
+  attributeValues?: (number | string)[];
+};
 export type Product = StrapiDocumentId & {
   id: number | string;
   name: string;
   slug: string;
   price: number;
+  display_price?: number;
   quantity: number;
   sale_price?: number;
   image: Attachment;
@@ -100,7 +114,7 @@ export type Product = StrapiDocumentId & {
   tags?: Tag[];
   meta?: any[];
   description?: any;
-  variations?: object;
+  variations?: Variation[];
   [key: string]: unknown;
   isNewArrival?: boolean;
 };

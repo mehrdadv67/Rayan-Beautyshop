@@ -17,8 +17,15 @@
     "price": {
       "type": "decimal"
     },
+    "sale_price": {
+      "type": "decimal"
+    },
     "stock": {
       "type": "integer"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
     },
     "attribute_values": {
       "type": "relation",

@@ -23,6 +23,10 @@
     "price": {
       "type": "decimal"
     },
+    "display_price": {
+      "type": "decimal",
+      "default": 0
+    },
     "sale_price": {
       "type": "decimal"
     },
