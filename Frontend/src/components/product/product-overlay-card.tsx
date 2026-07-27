@@ -46,12 +46,31 @@ const ProductOverlayCard: React.FC<ProductProps> = ({
   }
 
   const { openModal, setModalView, setModalData } = useUI();
+
+  const defaultVariant = product?.variants?.find((v) => v.isDefault) ??
+    product?.variants?.[0];
+  const displayPrice =
+    product.display_price ??
+    defaultVariant?.salePrice ??
+    defaultVariant?.price ??
+    product.price ??
+    0;
+  const baseAmount =
+    defaultVariant?.price ?? product.price ?? 0;
+
   const { price, basePrice, discount } = usePrice({
-    amount: product.sale_price ? product.sale_price : product.price,
-    baseAmount: product.price,
+    amount: displayPrice,
+    baseAmount: baseAmount,
     // currencyCode: "USD",
     currencyCode: "IRR",
   });
+
+  const cardImage =
+    defaultVariant?.desktopImages?.[0]?.original ??
+    defaultVariant?.mobileImages?.[0]?.original ??
+    product?.image?.original ??
+    product?.gallery?.[0]?.original ??
+    "/assets/placeholder/products/product-grid.svg";
   function handlePopupView() {
     setModalData({ data: product });
     setModalView("PRODUCT_VIEW");
@@ -75,10 +94,7 @@ const ProductOverlayCard: React.FC<ProductProps> = ({
         title={product?.name}
       >
         <Image
-          src={
-            product?.image?.original ??
-            "/assets/placeholder/products/product-featured.png"
-          }
+          src={cardImage}
           width={size}
           height={size}
           loading={imgLoading}

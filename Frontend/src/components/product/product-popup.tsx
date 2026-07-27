@@ -11,6 +11,7 @@ import { generateCartItem } from "@utils/generate-cart-item";
 import usePrice from "@framework/product/use-price";
 import { getVariations, findVariant } from "@framework/utils/get-variations";
 import { useTranslation } from "next-i18next";
+import { Attachment } from "@framework/types";
 
 export default function ProductPopup() {
   const { t } = useTranslation("common");
@@ -43,13 +44,12 @@ export default function ProductPopup() {
     }
   }, [data, attributes]);
 
-  const variations = getVariations(data.variations);
-
-  const selectedVariant = findVariant(data.variations, attributes);
+  const variations = getVariations(data?.variations);
+  const selectedVariant = findVariant(data?.variants, attributes);
 
   const { price, basePrice, discount } = usePrice({
     amount: selectedVariant
-      ? selectedVariant.sale_price ?? selectedVariant.price
+      ? selectedVariant.salePrice ?? selectedVariant.price
       : data.sale_price
       ? data.sale_price
       : data.price,
@@ -67,6 +67,19 @@ export default function ProductPopup() {
       )
     : true;
 
+  const galleryImages = React.useMemo<Attachment[]>(() => {
+    if (selectedVariant) {
+      const variantImages =
+        (selectedVariant.desktopImages?.length ?? 0) > 0
+          ? selectedVariant.desktopImages
+          : selectedVariant.mobileImages?.length
+          ? selectedVariant.mobileImages
+          : [];
+      if (variantImages.length > 0) return variantImages;
+    }
+    return data?.gallery ?? [];
+  }, [selectedVariant, data?.gallery]);
+
   function addToCart() {
     if (!isSelected) return;
     setAddToCartLoader(true);
@@ -78,7 +91,7 @@ export default function ProductPopup() {
       data!,
       attributes,
       selectedVariant?.price,
-      selectedVariant?.sale_price,
+      selectedVariant?.salePrice,
     );
     addItemToCart(item, quantity);
     console.log(item, "item");
@@ -112,8 +125,9 @@ export default function ProductPopup() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={
-              image?.original ??
-              "/assets/placeholder/products/product-thumbnail.svg"
+              (galleryImages[0]?.original ??
+                image?.original ??
+                "/assets/placeholder/products/product-thumbnail.svg")
             }
             alt={name}
             className='lg:object-cover lg:w-full lg:h-full'

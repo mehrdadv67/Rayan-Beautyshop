@@ -54,36 +54,79 @@ export type StrapiDocumentId = {
 export type Category = StrapiDocumentId & {
   id: number | string;
   name: string;
+  title?: string;
   slug: string;
-  details?: string;
+  description?: string;
   image?: Attachment;
-  icon?: string;
+  sortOrder?: number;
+  isActive?: boolean;
+  parentCategory?: Category;
   products?: Product[];
   productCount?: number;
 };
-export type Collection = StrapiDocumentId & {
-  id: number | string;
-  name: string;
-  slug: string;
-  details?: string;
-  image?: Attachment;
-  icon?: string;
-  products?: Product[];
-  productCount?: number;
-};
+
 export type Brand = StrapiDocumentId & {
   id: number | string;
   name: string;
   slug: string;
-  image?: Attachment;
-  background_image?: any;
-  [key: string]: unknown;
+  description?: string;
+  logo?: Attachment;
+  coverImage?: Attachment;
+  isActive?: boolean;
 };
-export type Tag = {
-  id: string | number;
-  name: string;
+
+export type ProductTag = StrapiDocumentId & {
+  id: number | string;
+  title: string;
   slug: string;
+  color?: string;
+  icon?: Attachment;
+  isActive?: boolean;
 };
+
+export type ProductCollection = StrapiDocumentId & {
+  id: number | string;
+  title: string;
+  slug: string;
+  description?: string;
+  coverImage?: Attachment;
+  sortOrder?: number;
+  isActive?: boolean;
+};
+
+export type Collection = ProductCollection;
+
+export type VariantOption = {
+  id?: number | string;
+  variant?: ProductVariant;
+  attribute_value?: {
+    id?: number | string;
+    title?: string;
+    value?: string;
+    meta?: string;
+    attribute?: {
+      id?: number | string;
+      title?: string;
+      name?: string;
+    };
+  };
+};
+
+export type ProductVariant = StrapiDocumentId & {
+  id: number | string;
+  sku: string;
+  barcode?: string;
+  weight?: number;
+  price: number;
+  salePrice?: number;
+  stock: number;
+  isDefault?: boolean;
+  isActive?: boolean;
+  desktopImages?: Attachment[];
+  mobileImages?: Attachment[];
+  options?: VariantOption[];
+};
+
 export type Variation = {
   id?: number | string;
   title?: string;
@@ -94,26 +137,34 @@ export type Variation = {
   sale_price?: number;
   stock?: number;
   sku?: string;
+  isDefault?: boolean;
   isActive?: boolean;
   attributeValues?: (number | string)[];
 };
+
 export type Product = StrapiDocumentId & {
   id: number | string;
   name: string;
+  title?: string;
   slug: string;
-  price: number;
-  display_price?: number;
-  quantity: number;
-  sale_price?: number;
-  image: Attachment;
-  sku?: string;
-  gallery?: Attachment[];
-  category?: Category;
-  brand?: Brand;
-  tag?: Tag[];
-  tags?: Tag[];
-  meta?: any[];
   description?: any;
+  galleryDesktop?: Attachment[];
+  galleryMobile?: Attachment[];
+  seoTitle?: string;
+  seoDescription?: string;
+  isActive?: boolean;
+  brand?: Brand;
+  category?: Category;
+  tags?: ProductTag[];
+  collections?: ProductCollection[];
+  variants?: ProductVariant[];
+  display_price?: number;
+  price?: number;
+  sale_price?: number;
+  sku?: string;
+  image?: Attachment;
+  gallery?: Attachment[];
+  meta?: any[];
   variations?: Variation[];
   [key: string]: unknown;
   isNewArrival?: boolean;

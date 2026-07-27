@@ -19,6 +19,14 @@ export default {
           "api::product-variant.product-variant.create",
           "api::product-variant.product-variant.update",
           "api::product-variant.product-variant.delete",
+          "api::variant-option.variant-option.find",
+          "api::variant-option.variant-option.create",
+          "api::variant-option.variant-option.update",
+          "api::variant-option.variant-option.delete",
+          "api::product-tag.product-tag.find",
+          "api::product-tag.product-tag.findOne",
+          "api::product-collection.product-collection.find",
+          "api::product-collection.product-collection.findOne",
           "api::product.product.find",
           "api::product.product.create",
           "api::product.product.update",
@@ -50,7 +58,16 @@ export default {
         console.log("⚠️ Public role not found");
       }
     } catch (err) {
-      console.error("Error setting menu permissions:", err);
+      console.error("Error setting permissions:", err);
+    }
+
+    try {
+      await strapi.db.query("api::product.product").createMany({
+        data: [],
+      });
+    } catch (e) {
+      console.warn("⚠️ Failed to warm product table", e.message);
     }
   },
 };
+

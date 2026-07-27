@@ -134,11 +134,11 @@ const BrandTimerBlock: React.FC<BrandProps> = ({
                 <SwiperSlide key={`brand--key${brand.id}`}>
                   <Link href={`/search?q=${brand.slug}`}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={brand?.image?.original}
-                      alt="brand"
-                      className="w-[196px]"
-                    />
+                  <img
+                    src={brand?.logo?.original ?? "/assets/placeholder/brand-bg.svg"}
+                    alt="brand"
+                    className="w-[196px]"
+                  />
                   </Link>
                 </SwiperSlide>
               ))}

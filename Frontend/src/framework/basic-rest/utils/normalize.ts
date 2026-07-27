@@ -1,4 +1,12 @@
-import { Attachment, Brand, Category, Product } from "@framework/types";
+import {
+  Attachment,
+  Brand,
+  Category,
+  Product,
+  ProductTag,
+  ProductCollection,
+  ProductVariant,
+} from "@framework/types";
 
 /**
  * Strapi v5 response normalizers.
@@ -97,88 +105,194 @@ function buildProductMeta(item: any): any[] {
   return sections;
 }
 
-/** Build variant options from a product's attribute_values + linked product_variants.
- *  Each option carries the variant pricing (price/sale_price/stock/sku) so the
+/** Build variant options from a product's variants -> options -> attribute_value chain.
+ *  Each option carries the variant pricing (price/salePrice/stock/sku) so the
  *  product detail page can switch price/stock when the customer picks a value. */
 function buildVariations(item: any): any[] {
-  const attributeValues = Array.isArray(item?.attribute_values)
-    ? item.attribute_values
-    : [];
-  return attributeValues
-    .map((av: any) => {
-      const variant =
-        av?.product_variants && av.product_variants.length > 0
-          ? av.product_variants[0]
-          : undefined;
-      return {
-        id: av?.id,
-        title: av?.attribute?.slug || av?.attribute?.name || "",
-        attributeName: av?.attribute?.name ?? "",
-        value: av?.value ?? "",
-        meta: av?.meta,
-        price: variant?.price != null ? Number(variant.price) : undefined,
-        sale_price:
-          variant?.sale_price != null ? Number(variant.sale_price) : undefined,
-        stock: variant?.stock != null ? Number(variant.stock) : undefined,
-        sku: variant?.sku,
-        isActive: variant?.isActive !== false,
-        attributeValues: [av?.id],
-      };
-    })
-    .filter((v: any) => v.isActive);
+  const variants = Array.isArray(item?.variants) ? item.variants : [];
+  const seen = new Set<string>();
+  return variants.flatMap((variant: any) => {
+    const options = Array.isArray(variant?.options) ? variant.options : [];
+    return options
+      .filter((opt: any) => opt?.attribute_value && opt?.attribute_value.attribute)
+      .map((opt: any) => {
+        const attr = opt.attribute_value.attribute;
+        const value = opt.attribute_value;
+        const key = `${attr.id}:${value.id}`;
+        if (seen.has(key)) return null;
+        seen.add(key);
+        return {
+          id: value.id,
+          title: attr.slug || attr.title || attr.name || "",
+          attributeName: attr.title || attr.name || "",
+          value: value.title || value.value || "",
+          meta: value.meta,
+          price: variant.price != null ? Number(variant.price) : undefined,
+          sale_price:
+            variant.salePrice != null ? Number(variant.salePrice) : undefined,
+          stock: variant.stock != null ? Number(variant.stock) : undefined,
+          sku: variant.sku,
+          isDefault: variant.isDefault || false,
+          isActive: variant.isActive !== false,
+        };
+      })
+      .filter(Boolean);
+  });
 }
 
 /** Strapi product entry -> flat template Product. */
 export function normalizeProduct(item: any): Product {
-  const { image, gallery } = splitMedia(item?.image);
+  const name = item?.name ?? item?.title ?? "";
+  const title = item?.title ?? item?.name ?? "";
+  const galleryDesktop = splitMedia(item?.galleryDesktop);
+  const galleryMobile = splitMedia(item?.galleryMobile);
+  const fallbackGallery = galleryDesktop.gallery.length > 0
+    ? galleryDesktop
+    : splitMedia(item?.gallery ?? item?.image);
+  const image = galleryDesktop.image || fallbackGallery.image;
+  const gallery = [
+    ...galleryDesktop.gallery,
+    ...galleryMobile.gallery,
+  ].filter((_, i, arr) => arr.findIndex((g) => g.original === _.original) === i);
+
   const description = blocksToText(item?.description);
   return {
     id: item?.id,
     documentId: item?.documentId,
-    name: item?.name ?? "",
+    name,
+    title,
     slug: item?.slug ?? "",
-    price: Number(item?.price ?? 0),
+    description,
+    galleryDesktop: galleryDesktop.gallery,
+    galleryMobile: galleryMobile.gallery,
+    seoTitle: item?.seoTitle,
+    seoDescription: item?.seoDescription,
+    isActive: item?.isActive ?? Boolean(item?.is_active),
     display_price: item?.display_price ? Number(item.display_price) : undefined,
+    price: Number(item?.price ?? 0),
     sale_price: item?.sale_price ? Number(item?.sale_price) : undefined,
-    quantity: Number(item?.stock ?? 0),
+    sku: item?.sku,
     image,
     gallery,
-    sku: item?.sku,
-    description,
-    meta: buildProductMeta(item),
-    variations: buildVariations(item),
-    // relations come back already populated because we request populate=*
-    brand: item?.brand ? normalizeBrand(item.brand) : undefined,
-    category: Array.isArray(item?.categories)
-      ? normalizeCategory(item.categories[0])
+    category: Array.isArray(item?.category)
+      ? normalizeCategory(item.category[0])
+      : item?.category
+      ? normalizeCategory(item.category)
       : undefined,
-    isNewArrival: Boolean(item?.is_new_arrival),
-  };
-}
-
-/** Strapi category entry -> flat template Category. */
-export function normalizeCategory(item: any): Category {
-  const { image } = splitMedia(item?.image);
-  return {
-    id: item?.id,
-    documentId: item?.documentId,
-    name: item?.name ?? "",
-    slug: item?.slug ?? "",
-    details: item?.details,
-    image,
-    productCount: item?.products?.length,
+    brand: item?.brand ? normalizeBrand(item.brand) : undefined,
+    tags: Array.isArray(item?.tags) ? item.tags.map(normalizeProductTag) : [],
+    collections: Array.isArray(item?.collections) ? item.collections.map(normalizeProductCollection) : [],
+    variants: Array.isArray(item?.variants)
+      ? item.variants.map(normalizeProductVariant)
+      : [],
+    variations: buildVariations(item),
+    meta: buildProductMeta(item),
   };
 }
 
 /** Strapi brand entry -> flat template Brand. */
 export function normalizeBrand(item: any): Brand {
-  const { image } = splitMedia(item?.image);
+  const image = item?.logo ? normalizeMedia(item.logo) : item?.image ? normalizeMedia(item.image) : { id: "", thumbnail: "", original: "" };
   return {
     id: item?.id,
     documentId: item?.documentId,
     name: item?.name ?? "",
     slug: item?.slug ?? "",
-    image,
+    description: item?.description,
+    logo: image,
+    coverImage: item?.coverImage ? normalizeMedia(item.coverImage) : undefined,
+    isActive: item?.isActive ?? item?.is_active,
+  };
+}
+
+/** Strapi category entry -> flat template Category. */
+export function normalizeCategory(item: any): Category {
+  const image = splitMedia(item?.image);
+  return {
+    id: item?.id,
+    documentId: item?.documentId,
+    name: item?.name ?? "",
+    title: item?.title,
+    slug: item?.slug ?? "",
+    description: item?.description,
+    image: image.image,
+    sortOrder: item?.sortOrder ?? item?.sort_order,
+    isActive: item?.isActive ?? item?.is_active,
+    productCount: item?.products?.length,
+  };
+}
+
+/** Strapi product tag entry -> flat template ProductTag. */
+export function normalizeProductTag(item: any): ProductTag {
+  return {
+    id: item?.id,
+    documentId: item?.documentId,
+    title: item?.title ?? "",
+    slug: item?.slug ?? "",
+    color: item?.color,
+    icon: item?.icon ? normalizeMedia(item.icon) : undefined,
+    isActive: item?.isActive ?? item?.is_active,
+  };
+}
+
+/** Strapi product collection entry -> flat template ProductCollection. */
+export function normalizeProductCollection(item: any): ProductCollection {
+  const coverImage = item?.coverImage ? normalizeMedia(item.coverImage) : undefined;
+  return {
+    id: item?.id,
+    documentId: item?.documentId,
+    title: item?.title ?? "",
+    slug: item?.slug ?? "",
+    description: item?.description,
+    coverImage,
+    sortOrder: item?.sortOrder ?? item?.sort_order,
+    isActive: item?.isActive ?? item?.is_active,
+  };
+}
+
+/** Strapi product variant entry -> flat template ProductVariant. */
+export function normalizeProductVariant(item: any): ProductVariant {
+  const desktopImages = Array.isArray(item?.desktopImages)
+    ? item.desktopImages.map(normalizeMedia)
+    : [];
+  const mobileImages = Array.isArray(item?.mobileImages)
+    ? item.mobileImages.map(normalizeMedia)
+    : [];
+  const options = Array.isArray(item?.options)
+    ? item.options.map((opt: any) => ({
+        id: opt?.id,
+        variant: opt?.variant,
+        attribute_value: opt?.attribute_value
+          ? {
+              id: opt.attribute_value.id,
+              title: opt.attribute_value.title,
+              value: opt.attribute_value.value,
+              meta: opt.attribute_value.meta,
+              attribute: opt.attribute_value.attribute
+                ? {
+                    id: opt.attribute_value.attribute.id,
+                    title: opt.attribute_value.attribute.title,
+                    name: opt.attribute_value.attribute.name,
+                  }
+                : undefined,
+            }
+          : undefined,
+      }))
+    : [];
+  return {
+    id: item?.id,
+    documentId: item?.documentId,
+    sku: item?.sku ?? "",
+    barcode: item?.barcode,
+    weight: item?.weight != null ? Number(item.weight) : undefined,
+    price: Number(item?.price ?? 0),
+    salePrice: item?.salePrice != null ? Number(item.salePrice) : undefined,
+    stock: Number(item?.stock ?? 0),
+    isDefault: item?.isDefault ?? false,
+    isActive: item?.isActive ?? true,
+    desktopImages,
+    mobileImages,
+    options,
   };
 }
 

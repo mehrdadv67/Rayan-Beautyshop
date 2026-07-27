@@ -14,23 +14,25 @@
     "value": {
       "type": "string"
     },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "meta": {
+      "type": "string"
+    },
     "attribute": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::attribute.attribute",
-      "inversedBy": "attribute_values"
+      "inversedBy": "attribute_values",
+      "required": true
     },
-    "product_variants": {
+    "variant_options": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product-variant.product-variant",
-      "inversedBy": "attribute_values"
-    },
-    "product": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::product.product",
-      "inversedBy": "attribute_values"
+      "relation": "oneToMany",
+      "target": "api::variant-option.variant-option",
+      "mappedBy": "attribute_value"
     }
   }
 }

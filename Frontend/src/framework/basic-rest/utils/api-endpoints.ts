@@ -8,7 +8,7 @@ export const API_ENDPOINTS = {
   CATEGORIES_2: "/api/categories",
   CATEGORIES_ANCIENT: "/api/categories",
   FEATURED_CATEGORIES: "/api/categories",
-  COLLECTIONS: "/api/categories", // no Collection type yet; reuse categories
+  COLLECTIONS: "/api/product-collections",
   BRANDS: "/api/brands",
   BRANDS_ANCIENT: "/api/brands",
   MENU_ITEMS: "/api/menu-items",
@@ -50,14 +50,32 @@ const PAGE_SIZE = 100; // cosmetics catalog is small; pull everything in one pag
 
 const POPULATED_PAGE = `&pagination[pageSize]=${PAGE_SIZE}`;
 
-/** Product populate: image (media), brand (relation), categories (relation). */
+/**
+ * Product populate: gallery (media), brand (relation), category (relation),
+ * tags (relation), collections (relation), variants (relation), variants images,
+ * variants options, variant option attribute value + attribute.
+ */
 const PRODUCT_POPULATE =
-  "populate[0]=image&populate[1]=brand&populate[2]=categories" +
-  "&populate[3]=attribute_values.attribute" +
-  "&populate[4]=attribute_values.product_variants";
+  "populate[0]=galleryDesktop" +
+  "&populate[1]=galleryMobile" +
+  "&populate[2]=brand" +
+  "&populate[3]=category" +
+  "&populate[4]=tags" +
+  "&populate[5]=collections" +
+  "&populate[6]=variants" +
+  "&populate[7]=variants.desktopImages" +
+  "&populate[8]=variants.mobileImages" +
+  "&populate[9]=variants.options" +
+  "&populate[10]=variants.options.attribute_value" +
+  "&populate[11]=variants.options.attribute_value.attribute";
 
-/** Category/Brand populate: image (media) only. */
+/** Category populate: image (media) only. */
 const MEDIA_ONLY_POPULATE = "populate[0]=image";
+
+/** Brand populate: logo + coverImage media. */
+const BRAND_POPULATE =
+  "populate[0]=logo" +
+  "&populate[1]=coverImage";
 
 /** Full list query for Products (used for the main products grid). */
 export const strapiListParams = () => `?${PRODUCT_POPULATE}${POPULATED_PAGE}`;
@@ -66,9 +84,9 @@ export const strapiListParams = () => `?${PRODUCT_POPULATE}${POPULATED_PAGE}`;
 export const strapiCategoryParams = () =>
   `?${MEDIA_ONLY_POPULATE}${POPULATED_PAGE}`;
 
-/** Full list query for Brands (has image only). */
+/** Full list query for Brands (has logo + coverImage). */
 export const strapiBrandParams = () =>
-  `?${MEDIA_ONLY_POPULATE}${POPULATED_PAGE}`;
+  `?${BRAND_POPULATE}${POPULATED_PAGE}`;
 
 /**
  * Banner query: populate both media fields, show only active banners for the
@@ -81,9 +99,27 @@ export const strapiBannerParams = (position = "home_top") =>
   `&filters[isActive][$eq]=true` +
   `&sort[0]=priority:asc&pagination[pageSize]=100`;
 
-/** List query filtered by a boolean flag on the product (e.g. is_featured). */
-export const strapiFlaggedParams = (flag: string) =>
-  `?${PRODUCT_POPULATE}${POPULATED_PAGE}&filters[${flag}][$eq]=true`;
+/**
+ * List query filtered by a product tag slug (e.g. featured, flash-sale).
+ * Replaces the old boolean flag filters after moving flags to ProductTag.
+ */
+export const strapiTaggedParams = (tagSlug: string) =>
+  `?${PRODUCT_POPULATE}${POPULATED_PAGE}&filters[tags][slug][$eq]=${encodeURIComponent(
+    tagSlug
+  )}`;
+
+/**
+ * Product collection query params.
+ */
+export const strapiCollectionParams = () =>
+  `?populate[0]=coverImage&populate[1]=products${POPULATED_PAGE}`;
+
+/**
+ * @deprecated No-op kept for legacy compatibility.
+ * Old boolean flags no longer exist on Product after the schema refactor.
+ */
+export const strapiFlaggedParams = () =>
+  `?${PRODUCT_POPULATE}${POPULATED_PAGE}`;
 
 /** List query filtered by a name contains-search (case-insensitive). */
 export const strapiSearchParams = (text: string) =>

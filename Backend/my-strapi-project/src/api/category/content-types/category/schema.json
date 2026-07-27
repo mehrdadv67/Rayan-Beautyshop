@@ -14,25 +14,47 @@
     "name": {
       "type": "string"
     },
+    "title": {
+      "type": "string",
+      "required": true
+    },
     "slug": {
       "type": "uid",
       "targetField": "name"
     },
+    "description": {
+      "type": "text"
+    },
     "image": {
       "type": "media",
       "multiple": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "allowedTypes": ["images"]
     },
-    "product": {
+    "parentCategory": {
       "type": "relation",
       "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "children"
+    },
+    "children": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category",
+      "mappedBy": "parentCategory"
+    },
+    "sortOrder": {
+      "type": "integer",
+      "default": 0
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
       "target": "api::product.product",
-      "inversedBy": "categories"
+      "mappedBy": "category"
     }
   }
 }

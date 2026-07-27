@@ -11,84 +11,72 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
     "name": {
       "type": "string"
     },
     "slug": {
-      "type": "uid"
+      "type": "uid",
+      "targetField": "title"
     },
     "description": {
       "type": "blocks"
     },
-    "price": {
-      "type": "decimal"
+    "galleryDesktop": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images"]
+    },
+    "galleryMobile": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images"]
+    },
+    "seoTitle": {
+      "type": "string"
+    },
+    "seoDescription": {
+      "type": "text"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
     },
     "display_price": {
       "type": "decimal",
       "default": 0
-    },
-    "sale_price": {
-      "type": "decimal"
-    },
-    "stock": {
-      "type": "integer"
-    },
-    "image": {
-      "type": "media",
-      "multiple": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "isActive": {
-      "type": "boolean"
     },
     "brand": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::brand.brand"
     },
-    "categories": {
+    "category": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToOne",
       "target": "api::category.category",
-      "mappedBy": "product"
+      "inversedBy": "products"
     },
-    "attributes": {
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product-tag.product-tag",
+      "inversedBy": "products"
+    },
+    "collections": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product-collection.product-collection",
+      "inversedBy": "products"
+    },
+    "variants": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::attribute.attribute",
+      "target": "api::product-variant.product-variant",
       "mappedBy": "product"
-    },
-    "attribute_values": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::attribute-value.attribute-value",
-      "mappedBy": "product"
-    },
-    "is_featured": {
-      "type": "boolean"
-    },
-    "is_flash_sale": {
-      "type": "boolean"
-    },
-    "is_new_arrival": {
-      "type": "boolean"
-    },
-    "is_best_seller": {
-      "type": "boolean"
-    },
-    "is_popular": {
-      "type": "boolean"
-    },
-    "is_top_seller": {
-      "type": "boolean"
-    },
-    "is_on_selling": {
-      "type": "boolean"
     }
   }
 }

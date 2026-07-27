@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "variant_options",
+  "info": {
+    "singularName": "variant-option",
+    "pluralName": "variant-options",
+    "displayName": "گزینه تنوع"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "variant": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product-variant.product-variant",
+      "inversedBy": "options",
+      "required": true
+    },
+    "attribute_value": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::attribute-value.attribute-value",
+      "inversedBy": "variant_options",
+      "required": true
+    }
+  }
+}

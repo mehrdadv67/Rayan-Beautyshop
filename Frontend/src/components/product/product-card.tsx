@@ -58,14 +58,31 @@ const ProductCard: FC<ProductProps> = ({
 }) => {
   const { openModal, setModalView, setModalData } = useUI();
   const placeholderImage = `/assets/placeholder/products/product-${variant}.svg`;
+
+  const defaultVariant = product?.variants?.find((v) => v.isDefault) ??
+    product?.variants?.[0];
+  const displayPrice =
+    product.display_price ??
+    defaultVariant?.salePrice ??
+    defaultVariant?.price ??
+    product.price ??
+    0;
+  const baseAmount =
+    defaultVariant?.price ?? product.price ?? 0;
+
   const { price, basePrice, discount } = usePrice({
-    amount:
-      product.display_price ??
-      (product.sale_price ? product.sale_price : product.price),
-    baseAmount: product.price,
+    amount: displayPrice,
+    baseAmount: baseAmount,
     // currencyCode: "USD",
     currencyCode: "IRR",
   });
+
+  const cardImage =
+    defaultVariant?.desktopImages?.[0]?.original ??
+    defaultVariant?.mobileImages?.[0]?.original ??
+    product?.image?.original ??
+    product?.gallery?.[0]?.original ??
+    placeholderImage;
   function handlePopupView() {
     setModalData({ data: product });
     setModalView("PRODUCT_VIEW");
@@ -122,7 +139,7 @@ const ProductCard: FC<ProductProps> = ({
         )}
       >
         <Image
-          src={product?.image?.original ?? placeholderImage}
+          src={cardImage}
           width={demoVariant === "ancient" ? 352 : Number(imgWidth)}
           height={demoVariant === "ancient" ? 452 : Number(imgHeight)}
           loading={imgLoading}

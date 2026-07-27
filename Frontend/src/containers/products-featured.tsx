@@ -1,6 +1,9 @@
 import SectionHeader from "@components/common/section-header";
 import ProductOverlayCard from "@components/product/product-overlay-card";
-import { useFeaturedProductsQuery } from "@framework/product/get-all-featured-products";
+import { useQuery } from "@tanstack/react-query";
+import { API_ENDPOINTS, strapiTaggedParams } from "@framework/utils/api-endpoints";
+import http from "@framework/utils/http";
+import { normalizeProduct, unwrapList } from "@framework/utils/normalize";
 import Alert from "@components/ui/alert";
 import { Product } from "@framework/types";
 import Image from "next/image";
@@ -27,9 +30,14 @@ const ProductsFeatured: React.FC<ProductsProps> = ({
   demoVariant,
   disableBorderRadius = false,
 }) => {
-  const { data, error } = useFeaturedProductsQuery({
-    limit: limit,
-    demoVariant,
+  const { data, error } = useQuery<Product[], Error>({
+    queryKey: ["featuredProducts", { tag: "new-products" }],
+    queryFn: () =>
+      http
+        .get(
+          `${API_ENDPOINTS.PRODUCTS}${strapiTaggedParams("new-products")}`
+        )
+        .then(({ data }) => unwrapList(data, normalizeProduct) as Product[]),
   });
 
   return (

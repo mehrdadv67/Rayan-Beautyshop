@@ -1,7 +1,8 @@
 import SectionHeader from "@components/common/section-header";
 import ProductCard from "@components/product/product-card";
 import ProductCardGridLoader from "@components/ui/loaders/product-card-grid-loader";
-import { useFlashSaleProductsQuery } from "@framework/product/get-all-flash-sale-products";
+import { useProductsByCollectionQuery } from "@framework/product/get-products-by-collection";
+import { useCollectionBySlugQuery } from "@framework/collection/get-all-collection";
 import Alert from "@components/ui/alert";
 import dynamic from "next/dynamic";
 
@@ -23,6 +24,7 @@ interface WrapperProps {
   demoVariant?: "ancient";
   disableBorderRadius?: boolean;
   bgGray?: boolean;
+  collectionSlug?: string;
 }
 
 interface ProductsProps extends WrapperProps {
@@ -47,7 +49,8 @@ function ProductFlashSaleWrapper({
   sectionHeading,
   hideCountdown,
   date,
-}: React.PropsWithChildren<WrapperProps>) {
+  description,
+}: React.PropsWithChildren<WrapperProps & { description?: string }>) {
   return (
     <>
       <div
@@ -64,7 +67,7 @@ function ProductFlashSaleWrapper({
             className='mb-0'
           />
           {!hideCountdown && (
-            <Countdown date={date} intervalDelay={1000} renderer={renderer} />
+            <Countdown date={date} intervalDelay={1000} renderer={(props: any) => renderer(props, description)} />
           )}
         </div>
         {children}
@@ -74,12 +77,10 @@ function ProductFlashSaleWrapper({
 }
 
 // Renderer callback with condition
-const renderer = ({ days, hours, minutes, seconds, completed }: any) => {
+const renderer = ({ days, hours, minutes, seconds, completed }: any, description?: string) => {
   if (completed) {
-    // Render a completed state
-    return <span>فقط تا 20 مردادماه</span>;
+    return <span>{description || "فقط تا 20 مردادماه"}</span>;
   } else {
-    // Render a countdown
     return (
       <div className='flex items-center gap-x-1.5 md:gap-x-2.5'>
         <div className='text-heading text-10px md:text-xs text-center uppercase'>
@@ -124,11 +125,14 @@ const ProductsFlashSaleBlock: React.FC<ProductsProps> = ({
   demoVariant,
   disableBorderRadius = false,
   bgGray,
+  collectionSlug = "flash-sale",
 }) => {
-  const { data, isLoading, error } = useFlashSaleProductsQuery({
-    limit: limit || 10,
-    demoVariant,
-  });
+  const { data: productsData, isLoading, error } =
+    useProductsByCollectionQuery({
+      collection: collectionSlug,
+    });
+  const { data: collectionData } = useCollectionBySlugQuery(collectionSlug);
+  const collectionDescription = collectionData?.description || "";
 
   if (isLoading) {
     return (
@@ -139,6 +143,7 @@ const ProductsFlashSaleBlock: React.FC<ProductsProps> = ({
         disableSectionPadding={disableSectionPadding}
         disableSectionBorder={disableSectionBorder}
         hideCountdown={hideCountdown}
+        description={collectionDescription}
       >
         <div
           className={`grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-${TwoXlCols} gap-x-3 md:gap-x-5 xl:gap-x-7 gap-y-4 lg:gap-y-5 xl:lg:gap-y-6 2xl:gap-y-8`}
@@ -159,6 +164,7 @@ const ProductsFlashSaleBlock: React.FC<ProductsProps> = ({
         disableSectionPadding={disableSectionPadding}
         disableSectionBorder={disableSectionBorder}
         hideCountdown={hideCountdown}
+        description={collectionDescription}
       >
         <Alert message={error?.message} />
       </ProductFlashSaleWrapper>
@@ -172,6 +178,7 @@ const ProductsFlashSaleBlock: React.FC<ProductsProps> = ({
       disableSectionPadding={disableSectionPadding}
       disableSectionBorder={disableSectionBorder}
       hideCountdown={hideCountdown}
+      description={collectionDescription}
     >
       <div
         className={`grid grid-cols-${
@@ -192,7 +199,7 @@ const ProductsFlashSaleBlock: React.FC<ProductsProps> = ({
       >
         {limit ? (
           <>
-            {data?.productFlashSellGridTwo
+            {productsData
               ?.slice(0, limit)
               ?.map((product: any) => (
                 <ProductCard
@@ -209,7 +216,7 @@ const ProductsFlashSaleBlock: React.FC<ProductsProps> = ({
           </>
         ) : (
           <>
-            {data?.productFlashSellGridTwo?.map((product: any) => (
+            {productsData?.map((product: any) => (
               <ProductCard
                 key={`product--key${product.id}`}
                 product={product}

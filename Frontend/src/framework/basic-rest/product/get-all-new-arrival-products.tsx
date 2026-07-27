@@ -1,7 +1,7 @@
 import { QueryOptionsType, Product } from "@framework/types";
 import {
   API_ENDPOINTS,
-  strapiFlaggedParams,
+  strapiTaggedParams,
 } from "@framework/utils/api-endpoints";
 import http from "@framework/utils/http";
 import { normalizeProduct, unwrapList } from "@framework/utils/normalize";
@@ -9,8 +9,8 @@ import { useQuery } from "@tanstack/react-query";
 
 export const fetchNewArrivalProducts = async () => {
   const { data } = await http.get(
-    `${API_ENDPOINTS.NEW_ARRIVAL_PRODUCTS}${strapiFlaggedParams(
-      "is_new_arrival"
+    `${API_ENDPOINTS.NEW_ARRIVAL_PRODUCTS}${strapiTaggedParams(
+      "new-arrival"
     )}`
   );
   return unwrapList(data, normalizeProduct) as Product[];

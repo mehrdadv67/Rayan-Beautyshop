@@ -16,6 +16,7 @@ import Carousel from "@components/ui/carousel/carousel";
 import { SwiperSlide } from "swiper/react";
 import ProductMetaReview from "@components/product/product-meta-review";
 import { useSsrCompatible } from "@utils/use-ssr-compatible";
+import { Attachment } from "@framework/types";
 
 const productGalleryCarouselResponsive = {
   "768": {
@@ -55,12 +56,12 @@ const ProductSingleDetails: React.FC = () => {
   }, [data, attributes]);
 
   const variations = getVariations(data?.variations);
-  const selectedVariant = findVariant(data?.variations, attributes);
+  const selectedVariant = findVariant(data?.variants, attributes);
 
   const { price, basePrice, discount } = usePrice(
     data && {
       amount: selectedVariant
-        ? (selectedVariant.sale_price ?? selectedVariant.price)
+        ? (selectedVariant.salePrice ?? selectedVariant.price)
         : data.sale_price
           ? data.sale_price
           : data.price,
@@ -75,6 +76,19 @@ const ProductSingleDetails: React.FC = () => {
         attributes.hasOwnProperty(variation),
       )
     : true;
+
+  const galleryImages = React.useMemo<Attachment[]>(() => {
+    if (selectedVariant) {
+      const variantImages =
+        (selectedVariant.desktopImages?.length ?? 0) > 0
+          ? selectedVariant.desktopImages
+          : selectedVariant.mobileImages?.length
+          ? selectedVariant.mobileImages
+          : [];
+      if (variantImages.length > 0) return variantImages;
+    }
+    return data?.gallery ?? [];
+  }, [selectedVariant, data?.gallery]);
 
   if (isLoading) return <p>Loading...</p>;
   if (!data) return <p>محصول یافت نشد.</p>;
@@ -91,7 +105,7 @@ const ProductSingleDetails: React.FC = () => {
       data!,
       attributes,
       selectedVariant?.price,
-      selectedVariant?.sale_price,
+      selectedVariant?.salePrice,
     );
     addItemToCart(item, quantity);
     toast("به سبد خرید اضافه شد", {
@@ -124,7 +138,7 @@ const ProductSingleDetails: React.FC = () => {
           className='product-gallery'
           buttonGroupClassName='hidden'
         >
-          {data?.gallery?.map((item, index: number) => (
+          {galleryImages.map((item, index: number) => (
             <SwiperSlide key={`product-gallery-key-${index}`}>
               <div className='col-span-1 transition duration-150 ease-in hover:opacity-90'>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -142,7 +156,7 @@ const ProductSingleDetails: React.FC = () => {
         </Carousel>
       ) : (
         <div className='col-span-5 grid grid-cols-2 gap-2.5'>
-          {data?.gallery?.map((item, index: number) => (
+          {galleryImages.map((item, index: number) => (
             <div
               key={index}
               className='col-span-1 transition duration-150 ease-in hover:opacity-90'
@@ -251,7 +265,7 @@ const ProductSingleDetails: React.FC = () => {
                     href={tag.slug}
                     className='inline-block ltr:pr-1.5 rtl:pl-1.5 transition hover:underline hover:text-heading ltr:last:pr-0 rtl:last:pl-0'
                   >
-                    {tag.name}
+                    {tag.title}
                     <span className='text-heading'>،</span>
                   </Link>
                 ))}

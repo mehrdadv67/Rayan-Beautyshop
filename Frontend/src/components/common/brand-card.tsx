@@ -5,7 +5,7 @@ import { ROUTES } from "@utils/routes";
 import { useTranslation } from "next-i18next";
 
 const BrandCard: React.FC<{ brand: Brand }> = ({ brand }) => {
-  const { slug, name, background_image, image } = brand;
+  const { slug, name, coverImage, logo } = brand;
   const { t } = useTranslation("common");
   return (
     <Link
@@ -16,7 +16,7 @@ const BrandCard: React.FC<{ brand: Brand }> = ({ brand }) => {
       className="group flex justify-center text-center relative overflow-hidden rounded-md"
     >
       <Image
-        src={background_image?.original ?? "/assets/placeholder/brand-bg.svg"}
+        src={coverImage?.original ?? "/assets/placeholder/brand-bg.svg"}
         alt={name || t("text-brand-thumbnail")}
         width={428}
         height={428}
@@ -26,7 +26,7 @@ const BrandCard: React.FC<{ brand: Brand }> = ({ brand }) => {
       <div className="absolute top left h-full w-full flex items-center justify-center p-8">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={image?.original}
+          src={logo?.original}
           alt={name || t("text-brand-thumbnail")}
           className="flex-shrink-0"
         />

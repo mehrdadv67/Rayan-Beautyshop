@@ -12,26 +12,56 @@
   "pluginOptions": {},
   "attributes": {
     "sku": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "barcode": {
       "type": "string"
     },
-    "price": {
+    "weight": {
       "type": "decimal"
     },
-    "sale_price": {
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "salePrice": {
       "type": "decimal"
     },
     "stock": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0
+    },
+    "isDefault": {
+      "type": "boolean",
+      "default": false
     },
     "isActive": {
       "type": "boolean",
       "default": true
     },
-    "attribute_values": {
+    "desktopImages": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images"]
+    },
+    "mobileImages": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images"]
+    },
+    "product": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::attribute-value.attribute-value",
-      "mappedBy": "product_variants"
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "variants"
+    },
+    "options": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::variant-option.variant-option",
+      "mappedBy": "variant"
     }
   }
 }

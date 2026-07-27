@@ -8,9 +8,20 @@ type SearchProductProps = {
 };
 
 const SearchProduct: React.FC<SearchProductProps> = ({ item }) => {
+  const defaultVariant = item?.variants?.find((v: any) => v.isDefault) ??
+    item?.variants?.[0];
+  const displayPrice =
+    item.display_price ??
+    defaultVariant?.salePrice ??
+    defaultVariant?.price ??
+    item.price ??
+    0;
+  const baseAmount =
+    defaultVariant?.price ?? item.price ?? 0;
+
   const { price, basePrice } = usePrice({
-    amount: item.sale_price ? item.sale_price : item.price,
-    baseAmount: item.price,
+    amount: displayPrice,
+    baseAmount: baseAmount,
     currencyCode: "IRR",
   });
   return (
@@ -21,7 +32,11 @@ const SearchProduct: React.FC<SearchProductProps> = ({ item }) => {
       <div className='relative flex flex-shrink-0 w-24 h-24 overflow-hidden bg-gray-200 rounded-md cursor-pointer ltr:mr-4 rtl:ml-4'>
         <Image
           src={
-            item?.image?.original ?? "/assets/placeholder/search-product.svg"
+            defaultVariant?.desktopImages?.[0]?.original ??
+            defaultVariant?.mobileImages?.[0]?.original ??
+            item?.image?.original ??
+            item?.gallery?.[0]?.original ??
+            "/assets/placeholder/search-product.svg"
           }
           width={96}
           height={96}
