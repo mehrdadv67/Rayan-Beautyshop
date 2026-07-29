@@ -175,7 +175,7 @@ export type OrderItem = {
   price: number;
   quantity: number;
 };
-export type Order = {
+export type Order = StrapiDocumentId & {
   id: string | number;
   name: string;
   slug: string;
@@ -188,6 +188,7 @@ export type Order = {
   };
   shipping_fee: number;
   payment_gateway: string;
+  status?: string;
 };
 
 export type Shop = {

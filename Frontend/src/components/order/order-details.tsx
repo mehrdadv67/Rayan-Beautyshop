@@ -31,7 +31,7 @@ const OrderDetails: React.FC<{ className?: string }> = ({
   const { price: subtotal } = usePrice(
     order && {
       amount: order.total,
-      currencyCode: "USD",
+      currencyCode: "IRR",
     }
   );
   const { price: total } = usePrice(
@@ -39,16 +39,17 @@ const OrderDetails: React.FC<{ className?: string }> = ({
       amount: order.shipping_fee
         ? order.total + order.shipping_fee
         : order.total,
-      currencyCode: "USD",
+      currencyCode: "IRR",
     }
   );
   const { price: shipping } = usePrice(
     order && {
       amount: order.shipping_fee,
-      currencyCode: "USD",
+      currencyCode: "IRR",
     }
   );
   if (isLoading) return <p>در حال بارگذاری...</p>;
+  if (!order) return <p>سفارش یافت نشد</p>;
   return (
     <div className={className}>
       <h2 className='mb-6 text-lg font-bold md:text-xl xl:text-2xl text-heading xl:mb-8'>

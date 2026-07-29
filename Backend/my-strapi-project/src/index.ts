@@ -30,6 +30,16 @@ export default {
           "api::product.product.find",
           "api::product.product.create",
           "api::product.product.update",
+          "plugin::users-permissions.user.find",
+          "plugin::users-permissions.user.findOne",
+          "plugin::users-permissions.user.update",
+          "plugin::users-permissions.auth.find",
+          "plugin::users-permissions.auth.connect",
+          "plugin::users-permissions.auth.callback",
+          "api::order.order.find",
+          "api::order.order.findOne",
+          "api::order-item.order-item.find",
+          "api::order-item.order-item.findOne",
         ];
 
         for (const action of actions) {

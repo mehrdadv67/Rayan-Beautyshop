@@ -686,11 +686,11 @@ export interface ApiOrderItemOrderItem extends Struct.CollectionTypeSchema {
       'api::order-item.order-item'
     > &
       Schema.Attribute.Private;
-    order_item: Schema.Attribute.Relation<'oneToOne', 'api::product.product'>;
-    order_Items: Schema.Attribute.Relation<'oneToOne', 'api::order.order'>;
-    price_snapshot: Schema.Attribute.Decimal;
+    order: Schema.Attribute.Relation<'manyToOne', 'api::order.order'>;
+    order_item: Schema.Attribute.Relation<'manyToOne', 'api::product.product'>;
+    price_snapshot: Schema.Attribute.Decimal & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    quantity: Schema.Attribute.Integer;
+    quantity: Schema.Attribute.Integer & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -714,16 +714,25 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::order.order'> &
       Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     order: Schema.Attribute.Relation<
-      'oneToOne',
+      'manyToOne',
       'plugin::users-permissions.user'
     >;
+    order_items: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::order-item.order-item'
+    >;
+    payment_gateway: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    statue: Schema.Attribute.Enumeration<
+    shipping_fee: Schema.Attribute.Decimal & Schema.Attribute.DefaultTo<0>;
+    slug: Schema.Attribute.UID<'name'>;
+    status: Schema.Attribute.Enumeration<
       ['pending', 'paid', 'shipped', 'done', 'cancelled']
     > &
       Schema.Attribute.DefaultTo<'pending'>;
-    totalPrice: Schema.Attribute.Decimal;
+    total: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    tracking_number: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

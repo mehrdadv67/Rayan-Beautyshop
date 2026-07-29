@@ -5,13 +5,14 @@ import { useForm } from 'react-hook-form';
 import { useLoginMutation, LoginInputType } from '@framework/auth/use-login';
 import { useUI } from '@contexts/ui.context';
 import Logo from '@components/ui/logo';
-import { ImGoogle2, ImFacebook2 } from 'react-icons/im';
+import { ImGoogle2 } from 'react-icons/im';
 import { useTranslation } from 'next-i18next';
+import { toast } from 'react-toastify';
 
 const LoginForm: React.FC = () => {
   const { t } = useTranslation();
   const { setModalView, openModal, closeModal } = useUI();
-  const { mutate: login, isPending } = useLoginMutation();
+  const { mutate: login, isPending, error } = useLoginMutation();
 
   const {
     register,
@@ -25,15 +26,16 @@ const LoginForm: React.FC = () => {
       password,
       remember_me,
     });
-    console.log(email, password, remember_me, 'data');
   }
-  function handelSocialLogin() {
-    login({
-      email: 'demo@demo.com',
-      password: 'demo',
-      remember_me: true,
-    });
+
+  function handleGoogleLogin() {
+    window.location.href = '/api/connect/google';
   }
+
+  function handleOtpLogin() {
+    toast.info('ورود با رمز یکبار مصرف به زودی فعال می‌شود');
+  }
+
   function handleSignUp() {
     setModalView('SIGN_UP_VIEW');
     return openModal();
@@ -117,6 +119,11 @@ const LoginForm: React.FC = () => {
               {t('common:text-login')}
             </Button>
           </div>
+          {error && (
+            <p className="text-sm text-red-500 mt-2">
+              {error?.message || 'خطا در ورود. لطفا دوباره تلاش کنید.'}
+            </p>
+          )}
         </div>
       </form>
       <div className="flex flex-col items-center justify-center relative text-sm text-heading mt-6 mb-3.5">
@@ -128,20 +135,19 @@ const LoginForm: React.FC = () => {
       <Button
         loading={isPending}
         disabled={isPending}
-        className="h-11 md:h-12 w-full mt-2.5 bg-facebook hover:bg-facebookHover"
-        onClick={handelSocialLogin}
+        className="h-11 md:h-12 w-full mt-2.5 bg-google hover:bg-googleHover"
+        onClick={handleGoogleLogin}
       >
-        <ImFacebook2 className="text-sm sm:text-base ltr:mr-1.5 rtl:ml-1.5" />
-        {t('common:text-login-with-facebook')}
+        <ImGoogle2 className="text-sm sm:text-base ltr:mr-1.5 rtl:ml-1.5" />
+        {t('common:text-login-with-google')}
       </Button>
       <Button
         loading={isPending}
         disabled={isPending}
-        className="h-11 md:h-12 w-full mt-2.5 bg-google hover:bg-googleHover"
-        onClick={handelSocialLogin}
+        className="h-11 md:h-12 w-full mt-2.5 bg-gray-500 hover:bg-gray-600"
+        onClick={handleOtpLogin}
       >
-        <ImGoogle2 className="text-sm sm:text-base ltr:mr-1.5 rtl:ml-1.5" />
-        {t('common:text-login-with-google')}
+        {t('common:text-login-with-otp', 'ورود با رمز یکبار مصرف')}
       </Button>
       <div className="mt-5 mb-1 text-sm text-center sm:text-base text-body">
         {t('common:text-no-account')}{' '}

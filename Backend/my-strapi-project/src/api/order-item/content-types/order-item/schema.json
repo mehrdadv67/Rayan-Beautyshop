@@ -12,20 +12,23 @@
   "pluginOptions": {},
   "attributes": {
     "quantity": {
-      "type": "integer"
+      "type": "integer",
+      "required": true
     },
     "price_snapshot": {
-      "type": "decimal"
+      "type": "decimal",
+      "required": true
     },
     "order_item": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::product.product"
     },
-    "order_Items": {
+    "order": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::order.order"
+      "relation": "manyToOne",
+      "target": "api::order.order",
+      "inversedBy": "order_items"
     }
   }
 }

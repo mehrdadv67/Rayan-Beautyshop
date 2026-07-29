@@ -4,10 +4,19 @@ import Link from '@components/ui/link';
 import { useWindowSize } from '@utils/use-window-size';
 import { useTranslation } from 'next-i18next';
 import { useSsrCompatible } from '@utils/use-ssr-compatible';
+import { useOrdersQuery } from '@framework/order/get-all-orders';
+import { Order } from '@framework/types';
 
 const OrdersTable: React.FC = () => {
   const { width } = useSsrCompatible(useWindowSize(), { width: 0, height: 0 });
   const { t } = useTranslation('common');
+  const { data, isLoading, error } = useOrdersQuery({});
+
+  if (isLoading) return <p>در حال بارگذاری...</p>;
+  if (error) return <p>خطا در بارگذاری سفارشات</p>;
+
+  const orders = data?.orders?.data ?? [];
+
   return (
     <>
       <h2 className="mb-6 text-lg font-bold md:text-xl xl:text-2xl text-heading xl:mb-8">
@@ -44,136 +53,87 @@ const OrdersTable: React.FC = () => {
               </tr>
             </thead>
             <tbody className="text-sm lg:text-base">
-              <tr className="border-b border-gray-300 last:border-b-0">
-                <td className="px-4 py-5 ltr:text-left rtl:text-right">
-                  <Link
-                    href="/my-account/orders/3203"
-                    className="underline hover:no-underline text-body"
-                  >
-                    #3203
-                  </Link>
-                </td>
-                <td className="px-4 py-5 ltr:text-left rtl:text-right lg:text-center text-heading">
-                  ۲۷ اسفند ۱۳۹۹
-                </td>
-                <td className="px-4 py-5 ltr:text-left rtl:text-right lg:text-center text-heading">
-                  تکمیل شده
-                </td>
-                <td className="px-4 py-5 ltr:text-left rtl:text-right lg:text-center text-heading">
-                  ۱۶,۹۵۰.۰۰ دلار برای ۹۳ کالا
-                </td>
-                <td className="px-4 py-5 ltr:text-right rtl:text-left text-heading">
-                  <Link
-                    href="/my-account/orders/3203"
-                    className="text-sm leading-4 bg-heading text-white px-4 py-2.5 inline-block rounded-md hover:text-white hover:bg-gray-600"
-                  >
-                    {t('button-view')}
-                  </Link>
-                </td>
-              </tr>
-              <tr className="border-b border-gray-300 last:border-b-0">
-                <td className="px-4 py-5 ltr:text-left rtl:text-right">
-                  <Link
-                    href="/my-account/orders/3204"
-                    className="underline hover:no-underline text-body"
-                  >
-                    #3204
-                  </Link>
-                </td>
-                <td className="px-4 py-5 ltr:text-left rtl:text-right lg:text-center text-heading">
-                  ۲۷ اسفند ۱۳۹۹
-                </td>
-                <td className="px-4 py-5 ltr:text-left rtl:text-right lg:text-center text-heading">
-                  تکمیل شده
-                </td>
-                <td className="px-4 py-5 ltr:text-left rtl:text-right lg:text-center text-heading">
-                  ۱۶,۹۵۰.۰۰ دلار برای ۹۳ کالا
-                </td>
-                <td className="px-4 py-5 ltr:text-right rtl:text-left text-heading">
-                  <Link
-                    href="/my-account/orders/3204"
-                    className="text-sm leading-4 bg-heading text-white px-4 py-2.5 inline-block rounded-md hover:text-white hover:bg-gray-600"
-                  >
-                    {t('button-view')}
-                  </Link>
-                </td>
-              </tr>
+              {orders.map((order: Order) => (
+                <tr key={order.id} className="border-b border-gray-300 last:border-b-0">
+                  <td className="px-4 py-5 ltr:text-left rtl:text-right">
+                    <Link
+                      href={`/my-account/orders/${order.slug ?? order.id}`}
+                      className="underline hover:no-underline text-body"
+                    >
+                      #{order.slug ?? order.id}
+                    </Link>
+                  </td>
+                  <td className="px-4 py-5 ltr:text-left rtl:text-right lg:text-center text-heading">
+                    {order.id}
+                  </td>
+                  <td className="px-4 py-5 ltr:text-left rtl:text-right lg:text-center text-heading">
+                    {order.status === 'done' ? 'تکمیل شده' : order.status === 'paid' ? 'پرداخت شده' : order.status === 'pending' ? 'در انتظار' : order.status || 'نامشخص'}
+                  </td>
+                  <td className="px-4 py-5 ltr:text-left rtl:text-right lg:text-center text-heading">
+                    {order.total.toLocaleString()} تومان
+                  </td>
+                  <td className="px-4 py-5 ltr:text-right rtl:text-left text-heading">
+                    <Link
+                      href={`/my-account/orders/${order.slug ?? order.id}`}
+                      className="text-sm leading-4 bg-heading text-white px-4 py-2.5 inline-block rounded-md hover:text-white hover:bg-gray-600"
+                    >
+                      {t('button-view')}
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+              {orders.length === 0 && (
+                <tr className="border-b border-gray-300">
+                  <td colSpan={5} className="px-4 py-5 text-center text-heading">
+                    سفارشی یافت نشد
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         ) : (
           <div className="w-full space-y-4">
-            <ul className="flex flex-col px-4 pt-5 pb-6 space-y-5 text-sm font-semibold border border-gray-300 rounded-md text-heading">
-              <li className="flex items-center justify-between">
-                {t('text-order')}
-                <span className="font-normal">
-                  <Link
-                    href="/my-account/orders/3203"
-                    className="underline hover:no-underline text-body"
-                  >
-                    #3203
-                  </Link>
-                </span>
-              </li>
-              <li className="flex items-center justify-between">
-                {t('text-date')}
-                <span className="font-normal">۲۷ اسفند ۱۳۹۹</span>
-              </li>
-              <li className="flex items-center justify-between">
-                {t('text-status')}
-                <span className="font-normal">تکمیل شده</span>
-              </li>
-              <li className="flex items-center justify-between">
-                {t('text-total')}
-                <span className="font-normal">۱۶,۹۵۰.۰۰ دلار برای ۹۳ کالا</span>
-              </li>
-              <li className="flex items-center justify-between">
-                {t('text-actions')}
-                <span className="font-normal">
-                  <Link
-                    href="/my-account/orders/3203"
-                    className="text-sm leading-4 bg-heading text-white px-4 py-2.5 inline-block rounded-md hover:text-white hover:bg-gray-600"
-                  >
-                    {t('button-view')}
-                  </Link>
-                </span>
-              </li>
-            </ul>
-            <ul className="flex flex-col px-4 pt-5 pb-6 space-y-5 text-sm font-semibold border border-gray-300 rounded-md text-heading">
-              <li className="flex items-center justify-between">
-                {t('text-order')}
-                <span className="font-normal">
-                  <Link
-                    href="/my-account/orders/3204"
-                    className="underline hover:no-underline text-body"
-                  >
-                    #3204
-                  </Link>
-                </span>
-              </li>
-              <li className="flex items-center justify-between">
-                {t('text-date')}
-                <span className="font-normal">۲۷ اسفند ۱۳۹۹</span>
-              </li>
-              <li className="flex items-center justify-between">
-                {t('text-status')}
-                <span className="font-normal">تکمیل شده</span>
-              </li>
-              <li className="flex items-center justify-between">
-                {t('text-total')}
-                <span className="font-normal">۱۶,۹۵۰.۰۰ دلار برای ۹۳ کالا</span>
-              </li>
-              <li className="flex items-center justify-between">
-                {t('text-actions')}
-                <span className="font-normal">
-                  <Link
-                    href="/my-account/orders/3204"
-                    className="text-sm leading-4 bg-heading text-white px-4 py-2.5 inline-block rounded-md hover:text-white hover:bg-gray-600"
-                  >
-                    {t('button-view')}
-                  </Link>
-                </span>
-              </li>
-            </ul>
+            {orders.map((order: Order) => (
+              <ul key={order.id} className="flex flex-col px-4 pt-5 pb-6 space-y-5 text-sm font-semibold border border-gray-300 rounded-md text-heading">
+                <li className="flex items-center justify-between">
+                  {t('text-order')}
+                  <span className="font-normal">
+                    <Link
+                      href={`/my-account/orders/${order.slug ?? order.id}`}
+                      className="underline hover:no-underline text-body"
+                    >
+                      #{order.slug ?? order.id}
+                    </Link>
+                  </span>
+                </li>
+                <li className="flex items-center justify-between">
+                  {t('text-date')}
+                  <span className="font-normal">{order.id}</span>
+                </li>
+                <li className="flex items-center justify-between">
+                  {t('text-status')}
+                  <span className="font-normal">{order.status === 'done' ? 'تکمیل شده' : order.status === 'paid' ? 'پرداخت شده' : order.status === 'pending' ? 'در انتظار' : order.status || 'نامشخص'}</span>
+                </li>
+                <li className="flex items-center justify-between">
+                  {t('text-total')}
+                  <span className="font-normal">{order.total.toLocaleString()} تومان</span>
+                </li>
+                <li className="flex items-center justify-between">
+                  {t('text-actions')}
+                  <span className="font-normal">
+                    <Link
+                      href={`/my-account/orders/${order.slug ?? order.id}`}
+                      className="text-sm leading-4 bg-heading text-white px-4 py-2.5 inline-block rounded-md hover:text-white hover:bg-gray-600"
+                    >
+                      {t('button-view')}
+                    </Link>
+                  </span>
+                </li>
+              </ul>
+            ))}
+            {orders.length === 0 && (
+              <div className="text-center text-heading py-5">سفارشی یافت نشد</div>
+            )}
           </div>
         )}
       </motion.div>

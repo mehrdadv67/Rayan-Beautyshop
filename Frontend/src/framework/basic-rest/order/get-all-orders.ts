@@ -1,12 +1,12 @@
 import { QueryOptionsType, Order } from "@framework/types";
 import http from "@framework/utils/http";
-import { API_ENDPOINTS } from "@framework/utils/api-endpoints";
+import { API_ENDPOINTS, strapiOrderParams } from "@framework/utils/api-endpoints";
 import { useQuery } from "@tanstack/react-query";
 
 export const fetchOrders = async () => {
-  const {
-    data: { data },
-  } = await http.get(API_ENDPOINTS.ORDERS);
+  const { data } = await http.get(
+    `${API_ENDPOINTS.ORDERS}${strapiOrderParams()}`
+  );
   return { orders: { data: data.data as Order[] } };
 };
 export const useOrdersQuery = (options: QueryOptionsType) => {

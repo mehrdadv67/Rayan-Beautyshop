@@ -1,6 +1,6 @@
 import { useUI } from "@contexts/ui.context";
-// import { API_ENDPOINTS } from "@framework/utils/api-endpoints";
-// import http from "@framework/utils/http";
+import { API_ENDPOINTS } from "@framework/utils/api-endpoints";
+import http from "@framework/utils/http";
 import Cookies from "js-cookie";
 import Router from "next/router";
 import { useMutation } from "@tanstack/react-query";
@@ -11,7 +11,11 @@ export interface LoginInputType {
   remember_me: boolean;
 }
 async function logout() {
-  // return http.post(API_ENDPOINTS.LOGIN, input);
+  try {
+    await http.post(API_ENDPOINTS.LOGOUT);
+  } catch (e) {
+    console.warn("Logout endpoint failed, clearing local token only", e);
+  }
   return {
     ok: true,
     message: "Logout Successful!",

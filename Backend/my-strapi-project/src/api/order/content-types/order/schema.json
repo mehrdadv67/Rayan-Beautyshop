@@ -11,10 +11,19 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "totalPrice": {
-      "type": "decimal"
+    "name": {
+      "type": "string",
+      "required": true
     },
-    "statue": {
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "total": {
+      "type": "decimal",
+      "required": true
+    },
+    "status": {
       "type": "enumeration",
       "default": "pending",
       "enum": [
@@ -25,10 +34,26 @@
         "cancelled"
       ]
     },
+    "tracking_number": {
+      "type": "string"
+    },
+    "shipping_fee": {
+      "type": "decimal",
+      "default": 0
+    },
+    "payment_gateway": {
+      "type": "string"
+    },
     "order": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "plugin::users-permissions.user"
+    },
+    "order_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order-item.order-item",
+      "mappedBy": "order"
     }
   }
 }

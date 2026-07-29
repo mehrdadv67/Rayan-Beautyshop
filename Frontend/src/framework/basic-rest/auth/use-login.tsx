@@ -1,6 +1,6 @@
 import { useUI } from '@contexts/ui.context';
-// import { API_ENDPOINTS } from "@framework/utils/api-endpoints";
-// import http from "@framework/utils/http";
+import { API_ENDPOINTS } from "@framework/utils/api-endpoints";
+import http from "@framework/utils/http";
 import Cookies from 'js-cookie';
 import { useMutation } from '@tanstack/react-query';
 
@@ -9,11 +9,13 @@ export interface LoginInputType {
   password: string;
   remember_me: boolean;
 }
+
 async function login(input: LoginInputType) {
-  // return http.post(API_ENDPOINTS.LOGIN, input);
-  return {
-    token: `${input.email}.${input.remember_me}`.split('').reverse().join(''),
-  };
+  const { data } = await http.post(API_ENDPOINTS.LOGIN, {
+    identifier: input.email,
+    password: input.password,
+  });
+  return data;
 }
 
 export const useLoginMutation = () => {
@@ -21,7 +23,7 @@ export const useLoginMutation = () => {
   return useMutation({
     mutationFn: (input: LoginInputType) => login(input),
     onSuccess: (data) => {
-      Cookies.set('auth_token', data.token);
+      Cookies.set('auth_token', data.jwt);
       authorize();
       closeModal();
     },

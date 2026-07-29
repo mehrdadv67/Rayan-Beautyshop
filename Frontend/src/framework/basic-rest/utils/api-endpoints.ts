@@ -1,8 +1,8 @@
 export const API_ENDPOINTS = {
-  LOGIN: "/login",
-  REGISTER: "/register",
-  LOGOUT: "/logout",
-  FORGET_PASSWORD: "/forget-password",
+  LOGIN: "/api/auth/local",
+  REGISTER: "/api/auth/local/register",
+  LOGOUT: "/api/auth/logout",
+  FORGET_PASSWORD: "/api/auth/forgot-password",
   // --- Strapi REST endpoints (storefront) ---
   CATEGORIES: "/api/categories",
   CATEGORIES_2: "/api/categories",
@@ -32,8 +32,9 @@ export const API_ENDPOINTS = {
   SHOPS: "/shops.json",
   SHOP: "/shop.json",
   SEARCH: "/api/products",
-  ORDERS: "/orders.json",
-  ORDER: "/order.json",
+  ORDERS: "/api/orders",
+  ORDER: "/api/orders",
+  ORDER_ITEM: "/api/order-items",
 };
 
 /**
@@ -69,6 +70,12 @@ const PRODUCT_POPULATE =
   "&populate[10]=variants.options.attribute_value" +
   "&populate[11]=variants.options.attribute_value.attribute";
 
+/** Order populate: order_items, product in each item, user. */
+const ORDER_POPULATE =
+  "populate[0]=order_items" +
+  "&populate[1]=order_items.order_item" +
+  "&populate[2]=order";
+
 /** Category populate: image (media) only. */
 const MEDIA_ONLY_POPULATE = "populate[0]=image";
 
@@ -87,6 +94,9 @@ export const strapiCategoryParams = () =>
 /** Full list query for Brands (has logo + coverImage). */
 export const strapiBrandParams = () =>
   `?${BRAND_POPULATE}${POPULATED_PAGE}`;
+
+/** Full list query for Orders. */
+export const strapiOrderParams = () => `?${ORDER_POPULATE}${POPULATED_PAGE}`;
 
 /**
  * Banner query: populate both media fields, show only active banners for the

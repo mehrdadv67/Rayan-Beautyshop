@@ -2,6 +2,8 @@ import {
   Attachment,
   Brand,
   Category,
+  Order,
+  OrderItem,
   Product,
   ProductTag,
   ProductCollection,
@@ -293,6 +295,41 @@ export function normalizeProductVariant(item: any): ProductVariant {
     desktopImages,
     mobileImages,
     options,
+  };
+}
+
+/** Strapi order item entry -> flat template OrderItem. */
+export function normalizeOrderItem(item: any): OrderItem {
+  const product = item?.order_item;
+  return {
+    id: item?.id,
+    name: product?.name ?? product?.title ?? "آیتم سفارش",
+    price: Number(item?.price_snapshot ?? 0),
+    quantity: Number(item?.quantity ?? 1),
+  };
+}
+
+/** Strapi order entry -> flat template Order. */
+export function normalizeOrder(item: any): Order {
+  const user = item?.order ?? {};
+  const orderItems = Array.isArray(item?.order_items)
+    ? item.order_items.map(normalizeOrderItem)
+    : [];
+  return {
+    id: item?.id,
+    documentId: item?.documentId,
+    name: item?.name ?? `سفارش #${item?.id}`,
+    slug: item?.slug ?? String(item?.id),
+    products: orderItems,
+    total: Number(item?.total ?? 0),
+    tracking_number: item?.tracking_number ?? "",
+    customer: {
+      id: Number(user?.id ?? 0),
+      email: user?.email ?? "",
+    },
+    shipping_fee: Number(item?.shipping_fee ?? 0),
+    payment_gateway: item?.payment_gateway ?? "",
+    status: item?.status,
   };
 }
 
