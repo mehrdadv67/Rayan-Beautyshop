@@ -69,13 +69,13 @@ const SignUpForm: React.FC = () => {
       >
         <div className="flex flex-col space-y-4">
           <Input
-            labelKey="forms:label-name"
+            labelKey="forms:label-username"
             type="text"
             variant="solid"
-            {...register('name', {
+            {...register('username', {
               required: 'forms:name-required',
             })}
-            errorKey={errors.name?.message}
+            errorKey={errors.username?.message}
           />
           <div className="flex flex-col sm:flex-row sm:gap-x-3 space-y-4 sm:space-y-0">
             <Input

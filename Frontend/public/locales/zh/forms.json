@@ -16,6 +16,7 @@
   "label-male": "男",
   "label-female": "女",
   "label-name": "姓名",
+  "label-username": "用户名",
   "label-email": "电子邮件",
   "label-password": "密码",
   "label-old-password": "旧密码",

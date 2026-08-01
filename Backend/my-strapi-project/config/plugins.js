@@ -1,6 +1,4 @@
-import type { Core } from '@strapi/strapi';
-
-const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin => ({
+module.exports = {
   'users-permissions': {
     config: {
       provider: 'google',
@@ -20,6 +18,4 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin =>
       },
     },
   },
-});
-
-export default config;
+};

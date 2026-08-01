@@ -16,6 +16,7 @@
   "label-male": "Male",
   "label-female": "Female",
   "label-name": "Name",
+  "label-username": "Username",
   "label-email": "Email",
   "label-password": "Password",
   "label-old-password": "Old Password",

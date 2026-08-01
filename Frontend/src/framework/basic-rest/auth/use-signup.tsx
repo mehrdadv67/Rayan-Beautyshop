@@ -3,11 +3,12 @@ import { API_ENDPOINTS } from "@framework/utils/api-endpoints";
 import http from "@framework/utils/http";
 import Cookies from "js-cookie";
 import { useMutation } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 
 export interface SignUpInputType {
+  username: string;
   email: string;
   password: string;
-  name: string;
   firstName?: string;
   lastName?: string;
   phoneNumber?: string;
@@ -20,7 +21,7 @@ export interface SignUpInputType {
 async function signUp(input: SignUpInputType) {
   console.log('Calling register API:', input);
   const { data } = await http.post(API_ENDPOINTS.REGISTER, {
-    username: input.name,
+    username: input.username,
     email: input.email,
     password: input.password,
     firstName: input.firstName,
@@ -48,8 +49,12 @@ export const useSignUpMutation = () => {
       authorize();
       closeModal();
     },
-    onError: (data) => {
-      console.log(data, "signup error response");
+    onError: (error: any) => {
+      const message =
+        error?.response?.data?.error?.message ||
+        error?.message ||
+        'خطا در ثبت نام. لطفا دوباره تلاش کنید.';
+      toast.error(message);
     },
   });
 };
