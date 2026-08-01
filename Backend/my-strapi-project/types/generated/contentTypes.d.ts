@@ -1400,7 +1400,9 @@ export interface PluginUsersPermissionsUser
     timestamps: true;
   };
   attributes: {
+    address: Schema.Attribute.Text;
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    city: Schema.Attribute.String;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
@@ -1411,6 +1413,9 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    firstName: Schema.Attribute.String;
+    gender: Schema.Attribute.Enumeration<['male', 'female']>;
+    lastName: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1422,6 +1427,7 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    phoneNumber: Schema.Attribute.String;
     provider: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
@@ -1438,6 +1444,7 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 3;
       }>;
+    zipCode: Schema.Attribute.String;
   };
 }
 

@@ -1,8 +1,12 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "es2017",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -11,22 +15,38 @@
     "esModuleInterop": true,
     "alwaysStrict": true,
     "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@containers/*": ["src/containers/*"],
-      "@contexts/*": ["src/contexts/*"],
-      "@framework/*": ["src/framework/basic-rest/*"],
-      "@settings/*": ["src/settings/*"],
-      "@styles/*": ["src/styles/*"],
-      "@utils/*": ["src/utils/*"],
-      "@public/*": ["public/*"]
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@containers/*": [
+        "src/containers/*"
+      ],
+      "@contexts/*": [
+        "src/contexts/*"
+      ],
+      "@framework/*": [
+        "src/framework/basic-rest/*"
+      ],
+      "@settings/*": [
+        "src/settings/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@public/*": [
+        "public/*"
+      ]
     },
     "incremental": true
   },
@@ -36,5 +56,7 @@
     "src/**/*.ts",
     "src/**/*.tsx"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

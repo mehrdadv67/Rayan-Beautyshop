@@ -26,13 +26,9 @@ const SignUpForm: React.FC = () => {
     return openModal();
   }
 
-  function onSubmit({ name, email, password }: SignUpInputType) {
-    console.log('Submitting signup form:', { name, email, password });
-    signUp({
-      name,
-      email,
-      password,
-    });
+  function onSubmit(data: SignUpInputType) {
+    console.log('Submitting signup form:', data);
+    signUp(data);
   }
 
   function handleGoogleSignUp() {
@@ -44,7 +40,7 @@ const SignUpForm: React.FC = () => {
   }
 
   return (
-    <div className="py-5 px-5 sm:px-8 bg-white mx-auto rounded-lg w-full sm:w-96 md:w-450px border border-gray-300">
+    <div className="py-5 px-5 sm:px-8 bg-white mx-auto rounded-lg w-full sm:w-96 md:w-450px border border-gray-300 max-h-[80vh] overflow-y-auto">
       <div className="text-center mb-6 pt-2.5">
         <div onClick={closeModal}>
           <Logo />
@@ -81,6 +77,22 @@ const SignUpForm: React.FC = () => {
             })}
             errorKey={errors.name?.message}
           />
+          <div className="flex flex-col sm:flex-row sm:gap-x-3 space-y-4 sm:space-y-0">
+            <Input
+              labelKey="forms:label-first-name"
+              type="text"
+              variant="solid"
+              {...register('firstName')}
+              className="w-full sm:w-1/2"
+            />
+            <Input
+              labelKey="forms:label-last-name"
+              type="text"
+              variant="solid"
+              {...register('lastName')}
+              className="w-full sm:w-1/2 ltr:sm:ml-3 rtl:sm:mr-3"
+            />
+          </div>
           <Input
             labelKey="forms:label-email"
             type="email"
@@ -95,6 +107,59 @@ const SignUpForm: React.FC = () => {
             })}
             errorKey={errors.email?.message}
           />
+          <Input
+            labelKey="forms:label-phone"
+            type="tel"
+            variant="solid"
+            {...register('phoneNumber')}
+          />
+          <Input
+            labelKey="forms:label-address"
+            type="text"
+            variant="solid"
+            {...register('address')}
+          />
+          <div className="flex flex-col sm:flex-row sm:gap-x-3 space-y-4 sm:space-y-0">
+            <Input
+              labelKey="forms:label-city"
+              type="text"
+              variant="solid"
+              {...register('city')}
+              className="w-full sm:w-1/2"
+            />
+            <Input
+              labelKey="forms:label-postcode"
+              type="text"
+              variant="solid"
+              {...register('zipCode')}
+              className="w-full sm:w-1/2 ltr:sm:ml-3 rtl:sm:mr-3"
+            />
+          </div>
+          <div className="relative flex flex-col">
+            <span className="mt-2 text-sm text-heading font-semibold block pb-1">
+              {t('common:text-gender')}
+            </span>
+            <div className="mt-2 flex items-center gap-x-6">
+              <label className="flex items-center">
+                <input
+                  type="radio"
+                  value="male"
+                  {...register('gender')}
+                  className="ml-2"
+                />
+                {t('forms:label-male')}
+              </label>
+              <label className="flex items-center">
+                <input
+                  type="radio"
+                  value="female"
+                  {...register('gender')}
+                  className="ml-2"
+                />
+                {t('forms:label-female')}
+              </label>
+            </div>
+          </div>
           <PasswordInput
             labelKey="forms:label-password"
             errorKey={errors.password?.message}
@@ -102,21 +167,21 @@ const SignUpForm: React.FC = () => {
               required: `${t('forms:password-required')}`,
             })}
           />
-      <div className="relative">
-        <Button
-          type="submit"
-          loading={isPending}
-          disabled={isPending}
-          className="h-11 md:h-12 w-full mt-2"
-        >
-          {t('common:text-register')}
-        </Button>
-      </div>
-      {error && (
-        <p className="text-sm text-red-500 mt-2">
-          {error?.message || 'خطا در ثبت نام. لطفا دوباره تلاش کنید.'}
-        </p>
-      )}
+        <div className="relative">
+          <Button
+            type="submit"
+            loading={isPending}
+            disabled={isPending}
+            className="h-11 md:h-12 w-full mt-2"
+          >
+            {t('common:text-register')}
+          </Button>
+        </div>
+        {error && (
+          <p className="text-sm text-red-500 mt-2">
+            {error?.message || 'خطا در ثبت نام. لطفا دوباره تلاش کنید.'}
+          </p>
+        )}
         </div>
       </form>
       <div className="flex flex-col items-center justify-center relative text-sm text-heading mt-6 mb-3.5">

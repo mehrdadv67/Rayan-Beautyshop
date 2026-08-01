@@ -3,11 +3,42 @@ export default {
 
   async bootstrap({ strapi }: { strapi: any }) {
     try {
+      const userModelUID = 'plugin::users-permissions.user';
+      const model = strapi.getModel(userModelUID);
+      const customAttributes = {
+        firstName: { type: 'string' },
+        lastName: { type: 'string' },
+        phoneNumber: { type: 'string' },
+        address: { type: 'text' },
+        city: { type: 'string' },
+        zipCode: { type: 'string' },
+        gender: { type: 'enumeration', enum: ['male', 'female'] },
+      };
+
+      Object.entries(customAttributes).forEach(([key, attr]) => {
+        if (!model.attributes[key]) {
+          model.attributes[key] = attr as any;
+          console.log(`✅ Added ${key} to user schema`);
+        }
+      });
+    } catch (err) {
+      console.error('Error extending user schema:', err);
+    }
+
+    try {
       const publicRole = await strapi
         .query("plugin::users-permissions.role")
         .findOne({ where: { type: "public" } });
 
-      if (publicRole) {
+      const authenticatedRole = await strapi
+        .query("plugin::users-permissions.role")
+        .findOne({ where: { type: "authenticated" } });
+
+      const roles = [];
+      if (publicRole) roles.push(publicRole);
+      if (authenticatedRole) roles.push(authenticatedRole);
+
+      if (roles.length > 0) {
         const actions = [
           "api::menu-item.menu-item.find",
           "api::attribute.attribute.find",
@@ -20,7 +51,6 @@ export default {
           "api::product-variant.product-variant.update",
           "api::product-variant.product-variant.delete",
           "api::variant-option.variant-option.find",
-          "api::variant-option.variant-option.create",
           "api::variant-option.variant-option.update",
           "api::variant-option.variant-option.delete",
           "api::product-tag.product-tag.find",
@@ -32,6 +62,7 @@ export default {
           "api::product.product.update",
           "plugin::users-permissions.user.find",
           "plugin::users-permissions.user.findOne",
+          "plugin::users-permissions.user.me",
           "plugin::users-permissions.user.update",
           "plugin::users-permissions.auth.find",
           "plugin::users-permissions.auth.connect",
@@ -43,29 +74,31 @@ export default {
         ];
 
         for (const action of actions) {
-          const existing = await strapi
-            .query("plugin::users-permissions.permission")
-            .findOne({
-              where: {
-                role: publicRole.id,
-                action,
-              },
-            });
+          for (const role of roles) {
+            const existing = await strapi
+              .query("plugin::users-permissions.permission")
+              .findOne({
+                where: {
+                  role: role.id,
+                  action,
+                },
+              });
 
-          if (!existing) {
-            await strapi.query("plugin::users-permissions.permission").create({
-              data: {
-                action,
-                role: publicRole.id,
-              },
-            });
-            console.log(`✅ Public role granted access to ${action}`);
-          } else {
-            console.log(`ℹ️ ${action} permission already exists`);
+            if (!existing) {
+              await strapi.query("plugin::users-permissions.permission").create({
+                data: {
+                  action,
+                  role: role.id,
+                },
+              });
+              console.log(`✅ ${role.type} role granted access to ${action}`);
+            } else {
+              console.log(`ℹ️ ${action} permission already exists for ${role.type}`);
+            }
           }
         }
       } else {
-        console.log("⚠️ Public role not found");
+        console.log("⚠️ No public or authenticated role found");
       }
     } catch (err) {
       console.error("Error setting permissions:", err);

@@ -8,6 +8,13 @@ export interface SignUpInputType {
   email: string;
   password: string;
   name: string;
+  firstName?: string;
+  lastName?: string;
+  phoneNumber?: string;
+  address?: string;
+  city?: string;
+  zipCode?: string;
+  gender?: string;
 }
 
 async function signUp(input: SignUpInputType) {
@@ -16,6 +23,13 @@ async function signUp(input: SignUpInputType) {
     username: input.name,
     email: input.email,
     password: input.password,
+    firstName: input.firstName,
+    lastName: input.lastName,
+    phoneNumber: input.phoneNumber,
+    address: input.address,
+    city: input.city,
+    zipCode: input.zipCode,
+    gender: input.gender,
   });
   console.log('Register API response:', data);
   return data;

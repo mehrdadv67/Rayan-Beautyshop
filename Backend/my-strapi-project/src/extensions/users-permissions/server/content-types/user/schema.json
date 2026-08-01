@@ -1,0 +1,26 @@
+{
+  "attributes": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "address": {
+      "type": "text"
+    },
+    "city": {
+      "type": "string"
+    },
+    "zipCode": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": ["male", "female"]
+    }
+  }
+}

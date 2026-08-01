@@ -3,6 +3,8 @@ export const API_ENDPOINTS = {
   REGISTER: "/api/auth/local/register",
   LOGOUT: "/api/auth/logout",
   FORGET_PASSWORD: "/api/auth/forgot-password",
+  USERS_ME: "/api/users/me",
+  USERS: "/api/users",
   // --- Strapi REST endpoints (storefront) ---
   CATEGORIES: "/api/categories",
   CATEGORIES_2: "/api/categories",

@@ -9,20 +9,60 @@ import {
 } from '@framework/customer/use-update-customer';
 import { RadioBox } from '@components/ui/radiobox';
 import { useTranslation } from 'next-i18next';
+import { useGetUserQuery } from '@framework/customer/use-get-user';
+import { User } from '@framework/types';
+import { useEffect } from 'react';
 
-const defaultValues = {};
 const AccountDetails: React.FC = () => {
   const { mutate: updateUser, isPending } = useUpdateUserMutation();
   const { t } = useTranslation();
+  const { data: user, isLoading } = useGetUserQuery();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<UpdateUserType>({
-    defaultValues,
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      displayName: '',
+      phoneNumber: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      gender: '',
+      address: '',
+      city: '',
+      zipCode: '',
+    },
   });
+
+  useEffect(() => {
+    if (user) {
+      reset({
+        firstName: (user as User).firstName || '',
+        lastName: (user as User).lastName || '',
+        displayName: (user as User).username || '',
+        phoneNumber: (user as User).phoneNumber || '',
+        email: (user as User).email || '',
+        password: '',
+        confirmPassword: '',
+        gender: (user as User).gender || '',
+        address: (user as User).address || '',
+        city: (user as User).city || '',
+        zipCode: (user as User).zipCode || '',
+      });
+    }
+  }, [user, reset]);
+
   function onSubmit(input: UpdateUserType) {
     updateUser(input);
+  }
+
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
 
   return (
@@ -40,7 +80,7 @@ const AccountDetails: React.FC = () => {
       </h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full mx-auto flex flex-col justify-center "
+        className="w-full mx-auto flex flex-col justify-center"
         noValidate
       >
         <div className="flex flex-col space-y-4 sm:space-y-5">
@@ -116,6 +156,31 @@ const AccountDetails: React.FC = () => {
               />
             </div>
           </div>
+          <h3 className="text-lg md:text-xl font-bold text-heading mt-6 mb-4">
+            {t('common:text-address')}
+          </h3>
+          <Input
+            labelKey="forms:label-address"
+            {...register('address', {
+              required: 'forms:address-required',
+            })}
+            variant="solid"
+            errorKey={errors.address?.message}
+          />
+          <div className="flex flex-col sm:flex-row sm:gap-x-3 space-y-4 sm:space-y-0">
+            <Input
+              labelKey="forms:label-city"
+              {...register('city')}
+              variant="solid"
+              className="w-full sm:w-1/2"
+            />
+            <Input
+              labelKey="forms:label-postcode"
+              {...register('zipCode')}
+              variant="solid"
+              className="w-full sm:w-1/2 ltr:sm:ml-3 rtl:sm:mr-3"
+            />
+          </div>
           <div className="relative">
             <Button
               type="submit"
@@ -123,7 +188,7 @@ const AccountDetails: React.FC = () => {
               disabled={isPending}
               className="h-12 mt-3 w-full sm:w-32"
             >
-              {t('common:button-save')}
+              {isPending ? 'در حال ذخیره...' : t('common:button-save')}
             </Button>
           </div>
         </div>

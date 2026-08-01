@@ -208,3 +208,21 @@ export type Shop = {
   created_at: string;
   updated_at: string;
 };
+
+export type User = {
+  id: number;
+  username: string;
+  email: string;
+  firstName?: string;
+  lastName?: string;
+  phoneNumber?: string;
+  address?: string;
+  city?: string;
+  zipCode?: string;
+  gender?: string;
+  provider: string;
+  confirmed: boolean;
+  blocked: boolean;
+  createdAt: string;
+  updatedAt: string;
+};
