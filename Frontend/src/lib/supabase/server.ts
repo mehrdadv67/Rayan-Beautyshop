@@ -17,14 +17,13 @@ function serializeCookie(
     cookie += `; Secure`
   }
   if (options?.sameSite) {
+    const sameSiteVal = options.sameSite as any
     cookie += `; SameSite=${
-      typeof options.sameSite === 'string'
-        ? options.sameSite
-        : options.sameSite === 'lax'
+      typeof sameSiteVal === 'string'
+        ? sameSiteVal.charAt(0).toUpperCase() + sameSiteVal.slice(1)
+        : sameSiteVal
           ? 'Lax'
-          : options.sameSite === 'strict'
-            ? 'Strict'
-            : 'None'
+          : 'None'
     }`
   }
   return cookie

@@ -10,7 +10,7 @@ import { Order } from '@framework/types';
 const OrdersTable: React.FC = () => {
   const { width } = useSsrCompatible(useWindowSize(), { width: 0, height: 0 });
   const { t } = useTranslation('common');
-  const { data, isLoading, error } = useOrdersQuery({});
+  const { data, isLoading, error } = useOrdersQuery();
 
   if (isLoading) return <p>در حال بارگذاری...</p>;
   if (error) return <p>خطا در بارگذاری سفارشات</p>;

@@ -37,6 +37,9 @@
     "supabase_user_id": {
       "type": "string"
     },
+    "products": {
+      "type": "json"
+    },
     "total": {
       "type": "decimal",
       "required": true

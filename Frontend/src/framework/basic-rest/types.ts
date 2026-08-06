@@ -210,7 +210,7 @@ export type Shop = {
 };
 
 export type User = {
-  id: number;
+  id: string;
   username: string;
   email: string;
   firstName?: string;

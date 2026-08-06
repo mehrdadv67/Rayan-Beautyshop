@@ -196,7 +196,6 @@ const SignUpForm: React.FC = () => {
             {error?.message || 'خطا در ثبت نام. لطفا دوباره تلاش کنید.'}
           </p>
         )}
-      </div>
       </form>
       <div className="flex flex-col items-center justify-center relative text-sm text-heading mt-6 mb-3.5">
         <hr className="w-full border-gray-300" />

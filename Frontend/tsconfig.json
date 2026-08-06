@@ -46,6 +46,9 @@
       ],
       "@public/*": [
         "public/*"
+      ],
+      "@/lib/*": [
+        "src/lib/*"
       ]
     },
     "incremental": true

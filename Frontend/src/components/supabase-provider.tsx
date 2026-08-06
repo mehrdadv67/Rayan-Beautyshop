@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import { useUI } from '@/contexts/ui.context'
+import { useUI } from '@contexts/ui.context'
 
 export const SupabaseProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
