@@ -18,8 +18,10 @@ const SignUpForm: React.FC = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<SignUpInputType>();
+  const watchPassword = watch('password');
 
   function handleSignIn() {
     setModalView('LOGIN_VIEW');
@@ -27,7 +29,6 @@ const SignUpForm: React.FC = () => {
   }
 
   function onSubmit(data: SignUpInputType) {
-    console.log('Submitting signup form:', data);
     signUp(data);
   }
 
@@ -164,9 +165,22 @@ const SignUpForm: React.FC = () => {
             labelKey="forms:label-password"
             errorKey={errors.password?.message}
             {...register('password', {
-              required: `${t('forms:password-required')}`,
+              required: 'forms:password-required',
+              minLength: {
+                value: 8,
+                message: 'forms:password-min-length',
+              },
             })}
           />
+          <PasswordInput
+            labelKey="forms:label-confirm-password"
+            errorKey={errors.confirmPassword?.message}
+            {...register('confirmPassword', {
+              required: 'forms:password-confirm-required',
+              validate: (value) => value === watchPassword || 'forms:password-confirm-match',
+            })}
+          />
+        </div>
         <div className="relative">
           <Button
             type="submit"
@@ -182,7 +196,7 @@ const SignUpForm: React.FC = () => {
             {error?.message || 'خطا در ثبت نام. لطفا دوباره تلاش کنید.'}
           </p>
         )}
-        </div>
+      </div>
       </form>
       <div className="flex flex-col items-center justify-center relative text-sm text-heading mt-6 mb-3.5">
         <hr className="w-full border-gray-300" />

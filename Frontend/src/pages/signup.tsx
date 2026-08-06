@@ -4,7 +4,7 @@ import SignUpForm from '@components/auth/sign-up-form';
 import PageHeader from '@components/ui/page-header';
 import Subscription from '@components/common/subscription';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 
 export default function SignUpPage() {
   return (
@@ -22,7 +22,7 @@ export default function SignUpPage() {
 
 SignUpPage.Layout = Layout;
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   return {
     props: {
       ...(await serverSideTranslations(locale!, ['common', 'forms', 'menu', 'footer'])),

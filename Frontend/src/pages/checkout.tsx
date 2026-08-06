@@ -5,7 +5,7 @@ import PageHeader from "@components/ui/page-header";
 import CheckoutForm from "@components/checkout/checkout-form";
 import CheckoutCard from "@components/checkout/checkout-card";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 
 export default function CheckoutPage() {
   return (
@@ -28,7 +28,7 @@ export default function CheckoutPage() {
 
 CheckoutPage.Layout = Layout;
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   return {
     props: {
       ...(await serverSideTranslations(locale!, [

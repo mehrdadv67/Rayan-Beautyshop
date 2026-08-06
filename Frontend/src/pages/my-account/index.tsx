@@ -4,7 +4,7 @@ import AccountLayout from "@components/my-account/account-layout";
 import { ROUTES } from "@utils/routes";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 
 export default function AccountPage() {
     const { t } = useTranslation("common");
@@ -43,7 +43,7 @@ export default function AccountPage() {
 
 AccountPage.Layout = Layout;
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     return {
         props: {
             ...(await serverSideTranslations(locale!, [

@@ -4,7 +4,7 @@ import Subscription from "@components/common/subscription";
 import PageHeader from "@components/ui/page-header";
 import OrderInformation from "@components/order/order-information";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 
 export default function Order() {
 	return (
@@ -20,7 +20,7 @@ export default function Order() {
 
 Order.Layout = Layout;
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
 	return {
 		props: {
 			...(await serverSideTranslations(locale!, [

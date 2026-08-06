@@ -1,16 +1,49 @@
 import { useQuery } from '@tanstack/react-query';
-import http from '@framework/utils/http';
-import { API_ENDPOINTS } from '@framework/utils/api-endpoints';
-import { User } from '@framework/types';
+import { createClient } from '@/lib/supabase/client';
+import type { User } from '@framework/types';
 
-async function getUser() {
-  const { data } = await http.get<User>(API_ENDPOINTS.USERS_ME);
-  return data;
+async function getUser(): Promise<User> {
+  const supabase = createClient();
+
+  const { data: { user: authUser }, error: authError } =
+    await supabase.auth.getUser();
+
+  if (authError || !authUser) {
+    throw new Error('User not found');
+  }
+
+  const { data: profile, error: profileError } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', authUser.id)
+    .single();
+
+  if (profileError && profileError.code !== 'PGRST116') {
+    throw profileError;
+  }
+
+  return {
+    id: authUser.id,
+    username: profile?.username ?? authUser.user_metadata?.username ?? '',
+    email: authUser.email ?? '',
+    firstName: profile?.first_name ?? authUser.user_metadata?.first_name ?? '',
+    lastName: profile?.last_name ?? authUser.user_metadata?.last_name ?? '',
+    phoneNumber: profile?.phone_number ?? '',
+    address: profile?.address ?? '',
+    city: profile?.city ?? '',
+    zipCode: profile?.zip_code ?? '',
+    gender: profile?.gender ?? '',
+    provider: authUser.app_metadata?.provider ?? 'email',
+    confirmed: authUser.email_confirmed_at ? true : false,
+    blocked: false,
+    createdAt: authUser.created_at,
+    updatedAt: authUser.updated_at ?? authUser.created_at,
+  };
 }
 
 export const useGetUserQuery = () => {
   return useQuery({
-    queryKey: ['/users-permissions/users/me'],
+    queryKey: ['current-user'],
     queryFn: getUser,
   });
 };

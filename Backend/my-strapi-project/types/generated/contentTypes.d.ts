@@ -708,9 +708,12 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    address: Schema.Attribute.Text;
+    city: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::order.order'> &
       Schema.Attribute.Private;
@@ -724,6 +727,7 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
       'api::order-item.order-item'
     >;
     payment_gateway: Schema.Attribute.String;
+    phone: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     shipping_fee: Schema.Attribute.Decimal & Schema.Attribute.DefaultTo<0>;
     slug: Schema.Attribute.UID<'name'>;
@@ -731,11 +735,13 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
       ['pending', 'paid', 'shipped', 'done', 'cancelled']
     > &
       Schema.Attribute.DefaultTo<'pending'>;
+    supabase_user_id: Schema.Attribute.String;
     total: Schema.Attribute.Decimal & Schema.Attribute.Required;
     tracking_number: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    zip_code: Schema.Attribute.String;
   };
 }
 

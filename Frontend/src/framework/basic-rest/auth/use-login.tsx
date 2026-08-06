@@ -1,34 +1,47 @@
-import { useUI } from '@contexts/ui.context';
-import { API_ENDPOINTS } from "@framework/utils/api-endpoints";
-import http from "@framework/utils/http";
-import Cookies from 'js-cookie';
-import { useMutation } from '@tanstack/react-query';
+import { useUI } from '@contexts/ui.context'
+import { createClient } from '@/lib/supabase/client'
+import { useRouter } from 'next/router'
+import { useMutation } from '@tanstack/react-query'
+import { toast } from 'react-toastify'
 
 export interface LoginInputType {
-  email: string;
-  password: string;
-  remember_me: boolean;
+  email: string
+  password: string
+  remember_me: boolean
 }
 
 async function login(input: LoginInputType) {
-  const { data } = await http.post(API_ENDPOINTS.LOGIN, {
-    identifier: input.email,
+  const supabase = createClient()
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: input.email,
     password: input.password,
-  });
-  return data;
+  })
+  if (error) {
+    throw error
+  }
+  return data
 }
 
 export const useLoginMutation = () => {
-  const { authorize, closeModal } = useUI();
+  const { authorize, closeModal } = useUI()
+  const router = useRouter()
+
   return useMutation({
     mutationFn: (input: LoginInputType) => login(input),
-    onSuccess: (data) => {
-      Cookies.set('auth_token', data.jwt);
-      authorize();
-      closeModal();
+    onSuccess: () => {
+      authorize()
+      closeModal()
+      const redirectTo =
+        typeof window !== 'undefined'
+          ? new URLSearchParams(window.location.search).get('redirectTo')
+          : null
+      router.push(redirectTo || '/my-account')
+      toast.success('با موفقیت وارد شدید')
     },
-    onError: (data) => {
-      console.log(data, 'login error response');
+    onError: (error: any) => {
+      const message =
+        error?.message || 'خطا در ورود. لطفا دوباره تلاش کنید.'
+      toast.error(message)
     },
-  });
-};
+  })
+}

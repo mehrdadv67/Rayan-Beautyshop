@@ -1,37 +1,29 @@
-import { useUI } from "@contexts/ui.context";
-import { API_ENDPOINTS } from "@framework/utils/api-endpoints";
-import http from "@framework/utils/http";
-import Cookies from "js-cookie";
-import Router from "next/router";
-import { useMutation } from "@tanstack/react-query";
+import { useUI } from '@contexts/ui.context'
+import { createClient } from '@/lib/supabase/client'
+import Router from 'next/router'
+import { useMutation } from '@tanstack/react-query'
+import { toast } from 'react-toastify'
 
-export interface LoginInputType {
-  email: string;
-  password: string;
-  remember_me: boolean;
-}
 async function logout() {
-  try {
-    await http.post(API_ENDPOINTS.LOGOUT);
-  } catch (e) {
-    console.warn("Logout endpoint failed, clearing local token only", e);
+  const supabase = createClient()
+  const { error } = await supabase.auth.signOut()
+  if (error) {
+    throw error
   }
-  return {
-    ok: true,
-    message: "Logout Successful!",
-  };
+  return { ok: true, message: 'Logout successful' }
 }
+
 export const useLogoutMutation = () => {
-  const { unauthorize } = useUI();
+  const { unauthorize } = useUI()
   return useMutation({
     mutationFn: logout,
-    onSuccess: (_data) => {
-      Cookies.remove("auth_token");
-      unauthorize();
-      Router.push("/");
+    onSuccess: () => {
+      unauthorize()
+      toast.success('با موفقیت خارج شدید')
+      Router.push('/')
     },
-    onError: (data) => {
-      console.log(data, "logout error response");
+    onError: (error: any) => {
+      toast.error('خطا در خروج. لطفا دوباره تلاش کنید.');
     },
-  });
-};
+  })
+}
