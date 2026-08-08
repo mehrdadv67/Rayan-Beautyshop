@@ -12,14 +12,19 @@ async function getUser(): Promise<User> {
     throw new Error('User not found');
   }
 
-  const { data: profile, error: profileError } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', authUser.id)
-    .single();
-
-  if (profileError && profileError.code !== 'PGRST116') {
-    throw profileError;
+  let profile = null
+  try {
+    const result = await supabase
+      .from('profiles')
+      .select('*')
+      .eq('id', authUser.id)
+      .single()
+    profile = result.data
+    if (result.error && result.error.code !== 'PGRST116') {
+      console.warn('Profile fetch warning:', result.error)
+    }
+  } catch (e) {
+    console.warn('Profiles table may not exist yet:', e)
   }
 
   return {

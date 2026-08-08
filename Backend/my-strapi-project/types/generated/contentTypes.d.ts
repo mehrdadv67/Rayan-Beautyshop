@@ -728,6 +728,7 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
     >;
     payment_gateway: Schema.Attribute.String;
     phone: Schema.Attribute.String;
+    products: Schema.Attribute.JSON;
     publishedAt: Schema.Attribute.DateTime;
     shipping_fee: Schema.Attribute.Decimal & Schema.Attribute.DefaultTo<0>;
     slug: Schema.Attribute.UID<'name'>;
@@ -742,6 +743,36 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     zip_code: Schema.Attribute.String;
+  };
+}
+
+export interface ApiPhonePhone extends Struct.CollectionTypeSchema {
+  collectionName: 'phones';
+  info: {
+    displayName: 'Phone Number';
+    pluralName: 'phones';
+    singularName: 'phone';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    isPrimary: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::phone.phone'> &
+      Schema.Attribute.Private;
+    number: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
   };
 }
 
@@ -1473,6 +1504,7 @@ declare module '@strapi/strapi' {
       'api::menu-item.menu-item': ApiMenuItemMenuItem;
       'api::order-item.order-item': ApiOrderItemOrderItem;
       'api::order.order': ApiOrderOrder;
+      'api::phone.phone': ApiPhonePhone;
       'api::product-collection.product-collection': ApiProductCollectionProductCollection;
       'api::product-tag.product-tag': ApiProductTagProductTag;
       'api::product-variant.product-variant': ApiProductVariantProductVariant;

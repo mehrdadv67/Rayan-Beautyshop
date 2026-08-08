@@ -30,20 +30,20 @@ async function updateUser(input: UpdateUserType) {
 
   const { password, confirmPassword, displayName, ...rest } = input;
 
-  const { error: profileError } = await supabase.from('profiles').upsert({
-    id: user.id,
-    username: displayName || rest.phoneNumber ? (displayName || user.email) : user.email,
-    first_name: rest.firstName,
-    last_name: rest.lastName,
-    phone_number: rest.phoneNumber,
-    address: rest.address,
-    city: rest.city,
-    zip_code: rest.zipCode,
-    gender: rest.gender,
-  });
-
-  if (profileError) {
-    throw profileError;
+  try {
+    await supabase.from('profiles').upsert({
+      id: user.id,
+      username: displayName || rest.phoneNumber ? (displayName || user.email) : user.email,
+      first_name: rest.firstName,
+      last_name: rest.lastName,
+      phone_number: rest.phoneNumber,
+      address: rest.address,
+      city: rest.city,
+      zip_code: rest.zipCode,
+      gender: rest.gender,
+    });
+  } catch (profileError) {
+    console.warn('Profile update failed:', profileError);
   }
 
   if (password && password.trim() !== '') {

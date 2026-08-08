@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer, useMemo, useCallback } from "react";
 import { getToken } from "@framework/utils/get-token";
 import { CartProvider } from "./cart/cart.context";
 
@@ -230,8 +230,8 @@ function uiReducer(state: State, action: Action) {
 export const UIProvider: React.FC = (props) => {
   const [state, dispatch] = React.useReducer(uiReducer, initialState);
 
-  const authorize = () => dispatch({ type: "SET_AUTHORIZED" });
-  const unauthorize = () => dispatch({ type: "SET_UNAUTHORIZED" });
+  const authorize = useCallback(() => dispatch({ type: "SET_AUTHORIZED" }), []);
+  const unauthorize = useCallback(() => dispatch({ type: "SET_UNAUTHORIZED" }), []);
   const openSidebar = () => dispatch({ type: "OPEN_SIDEBAR" });
   const closeSidebar = () => dispatch({ type: "CLOSE_SIDEBAR" });
   const toggleSidebar = () =>

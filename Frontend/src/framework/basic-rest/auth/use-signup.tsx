@@ -39,16 +39,20 @@ async function signUp(input: SignUpInputType) {
   }
 
   if (signUpData.user) {
-    await supabase.from('profiles').upsert({
-      id: signUpData.user.id,
-      first_name: input.firstName || '',
-      last_name: input.lastName || '',
-      phone_number: input.phoneNumber || '',
-      address: input.address || '',
-      city: input.city || '',
-      zip_code: input.zipCode || '',
-      gender: input.gender || '',
-    })
+    try {
+      await supabase.from('profiles').upsert({
+        id: signUpData.user.id,
+        first_name: input.firstName || '',
+        last_name: input.lastName || '',
+        phone_number: input.phoneNumber || '',
+        address: input.address || '',
+        city: input.city || '',
+        zip_code: input.zipCode || '',
+        gender: input.gender || '',
+      })
+    } catch (profileError) {
+      console.warn('Profile creation failed:', profileError)
+    }
   }
 
   return signUpData
