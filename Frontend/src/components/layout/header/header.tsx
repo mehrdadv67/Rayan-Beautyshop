@@ -10,6 +10,7 @@ import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
 import LanguageSwitcher from "@components/ui/language-switcher";
 import { useMenuQuery } from "@framework/menu/get-menu";
+import { useGetUserQuery } from "@framework/customer/use-get-user";
 const AuthMenu = dynamic(() => import("./auth-menu"), { ssr: false });
 const CartButton = dynamic(() => import("@components/cart/cart-button"), {
   ssr: false,
@@ -20,6 +21,7 @@ const { site_header } = siteSettings;
 const Header: React.FC = () => {
   const { openSearch, openModal, setModalView, isAuthorized } = useUI();
   const { t } = useTranslation("common");
+  const { data: user } = useGetUserQuery();
   const siteHeaderRef = useRef() as DivElementRef;
   useAddActiveScroll(siteHeaderRef);
   // Live menu from Strapi; fall back to the hardcoded settings while loading
@@ -31,6 +33,12 @@ const Header: React.FC = () => {
     setModalView("LOGIN_VIEW");
     return openModal();
   }
+
+  const greeting = isAuthorized && user?.firstName
+    ? `سلام ${user.firstName}`
+    : isAuthorized
+      ? t("text-account")
+      : t("text-sign-in");
 
   return (
     <header
@@ -71,7 +79,7 @@ const Header: React.FC = () => {
                   onClick: handleLogin,
                 }}
               >
-                {t("text-account")}
+                {greeting}
               </AuthMenu>
             </div>
             <CartButton />

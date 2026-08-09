@@ -27,6 +27,29 @@ async function getUser(): Promise<User> {
     console.warn('Profiles table may not exist yet:', e)
   }
 
+  if (!profile) {
+    try {
+      const { data: newProfile } = await supabase
+        .from('profiles')
+        .upsert({
+          id: authUser.id,
+          username: authUser.user_metadata?.username ?? authUser.email ?? '',
+          first_name: authUser.user_metadata?.first_name ?? '',
+          last_name: authUser.user_metadata?.last_name ?? '',
+          phone_number: authUser.user_metadata?.phone_number ?? '',
+          address: '',
+          city: '',
+          zip_code: '',
+          gender: '',
+        })
+        .select()
+        .single()
+      profile = newProfile
+    } catch (e) {
+      console.warn('Could not create profile:', e)
+    }
+  }
+
   return {
     id: authUser.id,
     username: profile?.username ?? authUser.user_metadata?.username ?? '',
