@@ -1,5 +1,4 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { createClient } from '@/lib/supabase/client';
 import { toast } from 'react-toastify';
 
 export interface UpdateUserType {
@@ -17,45 +16,24 @@ export interface UpdateUserType {
 }
 
 async function updateUser(input: UpdateUserType) {
-  const supabase = createClient();
-
-  const {
-    data: { user },
-    error: userError,
-  } = await supabase.auth.getUser();
-
-  if (userError || !user) {
-    throw new Error('User not authenticated');
-  }
-
   const { password, confirmPassword, displayName, ...rest } = input;
 
-  try {
-    await supabase.from('profiles').upsert({
-      id: user.id,
-      username: displayName || rest.phoneNumber ? (displayName || user.email) : user.email,
-      first_name: rest.firstName,
-      last_name: rest.lastName,
-      phone_number: rest.phoneNumber,
-      address: rest.address,
-      city: rest.city,
-      zip_code: rest.zipCode,
-      gender: rest.gender,
-    });
-  } catch (profileError) {
-    console.warn('Profile update failed:', profileError);
+  const res = await fetch('/api/customer/update', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    body: JSON.stringify({
+      ...rest,
+      username: displayName || rest.phoneNumber ? (displayName || rest.email) : rest.email,
+    }),
+  });
+
+  if (!res.ok) {
+    const error = await res.json();
+    throw new Error(error.message || 'Failed to update profile');
   }
 
-  if (password && password.trim() !== '') {
-    const { error: pwError } = await supabase.auth.updateUser({
-      password,
-    });
-    if (pwError) {
-      throw pwError;
-    }
-  }
-
-  return true;
+  return res.json();
 }
 
 export const useUpdateUserMutation = () => {

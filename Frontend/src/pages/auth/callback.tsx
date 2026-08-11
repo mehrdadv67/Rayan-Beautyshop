@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { createClient } from '@/lib/supabase/client';
 import { useUI } from '@contexts/ui.context';
 
 const AuthCallback: React.FC = () => {
@@ -9,16 +8,24 @@ const AuthCallback: React.FC = () => {
   const { next } = router.query;
 
   useEffect(() => {
-    const supabase = createClient();
-
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session) {
-        authorize();
-        router.push(typeof next === 'string' ? next : '/my-account');
-      } else {
+    const checkAuth = async () => {
+      try {
+        const res = await fetch('/api/auth/current-user', {
+          credentials: 'include',
+        });
+        const data = await res.json();
+        if (data.user) {
+          authorize();
+          router.push(typeof next === 'string' ? next : '/my-account');
+        } else {
+          router.push('/signin');
+        }
+      } catch {
         router.push('/signin');
       }
-    });
+    };
+
+    checkAuth();
   }, [router, authorize, next]);
 
   return (

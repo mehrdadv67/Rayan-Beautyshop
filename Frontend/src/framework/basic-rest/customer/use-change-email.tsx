@@ -1,23 +1,39 @@
-// import { API_ENDPOINTS } from "@framework/utils/api-endpoints";
-// import http from "@framework/utils/http";
 import { useMutation } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 
 export interface ChangeEmailInputType {
   newEmail: string;
   oldEmail: string;
 }
+
 async function changeEmail(input: ChangeEmailInputType) {
-  // return http.post(API_ENDPOINTS.ChangeEmail, input);
-  return input;
+  const res = await fetch('/api/customer/change-email', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    body: JSON.stringify({
+      email: input.newEmail,
+      password: input.oldEmail,
+    }),
+  });
+
+  if (!res.ok) {
+    const error = await res.json();
+    throw new Error(error.message || 'Failed to change email');
+  }
+
+  return res.json();
 }
+
 export const useChangeEmailMutation = () => {
   return useMutation({
     mutationFn: (input: ChangeEmailInputType) => changeEmail(input),
-    onSuccess: (data) => {
-      console.log(data, "ChangeEmail success response");
+    onSuccess: () => {
+      toast.success('ایمیل با موفقیت تغییر یافت');
     },
-    onError: (data) => {
-      console.log(data, "ChangeEmail error response");
+    onError: (error: any) => {
+      const message = error?.message || 'خطا در تغییر ایمیل.';
+      toast.error(message);
     },
   });
 };

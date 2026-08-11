@@ -1,63 +1,60 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { createServerSupabaseClient } from '@/lib/supabase/server'
+
+function parseCookies(cookieHeader: string | undefined): Record<string, string> {
+  if (!cookieHeader) return {}
+  return cookieHeader.split(';').reduce((acc, c) => {
+    const [k, ...v] = c.trim().split('=')
+    acc[k] = v.join('=')
+    return acc
+  }, {} as Record<string, string>)
+}
+
+async function getStrapiUser(req: NextApiRequest): Promise<any | null> {
+  const cookies = parseCookies(req.headers.cookie)
+  const jwt = cookies.strapi_jwt
+
+  if (!jwt) {
+    return null
+  }
+
+  try {
+    const res = await fetch(`${process.env.STRAPI_URL}/api/users/me`, {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+      cache: 'no-store',
+    })
+
+    if (!res.ok) {
+      return null
+    }
+
+    return await res.json()
+  } catch {
+    return null
+  }
+}
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { supabase, flushCookies } = createServerSupabaseClient({
-    req: req as any,
-    res: res as any,
-  } as any)
+  const user = await getStrapiUser(req)
 
-  const {
-    data: { user },
-    error: authError,
-  } = await supabase.auth.getUser()
-
-  if (authError || !user) {
+  if (!user) {
     return res.status(401).json({ error: 'Unauthorized' })
   }
 
-  const { data: profile, error: profileError } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', user.id)
-    .single()
-
-  if (profileError && profileError.code !== 'PGRST116') {
-    console.error('Profile fetch error:', profileError)
-  }
-
-  const profileData = profile || {}
+  const userId = String(user.id)
 
   if (req.method === 'POST') {
     const body = req.body
 
-    if (body.save) {
-      const { error: upsertError } = await supabase.from('profiles').upsert({
-        id: user.id,
-        first_name: body.firstName || '',
-        last_name: body.lastName || '',
-        phone_number: body.phone || '',
+    const orderPayload = {
+      data: {
+        name: `${body.firstName || ''} ${body.lastName || ''}`.trim() || user.email || '',
+        email: body.email || user.email || '',
+        phone: body.phone || '',
         address: body.address || '',
         city: body.city || '',
         zip_code: body.zipCode || '',
-      })
-
-      if (upsertError) {
-        console.error('Profile upsert error:', upsertError)
-      }
-    }
-
-    const orderPayload = {
-      data: {
-        customer: {
-          connect: [user.id],
-        },
-        name: `${profileData.first_name || ''} ${profileData.last_name || ''}`.trim() || user.email,
-        email: user.email || '',
-        phone: profileData.phone_number || body.phone || '',
-        address: profileData.address || body.address || '',
-        city: profileData.city || body.city || '',
-        zip_code: profileData.zip_code || body.zipCode || '',
         total: body.total || 0,
         shipping_fee: body.shippingFee || 0,
         payment_gateway: body.paymentMethod || 'cash_on_delivery',
@@ -90,7 +87,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const strapiData = await strapiRes.json()
     const orderId = strapiData.data?.documentId || strapiData.data?.id
 
-    flushCookies()
     return res.status(201).json({
       message: 'Order created successfully',
       orderId,
@@ -99,10 +95,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   if (req.method === 'GET') {
-    const phoneNumber = profileData.phone_number || ''
-
     const strapiRes = await fetch(
-      `${process.env.STRAPI_URL}/api/orders?filters[phone][$eq]=${encodeURIComponent(phoneNumber)}&populate[0]=order_items`,
+      `${process.env.STRAPI_URL}/api/orders?populate[0]=order_items&populate[1]=order_items.order_item`,
       {
         method: 'GET',
         headers: {
@@ -120,11 +114,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const strapiData = await strapiRes.json()
 
-    flushCookies()
     return res.status(200).json({ orders: strapiData.data || [] })
   }
 
-  flushCookies()
   res.setHeader('Allow', ['POST', 'GET'])
   return res.status(405).json({ error: `Method ${req.method} not allowed` })
 }

@@ -1,5 +1,4 @@
 import { useUI } from '@contexts/ui.context'
-import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/router'
 import { useMutation } from '@tanstack/react-query'
 import { toast } from 'react-toastify'
@@ -11,15 +10,19 @@ export interface LoginInputType {
 }
 
 async function login(input: LoginInputType) {
-  const supabase = createClient()
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email: input.email,
-    password: input.password,
+  const res = await fetch('/api/auth/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: input.email, password: input.password }),
+    credentials: 'include',
   })
-  if (error) {
-    throw error
+
+  if (!res.ok) {
+    const error = await res.json()
+    throw new Error(error.message || 'Login failed')
   }
-  return data
+
+  return res.json()
 }
 
 export const useLoginMutation = () => {
@@ -31,11 +34,13 @@ export const useLoginMutation = () => {
     onSuccess: () => {
       authorize()
       closeModal()
-      const redirectTo =
+      const raw =
         typeof window !== 'undefined'
           ? new URLSearchParams(window.location.search).get('redirectTo')
           : null
-      router.push(redirectTo || '/my-account')
+      const redirectTo =
+        raw && /^\/[^/]/.test(raw) ? raw : '/my-account'
+      router.push(redirectTo)
       toast.success('با موفقیت وارد شدید')
     },
     onError: (error: any) => {

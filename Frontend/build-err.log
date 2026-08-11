@@ -1,0 +1,32 @@
+Browserslist: browsers data (caniuse-lite) is 22 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+ ⚠ Compiled with warnings
+
+./src/styles/global.scss.webpack[javascript/auto]!=!./node_modules/.pnpm/next@15.0.1_@babel+core@7.2_8fb88a14b03279104416d2fe1f69fae4/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[7].oneOf[13].use[1]!./node_modules/.pnpm/next@15.0.1_@babel+core@7.2_8fb88a14b03279104416d2fe1f69fae4/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[7].oneOf[13].use[2]!./node_modules/.pnpm/next@15.0.1_@babel+core@7.2_8fb88a14b03279104416d2fe1f69fae4/node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[7].oneOf[13].use[3]!./node_modules/.pnpm/next@15.0.1_@babel+core@7.2_8fb88a14b03279104416d2fe1f69fae4/node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[7].oneOf[13].use[4]!./src/styles/global.scss
+Deprecation The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+Import trace for requested module:
+./src/styles/global.scss.webpack[javascript/auto]!=!./node_modules/.pnpm/next@15.0.1_@babel+core@7.2_8fb88a14b03279104416d2fe1f69fae4/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[7].oneOf[13].use[1]!./node_modules/.pnpm/next@15.0.1_@babel+core@7.2_8fb88a14b03279104416d2fe1f69fae4/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[7].oneOf[13].use[2]!./node_modules/.pnpm/next@15.0.1_@babel+core@7.2_8fb88a14b03279104416d2fe1f69fae4/node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[7].oneOf[13].use[3]!./node_modules/.pnpm/next@15.0.1_@babel+core@7.2_8fb88a14b03279104416d2fe1f69fae4/node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[7].oneOf[13].use[4]!./src/styles/global.scss
+./src/styles/global.scss
+
+TypeError: (0 , react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV) is not a function
+    at eval (webpack-internal:///./src/settings/site-settings.tsx:2016:98)
+    at ./src/settings/site-settings.tsx (G:\Coding\Rayan Front-Back\Frontend\.next\server\pages\_app.js:384:1)
+    at __webpack_require__ (G:\Coding\Rayan Front-Back\Frontend\.next\server\webpack-runtime.js:33:42)
+    at eval (webpack-internal:///./src/components/common/default-seo.tsx:9:81)
+    at ./src/components/common/default-seo.tsx (G:\Coding\Rayan Front-Back\Frontend\.next\server\pages\_app.js:98:1)
+    at __webpack_require__ (G:\Coding\Rayan Front-Back\Frontend\.next\server\webpack-runtime.js:33:42)
+    at eval (webpack-internal:///./src/pages/_app.tsx:21:89)
+    at __webpack_require__.a (G:\Coding\Rayan Front-Back\Frontend\.next\server\webpack-runtime.js:97:13)
+    at eval (webpack-internal:///./src/pages/_app.tsx:1:21)
+    at ./src/pages/_app.tsx (G:\Coding\Rayan Front-Back\Frontend\.next\server\pages\_app.js:373:1)
+
+> Build error occurred
+Error: Failed to collect page data for /404
+    at G:\Coding\Rayan Front-Back\Frontend\node_modules\.pnpm\next@15.0.1_@babel+core@7.2_8fb88a14b03279104416d2fe1f69fae4\node_modules\next\dist\build\utils.js:1233:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  type: 'Error'
+}

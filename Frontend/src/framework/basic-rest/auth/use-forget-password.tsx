@@ -1,4 +1,3 @@
-import { createClient } from '@/lib/supabase/client';
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 
@@ -7,20 +6,19 @@ export interface ForgetPasswordType {
 }
 
 async function forgetPassword(input: ForgetPasswordType) {
-  const supabase = createClient();
-
-  const { error } = await supabase.auth.resetPasswordForEmail(input.email, {
-    redirectTo: `${window.location.origin}/auth/callback?next=/reset-password`,
+  const res = await fetch('/api/auth/forgot-password', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: input.email }),
+    credentials: 'include',
   });
 
-  if (error) {
-    throw error;
+  if (!res.ok) {
+    const error = await res.json();
+    throw new Error(error.message || 'Forgot password failed');
   }
 
-  return {
-    ok: true,
-    message: 'اگر ایمیل شما در سیستم موجود است، لینک بازنشانی رمز عبور ارسال شد.',
-  };
+  return res.json();
 }
 
 export const useForgetPasswordMutation = () => {

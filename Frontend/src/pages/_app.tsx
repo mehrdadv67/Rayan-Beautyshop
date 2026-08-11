@@ -4,7 +4,7 @@ import { AnimatePresence } from "framer-motion";
 import { ManagedUIContext } from "@contexts/ui.context";
 import ManagedModal from "@components/common/modal/managed-modal";
 import ManagedDrawer from "@components/common/drawer/managed-drawer";
-import { SupabaseProvider } from "@components/supabase-provider";
+import { StrapiProvider } from "@components/strapi-provider";
 import { useEffect, useRef } from "react";
 import { QueryClient, QueryClientProvider, HydrationBoundary } from "@tanstack/react-query";
 import { ToastContainer } from "react-toastify";
@@ -57,7 +57,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
         <HydrationBoundary state={pageProps.dehydratedState}>
             {/* @ts-ignore */}
             <ManagedUIContext>
-              <SupabaseProvider>
+              <StrapiProvider>
             <Layout pageProps={pageProps}>
               <DefaultSeo />
               <Component {...pageProps} key={router.route} />
@@ -65,7 +65,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
             </Layout>
             <ManagedModal />
             <ManagedDrawer />
-          </SupabaseProvider>
+          </StrapiProvider>
         </ManagedUIContext>
         </HydrationBoundary>
         {/* <ReactQueryDevtools /> */}

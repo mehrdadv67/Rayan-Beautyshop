@@ -1,0 +1,48 @@
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+function serializeCookie(value: string, maxAge: number): string {
+  const isProduction = process.env.NODE_ENV === 'production';
+  const parts = [
+    `strapi_jwt=${value}`,
+    'Path=/',
+    'HttpOnly',
+    'SameSite=Lax',
+    `Max-Age=${maxAge}`,
+  ];
+  if (isProduction) {
+    parts.push('Secure');
+  }
+  return parts.join('; ');
+}
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Method not allowed' });
+  }
+
+  const { password, passwordConfirmation, code } = req.body;
+
+  if (!password || !code) {
+    return res.status(400).json({ message: 'Password and reset code are required' });
+  }
+
+  const strapiRes = await fetch(`${process.env.STRAPI_URL}/api/auth/reset-password`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ password, passwordConfirmation: passwordConfirmation || password, code }),
+  });
+
+  const data = await strapiRes.json();
+
+  if (!strapiRes.ok) {
+    return res.status(400).json({
+      message: data.message?.message || data.message || 'Password reset failed',
+    });
+  }
+
+  if (data.jwt) {
+    res.setHeader('Set-Cookie', serializeCookie(data.jwt, 30 * 24 * 60 * 60));
+  }
+
+  return res.status(200).json({ ok: true, user: data.user });
+}

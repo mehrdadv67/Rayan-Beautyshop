@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form';
 import { useLoginMutation, LoginInputType } from '@framework/auth/use-login';
 import { useUI } from '@contexts/ui.context';
 import Logo from '@components/ui/logo';
-import { ImGoogle2 } from 'react-icons/im';
 import { useTranslation } from 'next-i18next';
 import { toast } from 'react-toastify';
 
@@ -26,10 +25,6 @@ const LoginForm: React.FC = () => {
       password,
       remember_me,
     });
-  }
-
-  function handleGoogleLogin() {
-    window.location.href = '/api/connect/google';
   }
 
   function handleOtpLogin() {
@@ -132,15 +127,6 @@ const LoginForm: React.FC = () => {
           {t('common:text-or')}
         </span>
       </div>
-      <Button
-        loading={isPending}
-        disabled={isPending}
-        className="h-11 md:h-12 w-full mt-2.5 bg-google hover:bg-googleHover"
-        onClick={handleGoogleLogin}
-      >
-        <ImGoogle2 className="text-sm sm:text-base ltr:mr-1.5 rtl:ml-1.5" />
-        {t('common:text-login-with-google')}
-      </Button>
       <Button
         loading={isPending}
         disabled={isPending}

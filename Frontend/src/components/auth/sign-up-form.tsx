@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form';
 import Logo from '@components/ui/logo';
 import { useUI } from '@contexts/ui.context';
 import { useSignUpMutation, SignUpInputType } from '@framework/auth/use-signup';
-import { ImGoogle2 } from 'react-icons/im';
 import Link from '@components/ui/link';
 import { ROUTES } from '@utils/routes';
 import { useTranslation } from 'next-i18next';
@@ -30,10 +29,6 @@ const SignUpForm: React.FC = () => {
 
   function onSubmit(data: SignUpInputType) {
     signUp(data);
-  }
-
-  function handleGoogleSignUp() {
-    window.location.href = '/api/connect/google';
   }
 
   function handleOtpSignUp() {
@@ -203,17 +198,6 @@ const SignUpForm: React.FC = () => {
           {t('common:text-or')}
         </span>
       </div>
-
-      <Button
-        type="button"
-        loading={isPending}
-        disabled={isPending}
-        className="h-11 md:h-12 w-full mt-2.5 bg-google hover:bg-googleHover"
-        onClick={handleGoogleSignUp}
-      >
-        <ImGoogle2 className="text-sm sm:text-base ltr:mr-1.5 rtl:ml-1.5" />
-        {t('common:text-signup-with-google', 'ثبت نام با گوگل')}
-      </Button>
       <Button
         type="button"
         loading={isPending}

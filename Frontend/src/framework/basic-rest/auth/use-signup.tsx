@@ -1,5 +1,4 @@
 import { useUI } from '@contexts/ui.context'
-import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/router'
 import { useMutation } from '@tanstack/react-query'
 import { toast } from 'react-toastify'
@@ -20,42 +19,23 @@ export interface SignUpInputType {
 }
 
 async function signUp(input: SignUpInputType) {
-  const supabase = createClient()
-
-  const { data: signUpData, error } = await supabase.auth.signUp({
-    email: input.email,
-    password: input.password,
-    options: {
-      data: {
-        first_name: input.firstName || '',
-        last_name: input.lastName || '',
-      },
-      emailRedirectTo: `${window.location.origin}/auth/callback`,
-    },
+  const res = await fetch('/api/auth/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      username: input.username,
+      email: input.email,
+      password: input.password,
+    }),
+    credentials: 'include',
   })
 
-  if (error) {
-    throw error
+  if (!res.ok) {
+    const error = await res.json()
+    throw new Error(error.message || 'Signup failed')
   }
 
-  if (signUpData.user) {
-    try {
-      await supabase.from('profiles').upsert({
-        id: signUpData.user.id,
-        first_name: input.firstName || '',
-        last_name: input.lastName || '',
-        phone_number: input.phoneNumber || '',
-        address: input.address || '',
-        city: input.city || '',
-        zip_code: input.zipCode || '',
-        gender: input.gender || '',
-      })
-    } catch (profileError) {
-      console.warn('Profile creation failed:', profileError)
-    }
-  }
-
-  return signUpData
+  return res.json()
 }
 
 export const useSignUpMutation = () => {
@@ -67,10 +47,13 @@ export const useSignUpMutation = () => {
     onSuccess: (data) => {
       authorize()
       closeModal()
-      if (data?.user) {
+      if (data?.requiresConfirmation) {
         toast.success('ثبت نام موفق! لطفا ایمیل خود را بررسی کنید.')
+        router.push('/signin')
+      } else if (data?.user) {
+        toast.success('ثبت نام موفق!')
+        router.push('/my-account')
       }
-      router.push('/signin')
     },
     onError: (error: any) => {
       const message =

@@ -1,16 +1,20 @@
 import { useUI } from '@contexts/ui.context'
-import { createClient } from '@/lib/supabase/client'
 import Router from 'next/router'
 import { useMutation } from '@tanstack/react-query'
 import { toast } from 'react-toastify'
 
 async function logout() {
-  const supabase = createClient()
-  const { error } = await supabase.auth.signOut()
-  if (error) {
-    throw error
+  const res = await fetch('/api/auth/logout', {
+    method: 'POST',
+    credentials: 'include',
+  })
+
+  if (!res.ok) {
+    const error = await res.json()
+    throw new Error(error.message || 'Logout failed')
   }
-  return { ok: true, message: 'Logout successful' }
+
+  return res.json()
 }
 
 export const useLogoutMutation = () => {
@@ -23,7 +27,7 @@ export const useLogoutMutation = () => {
       Router.push('/')
     },
     onError: (error: any) => {
-      toast.error('خطا در خروج. لطفا دوباره تلاش کنید.');
+      toast.error('خطا در خروج. لطفا دوباره تلاش کنید.')
     },
   })
 }

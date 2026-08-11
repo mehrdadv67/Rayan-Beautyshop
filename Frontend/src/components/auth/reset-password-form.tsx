@@ -1,28 +1,36 @@
 import Button from "@components/ui/button";
 import Input from "@components/ui/input";
+import PasswordInput from "@components/ui/password-input";
 import Logo from "@components/ui/logo";
 import { useForm } from "react-hook-form";
 import { useUI } from "@contexts/ui.context";
 import { useTranslation } from "next-i18next";
-import { useForgetPasswordMutation, ForgetPasswordType } from "@framework/auth/use-forget-password";
+import { useRouter } from "next/router";
+import { useResetPasswordMutation, ResetPasswordInputType } from "@framework/auth/use-reset-password";
 
-type FormValues = ForgetPasswordType;
+type FormValues = ResetPasswordInputType;
 
 const defaultValues = {
-  email: "",
+  password: "",
+  passwordConfirmation: "",
+  code: "",
 };
 
-const ForgetPasswordForm = () => {
+const ResetPasswordForm = () => {
   const { t } = useTranslation();
   const { setModalView, openModal, closeModal } = useUI();
-  const { mutate: forgetPassword, isPending, error } = useForgetPasswordMutation();
+  const router = useRouter();
+  const code = router.query.code as string | undefined;
+  const { mutate: resetPassword, isPending, error } = useResetPasswordMutation();
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<FormValues>({
-    defaultValues,
+    defaultValues: { ...defaultValues, code: code || '' },
   });
+  const watchPassword = watch('password');
 
   function handleSignIn() {
     setModalView("LOGIN_VIEW");
@@ -30,7 +38,7 @@ const ForgetPasswordForm = () => {
   }
 
   const onSubmit = (values: FormValues) => {
-    forgetPassword(values);
+    resetPassword(values);
   };
 
   return (
@@ -40,7 +48,7 @@ const ForgetPasswordForm = () => {
           <Logo />
         </div>
         <p className="text-sm md:text-base text-body mt-3 sm:mt-4 mb-8 sm:mb-10">
-          {t("common:forgot-password-helper")}
+          {t("common:reset-password-helper")}
         </p>
       </div>
       <form
@@ -49,27 +57,44 @@ const ForgetPasswordForm = () => {
         noValidate
       >
         <Input
-          labelKey="forms:label-email"
-          type="email"
+          labelKey="forms:label-reset-code"
+          type="text"
           variant="solid"
           className="mb-4"
-          {...register("email", {
-            required: `${t("forms:email-required")}`,
-            pattern: {
-              value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-              message: t("forms:email-error"),
+          {...register("code", {
+            required: `${t("forms:code-required")}`,
+          })}
+          errorKey={errors.code?.message}
+        />
+        <PasswordInput
+          labelKey="forms:label-password"
+          errorKey={errors.password?.message}
+          {...register("password", {
+            required: `${t("forms:password-required")}`,
+            minLength: {
+              value: 8,
+              message: `${t("forms:password-min-length")}`,
             },
           })}
-          errorKey={errors.email?.message}
+          className="mb-4"
         />
-
+        <PasswordInput
+          labelKey="forms:label-confirm-password"
+          errorKey={errors.passwordConfirmation?.message}
+          {...register("passwordConfirmation", {
+            required: `${t("forms:password-confirm-required")}`,
+            validate: (value) =>
+              value === watchPassword || `${t("forms:password-confirm-match")}`,
+          })}
+          className="mb-4"
+        />
         <Button type="submit" className="h-11 md:h-12 w-full mt-2" loading={isPending} disabled={isPending}>
           {t("common:text-reset-password")}
         </Button>
       </form>
       {error && (
         <p className="text-sm text-red-500 mt-4 text-center">
-          {error?.message || 'خطا در بازیابی رمز عبور. لطفا دوباره تلاش کنید.'}
+          {error?.message || 'خطا در تغییر رمز عبور. لطفا دوباره تلاش کنید.'}
         </p>
       )}
       <div className="flex flex-col items-center justify-center relative text-sm text-heading mt-8 sm:mt-10 mb-6 sm:mb-7">
@@ -92,4 +117,4 @@ const ForgetPasswordForm = () => {
   );
 };
 
-export default ForgetPasswordForm;
+export default ResetPasswordForm;

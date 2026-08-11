@@ -1,23 +1,39 @@
-// import { API_ENDPOINTS } from "@framework/utils/api-endpoints";
-// import http from "@framework/utils/http";
 import { useMutation } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 
 export interface ChangePasswordInputType {
   newPassword: string;
   oldPassword: string;
 }
+
 async function changePassword(input: ChangePasswordInputType) {
-  // return http.post(API_ENDPOINTS.ChangePassword, input);
-  return input;
+  const res = await fetch('/api/customer/change-password', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    body: JSON.stringify({
+      oldPassword: input.oldPassword,
+      newPassword: input.newPassword,
+    }),
+  });
+
+  if (!res.ok) {
+    const error = await res.json();
+    throw new Error(error.message || 'Failed to change password');
+  }
+
+  return res.json();
 }
+
 export const useChangePasswordMutation = () => {
   return useMutation({
     mutationFn: (input: ChangePasswordInputType) => changePassword(input),
-    onSuccess: (data) => {
-      console.log(data, "ChangePassword success response");
+    onSuccess: () => {
+      toast.success('رمز عبور با موفقیت تغییر یافت');
     },
-    onError: (data) => {
-      console.log(data, "ChangePassword error response");
+    onError: (error: any) => {
+      const message = error?.message || 'خطا در تغییر رمز عبور.';
+      toast.error(message);
     },
   });
 };

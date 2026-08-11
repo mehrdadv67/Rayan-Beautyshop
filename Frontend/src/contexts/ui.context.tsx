@@ -1,5 +1,4 @@
 import React, { useReducer, useMemo, useCallback } from "react";
-import { getToken } from "@framework/utils/get-token";
 import { CartProvider } from "./cart/cart.context";
 
 export interface State {
@@ -17,7 +16,7 @@ export interface State {
 }
 
 const initialState = {
-  isAuthorized: getToken() ? true : false,
+  isAuthorized: false,
   displaySidebar: false,
   displayFilter: false,
   displayModal: false,
@@ -57,7 +56,7 @@ type Action =
     }
   | {
       type: "SET_TOAST_TEXT";
-      text: ToastText;
+      text: string;
     }
   | {
       type: "OPEN_FILTER";
@@ -79,11 +78,11 @@ type Action =
     }
   | {
       type: "SET_MODAL_VIEW";
-      view: MODAL_VIEWS;
+      view: string;
     }
   | {
       type: "SET_DRAWER_VIEW";
-      view: DRAWER_VIEWS;
+      view: string | null;
     }
   | {
       type: "SET_MODAL_DATA";
@@ -265,7 +264,7 @@ export const UIProvider: React.FC = (props) => {
 
   const setModalView = (view: MODAL_VIEWS) =>
     dispatch({ type: "SET_MODAL_VIEW", view });
-  const setDrawerView = (view: DRAWER_VIEWS) =>
+  const setDrawerView = (view: DRAWER_VIEWS | null) =>
     dispatch({ type: "SET_DRAWER_VIEW", view });
   const setModalData = (data: any) =>
     dispatch({ type: "SET_MODAL_DATA", data });
