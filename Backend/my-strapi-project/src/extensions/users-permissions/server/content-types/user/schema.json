@@ -67,6 +67,12 @@
     "gender": {
       "type": "enumeration",
       "enum": ["male", "female"]
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "customer"
     }
   }
 }

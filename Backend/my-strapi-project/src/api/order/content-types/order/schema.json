@@ -34,9 +34,6 @@
     "zip_code": {
       "type": "string"
     },
-    "supabase_user_id": {
-      "type": "string"
-    },
     "products": {
       "type": "json"
     },
@@ -65,10 +62,11 @@
     "payment_gateway": {
       "type": "string"
     },
-    "order": {
+    "customer": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "plugin::users-permissions.user"
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "orders"
     },
     "order_items": {
       "type": "relation",

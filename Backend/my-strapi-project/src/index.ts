@@ -100,8 +100,60 @@ export default {
       } else {
         console.log("⚠️ No public or authenticated role found");
       }
-    } catch (err) {
+     } catch (err) {
       console.error("Error setting permissions:", err);
+    }
+
+    try {
+      const pluginStore = strapi.store({ type: 'plugin', name: 'users-permissions' });
+
+      const advancedSettings = await pluginStore.get({ key: 'advanced' });
+      if (advancedSettings && !advancedSettings.email_confirmation) {
+        await pluginStore.set({
+          key: 'advanced',
+          value: {
+            ...advancedSettings,
+            email_confirmation: true,
+            email_confirmation_redirection:
+              advancedSettings.email_confirmation_redirection ||
+              process.env.EMAIL_CONFIRMATION_REDIRECT_URL ||
+              'http://localhost:3000',
+            email_reset_password:
+              advancedSettings.email_reset_password ||
+              process.env.EMAIL_RESET_PASSWORD_URL ||
+              'http://localhost:3000/reset-password',
+          },
+        });
+        console.log('✅ Email confirmation enabled');
+      }
+
+      const emailTemplates = await pluginStore.get({ key: 'email' });
+      if (emailTemplates) {
+        const emailFrom = process.env.EMAIL_FROM || 'noreply@example.com';
+        const emailFromName = process.env.EMAIL_FROM_NAME || 'Strapi';
+        let updated = false;
+
+        Object.keys(emailTemplates).forEach((key) => {
+          const template = emailTemplates[key];
+          if (template?.options?.from) {
+            if (template.options.from.email === 'no-reply@strapi.io') {
+              template.options.from.email = emailFrom;
+              updated = true;
+            }
+            if (template.options.from.name === 'Administration Panel') {
+              template.options.from.name = emailFromName;
+              updated = true;
+            }
+          }
+        });
+
+        if (updated) {
+          await pluginStore.set({ key: 'email', value: emailTemplates });
+          console.log('✅ Email template sender updated');
+        }
+      }
+    } catch (err) {
+      console.error('Error configuring email settings:', err);
     }
 
     try {
