@@ -22,7 +22,8 @@
       "enum": [
         "home_top",
         "home_middle",
-        "home_bottom"
+        "home_bottom",
+        "exclusive"
       ]
     },
     "desktopImage": {

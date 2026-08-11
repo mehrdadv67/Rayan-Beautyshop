@@ -544,7 +544,7 @@ export interface ApiBannerBanner extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios'
     >;
     position: Schema.Attribute.Enumeration<
-      ['home_top', 'home_middle', 'home_bottom']
+      ['home_top', 'home_middle', 'home_bottom', 'exclusive']
     >;
     priority: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;

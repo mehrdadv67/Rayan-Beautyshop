@@ -15,15 +15,21 @@ import BannerSliderBlock from "@containers/banner-slider-block";
 import ExclusiveBlock from "@containers/exclusive-block";
 import Subscription from "@components/common/subscription";
 import NewArrivalsProductFeed from "@components/product/feeds/new-arrivals-product-feed";
-import { homeThreeBanner as banner } from "@framework/static/banner";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { ROUTES } from "@utils/routes";
 import { GetStaticProps } from "next";
+import { API_ENDPOINTS, strapiBannerParams } from "@framework/utils/api-endpoints";
+import http from "@framework/utils/http";
+import { normalizeBanner, unwrapList } from "@framework/utils/normalize";
+import { ROUTES } from "@utils/routes";
 
-export default function Home() {
+interface HomeProps {
+  bottomBanners: any[];
+}
+
+export default function Home({ bottomBanners }: HomeProps) {
   return (
     <>
-      <BannerBlockStrapi position="home_top" />
+      <BannerBlockStrapi position='home_top' />
       <Container>
         <ProductsFlashSaleBlock date={"2024-12-01T01:02:03"} />
       </Container>
@@ -31,28 +37,32 @@ export default function Home() {
       <Container>
         <CategoryBlock sectionHeading='text-shop-by-category' type='rounded' />
         <ProductsFeatured sectionHeading='text-featured-products' limit={5} />
-        <BannerCard
-          key={`banner--key${banner[0].id}`}
-          banner={banner[0]}
-          href={`${ROUTES.COLLECTIONS}/${banner[0].slug}`}
-          className='mb-12 lg:mb-14 xl:mb-16 pb-0.5 lg:pb-1 xl:pb-0'
-        />
+        {bottomBanners[0] && (
+          <BannerCard
+            key={`banner--key${bottomBanners[0].id}`}
+            banner={bottomBanners[0]}
+            href={bottomBanners[0].link || `${ROUTES.COLLECTIONS}/${bottomBanners[0].slug}`}
+            className='mb-12 lg:mb-14 xl:mb-16 pb-0.5 lg:pb-1 xl:pb-0'
+          />
+        )}
         <BrandGridBlock sectionHeading='text-top-brands' />
-        <BannerCard
-          key={`banner--key${banner[1].id}`}
-          banner={banner[1]}
-          href={`${ROUTES.COLLECTIONS}/${banner[1].slug}`}
-          className='mb-12 lg:mb-14 xl:mb-16 pb-0.5 lg:pb-1 xl:pb-0'
-        />
+        {bottomBanners[1] && (
+          <BannerCard
+            key={`banner--key${bottomBanners[1].id}`}
+            banner={bottomBanners[1]}
+            href={bottomBanners[1].link || `${ROUTES.COLLECTIONS}/${bottomBanners[1].slug}`}
+            className='mb-12 lg:mb-14 xl:mb-16 pb-0.5 lg:pb-1 xl:pb-0'
+          />
+        )}
         <BannerWithProducts
           sectionHeading='text-on-selling-products'
           categorySlug='/search'
         />
         <ExclusiveBlock />
         <NewArrivalsProductFeed />
-        <DownloadApps />
-        <Support />
-        <Instagram />
+        {/* <DownloadApps /> */}
+        {/* <Support /> */}
+        {/* <Instagram /> */}
         <Subscription className='px-5 py-12 bg-opacity-0 sm:px-16 xl:px-0 md:py-14 xl:py-16' />
       </Container>
       <Divider className='mb-0' />
@@ -63,14 +73,35 @@ export default function Home() {
 Home.Layout = Layout;
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale!, [
-        "common",
-        "forms",
-        "menu",
-        "footer",
-      ])),
-    },
-  };
+  try {
+    const { data } = await http.get(
+      `${API_ENDPOINTS.BANNERS}${strapiBannerParams("home_bottom")}`,
+    );
+
+    const banners = unwrapList(data, normalizeBanner);
+
+    return {
+      props: {
+        ...(await serverSideTranslations(locale!, [
+          "common",
+          "forms",
+          "menu",
+          "footer",
+        ])),
+        bottomBanners: banners.slice(0, 2),
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        ...(await serverSideTranslations(locale!, [
+          "common",
+          "forms",
+          "menu",
+          "footer",
+        ])),
+        bottomBanners: [],
+      },
+    };
+  }
 };

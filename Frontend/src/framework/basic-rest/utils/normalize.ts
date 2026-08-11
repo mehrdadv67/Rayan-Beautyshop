@@ -354,8 +354,10 @@ export function normalizeBanner(item: any): any {
     id: item?.id,
     documentId: item?.documentId,
     title: item?.title ?? item?.alt ?? "",
+    alt: item?.alt ?? "",
     slug: item?.code ? String(item.code) : "",
     link: item?.link ?? "",
+    priority: item?.priority,
     type,
     image: {
       mobile: {
