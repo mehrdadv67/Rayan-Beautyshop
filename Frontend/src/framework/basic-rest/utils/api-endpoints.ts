@@ -12,6 +12,8 @@ export const API_ENDPOINTS = {
   FEATURED_CATEGORIES: "/api/categories",
   COLLECTIONS: "/api/product-collections",
   BRANDS: "/api/brands",
+  ATTRIBUTES: "/api/attributes",
+  PRODUCT_VARIANTS: "/api/product-variants",
   BRANDS_ANCIENT: "/api/brands",
   MENU_ITEMS: "/api/menu-items",
   BANNERS: "/api/banners",

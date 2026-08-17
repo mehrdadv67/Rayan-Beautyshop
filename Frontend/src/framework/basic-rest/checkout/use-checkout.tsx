@@ -42,11 +42,12 @@ async function checkout(input: CheckoutInputType, cartItems: any[]) {
 }
 
 export const useCheckoutMutation = () => {
-  const { items: cartItems } = useCart();
+  const { items: cartItems, resetCart } = useCart();
 
   return useMutation({
     mutationFn: (input: CheckoutInputType) => checkout(input, cartItems),
     onSuccess: (data) => {
+      resetCart();
       toast.success('سفارش شما با موفقیت ثبت شد');
       Router.push(`${ROUTES.ORDER}?id=${data.orderId}`);
     },

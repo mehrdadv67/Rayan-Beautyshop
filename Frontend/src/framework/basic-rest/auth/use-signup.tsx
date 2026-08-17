@@ -26,6 +26,13 @@ async function signUp(input: SignUpInputType) {
       username: input.username,
       email: input.email,
       password: input.password,
+      firstName: input.firstName,
+      lastName: input.lastName,
+      phoneNumber: input.phoneNumber,
+      address: input.address,
+      city: input.city,
+      zipCode: input.zipCode,
+      gender: input.gender,
     }),
     credentials: 'include',
   })

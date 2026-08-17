@@ -7,7 +7,7 @@
     "displayName": "آیتم سفارش"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {

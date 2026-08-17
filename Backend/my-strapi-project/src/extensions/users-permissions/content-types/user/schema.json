@@ -66,13 +66,25 @@
     },
     "gender": {
       "type": "enumeration",
-      "enum": ["male", "female"]
+      "enum": [
+        "male",
+        "female"
+      ]
+    },
+    "cart": {
+      "type": "json"
     },
     "orders": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::order.order",
       "mappedBy": "customer"
+    },
+    "role": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.role",
+      "inversedBy": "users"
     }
   }
 }

@@ -1,7 +1,7 @@
 import { CategoryFilter } from "./category-filter";
 import { BrandFilter } from "./brand-filter";
 import { FilteredItem } from "./filtered-item";
-import { ColorFilter } from "./color-filter";
+import { AttributeFilter } from "./attribute-filter";
 import { PriceFilter } from "./price-filter";
 import { useRouter } from "next/router";
 import isEmpty from "lodash/isEmpty";
@@ -48,7 +48,7 @@ export const ShopFilters: React.FC = () => {
 			<CategoryFilter />
 			<BrandFilter />
 			<PriceFilter />
-			<ColorFilter />
+			<AttributeFilter />
 		</div>
 	);
 };

@@ -674,7 +674,7 @@ export interface ApiOrderItemOrderItem extends Struct.CollectionTypeSchema {
     singularName: 'order-item';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
@@ -705,7 +705,7 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
     singularName: 'order';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     address: Schema.Attribute.Text;
@@ -924,6 +924,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     seoDescription: Schema.Attribute.Text;
     seoTitle: Schema.Attribute.String;
     slug: Schema.Attribute.UID<'title'>;
+    stock: Schema.Attribute.Integer;
     tags: Schema.Attribute.Relation<
       'manyToMany',
       'api::product-tag.product-tag'
@@ -1423,23 +1424,21 @@ export interface PluginUsersPermissionsRole
 
 export interface PluginUsersPermissionsUser
   extends Struct.CollectionTypeSchema {
-  collectionName: 'up_users';
+  collectionName: 'users';
   info: {
     description: '';
     displayName: 'User';
-    name: 'user';
     pluralName: 'users';
     singularName: 'user';
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     address: Schema.Attribute.Text;
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    cart: Schema.Attribute.JSON;
     city: Schema.Attribute.String;
-    confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1460,14 +1459,14 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.Private;
     orders: Schema.Attribute.Relation<'oneToMany', 'api::order.order'>;
     password: Schema.Attribute.Password &
+      Schema.Attribute.Required &
       Schema.Attribute.Private &
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
     phoneNumber: Schema.Attribute.String;
-    provider: Schema.Attribute.String;
+    provider: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
     role: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.role'

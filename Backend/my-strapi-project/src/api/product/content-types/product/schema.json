@@ -49,6 +49,9 @@
       "type": "decimal",
       "default": 0
     },
+    "stock": {
+      "type": "integer"
+    },
     "brand": {
       "type": "relation",
       "relation": "oneToOne",

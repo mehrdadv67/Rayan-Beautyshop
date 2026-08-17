@@ -55,7 +55,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   const strapiRes = await fetch(
-    `${process.env.STRAPI_URL}/api/orders/${encodeURIComponent(orderId)}?populate[0]=order_items&populate[1]=order_items.order_item`,
+    `${process.env.STRAPI_URL}/api/orders/${encodeURIComponent(orderId)}?populate[0]=order_items&populate[1]=order_items.order_item&populate[2]=customer`,
     {
       method: 'GET',
       headers: {

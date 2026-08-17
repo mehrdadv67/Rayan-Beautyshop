@@ -12,9 +12,62 @@ type PaginatedProduct = {
   };
 };
 
-const fetchProducts = async () => {
+/**
+ * Translate URL filter params into Strapi v5 filters:
+ *   category=<slug,slug>  → category.slug $in
+ *   brand=<slug,slug>     → brand.slug $in
+ *   attr=<valueId,...>    → variant option attribute_value id $in
+ *   price=<lo-hi,...>     → $or of (price|salePrice between lo and hi)
+ *   text=<q>              → name $containsi
+ */
+const buildFilterParams = (query: Record<string, any>): string => {
+  const parts: string[] = [];
+
+  const categories: string[] = query.category
+    ? String(query.category).split(",")
+    : [];
+  categories.forEach((slug, i) =>
+    parts.push(`filters[category][slug][$in][${i}]=${encodeURIComponent(slug)}`)
+  );
+
+  const brands: string[] = query.brand ? String(query.brand).split(",") : [];
+  brands.forEach((slug, i) =>
+    parts.push(`filters[brand][slug][$in][${i}]=${encodeURIComponent(slug)}`)
+  );
+
+  const attrValues: string[] = query.attr ? String(query.attr).split(",") : [];
+  attrValues.forEach((id, i) =>
+    parts.push(
+      `filters[variants][options][attribute_value][id][$in][${i}]=${id}`
+    )
+  );
+
+  const ranges: string[] = query.price ? String(query.price).split(",") : [];
+  let orIndex = 0;
+  ranges.forEach((range) => {
+    const [lo, hi] = range.split("-");
+    // (variants.price between lo..hi) OR (variants.salePrice between lo..hi)
+    parts.push(
+      `filters[$or][${orIndex}][$and][0][variants][price][$gte]=${lo}`,
+      `filters[$or][${orIndex}][$and][1][variants][price][$lte]=${hi}`,
+      `filters[$or][${orIndex + 1}][$and][0][variants][salePrice][$gte]=${lo}`,
+      `filters[$or][${orIndex + 1}][$and][1][variants][salePrice][$lte]=${hi}`
+    );
+    orIndex += 2;
+  });
+
+  if (query.text) {
+    parts.push(
+      `filters[name][$containsi]=${encodeURIComponent(String(query.text))}`
+    );
+  }
+
+  return parts.length > 0 ? `&${parts.join("&")}` : "";
+};
+
+const fetchProducts = async (query: Record<string, any> = {}) => {
   const { data } = await http.get(
-    `${API_ENDPOINTS.PRODUCTS}${strapiListParams()}`
+    `${API_ENDPOINTS.PRODUCTS}${strapiListParams()}${buildFilterParams(query)}`
   );
   const products = unwrapList(data, normalizeProduct);
   return {
@@ -29,7 +82,7 @@ const fetchProducts = async () => {
 const useProductsQuery = (options: QueryOptionsType) => {
   return useInfiniteQuery<PaginatedProduct, Error>({
     queryKey: ["products", options],
-    queryFn: fetchProducts,
+    queryFn: () => fetchProducts(options as Record<string, any>),
     initialPageParam: 1,
     getNextPageParam: () => undefined,
   });

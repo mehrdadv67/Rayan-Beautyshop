@@ -22,6 +22,7 @@ type Action =
   | { type: "ADD_ITEM"; id: Item["id"]; item: Item }
   | { type: "UPDATE_ITEM"; id: Item["id"]; item: UpdateItemInput }
   | { type: "REMOVE_ITEM"; id: Item["id"] }
+  | { type: "MERGE_CART"; items: Item[] }
   | { type: "RESET_CART" };
 
 export interface State {
@@ -69,6 +70,29 @@ export function cartReducer(state: State, action: Action): State {
     case "UPDATE_ITEM": {
       const items = updateItem(state.items, action.id, action.item);
       return generateFinalState(state, items);
+    }
+    case "MERGE_CART": {
+      // Merge server cart with local cart by item id; keep the higher quantity.
+      const merged = new Map<Item["id"], Item>();
+      for (const item of action.items) {
+        merged.set(item.id, { ...item });
+      }
+      for (const item of state.items) {
+        const existing = merged.get(item.id);
+        merged.set(
+          item.id,
+          existing
+            ? {
+                ...existing,
+                quantity: Math.max(
+                  existing.quantity ?? 1,
+                  item.quantity ?? 1
+                ),
+              }
+            : item
+        );
+      }
+      return generateFinalState(state, [...merged.values()]);
     }
     case "RESET_CART":
       return initialState;
