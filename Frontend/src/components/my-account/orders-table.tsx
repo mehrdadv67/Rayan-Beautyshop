@@ -1,13 +1,16 @@
 import { motion } from 'framer-motion';
 import { fadeInTop } from '@utils/motion/fade-in-top';
 import Link from '@components/ui/link';
+import Button from '@components/ui/button';
+import TrashIcon from '@components/icons/trash-icon';
+import Counter from '@components/common/counter';
 import { useWindowSize } from '@utils/use-window-size';
 import { useTranslation } from 'next-i18next';
 import { useSsrCompatible } from '@utils/use-ssr-compatible';
 import { useOrdersQuery } from '@framework/order/get-all-orders';
 import { useCart } from '@contexts/cart/cart.context';
 import { Order } from '@framework/types';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 
 type OrderTab = 'active' | 'completed';
 
@@ -15,8 +18,25 @@ const OrdersTable: React.FC = () => {
   const { width } = useSsrCompatible(useWindowSize(), { width: 0, height: 0 });
   const { t } = useTranslation('common');
   const { data, isLoading, error } = useOrdersQuery();
-  const { items: cartItems, isEmpty: cartEmpty } = useCart();
+  const { items: cartItems, isEmpty: cartEmpty, removeItemFromCart, updateItemQuantity } = useCart();
   const [activeTab, setActiveTab] = useState<OrderTab>('active');
+
+  const handleRemove = useCallback((id: string | number) => {
+    removeItemFromCart(String(id));
+  }, [removeItemFromCart]);
+
+  const handleIncrement = useCallback((id: string | number) => {
+    updateItemQuantity(String(id), (cartItems.find((ci) => String(ci.id) === String(id))?.quantity ?? 1) + 1);
+  }, [updateItemQuantity, cartItems]);
+
+  const handleDecrement = useCallback((id: string | number) => {
+    const current = cartItems.find((ci) => String(ci.id) === String(id))?.quantity ?? 1;
+    if (current > 1) {
+      updateItemQuantity(String(id), current - 1);
+    } else {
+      removeItemFromCart(String(id));
+    }
+  }, [updateItemQuantity, removeItemFromCart, cartItems]);
 
   const allOrders = data?.orders?.data ?? [];
 
@@ -62,7 +82,7 @@ const OrdersTable: React.FC = () => {
     if (cartEmpty && !isLoading && activeOrders.length === 0) {
       return (
         <tr className="border-b border-gray-300">
-          <td colSpan={5} className="px-4 py-5 text-center text-heading">
+          <td colSpan={6} className="px-4 py-5 text-center text-heading">
             سفارشی یافت نشد
           </td>
         </tr>
@@ -77,24 +97,41 @@ const OrdersTable: React.FC = () => {
           <span className="text-body">{item.name || `محصول #${item.id}`}</span>
           <span className="block text-xs text-gray-500 mt-1">در سبد خرید</span>
         </td>
-        <td className="px-4 py-5 ltr:text-left rtl:text-right lg:text-center text-heading">
+        <td className="px-4 py-5 text-center text-heading">
           —
         </td>
-        <td className="px-4 py-5 ltr:text-left rtl:text-right lg:text-center">
+        <td className="px-4 py-5 text-center">
           <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
             در سبد خرید
           </span>
         </td>
-        <td className="px-4 py-5 ltr:text-left rtl:text-right lg:text-center text-heading">
+        <td className="px-4 py-5 text-center text-heading">
+          <Counter
+            quantity={item.quantity || 1}
+            onIncrement={() => handleIncrement(item.id)}
+            onDecrement={() => handleDecrement(item.id)}
+            variant="dark"
+          />
+        </td>
+        <td className="px-4 py-5 text-center text-heading">
           {(item.price * (item.quantity || 1)).toLocaleString()} تومان
         </td>
-        <td className="px-4 py-5 ltr:text-right rtl:text-left text-heading">
-          <Link
-            href="/checkout"
-            className="text-sm leading-4 bg-amber-500 text-white px-4 py-2.5 inline-block rounded-md hover:bg-amber-600"
-          >
-            تکمیل خرید
-          </Link>
+        <td className="px-4 py-5 text-center text-heading">
+          <div className="flex items-center gap-x-2">
+            <Link
+              href="/checkout"
+              className="text-sm leading-4 bg-amber-500 text-white px-4 py-2.5 inline-block rounded-md hover:bg-amber-600"
+            >
+              تکمیل خرید
+            </Link>
+            <button
+              onClick={() => handleRemove(item.id)}
+              className="text-red-500 hover:text-red-700 p-1"
+              title="حذف از سبد خرید"
+            >
+              <TrashIcon width="16px" height="16px" />
+            </button>
+          </div>
         </td>
       </tr>
     ));
@@ -126,18 +163,36 @@ const OrdersTable: React.FC = () => {
           </span>
         </li>
         <li className="flex items-center justify-between">
+          تعداد
+          <span className="font-normal">
+            <Counter
+              quantity={item.quantity || 1}
+              onIncrement={() => handleIncrement(item.id)}
+              onDecrement={() => handleDecrement(item.id)}
+              variant="dark"
+            />
+          </span>
+        </li>
+        <li className="flex items-center justify-between">
           {t('text-total')}
           <span className="font-normal">{(item.price * (item.quantity || 1)).toLocaleString()} تومان</span>
         </li>
         <li className="flex items-center justify-between">
           {t('text-actions')}
-          <span className="font-normal">
+          <span className="font-normal flex items-center gap-x-2">
             <Link
               href="/checkout"
               className="text-sm leading-4 bg-amber-500 text-white px-4 py-2.5 inline-block rounded-md hover:bg-amber-600"
             >
               تکمیل خرید
             </Link>
+            <button
+              onClick={() => handleRemove(item.id)}
+              className="text-red-500 hover:text-red-700 p-1"
+              title="حذف از سبد خرید"
+            >
+              <TrashIcon width="16px" height="16px" />
+            </button>
           </span>
         </li>
       </ul>
@@ -206,19 +261,22 @@ const OrdersTable: React.FC = () => {
           <table>
             <thead className="text-sm lg:text-base">
               <tr>
-                <th className="p-4 font-semibold bg-gray-100 text-heading ltr:text-left rtl:text-right ltr:first:rounded-tl-md rtl:first:rounded-tr-md">
+                <th className="p-4 font-semibold bg-gray-100 text-heading text-center ltr:first:rounded-tl-md rtl:first:rounded-tr-md">
                   {t('text-order')}
                 </th>
-                <th className="p-4 font-semibold bg-gray-100 text-heading ltr:text-left rtl:text-right lg:text-center">
+                <th className="p-4 font-semibold bg-gray-100 text-heading text-center">
                   {t('text-date')}
                 </th>
-                <th className="p-4 font-semibold bg-gray-100 text-heading ltr:text-left rtl:text-right lg:text-center">
+                <th className="p-4 font-semibold bg-gray-100 text-heading text-center">
                   {t('text-status')}
                 </th>
-                <th className="p-4 font-semibold bg-gray-100 text-heading ltr:text-left rtl:text-right lg:text-center">
+                <th className="p-4 font-semibold bg-gray-100 text-heading text-center">
+                  تعداد
+                </th>
+                <th className="p-4 font-semibold bg-gray-100 text-heading text-center">
                   {t('text-total')}
                 </th>
-                <th className="p-4 font-semibold bg-gray-100 text-heading ltr:text-left rtl:text-right ltr:lg:text-right rtl:lg:text-left ltr:last:rounded-tr-md rtl:last:rounded-tl-md">
+                <th className="p-4 font-semibold bg-gray-100 text-heading text-center ltr:last:rounded-tr-md rtl:last:rounded-tl-md">
                   {t('text-actions')}
                 </th>
               </tr>
@@ -236,16 +294,19 @@ const OrdersTable: React.FC = () => {
                       #{order.slug ?? order.id}
                     </Link>
                   </td>
-                  <td className="px-4 py-5 ltr:text-left rtl:text-right lg:text-center text-heading">
+                  <td className="px-4 py-5 text-center text-heading">
                     {formatDate(order.created_at)}
                   </td>
-                  <td className="px-4 py-5 ltr:text-left rtl:text-right lg:text-center text-heading">
+                  <td className="px-4 py-5 text-center text-heading">
                     {statusLabel(order.status)}
                   </td>
-                  <td className="px-4 py-5 ltr:text-left rtl:text-right lg:text-center text-heading">
+                  <td className="px-4 py-5 text-center text-heading">
+                    {(order as any).order_items?.length ?? '—'}
+                  </td>
+                  <td className="px-4 py-5 text-center text-heading">
                     {order.total.toLocaleString()} تومان
                   </td>
-                  <td className="px-4 py-5 ltr:text-right rtl:text-left text-heading">
+                  <td className="px-4 py-5 text-center text-heading">
                     <Link
                       href={`/my-account/orders/${order.slug ?? order.id}`}
                       className="text-sm leading-4 bg-heading text-white px-4 py-2.5 inline-block rounded-md hover:text-white hover:bg-gray-600"
@@ -257,8 +318,20 @@ const OrdersTable: React.FC = () => {
               ))}
               {orders.length === 0 && (activeTab === 'completed' || cartEmpty) && (
                 <tr className="border-b border-gray-300">
-                  <td colSpan={5} className="px-4 py-5 text-center text-heading">
+                  <td colSpan={6} className="px-4 py-5 text-center text-heading">
                     سفارشی یافت نشد
+                  </td>
+                </tr>
+              )}
+              {activeTab === 'active' && !cartEmpty && (
+                <tr className="border-b border-gray-300">
+                  <td colSpan={6} className="px-4 py-5 text-center">
+                    <Link
+                      href="/checkout"
+                      className="text-sm leading-4 bg-heading text-white px-6 py-3 inline-block rounded-md hover:bg-gray-600"
+                    >
+                      خرید همه محصولات
+                    </Link>
                   </td>
                 </tr>
               )}
@@ -284,14 +357,18 @@ const OrdersTable: React.FC = () => {
                   {t('text-date')}
                   <span className="font-normal">{formatDate(order.created_at)}</span>
                 </li>
-                <li className="flex items-center justify-between">
-                  {t('text-status')}
-                  <span className="font-normal">{statusLabel(order.status)}</span>
-                </li>
-                <li className="flex items-center justify-between">
-                  {t('text-total')}
-                  <span className="font-normal">{order.total.toLocaleString()} تومان</span>
-                </li>
+        <li className="flex items-center justify-between">
+          {t('text-status')}
+          <span className="font-normal">{statusLabel(order.status)}</span>
+        </li>
+        <li className="flex items-center justify-between">
+          تعداد
+          <span className="font-normal">{(order as any).order_items?.length ?? '—'}</span>
+        </li>
+        <li className="flex items-center justify-between">
+          {t('text-total')}
+          <span className="font-normal">{order.total.toLocaleString()} تومان</span>
+        </li>
                 <li className="flex items-center justify-between">
                   {t('text-actions')}
                   <span className="font-normal">
@@ -307,6 +384,16 @@ const OrdersTable: React.FC = () => {
             ))}
             {orders.length === 0 && (activeTab === 'completed' || cartEmpty) && (
               <div className="text-center text-heading py-5">سفارشی یافت نشد</div>
+            )}
+            {activeTab === 'active' && !cartEmpty && (
+              <div className="text-center py-5">
+                <Link
+                  href="/checkout"
+                  className="text-sm leading-4 bg-heading text-white px-6 py-3 inline-block rounded-md hover:bg-gray-600"
+                >
+                  خرید همه محصولات
+                </Link>
+              </div>
             )}
           </div>
         )}
