@@ -7,6 +7,7 @@ export const fetchOrder = async (id: string): Promise<Order> => {
     headers: {
       'Content-Type': 'application/json',
     },
+    credentials: 'include',
   });
 
   if (!response.ok) {

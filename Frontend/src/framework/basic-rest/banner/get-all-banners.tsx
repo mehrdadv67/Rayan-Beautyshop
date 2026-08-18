@@ -1,15 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
-import { API_ENDPOINTS, strapiBannerParams } from "@framework/utils/api-endpoints";
-import http from "@framework/utils/http";
-import { normalizeBanner, unwrapList } from "@framework/utils/normalize";
+import { API_ENDPOINTS } from "@framework/utils/api-endpoints";
 
 export const fetchBanners = async (position = "home_top") => {
-  const { data } = await http.get(
-    `${API_ENDPOINTS.BANNERS}${strapiBannerParams(position)}`,
+  const response = await fetch(
+    `/api/banners?position=${encodeURIComponent(position)}`,
+    { cache: 'no-store' }
   );
+
+  if (!response.ok) {
+    const error = await response.json().catch(() => ({}));
+    throw new Error(error.error || 'Failed to fetch banners');
+  }
+
+  const data = await response.json();
   return {
     banners: {
-      data: unwrapList(data, normalizeBanner),
+      data: data.banners || [],
     },
   };
 };

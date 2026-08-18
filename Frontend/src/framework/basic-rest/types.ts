@@ -189,6 +189,7 @@ export type Order = StrapiDocumentId & {
   shipping_fee: number;
   payment_gateway: string;
   status?: string;
+  created_at?: string;
 };
 
 export type Shop = {

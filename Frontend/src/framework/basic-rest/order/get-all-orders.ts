@@ -1,4 +1,5 @@
 import { Order } from '@framework/types';
+import { normalizeOrder } from '@framework/utils/normalize';
 import { useQuery } from '@tanstack/react-query';
 
 export const fetchOrders = async () => {
@@ -7,6 +8,7 @@ export const fetchOrders = async () => {
     headers: {
       'Content-Type': 'application/json',
     },
+    credentials: 'include',
   });
 
   if (!response.ok) {
@@ -15,7 +17,11 @@ export const fetchOrders = async () => {
   }
 
   const result = await response.json();
-  return { orders: { data: result.orders || result.data || [] } };
+  const rawOrders = result.orders || result.data || [];
+  const orders = Array.isArray(rawOrders)
+    ? rawOrders.map(normalizeOrder)
+    : [];
+  return { orders: { data: orders as Order[] } };
 };
 
 export const useOrdersQuery = () => {

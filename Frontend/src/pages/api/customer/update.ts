@@ -21,13 +21,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(401).json({ message: 'Unauthorized' });
   }
 
-  const { firstName, lastName, phoneNumber, email, gender, address, city, zipCode } = req.body;
+  const { firstName, lastName, gender, address, city, zipCode } = req.body;
 
   const updatePayload: Record<string, any> = {};
   if (firstName !== undefined) updatePayload.firstName = firstName;
   if (lastName !== undefined) updatePayload.lastName = lastName;
-  if (phoneNumber !== undefined) updatePayload.phoneNumber = phoneNumber;
-  if (email !== undefined) updatePayload.email = email;
   if (gender !== undefined) updatePayload.gender = gender;
   if (address !== undefined) updatePayload.address = address;
   if (city !== undefined) updatePayload.city = city;

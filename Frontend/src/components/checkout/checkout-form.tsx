@@ -158,7 +158,7 @@ const CheckoutForm: React.FC = () => {
             />
           </div>
           <div className="relative flex items-center ">
-            <CheckBox labelKey="forms:label-save-information" />
+            <CheckBox labelKey="forms:label-save-information" {...register('save')} />
           </div>
           <TextArea
             labelKey="forms:label-order-notes"

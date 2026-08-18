@@ -55,7 +55,7 @@ export function cartReducer(state: State, action: Action): State {
       const items = removeItemOrQuantity(
         state.items,
         action.id,
-        (action.quantity = 1)
+        action.quantity ?? 1
       );
       return generateFinalState(state, items);
     }

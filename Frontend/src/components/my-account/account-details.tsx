@@ -116,27 +116,20 @@ const AccountDetails: React.FC = () => {
             <Input
               type="tel"
               labelKey="forms:label-phone"
-              {...register('phoneNumber', {
-                required: 'forms:phone-required',
-              })}
+              {...register('phoneNumber')}
               variant="solid"
               className="w-full sm:w-1/2"
-              errorKey={errors.phoneNumber?.message}
+              readOnly
+              disabled
             />
             <Input
               type="email"
               labelKey="forms:label-email-star"
-              {...register('email', {
-                required: 'forms:email-required',
-                pattern: {
-                  value:
-                    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                  message: 'forms:email-error',
-                },
-              })}
+              {...register('email')}
               variant="solid"
               className="w-full sm:w-1/2"
-              errorKey={errors.email?.message}
+              readOnly
+              disabled
             />
           </div>
           <div className="relative flex flex-col">

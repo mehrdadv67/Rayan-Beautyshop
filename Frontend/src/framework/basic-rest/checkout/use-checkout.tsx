@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { useCart } from '@contexts/cart/cart.context';
 import Router from 'next/router';
 import { ROUTES } from '@utils/routes';
+import { useRef } from 'react';
 
 export interface CheckoutInputType {
   firstName: string;
@@ -42,10 +43,12 @@ async function checkout(input: CheckoutInputType, cartItems: any[]) {
 }
 
 export const useCheckoutMutation = () => {
-  const { items: cartItems, resetCart } = useCart();
+  const { items, resetCart } = useCart();
+  const itemsRef = useRef(items);
+  itemsRef.current = items;
 
   return useMutation({
-    mutationFn: (input: CheckoutInputType) => checkout(input, cartItems),
+    mutationFn: (input: CheckoutInputType) => checkout(input, itemsRef.current),
     onSuccess: (data) => {
       resetCart();
       toast.success('سفارش شما با موفقیت ثبت شد');

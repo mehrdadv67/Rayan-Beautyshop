@@ -52,14 +52,16 @@ export const useSignUpMutation = () => {
   return useMutation({
     mutationFn: (input: SignUpInputType) => signUp(input),
     onSuccess: (data) => {
-      authorize()
       closeModal()
       if (data?.requiresConfirmation) {
         toast.success('ثبت نام موفق! لطفا ایمیل خود را بررسی کنید.')
         router.push('/signin')
       } else if (data?.user) {
+        authorize()
         toast.success('ثبت نام موفق!')
         router.push('/my-account')
+      } else {
+        toast.error('ثبت نام ناموفق. لطفا دوباره تلاش کنید.')
       }
     },
     onError: (error: any) => {

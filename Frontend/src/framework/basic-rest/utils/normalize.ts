@@ -330,6 +330,7 @@ export function normalizeOrder(item: any): Order {
     shipping_fee: Number(item?.shipping_fee ?? 0),
     payment_gateway: item?.payment_gateway ?? "",
     status: item?.status,
+    created_at: item?.createdAt ?? item?.created_at,
   };
 }
 

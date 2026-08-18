@@ -146,3 +146,8 @@ export const strapiSearchParams = (text: string) =>
  */
 export const strapiMenuParams = () =>
   `?pagination[pageSize]=1000&publicationState=preview&populate=*`;
+
+export const API_TOKEN_HEADERS = {
+  'Content-Type': 'application/json',
+  Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+};

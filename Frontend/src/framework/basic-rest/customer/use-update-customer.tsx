@@ -16,7 +16,7 @@ export interface UpdateUserType {
 }
 
 async function updateUser(input: UpdateUserType) {
-  const { password, confirmPassword, displayName, ...rest } = input;
+  const { password, confirmPassword, displayName, email, phoneNumber, ...rest } = input;
 
   const res = await fetch('/api/customer/update', {
     method: 'POST',
@@ -24,7 +24,6 @@ async function updateUser(input: UpdateUserType) {
     credentials: 'include',
     body: JSON.stringify({
       ...rest,
-      username: displayName || rest.phoneNumber ? (displayName || rest.email) : rest.email,
     }),
   });
 

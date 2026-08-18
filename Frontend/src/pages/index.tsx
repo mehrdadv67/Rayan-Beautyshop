@@ -17,9 +17,6 @@ import Subscription from "@components/common/subscription";
 import NewArrivalsProductFeed from "@components/product/feeds/new-arrivals-product-feed";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticProps } from "next";
-import { API_ENDPOINTS, strapiBannerParams } from "@framework/utils/api-endpoints";
-import http from "@framework/utils/http";
-import { normalizeBanner, unwrapList } from "@framework/utils/normalize";
 import { ROUTES } from "@utils/routes";
 
 interface HomeProps {
@@ -74,11 +71,9 @@ Home.Layout = Layout;
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   try {
-    const { data } = await http.get(
-      `${API_ENDPOINTS.BANNERS}${strapiBannerParams("home_bottom")}`,
-    );
-
-    const banners = unwrapList(data, normalizeBanner);
+    const res = await fetch(`http://localhost:3000/api/banners?position=home_bottom`);
+    const data = await res.json();
+    const banners = data.banners || [];
 
     return {
       props: {

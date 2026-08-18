@@ -238,15 +238,15 @@ export const UIProvider: React.FC = (props) => {
       ? dispatch({ type: "CLOSE_SIDEBAR" })
       : dispatch({ type: "OPEN_SIDEBAR" });
   const closeSidebarIfPresent = () =>
-    state.displaySidebar && dispatch({ type: "CLOSE_CART" });
+    state.displaySidebar && dispatch({ type: "CLOSE_SIDEBAR" });
   const openCart = () => dispatch({ type: "OPEN_CART" });
   const closeCart = () => dispatch({ type: "CLOSE_CART" });
   const toggleCart = () =>
-    state.displaySidebar
+    state.displayCart
       ? dispatch({ type: "CLOSE_CART" })
       : dispatch({ type: "OPEN_CART" });
   const closeCartIfPresent = () =>
-    state.displaySidebar && dispatch({ type: "CLOSE_CART" });
+    state.displayCart && dispatch({ type: "CLOSE_CART" });
 
   const openFilter = () => dispatch({ type: "OPEN_FILTER" });
   const closeFilter = () => dispatch({ type: "CLOSE_FILTER" });

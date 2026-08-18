@@ -62,6 +62,25 @@ const buildFilterParams = (query: Record<string, any>): string => {
     );
   }
 
+  // Sort parameter mapping to Strapi v5 sort syntax
+  const sortBy = query.sort_by;
+  if (sortBy) {
+    switch (sortBy) {
+      case 'newest':
+        parts.push('sort[0]=createdAt:desc');
+        break;
+      case 'popularity':
+        parts.push('sort[0]=createdAt:desc');
+        break;
+      case 'low-high':
+        parts.push('sort[0]=display_price:asc');
+        break;
+      case 'high-low':
+        parts.push('sort[0]=display_price:desc');
+        break;
+    }
+  }
+
   return parts.length > 0 ? `&${parts.join("&")}` : "";
 };
 
@@ -70,8 +89,10 @@ const fetchProducts = async (query: Record<string, any> = {}) => {
     `${API_ENDPOINTS.PRODUCTS}${strapiListParams()}${buildFilterParams(query)}`
   );
   const products = unwrapList(data, normalizeProduct);
+  // Only shuffle when no explicit sort is requested
+  const sorted = query.sort_by ? products : shuffle(products);
   return {
-    data: shuffle(products),
+    data: sorted,
     paginatorInfo: {
       // Single-page list: there is no next page.
       nextPageUrl: undefined,
