@@ -31,7 +31,7 @@ const OrdersTable: React.FC = () => {
 
   const orders = activeTab === 'active' ? activeOrders : completedOrders;
 
-  if (error) return <p>خطا در بارگذاری سفارشات</p>;
+  const showError = error && cartEmpty;
 
   const formatDate = (dateStr?: string) => {
     if (!dateStr) return '—';
@@ -186,6 +186,10 @@ const OrdersTable: React.FC = () => {
           </span>
         </button>
       </div>
+
+      {showError && (
+        <p className="text-red-500 text-sm mb-4">خطا در بارگذاری سفارشات</p>
+      )}
 
       <motion.div
         layout

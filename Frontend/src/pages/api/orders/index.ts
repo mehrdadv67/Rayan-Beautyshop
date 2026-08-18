@@ -248,18 +248,28 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   if (req.method === 'GET') {
+    const cookies = parseCookies(req.headers.cookie)
+    const userJwt = cookies.strapi_jwt
+
+    if (!userJwt) {
+      return res.status(401).json({ error: 'Unauthorized' })
+    }
+
     const strapiRes = await fetch(
       `${process.env.STRAPI_URL}/api/orders?populate[0]=order_items&populate[1]=order_items.order_item&filters[customer][id][$eq]=${userId}`,
       {
         method: 'GET',
-        headers: API_TOKEN_HEADERS,
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userJwt}`,
+        },
       },
     )
 
     if (!strapiRes.ok) {
       const errorText = await strapiRes.text()
       console.error('Strapi orders fetch failed:', errorText)
-      return res.status(401).json({ error: 'Unauthorized' })
+      return res.status(strapiRes.status).json({ error: 'Failed to fetch orders' })
     }
 
     const strapiData = await strapiRes.json()
