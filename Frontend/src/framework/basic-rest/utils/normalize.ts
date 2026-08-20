@@ -384,6 +384,31 @@ export function unwrapList<T>(
   return arr.map(mapFn);
 }
 
+/** Normalize the global banner entry into a site configuration object. */
+export function normalizeSiteConfig(banner: any): {
+  logo: { url: string; width: number; height: number };
+  favicon: { url: string; width: number; height: number };
+} {
+  const logoMedia = banner?.logo;
+  const faviconMedia = banner?.favicon;
+  return {
+    logo: logoMedia
+      ? {
+          url: absoluteUrl(logoMedia.url),
+          width: logoMedia.width ?? 0,
+          height: logoMedia.height ?? 0,
+        }
+      : { url: "", width: 0, height: 0 },
+    favicon: faviconMedia
+      ? {
+          url: absoluteUrl(faviconMedia.url),
+          width: faviconMedia.width ?? 0,
+          height: faviconMedia.height ?? 0,
+        }
+      : { url: "", width: 0, height: 0 },
+  };
+}
+
 // ---------------------------------------------------------------------------
 // MENU TREE — rebuild nested shapes from Strapi's flat parent-linked list
 // ---------------------------------------------------------------------------

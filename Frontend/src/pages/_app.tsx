@@ -5,6 +5,7 @@ import { ManagedUIContext } from "@contexts/ui.context";
 import ManagedModal from "@components/common/modal/managed-modal";
 import ManagedDrawer from "@components/common/drawer/managed-drawer";
 import { StrapiProvider } from "@components/strapi-provider";
+import { SiteConfigProvider } from "@contexts/site-config.context";
 import { useEffect, useRef } from "react";
 import { QueryClient, QueryClientProvider, HydrationBoundary } from "@tanstack/react-query";
 import { ToastContainer } from "react-toastify";
@@ -58,15 +59,17 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
             {/* @ts-ignore */}
             <ManagedUIContext>
               <StrapiProvider>
-            <Layout pageProps={pageProps}>
-              <DefaultSeo />
-              <Component {...pageProps} key={router.route} />
-              <ToastContainer />
-            </Layout>
-            <ManagedModal />
-            <ManagedDrawer />
-          </StrapiProvider>
-        </ManagedUIContext>
+                <SiteConfigProvider>
+                  <Layout pageProps={pageProps}>
+                    <DefaultSeo />
+                    <Component {...pageProps} key={router.route} />
+                    <ToastContainer />
+                  </Layout>
+                  <ManagedModal />
+                  <ManagedDrawer />
+                </SiteConfigProvider>
+              </StrapiProvider>
+          </ManagedUIContext>
         </HydrationBoundary>
         {/* <ReactQueryDevtools /> */}
       </QueryClientProvider>

@@ -23,7 +23,8 @@
         "home_top",
         "home_middle",
         "home_bottom",
-        "exclusive"
+        "exclusive",
+        "global"
       ]
     },
     "desktopImage": {
@@ -44,6 +45,22 @@
         "files",
         "videos",
         "audios"
+      ]
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "favicon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
       ]
     },
     "link": {

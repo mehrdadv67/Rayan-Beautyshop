@@ -532,6 +532,7 @@ export interface ApiBannerBanner extends Struct.CollectionTypeSchema {
     desktopImage: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
+    favicon: Schema.Attribute.Media<'images' | 'files'>;
     isActive: Schema.Attribute.Boolean;
     link: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -540,11 +541,12 @@ export interface ApiBannerBanner extends Struct.CollectionTypeSchema {
       'api::banner.banner'
     > &
       Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images' | 'files'>;
     mobileImage: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
     position: Schema.Attribute.Enumeration<
-      ['home_top', 'home_middle', 'home_bottom', 'exclusive']
+      ['home_top', 'home_middle', 'home_bottom', 'exclusive', 'global']
     >;
     priority: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;

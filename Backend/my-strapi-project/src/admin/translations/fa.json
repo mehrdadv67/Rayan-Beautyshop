@@ -1,6 +1,4 @@
-import type { StrapiApp } from "@strapi/strapi/admin";
-
-const faTranslations = {
+{
   "Auth.components.Oops.title": "اوه...",
   "Auth.components.Oops.text": "حساب کاربری شما تعلیق شده است.",
   "Auth.components.Oops.text.admin": "اگر این یک اشتباه است، لطفاً با مدیر سیستم خود تماس بگیرید.",
@@ -71,88 +69,5 @@ const faTranslations = {
   "or": "یا",
   "Password": "رمز عبور",
   "Email": "ایمیل",
-  "Username": "نام کاربری",
-};
-
-export default {
-  config: {
-    locales: ["fa"],
-    auth: {
-      logo: "/uploads/Minimalist_ARMO_Beauty_Logo_Favicon_copy_a5ac6f2c69.png",
-    },
-    translations: {
-      fa: faTranslations,
-    },
-  },
-  register(app: StrapiApp) {
-    const originalRender = app.render.bind(app);
-    app.render = function () {
-      const originalGetItem = localStorage.getItem.bind(localStorage);
-      localStorage.getItem = function (key: string) {
-        if (key === "strapi-admin-language") {
-          return "fa";
-        }
-        return originalGetItem(key);
-      };
-      const result = originalRender();
-      localStorage.getItem = originalGetItem;
-
-      try {
-        const store = (app as any).store;
-        if (store && store.getState) {
-          const state = store.getState();
-          console.log("[ARMO] Store locale:", state?.admin_app?.language?.locale);
-        }
-      } catch (e) {
-        console.log("[ARMO] Could not read store:", e);
-      }
-
-      try {
-        if (app.store && app.store.dispatch) {
-          app.store.dispatch({ type: "admin/setLocale", payload: "fa" });
-        }
-      } catch (e) {
-        console.log("[ARMO] dispatch failed:", e);
-      }
-
-      return result;
-    };
-
-    const originalLoadTrads = app.loadTrads.bind(app);
-    app.loadTrads = async function (customTranslations) {
-      console.log("[ARMO] loadTrads called with keys:", Object.keys(customTranslations || {}));
-      await originalLoadTrads(customTranslations);
-      console.log("[ARMO] loadTrads done, translations keys:", Object.keys(app.configurations.translations || {}));
-      if (app.configurations.translations?.fa) {
-        console.log("[ARMO] fa translations sample:", Object.keys(app.configurations.translations.fa).slice(0, 5));
-      }
-    };
-  },
-  async bootstrap(app: StrapiApp) {
-    const forceRtl = () => {
-      const el = document.documentElement;
-      if (el.getAttribute("dir") !== "rtl") el.setAttribute("dir", "rtl");
-      if (el.getAttribute("lang") !== "fa") el.setAttribute("lang", "fa");
-    };
-
-    forceRtl();
-
-    const observer = new MutationObserver(forceRtl);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["dir", "lang"],
-    });
-
-    const style = document.createElement("style");
-    style.textContent = `
-      [data-strapi-layout="main"] {
-        direction: rtl;
-      }
-      [data-strapi-layout="main"] > aside,
-      [data-strapi-layout="main"] > nav {
-        order: 2;
-      }
-    `;
-    document.head.appendChild(style);
-  },
-};
+  "Username": "نام کاربری"
+}
