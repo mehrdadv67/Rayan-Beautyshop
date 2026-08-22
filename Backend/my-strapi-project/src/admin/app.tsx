@@ -68,10 +68,13 @@ const faTranslations = {
   "Usecase.other": "سایر",
   "global.finish": "پایان",
   "global.submit": "ارسال",
+  "global.password": "رمز عبور",
   "or": "یا",
   "Password": "رمز عبور",
   "Email": "ایمیل",
   "Username": "نام کاربری",
+  "i": "رمز عبور",
+  "is": "کاربران",
 };
 
 export default {
@@ -154,5 +157,16 @@ export default {
       }
     `;
     document.head.appendChild(style);
+
+    const originalSetTitle = document.title;
+    const overrideTitle = () => {
+      const current = document.title;
+      if (current.endsWith(" | Strapi")) {
+        document.title = current.replace(" | Strapi", " | داشبورد مدیریتی");
+      }
+    };
+    overrideTitle();
+    const titleObserver = new MutationObserver(overrideTitle);
+    titleObserver.observe(document.querySelector("title"), { childList: true, characterData: true, subtree: true });
   },
 };

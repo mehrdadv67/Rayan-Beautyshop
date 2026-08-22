@@ -516,7 +516,7 @@ export interface ApiAttributeAttribute extends Struct.CollectionTypeSchema {
 export interface ApiBannerBanner extends Struct.CollectionTypeSchema {
   collectionName: 'banners';
   info: {
-    displayName: 'Banner';
+    displayName: '\u0628\u0646\u0631';
     pluralName: 'banners';
     singularName: 'banner';
   };
@@ -750,7 +750,7 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
 export interface ApiPhonePhone extends Struct.CollectionTypeSchema {
   collectionName: 'phones';
   info: {
-    displayName: 'Phone Number';
+    displayName: '\u0634\u0645\u0627\u0631\u0647 \u062A\u0644\u0641\u0646 \u0647\u0627';
     pluralName: 'phones';
     singularName: 'phone';
   };
@@ -1429,7 +1429,7 @@ export interface PluginUsersPermissionsUser
   collectionName: 'users';
   info: {
     description: '';
-    displayName: 'User';
+    displayName: '\u06A9\u0627\u0631\u0628\u0631\u0627\u0646';
     pluralName: 'users';
     singularName: 'user';
   };

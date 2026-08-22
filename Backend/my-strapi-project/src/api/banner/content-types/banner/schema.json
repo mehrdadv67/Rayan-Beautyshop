@@ -4,7 +4,7 @@
   "info": {
     "singularName": "banner",
     "pluralName": "banners",
-    "displayName": "Banner"
+    "displayName": "بنر"
   },
   "options": {
     "draftAndPublish": true
