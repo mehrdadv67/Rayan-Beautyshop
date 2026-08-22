@@ -30,6 +30,11 @@
       "multiple": true,
       "allowedTypes": ["images"]
     },
+    "banner": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
     "parentCategory": {
       "type": "relation",
       "relation": "manyToOne",

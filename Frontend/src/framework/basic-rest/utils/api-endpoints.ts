@@ -39,6 +39,7 @@ export const API_ENDPOINTS = {
   ORDERS: "/api/orders",
   ORDER: "/api/orders",
   ORDER_ITEM: "/api/order-items",
+  FOOTER_MENUS: "/api/footer-menus",
 };
 
 /**
@@ -80,8 +81,8 @@ const ORDER_POPULATE =
   "&populate[1]=order_items.order_item" +
   "&populate[2]=order";
 
-/** Category populate: image (media) only. */
-const MEDIA_ONLY_POPULATE = "populate[0]=image";
+/** Category populate: image (media) + banner. */
+const MEDIA_ONLY_POPULATE = "populate[0]=image&populate[1]=banner";
 
 /** Brand populate: logo + coverImage media. */
 const BRAND_POPULATE =
@@ -146,6 +147,13 @@ export const strapiSearchParams = (text: string) =>
  */
 export const strapiMenuParams = () =>
   `?pagination[pageSize]=1000&publicationState=preview&populate=*`;
+
+/**
+ * Footer menu query: fetch all items with children and icon populated,
+ * sorted by priority ascending.
+ */
+export const strapiFooterMenuParams = () =>
+  `?pagination[pageSize]=100&populate[0]=icon&populate[1]=children&sort[0]=priority:asc`;
 
 export const API_TOKEN_HEADERS = {
   'Content-Type': 'application/json',

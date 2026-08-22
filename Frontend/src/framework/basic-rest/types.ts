@@ -58,6 +58,7 @@ export type Category = StrapiDocumentId & {
   slug: string;
   description?: string;
   image?: Attachment;
+  banner?: Attachment;
   sortOrder?: number;
   isActive?: boolean;
   parentCategory?: Category;
@@ -226,4 +227,16 @@ export type User = {
   blocked: boolean;
   createdAt: string;
   updatedAt: string;
+};
+
+export type FooterMenu = {
+  id: number | string;
+  documentId?: string;
+  title: string;
+  link?: string;
+  priority_type: "top" | "sub";
+  priority: number;
+  icon?: Attachment;
+  parent?: FooterMenu;
+  children?: FooterMenu[];
 };

@@ -2,10 +2,12 @@ import type { FC } from "react";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import Logo from "@components/ui/logo";
+import Image from "next/image";
 
 interface Props {
     className?: string;
     data: {
+        id: number | string;
         widgetTitle?: string;
         lists: {
             id: string;
@@ -22,7 +24,7 @@ interface Props {
 
 const WidgetLink: FC<Props> = ({ className, data }) => {
     const { widgetTitle, lists } = data;
-    const {  description } = data;
+    const { description } = data;
     const { t } = useTranslation("footer");
 
     return (

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { getDirection } from '@utils/get-direction';
+import { useCategoryBySlugQuery } from '@framework/category/get-category';
 interface CategoryBannerProps {
   className?: string;
 }
@@ -14,7 +15,10 @@ const CategoryBanner: React.FC<CategoryBannerProps> = ({
     query: { slug },
   } = useRouter();
 
-  const categoryTitle = slug?.toString().split('-').join('');
+  const categoryTitle = slug?.toString().split('-').join('') || '';
+  const { data: category } = useCategoryBySlugQuery(categoryTitle);
+  const banner = category?.banner?.original || category?.banner?.thumbnail;
+
   return (
     <div
       className={`bg-gray-200 rounded-md relative flex flex-row ${className}`}
@@ -22,14 +26,16 @@ const CategoryBanner: React.FC<CategoryBannerProps> = ({
       <div className="hidden md:flex">
         <Image
           src={
-            dir === 'rtl'
+            banner ||
+            (dir === 'rtl'
               ? '/assets/images/category-banner-reverse.jpg'
-              : '/assets/images/category-banner.jpg'
+              : '/assets/images/category-banner.jpg')
           }
-          alt="Category Banner"
+          alt={categoryTitle}
           width={1800}
           height={570}
           className="rounded-md"
+          priority
         />
       </div>
       <div className="relative md:absolute top-0 ltr:left-0 rtl:right-0 h-auto md:h-full w-full md:w-2/5 flex items-center py-2 sm:py-3.5">

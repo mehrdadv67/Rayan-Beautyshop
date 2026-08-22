@@ -8,6 +8,7 @@ import {
   ProductTag,
   ProductCollection,
   ProductVariant,
+  FooterMenu,
 } from "@framework/types";
 
 /**
@@ -210,6 +211,7 @@ export function normalizeBrand(item: any): Brand {
 /** Strapi category entry -> flat template Category. */
 export function normalizeCategory(item: any): Category {
   const image = splitMedia(item?.image);
+  const banner = item?.banner ? normalizeMedia(item.banner) : undefined;
   return {
     id: item?.id,
     documentId: item?.documentId,
@@ -218,6 +220,7 @@ export function normalizeCategory(item: any): Category {
     slug: item?.slug ?? "",
     description: item?.description,
     image: image.image,
+    banner,
     sortOrder: item?.sortOrder ?? item?.sort_order,
     isActive: item?.isActive ?? item?.is_active,
     productCount: item?.products?.length,
@@ -406,6 +409,26 @@ export function normalizeSiteConfig(banner: any): {
           height: faviconMedia.height ?? 0,
         }
       : { url: "", width: 0, height: 0 },
+  };
+}
+
+/**
+ * Strapi footer menu entry -> flat FooterMenu.
+ */
+export function normalizeFooterMenu(item: any): FooterMenu {
+  const icon = item?.icon ? normalizeMedia(item.icon) : undefined;
+  const children = Array.isArray(item?.children)
+    ? item.children.map(normalizeFooterMenu)
+    : [];
+  return {
+    id: item?.id,
+    documentId: item?.documentId,
+    title: item?.title ?? "",
+    link: item?.link ?? "",
+    priority_type: item?.priority_type ?? "top",
+    priority: item?.priority ?? 0,
+    icon,
+    children,
   };
 }
 
