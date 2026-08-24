@@ -7,11 +7,14 @@ import CookieBar from '@components/common/cookie-bar';
 import { useAcceptCookies } from '@utils/use-accept-cookies';
 import Button from '@components/ui/button';
 import { useTranslation } from 'next-i18next';
+import { siteSettings } from '@settings/site-settings';
+import { absoluteSiteUrl } from '@utils/site-url';
 
 export default function Layout({ children }: React.PropsWithChildren<{}>) {
-	const { acceptedCookies, onAcceptCookies } = useAcceptCookies();
-	const { t } = useTranslation('common');
-	return (
+ 	const { acceptedCookies, onAcceptCookies } = useAcceptCookies();
+ 	const { t } = useTranslation('common');
+ 	const baseUrl = absoluteSiteUrl('/');
+ 	return (
 		<div className="flex flex-col min-h-screen">
 			<NextSeo
 				additionalMetaTags={[
@@ -20,26 +23,19 @@ export default function Layout({ children }: React.PropsWithChildren<{}>) {
 						content: 'width=device-width, initial-scale=1.0',
 					},
 				]}
-				title="ChawkBazar React - React Next E-commerce Template"
-				description="Fastest E-commerce template built with React, NextJS, TypeScript, @tanstack/react-query and Tailwind CSS."
-				canonical="https://chawkbazar.vercel.app/"
+				title={siteSettings.name}
+				description={siteSettings.description}
+				canonical={baseUrl}
 				openGraph={{
-					url: 'https://chawkbazar.vercel.app',
-					title: 'ChawkBazar React - React Next E-commerce Template',
-					description:
-						'Fastest E-commerce template built with React, NextJS, TypeScript, @tanstack/react-query and Tailwind CSS.',
+					url: baseUrl,
+					title: siteSettings.name,
+					description: siteSettings.description,
 					images: [
 						{
 							url: '/assets/images/og-image-01.png',
 							width: 800,
 							height: 600,
-							alt: 'Og Image Alt',
-						},
-						{
-							url: '/assets/images/og-image-02.png',
-							width: 900,
-							height: 800,
-							alt: 'Og Image Alt Second',
+							alt: siteSettings.name,
 						},
 					],
 				}}

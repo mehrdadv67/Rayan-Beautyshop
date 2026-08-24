@@ -12,11 +12,42 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { ROUTES } from "@utils/routes";
 import { GetStaticProps } from "next";
+import { NextSeo } from "next-seo";
+import Head from "next/head";
+import { siteSettings } from "@settings/site-settings";
+import { absoluteSiteUrl } from "@utils/site-url";
+import { breadcrumbJsonLd } from "@utils/json-ld";
 
 export default function Products() {
   const { t } = useTranslation("common");
+  const baseUrl = absoluteSiteUrl("/");
+  const productsUrl = `${baseUrl}/products`;
+
+  const breadcrumbLd = breadcrumbJsonLd({
+    items: [
+      { name: "خانه", url: baseUrl },
+      { name: "محصولات", url: productsUrl },
+    ],
+  });
+
   return (
     <>
+      <NextSeo
+        title={`محصولات | ${siteSettings.name}`}
+        description={siteSettings.description}
+        canonical={productsUrl}
+        openGraph={{
+          url: productsUrl,
+          title: `محصولات | ${siteSettings.name}`,
+          description: siteSettings.description,
+        }}
+      />
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+        />
+      </Head>
       <ShopDiscount />
       <Container>
         <div className={`flex pt-8 pb-16 lg:pb-20`}>

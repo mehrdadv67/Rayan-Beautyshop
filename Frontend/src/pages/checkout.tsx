@@ -33,12 +33,15 @@ export default function CheckoutPage({ bannerImage }: CheckoutPageProps) {
 CheckoutPage.Layout = Layout;
 
 export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
-  let bannerImage: string | undefined;
+  let bannerImage: string | null = null;
 
   try {
-    const res = await fetch(`http://localhost:3000/api/banners?position=checkout`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}/api/banners?filters[position][$eq]=checkout&populate=image`, {
+      headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}` },
+      cache: 'no-store',
+    });
     const data = await res.json();
-    const banners = data.banners || [];
+    const banners = data.data || [];
     if (banners.length > 0 && banners[0]?.image?.desktop?.url) {
       bannerImage = banners[0].image.desktop.url;
     }

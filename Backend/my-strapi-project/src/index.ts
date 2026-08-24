@@ -66,6 +66,7 @@ export default {
           "api::product-collection.product-collection.find",
           "api::product-collection.product-collection.findOne",
           "api::product.product.find",
+          "api::footer-menu.footer-menu.find",
         ];
 
         // Authenticated role: own profile + own orders + catalog reads.

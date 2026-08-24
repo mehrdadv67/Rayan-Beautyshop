@@ -17,6 +17,9 @@ import { SwiperSlide } from "swiper/react";
 import ProductMetaReview from "@components/product/product-meta-review";
 import { useSsrCompatible } from "@utils/use-ssr-compatible";
 import { Attachment } from "@framework/types";
+import Head from "next/head";
+import { absoluteSiteUrl } from "@utils/site-url";
+import { productJsonLd } from "@utils/json-ld";
 
 const productGalleryCarouselResponsive = {
   "768": {
@@ -93,6 +96,20 @@ const ProductSingleDetails: React.FC = () => {
   if (isLoading) return <p>Loading...</p>;
   if (!data) return <p>محصول یافت نشد.</p>;
 
+  const baseUrl = absoluteSiteUrl("/");
+  const productUrl = `${baseUrl}/products/${data.slug}`;
+  const productLd = productJsonLd({
+    name: data.name,
+    description: data.description,
+    url: productUrl,
+    image: data.image?.original || data.gallery?.[0]?.original,
+    brand: data.brand?.name,
+    category: data.category?.name,
+    sku: data.sku,
+    price: data.price,
+    currency: "IRR",
+  });
+
   function addToCart() {
     if (!isSelected) return;
     // to show btn feedback while product carting
@@ -128,7 +145,14 @@ const ProductSingleDetails: React.FC = () => {
   }
 
   return (
-    <div className='block lg:grid grid-cols-9 gap-x-10 xl:gap-x-14 pt-7 pb-10 lg:pb-14 2xl:pb-20 items-start'>
+    <div>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(productLd) }}
+        />
+      </Head>
+      <div className='block lg:grid grid-cols-9 gap-x-10 xl:gap-x-14 pt-7 pb-10 lg:pb-14 2xl:pb-20 items-start'>
       {width < 1025 ? (
         <Carousel
           pagination={{
@@ -276,6 +300,7 @@ const ProductSingleDetails: React.FC = () => {
 
         <ProductMetaReview data={data} />
       </div>
+    </div>
     </div>
   );
 };
