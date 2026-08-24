@@ -43,6 +43,9 @@
   "placeholder-email": "הכנס את האימייל שלך",
   "placeholder-subject": "הזן את הנושא שלך",
   "placeholder-message": "כתוב את ההודעה שלך כאן",
-  "placeholder-email-subscribe": "כתוב את המייל שלך כאן",
+  "placeholder-email-subscribe": "הזן את מספר הטלפון שלך",
+  "phone-subscribe-required": "נדרש מספר טלפון",
+  "phone-subscribe-error": "אנא ספק מספר טלפון תקף",
+  "placeholder-phone-subscribe": "הזן את מספר הטלפון שלך",
   "placeholder-order-notes": "הערות לגבי ההזמנה שלך, למשל. הערות מיוחדות למשלוח"
 }

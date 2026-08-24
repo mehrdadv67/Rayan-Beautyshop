@@ -546,7 +546,16 @@ export interface ApiBannerBanner extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios'
     >;
     position: Schema.Attribute.Enumeration<
-      ['home_top', 'home_middle', 'home_bottom', 'exclusive', 'global']
+      [
+        'home_top',
+        'home_middle',
+        'home_bottom',
+        'exclusive',
+        'global',
+        'faq',
+        'terms',
+        'checkout',
+      ]
     >;
     priority: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
@@ -628,10 +637,40 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiDiscountSubscriptionDiscountSubscription
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'discount_subscriptions';
+  info: {
+    displayName: '\u0627\u0634\u062A\u0631\u0627\u06A9\u200C\u0647\u0627\u06CC \u062A\u062E\u0641\u06CC\u0641';
+    pluralName: 'discount-subscriptions';
+    singularName: 'discount-subscription';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::discount-subscription.discount-subscription'
+    > &
+      Schema.Attribute.Private;
+    phone: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFooterMenuFooterMenu extends Struct.CollectionTypeSchema {
   collectionName: 'footer_menus';
   info: {
-    displayName: 'Footer Menu';
+    displayName: '\u067E\u0627\u0648\u0631\u0642\u06CC \u0635\u0641\u062D\u0627\u062A';
     pluralName: 'footer-menus';
     singularName: 'footer-menu';
   };
@@ -1547,6 +1586,7 @@ declare module '@strapi/strapi' {
       'api::banner.banner': ApiBannerBanner;
       'api::brand.brand': ApiBrandBrand;
       'api::category.category': ApiCategoryCategory;
+      'api::discount-subscription.discount-subscription': ApiDiscountSubscriptionDiscountSubscription;
       'api::footer-menu.footer-menu': ApiFooterMenuFooterMenu;
       'api::menu-item.menu-item': ApiMenuItemMenuItem;
       'api::order-item.order-item': ApiOrderItemOrderItem;

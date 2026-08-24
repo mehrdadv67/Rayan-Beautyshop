@@ -43,6 +43,9 @@
   "placeholder-email": "输入您的电子邮件",
   "placeholder-subject": "输入您的主题",
   "placeholder-message": "在这里写您的消息",
-  "placeholder-email-subscribe": "在这里写你的电子邮件",
+  "placeholder-email-subscribe": "在这里输入您的电话号码",
+  "phone-subscribe-required": "需要电话号码",
+  "phone-subscribe-error": "请提供有效的电话号码",
+  "placeholder-phone-subscribe": "在这里输入您的电话号码",
   "placeholder-order-notes": "有关您的订单的注释，例如 交货特别说明"
 }

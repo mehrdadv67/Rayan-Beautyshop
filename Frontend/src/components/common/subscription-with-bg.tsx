@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { getDirection } from '@utils/get-direction';
+import { toast } from 'react-toastify';
 
 const data = {
   title: 'common:text-subscribe-heading',
@@ -17,11 +18,11 @@ interface Props {
 }
 
 type FormValues = {
-  subscription_email: string;
+  phone: string;
 };
 
 const defaultValues = {
-  subscription_email: '',
+  phone: '',
 };
 
 const SubscriptionWithBg: React.FC<Props> = ({
@@ -39,7 +40,24 @@ const SubscriptionWithBg: React.FC<Props> = ({
   const { t } = useTranslation();
   const { title, description, buttonText } = data;
   async function onSubmit(input: FormValues) {
-    console.log(input, 'data');
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: input.phone }),
+      })
+      if (!res.ok) {
+        const data = await res.json()
+        toast.error(data.error || 'خطا در ثبت شماره')
+        if (data.details) {
+          console.error('Strapi details:', data.details)
+        }
+        return
+      }
+      toast.success('ثبت شد')
+    } catch (err) {
+      console.error('Subscription error:', err)
+    }
   }
   return (
     <div
@@ -63,20 +81,19 @@ const SubscriptionWithBg: React.FC<Props> = ({
       >
         <div className="flex flex-col items-start justify-end sm:flex-row">
           <Input
-            placeholderKey="forms:placeholder-email-subscribe"
-            type="email"
+            placeholderKey="forms:placeholder-phone-subscribe"
+            type="tel"
             variant="solid"
             className="w-full"
             inputClassName="px-4 lg:px-7 h-12 lg:h-14 text-center ltr:sm:text-left rtl:sm:text-right bg-white"
-            {...register('subscription_email', {
-              required: 'forms:email-required',
+            {...register('phone', {
+              required: 'forms:phone-subscribe-required',
               pattern: {
-                value:
-                  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                message: 'forms:email-error',
+                value: /^09[0-9]{9}$/,
+                message: 'forms:phone-subscribe-error',
               },
             })}
-            errorKey={errors.subscription_email?.message}
+            errorKey={errors.phone?.message}
           />
           <Button className="flex-shrink-0 w-full mt-3 sm:mt-0 sm:w-auto ltr:sm:ml-2 rtl:sm:mr-2 md:h-full">
             <span className="lg:py-0.5">{t(`${buttonText}`)}</span>

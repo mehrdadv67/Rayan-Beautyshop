@@ -24,7 +24,10 @@
         "home_middle",
         "home_bottom",
         "exclusive",
-        "global"
+        "global",
+        "faq",
+        "terms",
+        "checkout"
       ]
     },
     "desktopImage": {

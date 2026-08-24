@@ -7,10 +7,14 @@ import CheckoutCard from "@components/checkout/checkout-card";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetServerSideProps } from "next";
 
-export default function CheckoutPage() {
+interface CheckoutPageProps {
+  bannerImage?: string;
+}
+
+export default function CheckoutPage({ bannerImage }: CheckoutPageProps) {
   return (
     <>
-      <PageHeader pageHeader="text-page-checkout" />
+      <PageHeader pageHeader="text-page-checkout" backgroundImage={bannerImage} />
       <Container>
         <div className="py-14 xl:py-20 px-0 2xl:max-w-screen-2xl xl:max-w-screen-xl mx-auto flex flex-col md:flex-row w-full">
           <div className="md:w-full lg:w-3/5 flex  h-full flex-col -mt-1.5">
@@ -29,8 +33,22 @@ export default function CheckoutPage() {
 CheckoutPage.Layout = Layout;
 
 export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+  let bannerImage: string | undefined;
+
+  try {
+    const res = await fetch(`http://localhost:3000/api/banners?position=checkout`);
+    const data = await res.json();
+    const banners = data.banners || [];
+    if (banners.length > 0 && banners[0]?.image?.desktop?.url) {
+      bannerImage = banners[0].image.desktop.url;
+    }
+  } catch (error) {
+    console.error('Failed to fetch checkout banner:', error);
+  }
+
   return {
     props: {
+      bannerImage,
       ...(await serverSideTranslations(locale!, [
         "common",
         "forms",

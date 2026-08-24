@@ -43,6 +43,9 @@
   "placeholder-email": "Geben Sie Ihre E-Mail-Adresse ein",
   "placeholder-subject": "Geben Sie ein Ihr Betreff",
   "placeholder-message": "Schreiben Sie Ihre Nachricht hier",
-  "placeholder-email-subscribe": "Schreiben Sie Ihre E-Mail hier",
+  "placeholder-email-subscribe": "Geben Sie Ihre Telefonnummer ein",
+  "phone-subscribe-required": "Telefonnummer ist erforderlich",
+  "phone-subscribe-error": "Bitte geben Sie eine gültige Telefonnummer ein",
+  "placeholder-phone-subscribe": "Geben Sie Ihre Telefonnummer ein",
   "placeholder-order-notes": "Notizen zu Ihrer Bestellung, z spezielle Hinweise zur Lieferung"
 }

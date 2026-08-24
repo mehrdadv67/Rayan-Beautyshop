@@ -7,15 +7,19 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import { GetStaticProps } from 'next';
 
+interface TermsProps {
+  bannerImage?: string;
+}
+
 function makeTitleToDOMId(title: string) {
   return title.toLowerCase().split(' ').join('_');
 }
 
-export default function TermsPage() {
+export default function TermsPage({ bannerImage }: TermsProps) {
   const { t } = useTranslation('terms');
   return (
     <>
-      <PageHeader pageHeader="text-page-terms-of-service" />
+      <PageHeader pageHeader="text-page-terms-of-service" backgroundImage={bannerImage} />
       <div className="mt-12 lg:mt-14 xl:mt-16 lg:py-1 xl:py-0 border-b border-gray-300 px-4 md:px-10 lg:px-7 xl:px-16 2xl:px-24 3xl:px-32 pb-9 md:pb-14 lg:pb-16 2xl:pb-20 3xl:pb-24">
         <Container>
           <div className="flex flex-col md:flex-row">
@@ -74,8 +78,22 @@ export default function TermsPage() {
 TermsPage.Layout = Layout;
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  let bannerImage: string | undefined;
+
+  try {
+    const res = await fetch(`http://localhost:3000/api/banners?position=terms`);
+    const data = await res.json();
+    const banners = data.banners || [];
+    if (banners.length > 0 && banners[0]?.image?.desktop?.url) {
+      bannerImage = banners[0].image.desktop.url;
+    }
+  } catch (error) {
+    console.error('Failed to fetch terms banner:', error);
+  }
+
   return {
     props: {
+      bannerImage,
       ...(await serverSideTranslations(locale!, [
         'common',
         'forms',

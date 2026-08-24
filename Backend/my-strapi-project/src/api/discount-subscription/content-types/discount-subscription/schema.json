@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "discount_subscriptions",
+  "info": {
+    "singularName": "discount-subscription",
+    "pluralName": "discount-subscriptions",
+    "displayName": "اشتراک‌های تخفیف"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "date": {
+      "type": "datetime",
+      "required": true
+    }
+  }
+}

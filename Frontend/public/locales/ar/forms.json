@@ -47,6 +47,9 @@
   "placeholder-email": "ایمیل خود را وارد کنید",
   "placeholder-subject": "موضوع خود را وارد کنید",
   "placeholder-message": "پیام خود را اینجا بنویسید",
-  "placeholder-email-subscribe": "ایمیل خود را اینجا وارد کنید",
+  "placeholder-email-subscribe": "شماره موبایل خود را وارد کنید",
+  "phone-subscribe-required": "شماره موبایل الزامی است",
+  "phone-subscribe-error": "لطفا شماره موبایل معتبر وارد کنید",
+  "placeholder-phone-subscribe": "شماره موبایل خود را وارد کنید",
   "placeholder-order-notes": "یادداشت‌های مربوط به سفارش شما، مثلاً یادداشت‌های ویژه برای تحویل"
 }
