@@ -32,9 +32,6 @@ export default function Newsletter() {
       if (!res.ok) {
         const data = await res.json()
         toast.error(data.error || 'خطا در ثبت شماره')
-        if (data.details) {
-          console.error('Strapi details:', data.details)
-        }
         return
       }
       setIsSuccess(true)
@@ -43,7 +40,6 @@ export default function Newsletter() {
         closeModal()
       }, 2000)
     } catch (err) {
-      console.error('Subscription error:', err)
       toast.error('خطا در ثبت شماره')
     }
   }

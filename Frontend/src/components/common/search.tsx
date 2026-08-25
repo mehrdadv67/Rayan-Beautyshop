@@ -94,15 +94,21 @@ export default function Search() {
                         ))}
                       </div>
                     ) : (
-                      data?.map((item: any, index: number) => (
-                        <div
-                          key={item.key}
-                          className=" p-5 border-b border-gray-150 relative last:border-b-0"
-                          onClick={closeSearch}
-                        >
-                          <SearchProduct item={item} key={index} />
+                      data?.length ? (
+                        data.map((item: any, index: number) => (
+                          <div
+                            key={item.key}
+                            className=" p-5 border-b border-gray-150 relative last:border-b-0"
+                            onClick={closeSearch}
+                          >
+                            <SearchProduct item={item} key={index} />
+                          </div>
+                        ))
+                      ) : (
+                        <div className="p-5 text-center text-gray-500">
+                          نتیجه‌ای یافت نشد
                         </div>
-                      ))
+                      )
                     )}
                   </div>
                 </Scrollbar>

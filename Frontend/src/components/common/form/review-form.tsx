@@ -43,8 +43,6 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ productId }) => {
         message: values.message,
         productId: productId || undefined,
       };
-      
-      console.log('Submitting review:', body);
 
       const res = await fetch('/api/reviews', {
         method: 'POST',
@@ -53,20 +51,18 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ productId }) => {
       });
 
       const result = await res.json();
-      console.log('Review response:', result);
 
       if (!res.ok) {
-        toast.error(result.details || result.error || 'خطا در ثبت نظر');
-        return;
-      }
-
-      toast.success('نظر شما با موفقیت ثبت شد');
-      reset();
-      setRating(0);
-    } catch (err) {
-      console.error('Review form error:', err);
-      toast.error('خطا در ثبت نظر');
+      toast.error(result.details || result.error || 'خطا در ثبت نظر');
+      return;
     }
+
+    toast.success('نظر شما با موفقیت ثبت شد');
+    reset();
+    setRating(0);
+  } catch (err) {
+    toast.error('خطا در ثبت نظر');
+  }
   }
 
   const ratingChanged = (newRating: number) => {

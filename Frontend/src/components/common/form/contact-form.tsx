@@ -31,16 +31,15 @@ const ContactForm: React.FC = () => {
 
       if (!res.ok) {
         const data = await res.json();
-        toast.error(data.error || 'خطا در ارسال پیام');
-        return;
-      }
-
-      toast.success('پیام شما با موفقیت ارسال شد');
-      reset();
-    } catch (err) {
-      console.error('Contact form error:', err);
-      toast.error('خطا در ارسال پیام');
+      toast.error(data.error || 'خطا در ارسال پیام');
+      return;
     }
+
+    toast.success('پیام شما با موفقیت ارسال شد');
+    reset();
+  } catch (err) {
+    toast.error('خطا در ارسال پیام');
+  }
   }
 
   return (

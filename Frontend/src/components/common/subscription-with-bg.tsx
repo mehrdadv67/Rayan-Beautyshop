@@ -49,14 +49,11 @@ const SubscriptionWithBg: React.FC<Props> = ({
       if (!res.ok) {
         const data = await res.json()
         toast.error(data.error || 'خطا در ثبت شماره')
-        if (data.details) {
-          console.error('Strapi details:', data.details)
-        }
         return
       }
       toast.success('ثبت شد')
     } catch (err) {
-      console.error('Subscription error:', err)
+      toast.error('خطا در ثبت شماره')
     }
   }
   return (

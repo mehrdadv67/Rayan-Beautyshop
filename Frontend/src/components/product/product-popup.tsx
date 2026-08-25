@@ -94,7 +94,6 @@ export default function ProductPopup() {
       selectedVariant?.salePrice,
     );
     addItemToCart(item, quantity);
-    console.log(item, "item");
   }
 
   function navigateToProductPage() {

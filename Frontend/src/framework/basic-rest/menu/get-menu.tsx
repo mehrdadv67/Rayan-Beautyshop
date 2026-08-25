@@ -31,16 +31,6 @@ const fetchMenu = async (): Promise<SiteMenu> => {
   );
   const all: any[] = data?.data ?? [];
 
-  console.log("Total:", all.length);
-
-  console.log(
-    all.map((i) => ({
-      id: i.id,
-      label: i.label,
-      parent: i.parent?.label ?? null,
-    })),
-  );
-
   const desktopItems = all.filter(
     (i) => i.menu_type === "desktop" || i.menu_type === "both",
   );
@@ -49,14 +39,6 @@ const fetchMenu = async (): Promise<SiteMenu> => {
 
   desktopItems.forEach((item) => {
     if (item.parent && !ids.has(item.parent.id)) {
-      console.log(
-        "Missing parent:",
-        item.label,
-        "parent id:",
-        item.parent.id,
-        "parent label:",
-        item.parent.label,
-      );
     }
   });
   const mobileItems = all.filter(
@@ -66,15 +48,6 @@ const fetchMenu = async (): Promise<SiteMenu> => {
   const menu = buildDesktopMenu(desktopItems).filter(
     (m) => m.label !== "جستجو" && m.path !== "/search",
   );
-
-  console.log(
-    menu.map((m) => ({
-      label: m.label,
-      columns: m.columns.length,
-      children: m.columns.flatMap((c) => c.columnItems).length,
-    })),
-  );
-  console.log("Top level count:", menu.length);
 
   return {
     menu,
