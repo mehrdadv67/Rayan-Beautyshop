@@ -68,8 +68,8 @@ const CheckoutForm: React.FC = () => {
             onClick={() => setEditable((v) => !v)}
           >
             {editable
-              ? 'قفل کردن مشخصات'
-              : 'تغییر مشخصات'}
+              ? t('text-lock-shipping-details')
+              : t('text-change-shipping-details')}
           </button>
         )}
       </div>

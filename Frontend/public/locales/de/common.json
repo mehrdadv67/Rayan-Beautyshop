@@ -67,6 +67,7 @@
   "text-shopping-cart": "Warenkorb",
   "text-empty-cart": "Ihr Warenkorb ist leer.",
   "text-proceed-to-checkout": "Zur Kasse gehen",
+  "text-continue-shopping": "Weiter einkaufen",
   "text-your-order": "Ihre Bestellung",
   "text-product": "Produkt",
   "text-products": "Produkte",
@@ -199,5 +200,8 @@
   "tab-kids-collection": "Kindercollectie",
   "tab-flash-sale": "Flash-uitverkoop",
   "tab-best-sellers": "Bestsellers",
-  "tab-featured": "Aanbevolen"
+  "tab-featured": "Aanbevolen",
+  "button-place-order": "Bestellung aufgeben",
+  "text-lock-shipping-details": "Details sperren",
+  "text-change-shipping-details": "Details ändern"
 }

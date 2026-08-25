@@ -46,13 +46,25 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
   }
   const router = useRouter();
   const dir = getDirection(router.locale);
+
   useEffect(() => {
     document.documentElement.dir = dir;
   }, [dir]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && "serviceWorker" in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        registrations.forEach((registration) => {
+          registration.unregister();
+        });
+      });
+    }
+  }, []);
+
   const Layout = (Component as any).Layout || Noop;
 
   return (
-    <AnimatePresence mode="wait" onExitComplete={handleExitComplete}>
+    <AnimatePresence onExitComplete={handleExitComplete}>
       <QueryClientProvider client={queryClientRef.current}>
         {/* @ts-ignore */}
         <HydrationBoundary state={pageProps.dehydratedState}>

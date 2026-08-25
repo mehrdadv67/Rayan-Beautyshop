@@ -64,6 +64,18 @@ export default function Cart() {
         className='flex flex-col px-5 pt-2 pb-5 md:px-7 md:pb-7'
         onClick={closeCart}
       >
+        {!isEmpty && (
+          <Link
+            href={ROUTES.CART}
+            className="w-full px-5 py-3 md:py-4 flex items-center justify-center rounded-md text-sm sm:text-base text-white bg-gray-500 hover:bg-gray-600 transition duration-300 mb-3"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <span className="w-full ltr:pr-5 rtl:pl-5 py-0.5">
+              {/* @ts-ignore */}
+              {t("text-view-cart")}
+            </span>
+          </Link>
+        )}
         <Link
           href={isEmpty === false ? ROUTES.CHECKOUT : "/"}
           className={cn(
@@ -72,6 +84,7 @@ export default function Cart() {
               ? "cursor-not-allowed bg-gray-400 hover:bg-gray-400"
               : "bg-heading hover:bg-gray-600"
           )}
+          onClick={(e) => e.stopPropagation()}
         >
           <span className='w-full ltr:pr-5 rtl:pl-5 -mt-0.5 py-0.5'>
             {/* @ts-ignore */}

@@ -63,9 +63,14 @@ export const CartProvider: React.FC = (props) => {
     };
   }, []);
 
-  // Persist cart changes to the server (fire-and-forget; ignored for guests).
+  // Persist cart changes to the server (fire-and-forget; only for logged-in users).
   React.useEffect(() => {
     if (!synced) return;
+    const jwt = document.cookie
+      .split('; ')
+      .find((row) => row.startsWith('strapi_jwt='))
+      ?.split('=')[1];
+    if (!jwt) return;
     fetch("/api/cart", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },

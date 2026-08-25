@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { Portal } from '@reach/portal';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   disableBodyScroll,
   enableBodyScroll,
@@ -65,60 +65,52 @@ export default function Modal({
       clearAllBodyScrollLocks();
     };
   }, [open]);
+  if (!open) return null;
   return (
     <Portal>
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            ref={modalRootRef}
-            key="modal"
-            initial="from"
-            animate="to"
-            exit="from"
-            variants={fadeInOut(0.25)}
+      <div
+        ref={modalRootRef}
+        className={cn(
+          'modal-root fixed bg-black bg-opacity-70 inset-0 z-50 cursor-pointer',
+          useBlurBackdrop && 'backdrop-filter backdrop-blur-sm',
+          rootClasses[variant],
+          rootClassName
+        )}
+      >
+        <motion.div
+          initial="from"
+          animate="to"
+          exit="from"
+          variants={zoomOutIn()}
+          className="relative w-full h-full mx-auto"
+        >
+          <div
             className={cn(
-              'modal-root fixed bg-black bg-opacity-70 inset-0 z-50 cursor-pointer',
-              useBlurBackdrop && 'backdrop-filter backdrop-blur-sm',
-              rootClasses[variant],
-              rootClassName
+              'w-full md:w-auto absolute left-1/2 transform -translate-x-1/2 shadow-xl',
+              containerClasses[variant],
+              containerClassName
             )}
           >
-            <motion.div
-              initial="from"
-              animate="to"
-              exit="from"
-              variants={zoomOutIn()}
-              className="relative w-full h-full mx-auto"
+            <button
+              onClick={onClose}
+              aria-label="Close panel"
+              className={cn(
+                'fixed z-10 inline-flex items-center justify-center w-7 h-7 md:w-8 md:h-8 rounded-full bg-white shadow text-gray-600 transition duration-200 focus:outline-none focus:text-gray-800 focus:shadow-md hover:text-gray-800 hover:shadow-md',
+                closeBtnClasses[variant]
+              )}
             >
-              <div
-                className={cn(
-                  'w-full md:w-auto absolute left-1/2 transform -translate-x-1/2 shadow-xl',
-                  containerClasses[variant],
-                  containerClassName
-                )}
-              >
-                <button
-                  onClick={onClose}
-                  aria-label="Close panel"
-                  className={cn(
-                    'fixed z-10 inline-flex items-center justify-center w-7 h-7 md:w-8 md:h-8 rounded-full bg-white shadow text-gray-600 transition duration-200 focus:outline-none focus:text-gray-800 focus:shadow-md hover:text-gray-800 hover:shadow-md',
-                    closeBtnClasses[variant]
-                  )}
-                >
-                  <IoClose className="text-xl" />
-                </button>
-                <div
-                  ref={modalInnerRef}
-                  className="h-full overflow-y-auto rounded-lg"
-                  style={{ maxHeight: 'calc(100vh - 120px)' }}
-                >
-                  {children}
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              <IoClose className="text-xl" />
+            </button>
+            <div
+              ref={modalInnerRef}
+              className="h-full overflow-y-auto rounded-lg"
+              style={{ maxHeight: 'calc(100vh - 120px)' }}
+            >
+              {children}
+            </div>
+          </div>
+        </motion.div>
+      </div>
     </Portal>
   );
 }

@@ -67,6 +67,7 @@
   "text-shopping-cart": "Carrito de compras",
   "text-empty-cart": "Su carrito está vacío.",
   "text-proceed-to-checkout": "Proceder a pagar",
+  "text-continue-shopping": "Seguir comprando",
   "text-your-order": "Su pedido",
   "text-product": "Producto",
   "text-products": "Productos",
@@ -199,5 +200,8 @@
   "tab-kids-collection": "Colección Niños",
   "tab-flash-sale": "Venta express",
   "tab-best-sellers": "Los más vendidos",
-  "tab-featured": "Presentado"
+  "tab-featured": "Presentado",
+  "button-place-order": "Realizar pedido",
+  "text-lock-shipping-details": "Bloquear detalles",
+  "text-change-shipping-details": "Cambiar detalles"
 }

@@ -67,6 +67,7 @@
   "text-shopping-cart": "עגלת קניות",
   "text-empty-cart": "העגלה שלך ריקה.",
   "text-proceed-to-checkout": "המשך לקופה",
+  "text-continue-shopping": "המשך קניות",
   "text-your-order": "ההזמנה שלך",
   "text-product": "מוצר",
   "text-products": "מוצרים",
@@ -199,5 +200,8 @@
   "tab-kids-collection": "אוסף ילדים",
   "tab-flash-sale": "מכירת פלאש",
   "tab-best-sellers": "רבי מכר",
-  "tab-featured": "מומלצים"
+  "tab-featured": "מומלצים",
+  "button-place-order": "בצע הזמנה",
+  "text-lock-shipping-details": "נעל פרטים",
+  "text-change-shipping-details": "שנה פרטים"
 }

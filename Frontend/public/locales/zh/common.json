@@ -67,6 +67,7 @@
   "text-shopping-cart": "购物车",
   "text-empty-cart": "您的购物车为空。",
   "text-proceed-to-checkout": "继续结帐",
+  "text-continue-shopping": "继续购物",
   "text-your-order": "您的订单",
   "text-product": "产品",
   "text-products": "產品",
@@ -199,5 +200,8 @@
   "tab-kids-collection": "兒童系列",
   "tab-flash-sale": "閃購",
   "tab-best-sellers": "最暢銷",
-  "tab-featured": "精選"
+  "tab-featured": "精選",
+  "button-place-order": "下单",
+  "text-lock-shipping-details": "锁定详情",
+  "text-change-shipping-details": "更改详情"
 }

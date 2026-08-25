@@ -67,6 +67,7 @@
   "text-shopping-cart": "سبد خرید",
   "text-empty-cart": "سبد خرید خالی است.",
   "text-proceed-to-checkout": "ادامه به پرداخت",
+  "text-continue-shopping": "مواصلة التسوق",
   "text-your-order": "سفارش شما",
   "text-product": "محصول",
   "text-products": "محصولات",
@@ -199,5 +200,8 @@
   "tab-kids-collection": "مجموعه کودکان",
   "tab-flash-sale": "فروش ویژه",
   "tab-best-sellers": "پرفروش ترین ها",
-  "tab-featured": "ویژه"
+  "tab-featured": "ویژه",
+  "button-place-order": "تأكيد الطلب",
+  "text-lock-shipping-details": "قفل التفاصيل",
+  "text-change-shipping-details": "تغيير التفاصيل"
 }
