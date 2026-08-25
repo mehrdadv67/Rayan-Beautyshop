@@ -5,6 +5,8 @@ import TextArea from '@components/ui/text-area';
 import ReactStars from 'react-rating-stars-component';
 import { CheckBox } from '@components/ui/checkbox';
 import { useTranslation } from 'next-i18next';
+import { toast } from 'react-toastify';
+import { useState } from 'react';
 
 interface ReviewFormValues {
   name: string;
@@ -13,19 +15,64 @@ interface ReviewFormValues {
   message: string;
 }
 
-const ReviewForm: React.FC = () => {
+interface ReviewFormProps {
+  productId?: string | number;
+}
+
+const ReviewForm: React.FC<ReviewFormProps> = ({ productId }) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<ReviewFormValues>();
-  function onSubmit(values: ReviewFormValues) {
-    console.log(values, 'review');
-  }
-  const ratingChanged = (newRating: any) => {
-    console.log(newRating);
-  };
+  const [rating, setRating] = useState(0);
   const { t } = useTranslation();
+
+  async function onSubmit(values: ReviewFormValues) {
+    if (!rating) {
+      toast.error('لطفا امتیاز خود را وارد کنید');
+      return;
+    }
+
+    try {
+      const body = {
+        name: values.name,
+        email: values.email,
+        rating,
+        message: values.message,
+        productId: productId || undefined,
+      };
+      
+      console.log('Submitting review:', body);
+
+      const res = await fetch('/api/reviews', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+
+      const result = await res.json();
+      console.log('Review response:', result);
+
+      if (!res.ok) {
+        toast.error(result.details || result.error || 'خطا در ثبت نظر');
+        return;
+      }
+
+      toast.success('نظر شما با موفقیت ثبت شد');
+      reset();
+      setRating(0);
+    } catch (err) {
+      console.error('Review form error:', err);
+      toast.error('خطا در ثبت نظر');
+    }
+  }
+
+  const ratingChanged = (newRating: number) => {
+    setRating(newRating);
+  };
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -39,6 +86,7 @@ const ReviewForm: React.FC = () => {
           </label>
           <ReactStars
             count={5}
+            value={rating}
             onChange={ratingChanged}
             size={20}
             color="#c6c6c6"

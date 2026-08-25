@@ -3,6 +3,7 @@ import Button from '@components/ui/button';
 import { useForm } from 'react-hook-form';
 import TextArea from '@components/ui/text-area';
 import { useTranslation } from 'next-i18next';
+import { toast } from 'react-toastify';
 
 interface ContactFormValues {
   name: string;
@@ -15,12 +16,33 @@ const ContactForm: React.FC = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<ContactFormValues>();
-  function onSubmit(values: ContactFormValues) {
-    console.log(values, 'contact');
-  }
   const { t } = useTranslation();
+
+  async function onSubmit(values: ContactFormValues) {
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        toast.error(data.error || 'خطا در ارسال پیام');
+        return;
+      }
+
+      toast.success('پیام شما با موفقیت ارسال شد');
+      reset();
+    } catch (err) {
+      console.error('Contact form error:', err);
+      toast.error('خطا در ارسال پیام');
+    }
+  }
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -64,9 +86,10 @@ const ContactForm: React.FC = () => {
         />
         <TextArea
           labelKey="forms:label-message"
-          {...register('message')}
+          {...register('message', { required: 'پیام الزامی است' })}
           className="relative mb-4"
           placeholderKey="forms:placeholder-message"
+          errorKey={errors.message?.message}
         />
         <div className="relative">
           <Button
