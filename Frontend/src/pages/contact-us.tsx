@@ -14,7 +14,7 @@ export default function ContactUsPage() {
     <>
       <PageHeader pageHeader="text-page-contact-us" />
       <Container>
-        <div className="my-14 lg:my-16 xl:my-20 px-0 pb-2 lg: xl:max-w-screen-xl mx-auto flex flex-col md:flex-row w-full">
+         <div className="my-14 lg:my-16 xl:my-20 px-0 pb-2 xl:max-w-screen-xl mx-auto flex flex-col md:flex-row w-full">
           <div className="md:w-full lg:w-2/5 2xl:w-2/6 flex flex-col h-full">
             <ContactInfoBlock />
           </div>
