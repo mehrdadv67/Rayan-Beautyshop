@@ -9,6 +9,7 @@ type PaginatedProduct = {
   data: Product[];
   paginatorInfo: {
     nextPageUrl: string | undefined;
+    total?: number;
   };
 };
 
@@ -62,7 +63,9 @@ const buildFilterParams = (query: Record<string, any>): string => {
     );
   }
 
-  // Sort parameter mapping to Strapi v5 sort syntax
+  // Remove price sort from server-side because Strapi `display_price`
+  // may not reflect the actual rendered price (variant salePrice/price
+  // fallback). We'll sort client-side after fetch.
   const sortBy = query.sort_by;
   if (sortBy) {
     switch (sortBy) {
@@ -71,12 +74,6 @@ const buildFilterParams = (query: Record<string, any>): string => {
         break;
       case 'popularity':
         parts.push('sort[0]=createdAt:desc');
-        break;
-      case 'low-high':
-        parts.push('sort[0]=display_price:asc');
-        break;
-      case 'high-low':
-        parts.push('sort[0]=display_price:desc');
         break;
     }
   }
@@ -89,13 +86,41 @@ const fetchProducts = async (query: Record<string, any> = {}) => {
     `${API_ENDPOINTS.PRODUCTS}${strapiListParams()}${buildFilterParams(query)}`
   );
   const products = unwrapList(data, normalizeProduct);
-  // Only shuffle when no explicit sort is requested
-  const sorted = query.sort_by ? products : shuffle(products);
+
+  let sorted = products;
+  if (query.sort_by === 'low-high' || query.sort_by === 'high-low') {
+    sorted = [...products].sort((a, b) => {
+      const defaultVariantA = a?.variants?.find((v: any) => v.isDefault) ?? a?.variants?.[0];
+      const defaultVariantB = b?.variants?.find((v: any) => v.isDefault) ?? b?.variants?.[0];
+      const priceA =
+        a.display_price ??
+        defaultVariantA?.salePrice ??
+        defaultVariantA?.price ??
+        a.price ??
+        0;
+      const priceB =
+        b.display_price ??
+        defaultVariantB?.salePrice ??
+        defaultVariantB?.price ??
+        b.price ??
+        0;
+      const numA = Number(priceA) || 0;
+      const numB = Number(priceB) || 0;
+      return query.sort_by === 'low-high' ? numA - numB : numB - numA;
+    });
+  } else if (!query.sort_by) {
+    sorted = shuffle(products);
+  }
+
+  const total =
+    data?.meta?.pagination?.total ??
+    products.length;
+
   return {
     data: sorted,
     paginatorInfo: {
-      // Single-page list: there is no next page.
       nextPageUrl: undefined,
+      total,
     },
   };
 };

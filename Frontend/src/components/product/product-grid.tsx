@@ -8,9 +8,12 @@ import { useTranslation } from "next-i18next";
 import { Product } from "@framework/types";
 interface ProductGridProps {
   className?: string;
+  itemCount?: number;
+  query?: Record<string, any>;
 }
-export const ProductGrid: FC<ProductGridProps> = ({ className = "" }) => {
-  const { query } = useRouter();
+export const ProductGrid: FC<ProductGridProps> = ({ className = "", itemCount, query: queryProp }) => {
+  const router = useRouter();
+  const query = queryProp ?? router.query;
   const {
     isFetching: isLoading,
     isFetchingNextPage: loadingMore,
@@ -20,6 +23,15 @@ export const ProductGrid: FC<ProductGridProps> = ({ className = "" }) => {
     error,
   } = useProductsQuery({ limit: 10, ...query });
   const { t } = useTranslation("common");
+
+  const totalItems =
+    itemCount ??
+    data?.pages?.reduce(
+      (sum, page) => sum + (page?.data?.length || 0),
+      0
+    ) ??
+    0;
+
   if (error) return <p>{error.message}</p>;
 
   return (

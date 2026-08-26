@@ -12,9 +12,13 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { ROUTES } from "@utils/routes";
 import { useTranslation } from "next-i18next";
 import { GetStaticProps } from "next";
+import { useRouter } from "next/router";
+import { useMemo } from "react";
 
 export default function Shop() {
   const { t } = useTranslation("common");
+  const { query } = useRouter();
+  const searchQuery = typeof query.q === "string" ? query.q : "";
 
   return (
     <>
@@ -45,8 +49,10 @@ export default function Shop() {
           </div>
 
           <div className="w-full ltr:lg:-ml-9 rtl:lg:-mr-9">
-            <SearchTopBar />
-            <ProductGrid />
+            <SearchTopBar
+              title={searchQuery ? `جستجو: ${searchQuery}` : undefined}
+            />
+            <ProductGrid query={query} />
           </div>
         </div>
         <Subscription />
