@@ -182,7 +182,6 @@
   "forgot-password-helper": "ما یک لینک برای بازنشانی رمز عبور برای شما ارسال خواهیم کرد",
   "button-load-more": "بارگذاری بیشتر",
   "button-go-home": "رفتن به خانه",
-  "button-place-order": "ثبت سفارش",
   "button-send-message": "ارسال پیام",
   "button-submit": "ارسال",
   "button-view": "مشاهده",
@@ -201,7 +200,7 @@
   "tab-flash-sale": "فروش ویژه",
   "tab-best-sellers": "پرفروش ترین ها",
   "tab-featured": "ویژه",
-  "button-place-order": "تأكيد الطلب",
+  "button-place-order": "ثبت سفارش",
   "text-lock-shipping-details": "قفل التفاصيل",
   "text-change-shipping-details": "تغيير التفاصيل"
 }

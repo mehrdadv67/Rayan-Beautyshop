@@ -1,5 +1,5 @@
 import Link from "@components/ui/link";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useWindowSize } from "@utils/use-window-size";
 import cn from "classnames";
 import { LinkProps } from "next/link";

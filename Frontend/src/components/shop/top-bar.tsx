@@ -33,7 +33,7 @@ export default function SearchTopBar({ title, itemCount }: SearchTopBarProps = {
       </button>
       <div className="flex items-center justify-end">
         <div className="flex-shrink-0 text-body text-xs md:text-sm leading-4 ltr:pr-4 rtl:pl-4 ltr:md:mr-6 rtl:md:ml-6 ltr:pl-2 rtl:pr-2 hidden lg:block">
-          {typeof itemCount === 'number' ? `${itemCount.toLocaleString()} ${t('text-items')}` : '9,608 {t("text-items")}'}
+          {typeof itemCount === 'number' ? `${itemCount.toLocaleString()} ${t('text-items')}` : ''}
         </div>
         <ListBox
           options={[

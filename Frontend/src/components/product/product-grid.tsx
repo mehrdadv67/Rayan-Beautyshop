@@ -34,6 +34,8 @@ export const ProductGrid: FC<ProductGridProps> = ({ className = "", itemCount, q
 
   if (error) return <p>{error.message}</p>;
 
+  const hasProducts = data?.pages?.some((page) => page?.data?.length > 0);
+
   return (
     <>
       <div
@@ -41,7 +43,7 @@ export const ProductGrid: FC<ProductGridProps> = ({ className = "", itemCount, q
       >
         {isLoading && !data?.pages?.length ? (
           <ProductFeedLoader limit={20} uniqueKey="search-product" />
-        ) : (
+        ) : hasProducts ? (
           data?.pages?.map((page) => {
             return page?.data?.map((product: Product) => (
               <ProductCard
@@ -51,6 +53,10 @@ export const ProductGrid: FC<ProductGridProps> = ({ className = "", itemCount, q
               />
             ));
           })
+        ) : (
+          <div className="col-span-full text-center text-gray-500 py-10">
+            {t('text-no-products-found', 'هیچ محصولی یافت نشد')}
+          </div>
         )}
       </div>
       <div className="text-center pt-8 xl:pt-14">

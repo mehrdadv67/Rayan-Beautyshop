@@ -1,5 +1,5 @@
 import cn from "classnames";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import type { FC } from "react";
 import { useUI } from "@contexts/ui.context";
 import usePrice from "@framework/product/use-price";

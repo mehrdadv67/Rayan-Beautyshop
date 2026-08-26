@@ -36,10 +36,13 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   let bannerImage: string | null = null;
 
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}/api/banners?filters[position][$eq]=checkout&populate=image`, {
-      headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}` },
-      cache: 'no-store',
-    });
+    const res = await fetch(
+      `${process.env.STRAPI_URL || "http://localhost:1337"}/api/banners?filters[position][$eq]=checkout&populate=image`,
+      {
+        headers: { Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}` },
+        cache: "no-store",
+      }
+    );
     const data = await res.json();
     const banners = data.data || [];
     if (banners.length > 0 && banners[0]?.image?.desktop?.url) {

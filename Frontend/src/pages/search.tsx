@@ -13,7 +13,9 @@ import { ROUTES } from "@utils/routes";
 import { useTranslation } from "next-i18next";
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
-import { useMemo } from "react";
+import { NextSeo } from "next-seo";
+import { siteSettings } from "@settings/site-settings";
+import { absoluteSiteUrl } from "@utils/site-url";
 
 export default function Shop() {
   const { t } = useTranslation("common");
@@ -22,6 +24,11 @@ export default function Shop() {
 
   return (
     <>
+      <NextSeo
+        title={searchQuery ? `${searchQuery} | ${siteSettings.name}` : `${t('text-casual-wear')} | ${siteSettings.name}`}
+        description={siteSettings.description}
+        canonical={absoluteSiteUrl(`/search${searchQuery ? `?q=${encodeURIComponent(searchQuery)}` : ''}`)}
+      />
       <ShopDiscount />
       <Container>
         <div className={`flex pt-8 pb-16 lg:pb-20`}>
@@ -50,7 +57,7 @@ export default function Shop() {
 
           <div className="w-full ltr:lg:-ml-9 rtl:lg:-mr-9">
             <SearchTopBar
-              title={searchQuery ? `جستجو: ${searchQuery}` : undefined}
+              title={searchQuery ? `${t('text-search')}: ${searchQuery}` : undefined}
             />
             <ProductGrid query={query} />
           </div>

@@ -81,10 +81,13 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   let bannerImage: string | null = null;
 
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}/api/banners?filters[position][$eq]=terms&populate=image`, {
-      headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}` },
-      next: { revalidate: 3600 },
-    });
+    const res = await fetch(
+      `${process.env.STRAPI_URL || "http://localhost:1337"}/api/banners?filters[position][$eq]=terms&populate=image`,
+      {
+        headers: { Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}` },
+        next: { revalidate: 3600 },
+      }
+    );
     const data = await res.json();
     const banners = data.data || [];
     if (banners.length > 0 && banners[0]?.image?.desktop?.url) {

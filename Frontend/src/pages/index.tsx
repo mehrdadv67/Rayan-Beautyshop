@@ -71,9 +71,16 @@ Home.Layout = Layout;
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   try {
-    const res = await fetch(`http://localhost:3000/api/banners?position=home_bottom`);
+    const res = await fetch(
+      `${process.env.STRAPI_URL || "http://localhost:1337"}/api/banners?filters[position][$eq]=home_bottom&populate=image`,
+      {
+        headers: { Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}` },
+        next: { revalidate: 3600 },
+      }
+    );
     const data = await res.json();
-    const banners = data.banners || [];
+    const banners = data.data || [];
+    const bottomBanners = banners.slice(0, 2);
 
     return {
       props: {
@@ -83,7 +90,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
           "menu",
           "footer",
         ])),
-        bottomBanners: banners.slice(0, 2),
+        bottomBanners,
       },
     };
   } catch (error) {

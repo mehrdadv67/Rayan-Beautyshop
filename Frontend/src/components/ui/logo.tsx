@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "@components/ui/link";
 import cn from "classnames";
 import { siteSettings } from "@settings/site-settings";
@@ -30,8 +30,7 @@ const Logo: React.FC<React.AnchorHTMLAttributes<{}>> = ({
         alt={siteSettings.logo.alt}
         height={50}
         width={100}
-        layout='fixed'
-        loading='eager'
+        loading="eager"
       />
     </Link>
   );
