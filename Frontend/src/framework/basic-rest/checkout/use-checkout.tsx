@@ -29,7 +29,6 @@ async function checkout(input: CheckoutInputType, cartItems: any[]) {
       ...input,
       products: cartItems,
       total,
-      shippingFee: 0,
       paymentMethod: 'cash_on_delivery',
     }),
   });

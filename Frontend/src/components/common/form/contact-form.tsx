@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import TextArea from '@components/ui/text-area';
 import { useTranslation } from 'next-i18next';
 import { toast } from 'react-toastify';
+import { csrfHeaders } from '@utils/csrf-client';
 
 interface ContactFormValues {
   name: string;
@@ -25,20 +26,20 @@ const ContactForm: React.FC = () => {
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...csrfHeaders() },
         body: JSON.stringify(values),
       });
 
       if (!res.ok) {
         const data = await res.json();
-      toast.error(data.error || 'خطا در ارسال پیام');
+      toast.error(data.error || t('common:contact-error'));
       return;
     }
 
-    toast.success('پیام شما با موفقیت ارسال شد');
+      toast.success(t('common:contact-success'));
     reset();
   } catch (err) {
-    toast.error('خطا در ارسال پیام');
+    toast.error(t('common:contact-error'));
   }
   }
 
@@ -85,7 +86,7 @@ const ContactForm: React.FC = () => {
         />
         <TextArea
           labelKey="forms:label-message"
-          {...register('message', { required: 'پیام الزامی است' })}
+          {...register('message', { required: t('forms:message-required') })}
           className="relative mb-4"
           placeholderKey="forms:placeholder-message"
           errorKey={errors.message?.message}

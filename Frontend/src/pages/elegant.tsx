@@ -28,10 +28,18 @@ import ExclusiveBlock from "@containers/exclusive-block";
 import { bannerDataThree } from "@framework/static/banner";
 import ProductsTopBlock from "@containers/products-top-block";
 import { homeElegantHeroSlider as banners } from "@framework/static/banner";
+import { NextSeo } from "next-seo";
+import { siteSettings } from "@settings/site-settings";
+import { absoluteSiteUrl } from "@utils/site-url";
 
 export default function Home() {
   return (
     <>
+      <NextSeo
+        title={siteSettings.name}
+        description={siteSettings.description}
+        canonical={absoluteSiteUrl('/elegant')}
+      />
       <HeroSlider data={banners} variantRounded="default" variant="fullWidth" />
       <Container>
         <BannerBlock

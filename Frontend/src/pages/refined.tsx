@@ -28,10 +28,18 @@ import HeroWithCategory from '@containers/hero-with-category';
 import Instagram from '@components/common/instagram';
 import ProductsFeatured from '@containers/products-featured';
 import { homeEightHeroBanner as heroBanner } from '@framework/static/banner';
+import { NextSeo } from "next-seo";
+import { siteSettings } from "@settings/site-settings";
+import { absoluteSiteUrl } from "@utils/site-url";
 
 export default function Home() {
   return (
     <>
+      <NextSeo
+        title={siteSettings.name}
+        description={siteSettings.description}
+        canonical={absoluteSiteUrl('/refined')}
+      />
       <Container>
         <HeroWithCategory
           bannerData={heroBanner}

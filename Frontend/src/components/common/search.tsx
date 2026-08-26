@@ -11,8 +11,10 @@ import {
 } from "body-scroll-lock";
 import Scrollbar from "@components/common/scrollbar";
 import SearchProduct from "@components/common/search-product";
+import { useTranslation } from "next-i18next";
 
 export default function Search() {
+  const { t } = useTranslation();
   const { displaySearch, closeSearch } = useUI();
   const [searchText, setSearchText] = React.useState("");
   const { data, isLoading } = useSearchQuery({
@@ -106,7 +108,7 @@ export default function Search() {
                         ))
                       ) : (
                         <div className="p-5 text-center text-gray-500">
-                          نتیجه‌ای یافت نشد
+                          {t('common:text-no-search-results')}
                         </div>
                       )
                     )}

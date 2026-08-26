@@ -51,5 +51,9 @@
   "phone-subscribe-required": "شماره موبایل الزامی است",
   "phone-subscribe-error": "لطفا شماره موبایل معتبر وارد کنید",
   "placeholder-phone-subscribe": "شماره موبایل خود را وارد کنید",
-  "placeholder-order-notes": "Notes about your order, e.g. special notes for delivery"
+  "placeholder-order-notes": "Notes about your order, e.g. special notes for delivery",
+  "message-required": "پیام الزامی است",
+  "name-required-persian": "نام الزامی است",
+  "email-required-persian": "ایمیل الزامی است",
+  "email-invalid-persian": "ایمیل نامعتبر است"
 }

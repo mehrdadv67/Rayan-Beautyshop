@@ -18,6 +18,9 @@ import NewArrivalsProductFeed from "@components/product/feeds/new-arrivals-produ
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticProps } from "next";
 import { ROUTES } from "@utils/routes";
+import { NextSeo } from "next-seo";
+import { siteSettings } from "@settings/site-settings";
+import { absoluteSiteUrl } from "@utils/site-url";
 
 interface HomeProps {
   bottomBanners: any[];
@@ -26,6 +29,11 @@ interface HomeProps {
 export default function Home({ bottomBanners }: HomeProps) {
   return (
     <>
+      <NextSeo
+        title={siteSettings.name}
+        description={siteSettings.description}
+        canonical={absoluteSiteUrl('/')}
+      />
       <BannerBlockStrapi position='home_top' />
       <Container>
         <ProductsFlashSaleBlock date={"2024-12-01T01:02:03"} />

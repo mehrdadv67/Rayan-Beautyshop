@@ -63,7 +63,7 @@ const ListMenu = ({
             <div className='grid grid-cols-2 gap-3 p-6 border-t border-gray-300 2xl:py-8 2xl:px-7'>
               {hasBanners?.map((banner: any) => (
                 <Link href={banner.path} key={banner.id}>
-                  <img className='' src={banner.image.src} alt={banner.label} />
+                  <Image className='' src={banner.image.src} alt={banner.label} width={150} height={60} />
                 </Link>
               ))}
             </div>

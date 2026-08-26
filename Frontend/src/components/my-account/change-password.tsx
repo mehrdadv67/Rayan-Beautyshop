@@ -12,18 +12,21 @@ import { useTranslation } from "next-i18next";
 const defaultValues = {
 	oldPassword: "",
 	newPassword: "",
+	confirmPassword: "",
 };
 
 const ChangePassword: React.FC = () => {
 	const { mutate: changePassword, isPending } = useChangePasswordMutation();
 
-	const {
+  const {
 		register,
 		handleSubmit,
 		formState: { errors },
+		watch,
 	} = useForm<ChangePasswordInputType>({
 		defaultValues,
 	});
+	const newPassword = watch("newPassword");
 	function onSubmit(input: ChangePasswordInputType) {
 		changePassword(input);
 	}
@@ -55,14 +58,23 @@ const ChangePassword: React.FC = () => {
 							})}
 							className="mb-4"
 						/>
-						<PasswordInput
-							labelKey="forms:label-new-password"
-							errorKey={errors.newPassword?.message}
-							{...register("newPassword", {
-								required: "forms:label-new-password",
-							})}
-							className="mb-4"
-						/>
+					<PasswordInput
+						labelKey="forms:label-new-password"
+						errorKey={errors.newPassword?.message}
+						{...register("newPassword", {
+							required: "forms:label-new-password",
+						})}
+						className="mb-4"
+					/>
+					<PasswordInput
+						labelKey="forms:label-confirm-password"
+						errorKey={errors.confirmPassword?.message}
+						{...register("confirmPassword", {
+							required: "forms:password-confirm-required",
+							validate: (value) => value === newPassword || "forms:password-confirm-match",
+						})}
+						className="mb-4"
+					/>
 
 						<div className="relative">
 							<Button

@@ -1,4 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { rateLimit, getRateLimitIdentifier } from '@/lib/rate-limit';
+import { setCsrfCookie, validateCsrf } from '@/lib/csrf';
 
 const API_TOKEN_HEADERS = {
   'Content-Type': 'application/json',
@@ -6,9 +8,20 @@ const API_TOKEN_HEADERS = {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  setCsrfCookie(res);
+
   if (req.method !== 'POST') {
     res.setHeader('Allow', ['POST']);
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  const identifier = getRateLimitIdentifier(req);
+  if (!rateLimit(identifier, 5, 60000)) {
+    return res.status(429).json({ error: 'Too many requests. Please try again later.' });
+  }
+
+  if (!validateCsrf(req)) {
+    return res.status(403).json({ error: 'Invalid CSRF token' });
   }
 
   const { name, email, subject, message } = req.body;

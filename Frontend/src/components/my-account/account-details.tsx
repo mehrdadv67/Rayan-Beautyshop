@@ -119,8 +119,6 @@ const AccountDetails: React.FC = () => {
               {...register('phoneNumber')}
               variant="solid"
               className="w-full sm:w-1/2"
-              readOnly
-              disabled
             />
             <Input
               type="email"
@@ -128,8 +126,6 @@ const AccountDetails: React.FC = () => {
               {...register('email')}
               variant="solid"
               className="w-full sm:w-1/2"
-              readOnly
-              disabled
             />
           </div>
           <div className="relative flex flex-col">

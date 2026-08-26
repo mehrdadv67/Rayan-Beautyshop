@@ -20,6 +20,9 @@ import { collectionData as collection } from '@framework/static/collection';
 import { ROUTES } from '@utils/routes';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { GetStaticProps } from 'next';
+import { NextSeo } from "next-seo";
+import { siteSettings } from "@settings/site-settings";
+import { absoluteSiteUrl } from "@utils/site-url";
 
 const flashSaleCarouselBreakpoint = {
   '1280': {
@@ -38,7 +41,13 @@ const flashSaleCarouselBreakpoint = {
 
 export default function Home() {
   return (
-    <Container>
+    <>
+      <NextSeo
+        title={siteSettings.name}
+        description={siteSettings.description}
+        canonical={absoluteSiteUrl('/minimal')}
+      />
+      <Container>
       <HeroWithCategory bannerData={heroBanner} />
       <ProductsWithFlashSale carouselBreakpoint={flashSaleCarouselBreakpoint} />
       <BannerGridBlock />
@@ -59,7 +68,8 @@ export default function Home() {
       <DownloadApps />
       <Support />
       <Subscription />
-    </Container>
+      </Container>
+    </>
   );
 }
 

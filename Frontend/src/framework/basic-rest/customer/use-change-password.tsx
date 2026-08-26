@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 export interface ChangePasswordInputType {
   newPassword: string;
   oldPassword: string;
+  confirmPassword: string;
 }
 
 async function changePassword(input: ChangePasswordInputType) {
@@ -14,6 +15,7 @@ async function changePassword(input: ChangePasswordInputType) {
     body: JSON.stringify({
       oldPassword: input.oldPassword,
       newPassword: input.newPassword,
+      confirmPassword: input.confirmPassword,
     }),
   });
 

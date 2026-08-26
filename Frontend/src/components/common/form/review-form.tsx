@@ -7,6 +7,7 @@ import { CheckBox } from '@components/ui/checkbox';
 import { useTranslation } from 'next-i18next';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
+import { csrfHeaders } from '@utils/csrf-client';
 
 interface ReviewFormValues {
   name: string;
@@ -31,7 +32,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ productId }) => {
 
   async function onSubmit(values: ReviewFormValues) {
     if (!rating) {
-      toast.error('لطفا امتیاز خود را وارد کنید');
+      toast.error(t('common:review-rating-required'));
       return;
     }
 
@@ -46,22 +47,22 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ productId }) => {
 
       const res = await fetch('/api/reviews', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...csrfHeaders() },
         body: JSON.stringify(body),
       });
 
       const result = await res.json();
 
       if (!res.ok) {
-      toast.error(result.details || result.error || 'خطا در ثبت نظر');
+      toast.error(result.details || result.error || t('common:review-error'));
       return;
     }
 
-    toast.success('نظر شما با موفقیت ثبت شد');
+      toast.success(t('common:review-success'));
     reset();
     setRating(0);
   } catch (err) {
-    toast.error('خطا در ثبت نظر');
+    toast.error(t('common:review-error'));
   }
   }
 
@@ -91,13 +92,13 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ productId }) => {
         </div>
         <TextArea
           labelKey="forms:label-message-star"
-          {...register('message', { required: 'پیام الزامی است' })}
+          {...register('message', { required: t('forms:message-required') })}
           errorKey={errors.message?.message}
         />
         <div className="flex flex-col md:flex-row space-y-5 md:space-y-0">
           <Input
             labelKey="forms:label-name-star"
-            {...register('name', { required: 'نام الزامی است' })}
+            {...register('name', { required: t('forms:name-required-persian') })}
             className="w-full md:w-1/2 "
             errorKey={errors.name?.message}
             variant="solid"
@@ -106,11 +107,11 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ productId }) => {
             labelKey="forms:label-email-star"
             type="email"
             {...register('email', {
-              required: 'ایمیل الزامی است',
+              required: t('forms:email-required-persian'),
               pattern: {
                 value:
                   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                message: 'ایمیل نامعتبر است',
+                message: t('forms:email-invalid-persian'),
               },
             })}
             className="w-full md:w-1/2 ltr:md:ml-2.5 rtl:md:mr-2.5 ltr:lg:ml-5 rtl:lg:mr-5 mt-2 md:mt-0"

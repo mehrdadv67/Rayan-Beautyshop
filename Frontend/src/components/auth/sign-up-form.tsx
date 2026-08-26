@@ -205,7 +205,7 @@ const SignUpForm: React.FC = () => {
         className="h-11 md:h-12 w-full mt-2.5 bg-gray-500 hover:bg-gray-600"
         onClick={handleOtpSignUp}
       >
-        {t('common:text-signup-with-otp', 'ثبت نام با رمز یکبار مصرف')}
+         {t('common:text-signup-with-otp')}
       </Button>
       <div className="text-sm sm:text-base text-body text-center mt-5 mb-1">
         {t('common:text-have-account')}{' '}

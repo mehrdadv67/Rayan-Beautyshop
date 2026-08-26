@@ -6,10 +6,20 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { GetServerSideProps } from "next";
 
+import { GetServerSideProps } from "next";
+import { NextSeo } from "next-seo";
+import { siteSettings } from "@settings/site-settings";
+import { absoluteSiteUrl } from "@utils/site-url";
+
 export default function AccountPage() {
     const { t } = useTranslation("common");
     return (
         <AccountLayout>
+            <NextSeo
+                title={`${t('text-dashboard')} | ${siteSettings.name}`}
+                description={siteSettings.description}
+                canonical={absoluteSiteUrl('/my-account')}
+            />
             <h2 className="text-lg md:text-xl xl:text-2xl font-bold text-heading mb-3 xl:mb-5">
                 {t("text-dashboard")}
             </h2>

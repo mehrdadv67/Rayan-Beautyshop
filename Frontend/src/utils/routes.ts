@@ -19,4 +19,8 @@ export const ROUTES = {
   CATEGORY: "/category",
   ORDER: "/order",
   CART: "/cart",
+  WISHLIST: "/wishlist",
+  COMPARE: "/compare",
+  ADDRESS: "/address",
+  ORDER_CONFIRMATION: "/order-confirmation",
 };

@@ -21,10 +21,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(401).json({ message: 'Unauthorized' });
   }
 
-  const { oldPassword, newPassword } = req.body;
+  const { oldPassword, newPassword, confirmPassword } = req.body;
 
-  if (!oldPassword || !newPassword) {
-    return res.status(400).json({ message: 'Old password and new password are required' });
+  if (!oldPassword || !newPassword || !confirmPassword) {
+    return res.status(400).json({ message: 'Old password, new password and confirm password are required' });
+  }
+
+  if (newPassword !== confirmPassword) {
+    return res.status(400).json({ message: 'New password and confirm password do not match' });
   }
 
   const strapiRes = await fetch(`${process.env.STRAPI_URL}/api/auth/change-password`, {

@@ -6,6 +6,7 @@ import { useTranslation } from "next-i18next";
 import { useUI } from "@contexts/ui.context";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import { csrfHeaders } from "@utils/csrf-client";
 interface NewsLetterFormValues {
   phone: string;
 }
@@ -22,28 +23,28 @@ export default function Newsletter() {
   });
   const { closeModal } = useUI();
   const [isSuccess, setIsSuccess] = useState(false);
+  const { t } = useTranslation();
   async function onSubmit(values: NewsLetterFormValues) {
     try {
       const res = await fetch('/api/subscribe', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...csrfHeaders() },
         body: JSON.stringify({ phone: values.phone }),
       })
       if (!res.ok) {
         const data = await res.json()
-        toast.error(data.error || 'خطا در ثبت شماره')
+        toast.error(data.error || t('common:subscribe-error'))
         return
       }
       setIsSuccess(true)
-      toast.success('ثبت شد')
+      toast.success(t('common:subscribe-success'))
       setTimeout(() => {
         closeModal()
       }, 2000)
     } catch (err) {
-      toast.error('خطا در ثبت شماره')
+      toast.error(t('common:subscribe-error'))
     }
   }
-  const { t } = useTranslation();
   return (
     <div className="flex items-center justify-center">
       <div className="w-full sm:w-[450px] md:w-[550px] lg:w-[980px] xl:w-[1170px] flex flex-col max-w-full max-h-full bg-white overflow-hidden rounded-md">
@@ -61,10 +62,10 @@ export default function Newsletter() {
             {isSuccess ? (
               <>
                 <h2 className="text-heading text-lg sm:text-xl md:text-2xl leading-8 font-bold mb-5 sm:mb-7 md:mb-9">
-                  ثبت شد
+                  {t('common:subscribe-success')}
                 </h2>
                 <p className="text-body text-sm leading-6 md:leading-7">
-                  شماره موبایل شما با موفقیت ثبت شد.
+                  {t('common:subscribe-success-message')}
                 </p>
               </>
             ) : (

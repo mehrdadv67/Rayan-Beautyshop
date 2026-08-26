@@ -25,10 +25,18 @@ import {
   homeFiveBanner as banner,
 } from "@framework/static/banner";
 import { GetStaticProps } from "next";
+import { NextSeo } from "next-seo";
+import { siteSettings } from "@settings/site-settings";
+import { absoluteSiteUrl } from "@utils/site-url";
 
 export default function Home() {
   return (
     <>
+      <NextSeo
+        title={siteSettings.name}
+        description={siteSettings.description}
+        canonical={absoluteSiteUrl('/classic')}
+      />
       <ExclusiveBlock className="mb-12 md:mb-14 xl:mb-16 px-2.5 mx-auto max-w-[1920px]" />
       <Container>
         <CategoryBlock sectionHeading="text-shop-by-category" />

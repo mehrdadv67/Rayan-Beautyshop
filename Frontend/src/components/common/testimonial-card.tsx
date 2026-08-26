@@ -3,6 +3,7 @@ import StarIcon from "@components/icons/star-icon";
 import QuoteIcon from "@components/icons/quote-icon";
 import cn from "classnames";
 import QuoteIconRotate from "@components/icons/quote-icon-rotate";
+import { useTranslation } from "next-i18next";
 
 interface Props {
   item: any;
@@ -17,6 +18,7 @@ const TestimonialCard: React.FC<Props> = ({
   disableBoarderRadius = false,
   demoVariant,
 }) => {
+  const { t } = useTranslation();
   return (
     <div
       className={`bg-gray-200 w-full ${
@@ -56,7 +58,7 @@ const TestimonialCard: React.FC<Props> = ({
           </Text>
           {type === "modern" && (
             <span className="text-base text-[#5A5A5A] font-normal">
-              از فدایی
+              {t('common:from-fedai')}
             </span>
           )}
         </div>

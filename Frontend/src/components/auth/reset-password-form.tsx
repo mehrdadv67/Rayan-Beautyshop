@@ -94,7 +94,7 @@ const ResetPasswordForm = () => {
       </form>
       {error && (
         <p className="text-sm text-red-500 mt-4 text-center">
-          {error?.message || 'خطا در تغییر رمز عبور. لطفا دوباره تلاش کنید.'}
+           {error?.message || t('common:text-reset-password-error')}
         </p>
       )}
       <div className="flex flex-col items-center justify-center relative text-sm text-heading mt-8 sm:mt-10 mb-6 sm:mb-7">

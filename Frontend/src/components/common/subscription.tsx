@@ -4,6 +4,7 @@ import Button from '@components/ui/button';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'next-i18next';
 import { toast } from 'react-toastify';
+import { csrfHeaders } from '@utils/csrf-client';
 
 const data = {
   title: 'common:text-subscribe-heading',
@@ -41,17 +42,17 @@ const Subscription: React.FC<Props> = ({
     try {
       const res = await fetch('/api/subscribe', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...csrfHeaders() },
         body: JSON.stringify({ phone: input.phone }),
       })
       if (!res.ok) {
         const data = await res.json()
-        toast.error(data.error || 'خطا در ثبت شماره')
+        toast.error(data.error || t('common:subscribe-error'))
         return
       }
-      toast.success('ثبت شد')
+      toast.success(t('common:subscribe-success'))
     } catch (err) {
-      toast.error('خطا در ثبت شماره')
+      toast.error(t('common:subscribe-error'))
     }
   }
   return (

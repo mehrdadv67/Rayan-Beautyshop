@@ -81,7 +81,7 @@ const OrderDetails: React.FC<{ className?: string }> = ({
             <td className='p-4'>
               {shipping}
               <span className='text-[13px] font-normal ltr:pl-1.5 rtl:pr-1.5 inline-block'>
-                از طریق نرخ ثابت
+                {t('text-shipping-method')}
               </span>
             </td>
           </tr>
@@ -95,7 +95,7 @@ const OrderDetails: React.FC<{ className?: string }> = ({
           </tr>
           <tr className='odd:bg-gray-150'>
             <td className='p-4 italic'>{t("text-note")}:</td>
-            <td className='p-4'>سفارش جدید</td>
+            <td className='p-4'>{t('text-order-note')}</td>
           </tr>
         </tfoot>
       </table>

@@ -29,6 +29,9 @@ import { collectionData as collection } from "@framework/static/collection";
 import { useEffect } from "react";
 import { ROUTES } from "@utils/routes";
 import { useUI } from "@contexts/ui.context";
+import { NextSeo } from "next-seo";
+import { siteSettings } from "@settings/site-settings";
+import { absoluteSiteUrl } from "@utils/site-url";
 
 export default function Home() {
   const { openModal, setModalView } = useUI();
@@ -41,6 +44,11 @@ export default function Home() {
   }, []);
   return (
     <>
+      <NextSeo
+        title={siteSettings.name}
+        description={siteSettings.description}
+        canonical={absoluteSiteUrl('/standard')}
+      />
       <HeroBlock />
       <Container>
         <FlashSaleBlock />

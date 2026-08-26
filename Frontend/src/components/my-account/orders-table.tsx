@@ -38,7 +38,7 @@ const OrdersTable: React.FC = () => {
     }
   }, [updateItemQuantity, removeItemFromCart, cartItems]);
 
-  const allOrders = data?.orders?.data ?? [];
+  const allOrders = useMemo(() => data?.orders?.data ?? [], [data?.orders?.data]);
 
   const activeOrders = useMemo(
     () => allOrders.filter((o: Order) => o.status !== 'done' && o.status !== 'paid'),
@@ -68,13 +68,13 @@ const OrdersTable: React.FC = () => {
 
   const statusLabel = (status?: string) => {
     switch (status) {
-      case 'done': return 'تکمیل شده';
-      case 'paid': return 'پرداخت شده';
-      case 'pending': return 'در انتظار';
-      case 'processing': return 'در حال پردازش';
-      case 'shipped': return 'ارسال شده';
-      case 'cancelled': return 'لغو شده';
-      default: return status || 'نامشخص';
+      case 'done': return t('text-order-status-done');
+      case 'paid': return t('text-order-status-paid');
+      case 'pending': return t('text-order-status-pending');
+      case 'processing': return t('text-order-status-processing');
+      case 'shipped': return t('text-order-status-shipped');
+      case 'cancelled': return t('text-order-status-cancelled');
+      default: return status || t('text-order-status-unknown');
     }
   };
 
@@ -83,7 +83,7 @@ const OrdersTable: React.FC = () => {
       return (
         <tr className="border-b border-gray-300">
           <td colSpan={6} className="px-4 py-5 text-center text-heading">
-            سفارشی یافت نشد
+            {t('text-orders-not-found')}
           </td>
         </tr>
       );
@@ -94,15 +94,15 @@ const OrdersTable: React.FC = () => {
     return cartItems.map((item) => (
       <tr key={`cart-${item.id}`} className="border-b border-gray-300 bg-yellow-50/50 last:border-b-0">
         <td className="px-4 py-5 ltr:text-left rtl:text-right">
-          <span className="text-body">{item.name || `محصول #${item.id}`}</span>
-          <span className="block text-xs text-gray-500 mt-1">در سبد خرید</span>
+          <span className="text-body">{item.name || `${t('text-product')} #${item.id}`}</span>
+          <span className="block text-xs text-gray-500 mt-1">{t('text-in-cart')}</span>
         </td>
         <td className="px-4 py-5 text-center text-heading">
           —
         </td>
         <td className="px-4 py-5 text-center">
           <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
-            در سبد خرید
+            {t('text-in-cart')}
           </span>
         </td>
         <td className="px-4 py-5 text-center text-heading">
@@ -114,7 +114,7 @@ const OrdersTable: React.FC = () => {
           />
         </td>
         <td className="px-4 py-5 text-center text-heading">
-          {(item.price * (item.quantity || 1)).toLocaleString()} تومان
+            {(item.price * (item.quantity || 1)).toLocaleString()} {t('text-tooman')}
         </td>
         <td className="px-4 py-5 text-center text-heading">
           <div className="flex items-center gap-x-2">
@@ -122,12 +122,12 @@ const OrdersTable: React.FC = () => {
               href="/checkout"
               className="text-sm leading-4 bg-amber-500 text-white px-4 py-2.5 inline-block rounded-md hover:bg-amber-600"
             >
-              تکمیل خرید
+              {t('text-complete-purchase')}
             </Link>
             <button
               onClick={() => handleRemove(item.id)}
               className="text-red-500 hover:text-red-700 p-1"
-              title="حذف از سبد خرید"
+              title={t('text-remove-from-cart')}
             >
               <TrashIcon width="16px" height="16px" />
             </button>
@@ -140,7 +140,7 @@ const OrdersTable: React.FC = () => {
   const renderCartItemsMobile = () => {
     if (cartEmpty && !isLoading && activeOrders.length === 0) {
       return (
-        <div className="text-center text-heading py-5">سفارشی یافت نشد</div>
+        <div className="text-center text-heading py-5">{t('text-orders-not-found')}</div>
       );
     }
 
@@ -150,7 +150,7 @@ const OrdersTable: React.FC = () => {
       <ul key={`cart-${item.id}`} className="flex flex-col px-4 pt-5 pb-6 space-y-5 text-sm font-semibold border border-amber-200 rounded-md text-heading bg-yellow-50/30">
         <li className="flex items-center justify-between">
           {t('text-order')}
-          <span className="font-normal">{item.name || `محصول #${item.id}`}</span>
+          <span className="font-normal">{item.name || `${t('text-product')} #${item.id}`}</span>
         </li>
         <li className="flex items-center justify-between">
           {t('text-date')}
@@ -159,11 +159,11 @@ const OrdersTable: React.FC = () => {
         <li className="flex items-center justify-between">
           {t('text-status')}
           <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
-            در سبد خرید
+            {t('text-in-cart')}
           </span>
         </li>
         <li className="flex items-center justify-between">
-          تعداد
+          {t('text-quantity')}
           <span className="font-normal">
             <Counter
               quantity={item.quantity || 1}
@@ -175,7 +175,7 @@ const OrdersTable: React.FC = () => {
         </li>
         <li className="flex items-center justify-between">
           {t('text-total')}
-          <span className="font-normal">{(item.price * (item.quantity || 1)).toLocaleString()} تومان</span>
+          <span className="font-normal">{(item.price * (item.quantity || 1)).toLocaleString()} {t('text-tooman')}</span>
         </li>
         <li className="flex items-center justify-between">
           {t('text-actions')}
@@ -184,12 +184,12 @@ const OrdersTable: React.FC = () => {
               href="/checkout"
               className="text-sm leading-4 bg-amber-500 text-white px-4 py-2.5 inline-block rounded-md hover:bg-amber-600"
             >
-              تکمیل خرید
+              {t('text-complete-purchase')}
             </Link>
             <button
               onClick={() => handleRemove(item.id)}
               className="text-red-500 hover:text-red-700 p-1"
-              title="حذف از سبد خرید"
+              title={t('text-remove-from-cart')}
             >
               <TrashIcon width="16px" height="16px" />
             </button>
@@ -222,7 +222,7 @@ const OrdersTable: React.FC = () => {
               : 'text-gray-500 hover:text-heading'
           }`}
         >
-          در حال خرید
+          {t('text-active-orders')}
           <span className="mr-2 bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">
             {activeOrders.length + (cartEmpty ? 0 : 1)}
           </span>
@@ -235,7 +235,7 @@ const OrdersTable: React.FC = () => {
               : 'text-gray-500 hover:text-heading'
           }`}
         >
-          خریدهای انجام شده
+          {t('text-completed-orders')}
           <span className="mr-2 bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">
             {completedOrders.length}
           </span>
@@ -243,7 +243,7 @@ const OrdersTable: React.FC = () => {
       </div>
 
       {showError && (
-        <p className="text-red-500 text-sm mb-4">خطا در بارگذاری سفارشات</p>
+        <p className="text-red-500 text-sm mb-4">{t('text-orders-loading-error')}</p>
       )}
 
       <motion.div
@@ -256,7 +256,9 @@ const OrdersTable: React.FC = () => {
         className={`w-full flex flex-col`}
       >
         {isLoading ? (
-          <p>در حال بارگذاری...</p>
+          <div className="flex justify-center items-center py-10">
+            <div className="w-8 h-8 border-4 border-gray-200 border-t-heading rounded-full animate-spin"></div>
+          </div>
         ) : width >= 1025 ? (
           <table>
             <thead className="text-sm lg:text-base">
@@ -271,7 +273,7 @@ const OrdersTable: React.FC = () => {
                   {t('text-status')}
                 </th>
                 <th className="p-4 font-semibold bg-gray-100 text-heading text-center">
-                  تعداد
+                  {t('text-quantity')}
                 </th>
                 <th className="p-4 font-semibold bg-gray-100 text-heading text-center">
                   {t('text-total')}
@@ -304,7 +306,7 @@ const OrdersTable: React.FC = () => {
                     {(order as any).order_items?.length ?? '—'}
                   </td>
                   <td className="px-4 py-5 text-center text-heading">
-                    {order.total.toLocaleString()} تومان
+                    {order.total.toLocaleString()} {t('text-tooman')}
                   </td>
                   <td className="px-4 py-5 text-center text-heading">
                     <Link
@@ -319,7 +321,7 @@ const OrdersTable: React.FC = () => {
               {orders.length === 0 && (activeTab === 'completed' || cartEmpty) && (
                 <tr className="border-b border-gray-300">
                   <td colSpan={6} className="px-4 py-5 text-center text-heading">
-                    سفارشی یافت نشد
+                    {t('text-orders-not-found')}
                   </td>
                 </tr>
               )}
@@ -330,7 +332,7 @@ const OrdersTable: React.FC = () => {
                       href="/checkout"
                       className="text-sm leading-4 bg-heading text-white px-6 py-3 inline-block rounded-md hover:bg-gray-600"
                     >
-                      خرید همه محصولات
+                       {t('text-buy-all-products')}
                     </Link>
                   </td>
                 </tr>
@@ -362,12 +364,12 @@ const OrdersTable: React.FC = () => {
           <span className="font-normal">{statusLabel(order.status)}</span>
         </li>
         <li className="flex items-center justify-between">
-          تعداد
+          {t('text-quantity')}
           <span className="font-normal">{(order as any).order_items?.length ?? '—'}</span>
         </li>
         <li className="flex items-center justify-between">
           {t('text-total')}
-          <span className="font-normal">{order.total.toLocaleString()} تومان</span>
+          <span className="font-normal">{order.total.toLocaleString()} {t('text-tooman')}</span>
         </li>
                 <li className="flex items-center justify-between">
                   {t('text-actions')}
@@ -383,7 +385,7 @@ const OrdersTable: React.FC = () => {
               </ul>
             ))}
             {orders.length === 0 && (activeTab === 'completed' || cartEmpty) && (
-              <div className="text-center text-heading py-5">سفارشی یافت نشد</div>
+              <div className="text-center text-heading py-5">{t('text-orders-not-found')}</div>
             )}
             {activeTab === 'active' && !cartEmpty && (
               <div className="text-center py-5">
@@ -391,7 +393,7 @@ const OrdersTable: React.FC = () => {
                   href="/checkout"
                   className="text-sm leading-4 bg-heading text-white px-6 py-3 inline-block rounded-md hover:bg-gray-600"
                 >
-                  خرید همه محصولات
+                  {t('text-buy-all-products')}
                 </Link>
               </div>
             )}

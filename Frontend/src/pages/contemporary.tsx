@@ -32,11 +32,19 @@ import {
 } from '@framework/static/banner';
 import BrandTimerBlock from '@containers/brand-timer-block';
 import dynamic from 'next/dynamic';
+import { NextSeo } from "next-seo";
+import { siteSettings } from "@settings/site-settings";
+import { absoluteSiteUrl } from "@utils/site-url";
 const DownloadApps = dynamic(() => import('@components/common/download-apps'));
 
 export default function Home() {
   return (
     <>
+      <NextSeo
+        title={siteSettings.name}
+        description={siteSettings.description}
+        canonical={absoluteSiteUrl('/contemporary')}
+      />
       <HeroSlider
         data={banners}
         variantRounded="default"

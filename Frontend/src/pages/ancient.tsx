@@ -8,6 +8,10 @@ import BrandBlock from '@containers/brand-block';
 // import Divider from '@components/ui/divider';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { GetStaticProps } from 'next';
+import { NextSeo } from "next-seo";
+import { siteSettings } from "@settings/site-settings";
+import { absoluteSiteUrl } from "@utils/site-url";
+import { useTranslation } from 'next-i18next';
 import { ancientHeroBanner } from '@framework/static/banner';
 import NewArrivalsProductFeed from '@components/product/feeds/new-arrivals-product-feed';
 import PopularProductFeed from '@components/product/feeds/popular-product-feed';
@@ -19,10 +23,16 @@ import ProductsFlashSaleBlock from '@containers/product-flash-sale-block';
 import HireDesignerAncient from '@containers/buy-designer-ancient';
 
 export default function Ancient() {
+  const { t } = useTranslation('common');
   const sectionCommonStyle = 'mb-7 md:mb-10 lg:mb-12 xl:mb-14 2xl:mb-[75px]';
 
   return (
     <>
+      <NextSeo
+        title={siteSettings.name}
+        description={siteSettings.description}
+        canonical={absoluteSiteUrl('/ancient')}
+      />
       <HeroSlider
         data={ancientHeroBanner}
         variantRounded="default"
@@ -34,7 +44,7 @@ export default function Ancient() {
       <Container>
         <CategoryBlock
           type="rounded"
-          sectionHeading="دسته‌بندی‌ها را مرور کنید"
+          sectionHeading={t('common:text-browse-categories')}
           roundedItemCount={5}
           roundedSpaceBetween={8}
           imgSize="large"
@@ -61,7 +71,7 @@ export default function Ancient() {
         />
 
         <ProductsFeatured
-          sectionHeading="محصولات ویژه"
+          sectionHeading={t('common:text-featured-products')}
           limit={4}
           variant="modern"
           hideBanner={true}
@@ -79,7 +89,7 @@ export default function Ancient() {
 
         <BrandBlock
           disableBorderRadius={true}
-          sectionHeading="برندهای برتر"
+          sectionHeading={t('common:text-top-brands')}
           showName={false}
           demoVariant="ancient"
           className={'mb-[14px] md:mb-6 lg:mb-7 xl:mb-8 2xl:mb-[45px]'}
@@ -115,7 +125,7 @@ export default function Ancient() {
         />
 
         <TestimonialCarousel
-          sectionHeading="نظرات مشتریان"
+          sectionHeading={t('common:text-testimonial')}
           type="list"
           className="relative mb-12 md:mb-14 xl:mb-16"
           disableBoarderRadius={true}

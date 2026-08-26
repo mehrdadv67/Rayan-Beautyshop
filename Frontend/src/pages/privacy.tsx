@@ -6,6 +6,9 @@ import { Link, Element } from 'react-scroll';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import { GetStaticProps } from 'next';
+import { NextSeo } from "next-seo";
+import { siteSettings } from "@settings/site-settings";
+import { absoluteSiteUrl } from "@utils/site-url";
 
 function makeTitleToDOMId(title: string) {
   return title.toLowerCase().split(' ').join('_');
@@ -15,6 +18,11 @@ export default function PrivacyPage() {
   const { t } = useTranslation('privacy');
   return (
     <>
+      <NextSeo
+        title={`${t('text-page-privacy-policy')} | ${siteSettings.name}`}
+        description={siteSettings.description}
+        canonical={absoluteSiteUrl('/privacy')}
+      />
       <PageHeader pageHeader="text-page-privacy-policy" />
       <div className="px-4 mt-12 border-b border-gray-300 lg:mt-14 xl:mt-16 lg:py-1 xl:py-0 md:px-10 lg:px-7 xl:px-16 2xl:px-24 3xl:px-32 pb-9 md:pb-14 lg:pb-16 2xl:pb-20 3xl:pb-24">
         <Container>

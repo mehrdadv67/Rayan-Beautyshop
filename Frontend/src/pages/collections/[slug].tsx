@@ -11,12 +11,20 @@ import { useTranslation } from "next-i18next";
 import CollectionTopBar from "@components/collection/collection-top-bar";
 import { CollectionFilters } from "@components/collection/collection-filters";
 import { GetServerSideProps } from "next";
+import { NextSeo } from "next-seo";
+import { siteSettings } from "@settings/site-settings";
+import { absoluteSiteUrl } from "@utils/site-url";
 
 export default function Collections() {
   const { t } = useTranslation("common");
 
   return (
     <div className="border-t-2 border-borderBottom">
+      <NextSeo
+        title={siteSettings.name}
+        description={siteSettings.description}
+        canonical={absoluteSiteUrl('/collections/[slug]')}
+      />
       <Container>
         <div className={`flex pt-8 pb-16 lg:pb-20`}>
           <div className="flex-shrink-0 hidden ltr:pr-24 rtl:pl-24 lg:block w-96">

@@ -22,11 +22,19 @@ import BrandGridBlock from "@containers/brand-grid-block";
 import TestimonialCarousel from "@containers/testimonial-carousel";
 import SubscriptionWithBg from "@components/common/subscription-with-bg";
 import { homeSixHeroSlider as banners } from "@framework/static/banner";
+import { NextSeo } from "next-seo";
+import { siteSettings } from "@settings/site-settings";
+import { absoluteSiteUrl } from "@utils/site-url";
 
 export default function Home() {
-	return (
-		<>
-			<Container>
+  return (
+    <>
+      <NextSeo
+        title={siteSettings.name}
+        description={siteSettings.description}
+        canonical={absoluteSiteUrl('/trendy')}
+      />
+      <Container>
 				<HeroSlider data={banners} buttonGroupClassName="hidden" />
 				<SaleBannerGrid />
 				<CategoryBlockIcon sectionHeading="text-featured-categories" />

@@ -6,15 +6,23 @@ import PageHeader from "@components/ui/page-header";
 import { faq } from "@settings/faq.settings";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticProps } from "next";
+import { NextSeo } from "next-seo";
+import { siteSettings } from "@settings/site-settings";
+import { absoluteSiteUrl } from "@utils/site-url";
 
 interface FAQProps {
   bannerImage?: string;
 }
 
 export default function FAQ({ bannerImage }: FAQProps) {
- 	return (
- 		<>
- 			<PageHeader pageHeader="text-page-faq" backgroundImage={bannerImage} />
+  	return (
+  		<>
+  			<NextSeo
+  				title={`${siteSettings.name}`}
+  				description={siteSettings.description}
+  				canonical={absoluteSiteUrl('/faq')}
+  			/>
+  			<PageHeader pageHeader="text-page-faq" backgroundImage={bannerImage} />
  			<Container>
  				<div className="py-16 lg:py-20 px-0 max-w-5xl mx-auto space-y-4">
  					<Accordion items={faq} translatorNS="faq" />

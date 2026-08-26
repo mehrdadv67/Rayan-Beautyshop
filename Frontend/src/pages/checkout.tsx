@@ -6,14 +6,24 @@ import CheckoutForm from "@components/checkout/checkout-form";
 import CheckoutCard from "@components/checkout/checkout-card";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetServerSideProps } from "next";
+import { NextSeo } from "next-seo";
+import { siteSettings } from "@settings/site-settings";
+import { absoluteSiteUrl } from "@utils/site-url";
+import { useTranslation } from "next-i18next";
 
 interface CheckoutPageProps {
   bannerImage?: string;
 }
 
 export default function CheckoutPage({ bannerImage }: CheckoutPageProps) {
+  const { t } = useTranslation('common');
   return (
     <>
+      <NextSeo
+        title={`${t('text-page-checkout')} | ${siteSettings.name}`}
+        description={siteSettings.description}
+        canonical={absoluteSiteUrl('/checkout')}
+      />
       <PageHeader pageHeader="text-page-checkout" backgroundImage={bannerImage} />
       <Container>
         <div className="py-14 xl:py-20 px-0 2xl:max-w-screen-2xl xl:max-w-screen-xl mx-auto flex flex-col md:flex-row w-full">

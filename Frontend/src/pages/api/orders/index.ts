@@ -149,7 +149,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     // Authoritative total computed on the server; the client value is ignored.
-    const shippingFee = Number(body.shippingFee) || 0
+    const shippingFee = 0
     const serverTotal =
       lines.reduce(
         (sum, line, i) => sum + line.unitPrice * parsed[i].quantity,

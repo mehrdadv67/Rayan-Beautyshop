@@ -133,7 +133,7 @@ const LoginForm: React.FC = () => {
         className="h-11 md:h-12 w-full mt-2.5 bg-gray-500 hover:bg-gray-600"
         onClick={handleOtpLogin}
       >
-        {t('common:text-login-with-otp', 'ورود با رمز یکبار مصرف')}
+         {t('common:text-login-with-otp')}
       </Button>
       <div className="mt-5 mb-1 text-sm text-center sm:text-base text-body">
         {t('common:text-no-account')}{' '}

@@ -17,6 +17,8 @@ const EmptyCart: FC<EmptyCartProps> = ({
       height={height}
       className={className}
       viewBox="0 0 180 309.722"
+      aria-label="Empty cart"
+      role="img"
     >
       <g
         id="no_cart_in_bag"
