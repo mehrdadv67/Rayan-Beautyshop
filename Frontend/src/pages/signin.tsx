@@ -5,11 +5,13 @@ import LoginForm from '@components/auth/login-form';
 import PageHeader from '@components/ui/page-header';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { GetServerSideProps } from 'next';
+import { useTranslation } from 'next-i18next';
 
 export default function SignInPage() {
+  const { t } = useTranslation('common');
   return (
     <>
-      <PageHeader pageHeader="ورود" />
+      <PageHeader pageHeader={t('text-page-signin')} />
       <Container>
         <div className="py-16 lg:py-20">
           <LoginForm />

@@ -32,7 +32,7 @@ const SignUpForm: React.FC = () => {
   }
 
   function handleOtpSignUp() {
-    toast.info('ثبت نام با رمز یکبار مصرف به زودی فعال می‌شود');
+    toast.info(t('common:text-otp-coming-soon'));
   }
 
   return (
@@ -188,7 +188,7 @@ const SignUpForm: React.FC = () => {
         </div>
         {error && (
           <p className="text-sm text-red-500 mt-2">
-            {error?.message || 'خطا در ثبت نام. لطفا دوباره تلاش کنید.'}
+            {error?.message || t('common:text-signup-error')}
           </p>
         )}
       </form>

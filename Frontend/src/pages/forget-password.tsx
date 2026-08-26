@@ -5,11 +5,13 @@ import PageHeader from "@components/ui/page-header";
 import Subscription from "@components/common/subscription";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticProps } from "next";
+import { useTranslation } from "next-i18next";
 
 export default function ForgetPasswordPage() {
+	const { t } = useTranslation("common");
 	return (
 		<>
-			<PageHeader pageHeader="فراموشی رمز عبور" />
+			<PageHeader pageHeader={t("text-page-forgot-password")} />
 			<Container>
 				<div className="py-16 lg:py-20">
 					<ForgetPasswordForm />

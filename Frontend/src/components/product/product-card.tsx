@@ -88,6 +88,12 @@ const ProductCard: FC<ProductProps> = ({
     setModalView("PRODUCT_VIEW");
     return openModal();
   }
+  function handleKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      handlePopupView();
+    }
+  }
 
   return (
     <div
@@ -119,7 +125,9 @@ const ProductCard: FC<ProductProps> = ({
         className
       )}
       onClick={handlePopupView}
+      onKeyDown={handleKeyDown}
       role='button'
+      tabIndex={0}
       title={product?.name}
     >
       <div

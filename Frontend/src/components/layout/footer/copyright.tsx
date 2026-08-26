@@ -4,6 +4,7 @@ import { useTranslation } from "next-i18next";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import cn from "classnames";
 import Link from "@components/ui/link";
+import Image from "next/image";
 
 interface CopyrightProps {
   payment?: {
@@ -51,13 +52,12 @@ const Copyright: React.FC<CopyrightProps> = ({ payment, variant }) => {
                 className="mb-2 transition md:mb-0 hover:opacity-80"
                 key={`payment-list--key${item.id}`}
               >
-                <a href={item.path ? item.path : "/#"} target="_blank">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                <a href={item.path ? item.path : "/#"} target="_blank" rel="noopener noreferrer">
+                  <Image
                     src={item.image}
                     alt={t(`${item.name}`)}
-                    height={item.height}
                     width={item.width}
+                    height={item.height}
                   />
                 </a>
               </li>

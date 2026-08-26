@@ -53,6 +53,19 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
       inputClassName
     );
     const { t } = useTranslation();
+    const autocompleteMap: Record<string, string> = {
+      email: "email",
+      password: "current-password",
+      'confirmPassword': "new-password",
+      'phoneNumber': "tel",
+      'address': "street-address",
+      'city': "address-level2",
+      'zipCode': "postal-code",
+      'firstName': "given-name",
+      'lastName': "family-name",
+      'username': "username",
+    };
+    const autoComplete = autocompleteMap[name] || "off";
     return (
       <div className={className}>
         {labelKey && (
@@ -71,7 +84,7 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
           // @ts-ignore
           placeholder={t(placeholderKey)}
           className={rootClassName + `${!disableBorderRadius && " rounded-md"}`}
-          autoComplete="off"
+          autoComplete={autoComplete}
           spellCheck="false"
           aria-invalid={errorKey ? "true" : "false"}
           {...rest}

@@ -2,7 +2,7 @@ export default function WishButton() {
   return (
     <button
       className="relative flex items-center justify-center flex-shrink-0 h-auto transform focus:outline-none"
-      aria-label="cart-button"
+      aria-label="wishlist-button"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

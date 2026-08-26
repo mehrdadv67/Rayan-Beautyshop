@@ -205,5 +205,14 @@
   "tab-best-sellers": "پرفروش‌ترین‌ها",
   "tab-featured": "ویژه",
   "text-search": "جستجو",
-  "text-no-products-found": "هیچ محصولی یافت نشد"
+  "text-no-products-found": "هیچ محصولی یافت نشد",
+  "text-page-signin": "Sign In",
+  "text-page-signup": "Sign Up",
+  "text-page-forgot-password": "Forgot Password",
+  "text-filters-active": "active filters",
+  "text-skip-to-content": "Skip to main content",
+  "text-otp-coming-soon": "ورود با رمز یکبار مصرف به زودی فعال می‌شود",
+  "text-login-error": "خطا در ورود. لطفا دوباره تلاش کنید.",
+  "text-signup-error": "خطا در ثبت نام. لطفا دوباره تلاش کنید.",
+  "text-forgot-password-error": "خطا در بازیابی رمز عبور. لطفا دوباره تلاش کنید."
 }

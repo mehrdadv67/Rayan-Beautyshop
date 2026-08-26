@@ -101,6 +101,7 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({ data }) => {
             <a
               href={`https://${data?.website}`}
               target="_blank"
+              rel="noopener noreferrer"
               className="flex-shrink-0 text-sm font-semibold transition-all text-heading hover:opacity-80"
             >
               {t('text-visit-site')}

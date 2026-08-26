@@ -59,7 +59,7 @@ const Instagram: React.FC<Props> = ({ className = '', variant, disableContainerB
       )}
     >
       {instagramFeed?.map((item) => (
-        <a className="group flex justify-center text-center relative" href={item.slug} key={`instagram--key${item.id}`} target="_blank">
+        <a className="group flex justify-center text-center relative" href={item.slug} key={`instagram--key${item.id}`} target="_blank" rel="noopener noreferrer">
           <Image
             src={item.image ?? '/assets/placeholder/instagram.svg'}
             alt={t(`${item.title}`) || t('text-instagram-thumbnail')}

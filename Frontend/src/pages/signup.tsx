@@ -5,11 +5,13 @@ import PageHeader from '@components/ui/page-header';
 import Subscription from '@components/common/subscription';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { GetServerSideProps } from 'next';
+import { useTranslation } from 'next-i18next';
 
 export default function SignUpPage() {
+  const { t } = useTranslation('common');
   return (
     <>
-      <PageHeader pageHeader="ثبت نام" />
+      <PageHeader pageHeader={t('text-page-signup')} />
       <Container>
         <div className="py-16 lg:py-20">
           <SignUpForm />

@@ -11,6 +11,7 @@ export const ShopFilters: React.FC = () => {
 	const router = useRouter();
 	const { pathname, query } = router;
 	const { t } = useTranslation("common");
+	const activeFilters = Object.values(query).filter((v) => v && v !== "undefined" && v !== "null");
 	return (
 		<div className="pt-1">
 			<div className="block border-b border-gray-300 pb-7 mb-7">
@@ -18,16 +19,23 @@ export const ShopFilters: React.FC = () => {
 					<h2 className="font-semibold text-heading text-xl md:text-2xl">
 						{t("text-filters")}
 					</h2>
-					<button
-						className="flex-shrink text-xs mt-0.5 transition duration-150 ease-in focus:outline-none hover:text-heading"
-						aria-label="Clear All"
-						onClick={() => {
-							router.push(pathname);
-						}}
-					>
-						{t("text-clear-all")}
-					</button>
+					{activeFilters.length > 0 && (
+						<button
+							className="flex-shrink text-xs mt-0.5 transition duration-150 ease-in focus:outline-none hover:text-heading"
+							aria-label="Clear All"
+							onClick={() => {
+								router.push(pathname);
+							}}
+						>
+							{t("text-clear-all")}
+						</button>
+					)}
 				</div>
+				{activeFilters.length > 0 && (
+					<p className="text-xs text-body mb-2">
+						{activeFilters.length} {t("text-filters-active")}
+					</p>
+				)}
 				<div className="flex flex-wrap -m-1.5 pt-2">
 					{!isEmpty(query) &&
 						Object.values(query)

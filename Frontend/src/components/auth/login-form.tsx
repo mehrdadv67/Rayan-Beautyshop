@@ -28,7 +28,7 @@ const LoginForm: React.FC = () => {
   }
 
   function handleOtpLogin() {
-    toast.info('ورود با رمز یکبار مصرف به زودی فعال می‌شود');
+    toast.info(t('common:text-otp-coming-soon'));
   }
 
   function handleSignUp() {
@@ -116,7 +116,7 @@ const LoginForm: React.FC = () => {
           </div>
           {error && (
             <p className="text-sm text-red-500 mt-2">
-              {error?.message || 'خطا در ورود. لطفا دوباره تلاش کنید.'}
+              {error?.message || t('common:text-login-error')}
             </p>
           )}
         </div>
