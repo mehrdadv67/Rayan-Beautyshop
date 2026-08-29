@@ -50,8 +50,8 @@ export default function Modal({
   variant = 'center',
 }: React.PropsWithChildren<ModalProps>) {
   const { closeModal } = useUI();
-  const modalRootRef = useRef() as DivElementRef;
-  const modalInnerRef = useRef() as DivElementRef;
+  const modalRootRef = useRef(null) as any as DivElementRef;
+  const modalInnerRef = useRef(null) as any as DivElementRef;
   useOnClickOutside(modalInnerRef, () => closeModal());
   useEffect(() => {
     if (modalInnerRef.current) {
@@ -82,6 +82,7 @@ export default function Modal({
           animate="to"
           exit="from"
           variants={zoomOutIn()}
+          // @ts-ignore
           className="relative w-full h-full mx-auto"
         >
           <div

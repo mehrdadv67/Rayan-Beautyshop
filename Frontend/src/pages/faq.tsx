@@ -9,6 +9,8 @@ import { GetStaticProps } from "next";
 import { NextSeo } from "next-seo";
 import { siteSettings } from "@settings/site-settings";
 import { absoluteSiteUrl } from "@utils/site-url";
+import { strapiBannerParams } from "@framework/utils/api-endpoints";
+import { normalizeBanner, unwrapList } from "@framework/utils/normalize";
 
 interface FAQProps {
   bannerImage?: string;
@@ -40,14 +42,19 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
   try {
     const res = await fetch(
-      `${process.env.STRAPI_URL || "http://localhost:1337"}/api/banners?filters[position][$eq]=faq&populate=image`,
+      `${process.env.STRAPI_URL || "http://localhost:1337"}/api/banners${strapiBannerParams("faq")}`,
       {
         headers: { Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}` },
         next: { revalidate: 3600 },
       }
     );
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch FAQ banner: ${res.status}`);
+    }
+
     const data = await res.json();
-    const banners = data.data || [];
+    const banners = unwrapList(data, normalizeBanner);
     if (banners.length > 0 && banners[0]?.image?.desktop?.url) {
       bannerImage = banners[0].image.desktop.url;
     }

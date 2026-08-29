@@ -1,5 +1,8 @@
 import React, { useReducer, useMemo, useCallback } from "react";
 import { CartProvider } from "./cart/cart.context";
+import { WishlistProvider } from "./wishlist/wishlist.context";
+import { CompareProvider } from "./compare/compare.context";
+import { AddressProvider } from "./address/address.context";
 
 export interface State {
   isAuthorized: boolean;
@@ -9,6 +12,8 @@ export interface State {
   displayShop: boolean;
   displayCart: boolean;
   displaySearch: boolean;
+  displayWishlist: boolean;
+  displayCompare: boolean;
   modalView: string;
   modalData: any;
   drawerView: string | null;
@@ -23,6 +28,8 @@ const initialState = {
   displayShop: false,
   displayCart: false,
   displaySearch: false,
+  displayWishlist: false,
+  displayCompare: false,
   modalView: "LOGIN_VIEW",
   drawerView: null,
   modalData: null,
@@ -91,6 +98,18 @@ type Action =
   | {
       type: "SET_USER_AVATAR";
       value: string;
+    }
+  | {
+      type: "OPEN_WISHLIST";
+    }
+  | {
+      type: "CLOSE_WISHLIST";
+    }
+  | {
+      type: "OPEN_COMPARE";
+    }
+  | {
+      type: "CLOSE_COMPARE";
     };
 
 type MODAL_VIEWS =
@@ -217,13 +236,38 @@ function uiReducer(state: State, action: Action) {
         toastText: action.text,
       };
     }
-    case "SET_USER_AVATAR": {
-      return {
-        ...state,
-        userAvatar: action.value,
-      };
-    }
+  case "SET_USER_AVATAR": {
+    return {
+      ...state,
+      userAvatar: action.value,
+    };
   }
+  case "OPEN_WISHLIST": {
+    return {
+      ...state,
+      displayWishlist: true,
+    };
+  }
+  case "CLOSE_WISHLIST": {
+    return {
+      ...state,
+      displayWishlist: false,
+    };
+  }
+  case "OPEN_COMPARE": {
+    return {
+      ...state,
+      displayCompare: true,
+    };
+  }
+  case "CLOSE_COMPARE": {
+    return {
+      ...state,
+      displayCompare: false,
+    };
+  }
+}
+
 }
 
 export const UIProvider: React.FC = (props) => {
@@ -269,6 +313,20 @@ export const UIProvider: React.FC = (props) => {
   const setModalData = (data: any) =>
     dispatch({ type: "SET_MODAL_DATA", data });
 
+  const openWishlist = () => dispatch({ type: "OPEN_WISHLIST" });
+  const closeWishlist = () => dispatch({ type: "CLOSE_WISHLIST" });
+  const toggleWishlist = () =>
+    state.displayWishlist
+      ? dispatch({ type: "CLOSE_WISHLIST" })
+      : dispatch({ type: "OPEN_WISHLIST" });
+
+  const openCompare = () => dispatch({ type: "OPEN_COMPARE" });
+  const closeCompare = () => dispatch({ type: "CLOSE_COMPARE" });
+  const toggleCompare = () =>
+    state.displayCompare
+      ? dispatch({ type: "CLOSE_COMPARE" })
+      : dispatch({ type: "OPEN_COMPARE" });
+
   const value = React.useMemo(
     () => ({
       ...state,
@@ -294,6 +352,12 @@ export const UIProvider: React.FC = (props) => {
       setDrawerView,
       setUserAvatar,
       setModalData,
+      openWishlist,
+      closeWishlist,
+      toggleWishlist,
+      openCompare,
+      closeCompare,
+      toggleCompare,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [state]
@@ -315,6 +379,15 @@ export const ManagedUIContext: React.FC = ({ children }) => (
   // @ts-ignore
   <CartProvider>
     {/* @ts-ignore */}
-    <UIProvider>{children}</UIProvider>
+    <WishlistProvider>
+      {/* @ts-ignore */}
+      <CompareProvider>
+        {/* @ts-ignore */}
+        <AddressProvider>
+          {/* @ts-ignore */}
+          <UIProvider>{children}</UIProvider>
+        </AddressProvider>
+      </CompareProvider>
+    </WishlistProvider>
   </CartProvider>
 );

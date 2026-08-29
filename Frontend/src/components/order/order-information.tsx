@@ -17,7 +17,7 @@ export default function OrderInformation() {
       currencyCode: "IRR",
     }
   );
-  if (isLoading) return <p>در حال بارگذاری...</p>;
+  if (isLoading) return <p>{t('text-loading')}</p>;
   return (
     <div className='xl:px-32 2xl:px-44 3xl:px-56 py-16 lg:py-20'>
       <div className='border border-gray-300 bg-gray-50 px-4 lg:px-5 py-4 rounded-md flex items-center justify-start text-heading text-sm md:text-base mb-6 lg:mb-8'>

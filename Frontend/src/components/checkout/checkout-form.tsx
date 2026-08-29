@@ -7,6 +7,7 @@ import { CheckBox } from '@components/ui/checkbox';
 import Button from '@components/ui/button';
 import React from 'react';
 import { useTranslation } from 'next-i18next';
+import { useAddress } from '@contexts/address/address.context';
 
 interface CheckoutInputType {
   firstName: string;
@@ -24,7 +25,9 @@ const CheckoutForm: React.FC = () => {
   const { t } = useTranslation();
   const { mutate: placeOrder, isPending } = useCheckoutMutation();
   const { data: user } = useGetUserQuery();
+  const { items: savedAddresses, getAddressById } = useAddress();
   const [editable, setEditable] = React.useState(false);
+  const [selectedAddressId, setSelectedAddressId] = React.useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -35,6 +38,25 @@ const CheckoutForm: React.FC = () => {
   // Prefill the form from the logged-in user's saved profile.
   React.useEffect(() => {
     if (!user) return;
+    const userAddress = user.address;
+    if (userAddress && savedAddresses.length > 0) {
+      const matchedAddress = savedAddresses.find(
+        (addr) => addr.address === userAddress || addr.city === user.city
+      );
+      if (matchedAddress) {
+        setSelectedAddressId(matchedAddress.id);
+        reset({
+          firstName: (matchedAddress.fullName?.split(' ')[0] || user.firstName) ?? '',
+          lastName: (matchedAddress.fullName?.split(' ').slice(1).join(' ') || user.lastName) ?? '',
+          phone: (matchedAddress.phone || user.phoneNumber) ?? '',
+          email: user.email ?? '',
+          address: (matchedAddress.address || user.address) ?? '',
+          city: (matchedAddress.city || user.city) ?? '',
+          zipCode: (matchedAddress.postalCode || user.zipCode) ?? '',
+        });
+        return;
+      }
+    }
     reset({
       firstName: user.firstName ?? '',
       lastName: user.lastName ?? '',
@@ -44,12 +66,32 @@ const CheckoutForm: React.FC = () => {
       city: user.city ?? '',
       zipCode: user.zipCode ?? '',
     });
-    // Saved profile exists → start read-only; user can enable editing.
     const hasProfile = Boolean(
       user.firstName || user.lastName || user.address || user.phoneNumber
     );
     setEditable(!hasProfile);
-  }, [user, reset]);
+  }, [user, reset, savedAddresses, getAddressById]);
+
+  const handleAddressSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const addressId = e.target.value;
+    if (!addressId) {
+      setSelectedAddressId(null);
+      return;
+    }
+    const address = getAddressById(addressId);
+    if (address) {
+      setSelectedAddressId(address.id);
+      reset({
+        firstName: address.fullName?.split(' ')[0] || '',
+        lastName: address.fullName?.split(' ').slice(1).join(' ') || '',
+        phone: address.phone,
+        email: user?.email ?? '',
+        address: address.address,
+        city: address.city,
+        zipCode: address.postalCode || '',
+      });
+    }
+  };
 
   function onSubmit(input: CheckoutInputType) {
     placeOrder(input);
@@ -78,6 +120,25 @@ const CheckoutForm: React.FC = () => {
         className="w-full mx-auto flex flex-col justify-center "
         noValidate
       >
+        {savedAddresses.length > 0 && (
+          <div className="mb-4">
+            <label className="block text-gray-600 font-semibold text-sm leading-none mb-3">
+              {t('text-select-address', 'Select Address')}
+            </label>
+            <select
+              value={selectedAddressId || ''}
+              onChange={handleAddressSelect}
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-heading"
+            >
+              <option value="">{t('text-choose-address', 'Choose an address')}</option>
+              {savedAddresses.map((addr) => (
+                <option key={addr.id} value={addr.id}>
+                  {addr.label || addr.fullName} - {addr.city}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
         <div className="flex flex-col space-y-4 lg:space-y-5">
           <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0">
             <Input

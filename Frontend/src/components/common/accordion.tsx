@@ -39,6 +39,7 @@ export const Collapse: React.FC<CollapseProps> = ({
     >
       <motion.header
         initial={false}
+        // @ts-ignore
         onClick={() => setExpanded(isOpen ? false : i)}
         className={cn(
           'cursor-pointer flex items-center justify-between transition-colors py-5 md:py-6',

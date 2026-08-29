@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion';
 import { fadeInTop } from '@utils/motion/fade-in-top';
 import Link from '@components/ui/link';
-import Button from '@components/ui/button';
 import TrashIcon from '@components/icons/trash-icon';
 import Counter from '@components/common/counter';
 import { useWindowSize } from '@utils/use-window-size';
-import { useTranslation } from 'next-i18next';
 import { useSsrCompatible } from '@utils/use-ssr-compatible';
+import { useTranslation } from 'next-i18next';
 import { useOrdersQuery } from '@framework/order/get-all-orders';
 import { useCart } from '@contexts/cart/cart.context';
 import { Order } from '@framework/types';
@@ -49,9 +48,18 @@ const OrdersTable: React.FC = () => {
     [allOrders],
   );
 
+  const cartTotalQty = useMemo(
+    () => cartItems.reduce((sum, item) => sum + (item.quantity || 1), 0),
+    [cartItems],
+  );
+  const cartTotalPrice = useMemo(
+    () => cartItems.reduce((sum, item) => sum + item.price * (item.quantity || 1), 0),
+    [cartItems],
+  );
+
   const orders = activeTab === 'active' ? activeOrders : completedOrders;
 
-  const showError = error && cartEmpty;
+  const showError = Boolean(error) && !data;
 
   const formatDate = (dateStr?: string) => {
     if (!dateStr) return '—';
@@ -201,9 +209,9 @@ const OrdersTable: React.FC = () => {
 
   const hasContent = () => {
     if (activeTab === 'active') {
-      return !cartEmpty || orders.length > 0;
+      return !cartEmpty || activeOrders.length > 0;
     }
-    return orders.length > 0;
+    return completedOrders.length > 0;
   };
 
   return (
@@ -303,7 +311,7 @@ const OrdersTable: React.FC = () => {
                     {statusLabel(order.status)}
                   </td>
                   <td className="px-4 py-5 text-center text-heading">
-                    {(order as any).order_items?.length ?? '—'}
+                    {order.products?.length ?? '—'}
                   </td>
                   <td className="px-4 py-5 text-center text-heading">
                     {order.total.toLocaleString()} {t('text-tooman')}
@@ -326,13 +334,28 @@ const OrdersTable: React.FC = () => {
                 </tr>
               )}
               {activeTab === 'active' && !cartEmpty && (
-                <tr className="border-b border-gray-300">
-                  <td colSpan={6} className="px-4 py-5 text-center">
+                <tr className="border-b border-gray-300 bg-gray-50">
+                  <td className="px-4 py-5 text-center text-heading font-semibold">
+                    جمع
+                  </td>
+                  <td className="px-4 py-5 text-center text-heading">
+                    —
+                  </td>
+                  <td className="px-4 py-5 text-center text-heading">
+                    —
+                  </td>
+                  <td className="px-4 py-5 text-center text-heading">
+                    {cartTotalQty} {t('text-items')}
+                  </td>
+                  <td className="px-4 py-5 text-center text-heading">
+                    {cartTotalPrice.toLocaleString()} {t('text-tooman')}
+                  </td>
+                  <td className="px-4 py-5 text-center text-heading">
                     <Link
                       href="/checkout"
                       className="text-sm leading-4 bg-heading text-white px-6 py-3 inline-block rounded-md hover:bg-gray-600"
                     >
-                       {t('text-buy-all-products')}
+                      {t('text-buy-all-products')}
                     </Link>
                   </td>
                 </tr>
@@ -359,18 +382,18 @@ const OrdersTable: React.FC = () => {
                   {t('text-date')}
                   <span className="font-normal">{formatDate(order.created_at)}</span>
                 </li>
-        <li className="flex items-center justify-between">
-          {t('text-status')}
-          <span className="font-normal">{statusLabel(order.status)}</span>
-        </li>
-        <li className="flex items-center justify-between">
-          {t('text-quantity')}
-          <span className="font-normal">{(order as any).order_items?.length ?? '—'}</span>
-        </li>
-        <li className="flex items-center justify-between">
-          {t('text-total')}
-          <span className="font-normal">{order.total.toLocaleString()} {t('text-tooman')}</span>
-        </li>
+                <li className="flex items-center justify-between">
+                  {t('text-status')}
+                  <span className="font-normal">{statusLabel(order.status)}</span>
+                </li>
+                <li className="flex items-center justify-between">
+                  {t('text-quantity')}
+                  <span className="font-normal">{order.products?.length ?? '—'}</span>
+                </li>
+                <li className="flex items-center justify-between">
+                  {t('text-total')}
+                  <span className="font-normal">{order.total.toLocaleString()} {t('text-tooman')}</span>
+                </li>
                 <li className="flex items-center justify-between">
                   {t('text-actions')}
                   <span className="font-normal">
@@ -388,14 +411,27 @@ const OrdersTable: React.FC = () => {
               <div className="text-center text-heading py-5">{t('text-orders-not-found')}</div>
             )}
             {activeTab === 'active' && !cartEmpty && (
-              <div className="text-center py-5">
-                <Link
-                  href="/checkout"
-                  className="text-sm leading-4 bg-heading text-white px-6 py-3 inline-block rounded-md hover:bg-gray-600"
-                >
-                  {t('text-buy-all-products')}
-                </Link>
-              </div>
+              <ul className="flex flex-col px-4 pt-5 pb-6 space-y-5 text-sm font-semibold border border-gray-300 rounded-md text-heading bg-gray-50">
+                <li className="flex items-center justify-between">
+                  {t('text-quantity')}
+                  <span className="font-normal">{cartTotalQty} {t('text-items')}</span>
+                </li>
+                <li className="flex items-center justify-between">
+                  {t('text-total')}
+                  <span className="font-normal">{cartTotalPrice.toLocaleString()} {t('text-tooman')}</span>
+                </li>
+                <li className="flex items-center justify-between">
+                  {t('text-actions')}
+                  <span className="font-normal">
+                    <Link
+                      href="/checkout"
+                      className="text-sm leading-4 bg-heading text-white px-6 py-3 inline-block rounded-md hover:bg-gray-600"
+                    >
+                      {t('text-buy-all-products')}
+                    </Link>
+                  </span>
+                </li>
+              </ul>
             )}
           </div>
         )}

@@ -79,7 +79,7 @@ const PRODUCT_POPULATE =
 const ORDER_POPULATE =
   "populate[0]=order_items" +
   "&populate[1]=order_items.order_item" +
-  "&populate[2]=order";
+  "&populate[2]=customer";
 
 /** Category populate: image (media) + banner. */
 const MEDIA_ONLY_POPULATE = "populate[0]=image&populate[1]=banner";

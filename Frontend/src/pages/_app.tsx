@@ -40,7 +40,7 @@ function Noop({ children }: React.PropsWithChildren<{}>) {
 }
 
 const CustomApp = ({ Component, pageProps }: AppProps) => {
-  const queryClientRef = useRef<any>();
+  const queryClientRef = useRef<any>(null);
   if (!queryClientRef.current) {
     queryClientRef.current = new QueryClient();
   }
@@ -58,6 +58,14 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
           registration.unregister();
         });
       });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const token = document.cookie.match(/(?:^|; )csrf_token=([^;]+)/);
+    if (!token) {
+      fetch('/api/csrf-token', { method: 'GET', credentials: 'include' }).catch(() => {});
     }
   }, []);
 

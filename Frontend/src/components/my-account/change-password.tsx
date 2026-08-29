@@ -30,11 +30,11 @@ const ChangePassword: React.FC = () => {
 	function onSubmit(input: ChangePasswordInputType) {
 		changePassword(input);
 	}
-	const { t } = useTranslation();
+	const { t } = useTranslation('common');
 	return (
 		<>
 			<h2 className="text-lg md:text-xl xl:text-2xl font-bold text-heading mb-6 xl:mb-8">
-				{t("common:text-change-password")}
+				{t('text-change-password')}
 			</h2>
 			<motion.div
 				layout
@@ -83,7 +83,7 @@ const ChangePassword: React.FC = () => {
 								disabled={isPending}
 								className="h-13 mt-3"
 							>
-								{t("common:text-change-password")}
+								{t("text-change-password")}
 							</Button>
 						</div>
 					</div>

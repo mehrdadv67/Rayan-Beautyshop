@@ -23,7 +23,7 @@ const HeaderTwo: React.FC = () => {
     isAuthorized,
   } = useUI();
   const { t } = useTranslation("common");
-  const siteHeaderRef = useRef() as DivElementRef;
+  const siteHeaderRef = useRef(null) as any as DivElementRef;
   useAddActiveScroll(siteHeaderRef);
 
   function handleLogin() {

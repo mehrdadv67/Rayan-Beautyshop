@@ -33,6 +33,7 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
       animate='to'
       exit='from'
       variants={fadeInOut(0.25)}
+      // @ts-ignore
       className={`group w-full h-auto flex justify-start items-center bg-white py-4 md:py-7 border-b border-gray-100 relative last:border-b-0`}
       title={item?.name}
     >

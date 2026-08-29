@@ -314,7 +314,7 @@ export function normalizeOrderItem(item: any): OrderItem {
 
 /** Strapi order entry -> flat template Order. */
 export function normalizeOrder(item: any): Order {
-  const user = item?.order ?? {};
+  const customer = item?.customer ?? {};
   const orderItems = Array.isArray(item?.order_items)
     ? item.order_items.map(normalizeOrderItem)
     : [];
@@ -327,8 +327,8 @@ export function normalizeOrder(item: any): Order {
     total: Number(item?.total ?? 0),
     tracking_number: item?.tracking_number ?? "",
     customer: {
-      id: Number(user?.id ?? 0),
-      email: user?.email ?? "",
+      id: Number(customer?.id ?? 0),
+      email: customer?.email ?? "",
     },
     shipping_fee: Number(item?.shipping_fee ?? 0),
     payment_gateway: item?.payment_gateway ?? "",

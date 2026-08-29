@@ -1,3 +1,5 @@
+import { NextApiRequest } from 'next';
+
 type RateLimitEntry = {
   count: number;
   resetTime: number;

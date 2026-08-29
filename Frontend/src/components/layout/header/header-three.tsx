@@ -10,6 +10,7 @@ import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
 import LanguageSwitcher from "@components/ui/language-switcher";
 import WishButton from "@components/ui/wish-button";
+import CompareButton from "@components/ui/compare-button";
 import { UserLineIcon } from "@components/icons/UserLineIcon";
 import Link from "@components/ui/link";
 import CategoryMenu from "@components/ui/category-menu";
@@ -27,7 +28,7 @@ export default function Header() {
   const { openSidebar, setDrawerView, openModal, setModalView, isAuthorized } =
     useUI();
   const { t } = useTranslation();
-  const siteHeaderRef = useRef() as DivElementRef;
+  const siteHeaderRef = useRef(null) as any as DivElementRef;
   useAddActiveScroll(siteHeaderRef);
   // Live menu from Strapi; fall back to hardcoded settings while loading.
   const { data: liveMenu } = useMenuQuery();
@@ -106,20 +107,26 @@ export default function Header() {
             <LanguageSwitcher />
           </div>
           <div className='flex items-center justify-end flex-shrink-0'>
-            <div className='flex items-center transition-all wishlistShopping gap-x-7 lg:gap-x-6 xl:gap-x-8 2xl:gap-x-10 ltr:pl-3 rtl:pr-3'>
-              <div className='flex md:gap-x-4 align-center '>
-                <WishButton />
-                <span className='hidden text-sm font-semibold transition-all duration-100 ease-in-out cursor-pointer lg:font-normal lg:block xl:text-base text-heading'>
-                  {t("menu:menu-wishlist")}
-                </span>
+              <div className='flex items-center transition-all wishlistShopping gap-x-7 lg:gap-x-6 xl:gap-x-8 2xl:gap-x-10 ltr:pl-3 rtl:pr-3'>
+                <div className='flex md:gap-x-4 align-center '>
+                  <WishButton />
+                  <span className='hidden text-sm font-semibold transition-all duration-100 ease-in-out cursor-pointer lg:font-normal lg:block xl:text-base text-heading'>
+                    {t("menu:menu-wishlist")}
+                  </span>
+                </div>
+                <div className='flex md:gap-x-4 align-center '>
+                  <CompareButton />
+                  <span className='hidden text-sm font-semibold transition-all duration-100 ease-in-out cursor-pointer lg:font-normal lg:block xl:text-base text-heading'>
+                    {t("menu:menu-compare", "Compare")}
+                  </span>
+                </div>
+                <div className='hidden lg:flex md:gap-x-4 align-center'>
+                  <CartButton />
+                  <span className='hidden text-sm font-semibold transition-all duration-100 ease-in-out cursor-pointer lg:font-normal lg:block xl:text-base text-heading'>
+                    {t("menu:menu-shopping")}
+                  </span>
+                </div>
               </div>
-              <div className='hidden lg:flex md:gap-x-4 align-center'>
-                <CartButton />
-                <span className='hidden text-sm font-semibold transition-all duration-100 ease-in-out cursor-pointer lg:font-normal lg:block xl:text-base text-heading'>
-                  {t("menu:menu-shopping")}
-                </span>
-              </div>
-            </div>
           </div>
         </div>
 

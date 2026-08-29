@@ -4,13 +4,13 @@ import type { FC } from "react";
 import { useUI } from "@contexts/ui.context";
 import usePrice from "@framework/product/use-price";
 import { Product } from "@framework/types";
-// import ProductIcon1 from '../../../public/assets/images/products/icons/product-icon1.svg'
-// import ProductIcon2 from '../../../public/assets/images/products/icons/product-icon2.svg'
-// import ProductIcon3 from '../../../public/assets/images/products/icons/product-icon3.svg'
 import ProductViewIcon from "@components/icons/product-view-icon";
 import ProductWishIcon from "@components/icons/product-wish-icon";
 import ProductCompareIcon from "@components/icons/product-compare-icon";
 import RatingDisplay from "@components/common/rating-display";
+import { useWishlist } from "@contexts/wishlist/wishlist.context";
+import { useCompare } from "@contexts/compare/compare.context";
+import { ROUTES } from "@utils/routes";
 
 interface ProductProps {
   product: Product;
@@ -57,7 +57,47 @@ const ProductCard: FC<ProductProps> = ({
   disableBorderRadius = false,
 }) => {
   const { openModal, setModalView, setModalData } = useUI();
+  const { addToWishlist, removeFromWishlist, isInWishlist: isInWishlistItem } = useWishlist();
+  const { addToCompare, removeFromCompare, isInCompare: isInCompareItem } = useCompare();
   const placeholderImage = `/assets/placeholder/products/product-${variant}.svg`;
+
+  const isWishlisted = isInWishlistItem(product.id);
+  const isCompared = isInCompareItem(product.id);
+
+  const handleWishlistToggle = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    if (isWishlisted) {
+      removeFromWishlist(product.id);
+    } else {
+      addToWishlist({
+        id: product.id,
+        name: product.name,
+        price: product.price || 0,
+        image: (product.image as any)?.thumbnail || (product.image as any)?.original || product.image,
+        slug: product.slug,
+      });
+    }
+  };
+
+  const handleCompareToggle = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    if (isCompared) {
+      removeFromCompare(product.id);
+    } else {
+      addToCompare({
+        id: product.id,
+        name: product.name,
+        price: product.price || 0,
+        image: (product.image as any)?.thumbnail || (product.image as any)?.original || product.image,
+        slug: product.slug,
+        description: product.description,
+        category: typeof product.category === 'string' ? product.category : (product.category as any)?.name,
+        rating: typeof product.rating === 'number' ? product.rating : undefined,
+      });
+    }
+  };
 
   const defaultVariant = product?.variants?.find((v) => v.isDefault) ??
     product?.variants?.[0];
@@ -326,8 +366,20 @@ const ProductCard: FC<ProductProps> = ({
 
       {(variant === "gridTrendy" || variant === "gridModern") && (
         <div className='absolute flex ltr:right-2 rtl:left-2 bottom-2 gap-x-2'>
-          <ProductWishIcon className='transition ease-in duration-300 sm:opacity-0 group-hover:opacity-100 delay-200 w-[35px] sm:w-[42px] lg:w-[52px] bg-[#F1F3F4] rounded-md' />
-          <ProductCompareIcon className='transition ease-in duration-300 sm:opacity-0 group-hover:opacity-100 delay-300 w-[35px] sm:w-[42px] lg:w-[52px] bg-[#F1F3F4] rounded-md' />
+          <button
+            onClick={handleWishlistToggle}
+            className={`transition ease-in duration-300 sm:opacity-0 group-hover:opacity-100 delay-200 w-[35px] sm:w-[42px] lg:w-[52px] bg-[#F1F3F4] rounded-md flex items-center justify-center ${isWishlisted ? 'text-red-500' : 'text-heading'}`}
+            aria-label={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
+          >
+            <ProductWishIcon className='w-4 h-4' />
+          </button>
+          <button
+            onClick={handleCompareToggle}
+            className={`transition ease-in duration-300 sm:opacity-0 group-hover:opacity-100 delay-300 w-[35px] sm:w-[42px] lg:w-[52px] bg-[#F1F3F4] rounded-md flex items-center justify-center ${isCompared ? 'text-blue-500' : 'text-heading'}`}
+            aria-label={isCompared ? 'Remove from compare' : 'Add to compare'}
+          >
+            <ProductCompareIcon className='w-4 h-4' />
+          </button>
         </div>
       )}
     </div>

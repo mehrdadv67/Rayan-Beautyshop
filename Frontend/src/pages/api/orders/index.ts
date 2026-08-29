@@ -47,6 +47,16 @@ function parseCartItemId(rawId: any): { baseId: string; attrIds: string[] } {
   return { baseId, attrIds }
 }
 
+function getUserIdFromJwt(jwt: string | undefined): string | null {
+  if (!jwt) return null
+  try {
+    const payload = JSON.parse(Buffer.from(jwt.split('.')[1], 'base64').toString())
+    return String(payload.id || payload.user?.id || '')
+  } catch {
+    return null
+  }
+}
+
 interface PricedLine {
   item: any
   unitPrice: number
@@ -56,15 +66,14 @@ interface PricedLine {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const user = await getStrapiUser(req)
-
-  if (!user) {
-    return res.status(401).json({ error: 'Unauthorized' })
-  }
-
-  const userId = String(user.id)
-
   if (req.method === 'POST') {
+    const user = await getStrapiUser(req)
+
+    if (!user) {
+      return res.status(401).json({ error: 'Unauthorized' })
+    }
+
+    const userId = String(user.id)
     const body = req.body
     const cartItems: any[] = Array.isArray(body.products) ? body.products : []
 
@@ -250,13 +259,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === 'GET') {
     const cookies = parseCookies(req.headers.cookie)
     const userJwt = cookies.strapi_jwt
+    const userId = getUserIdFromJwt(userJwt)
 
-    if (!userJwt) {
+    if (!userId) {
       return res.status(401).json({ error: 'Unauthorized' })
     }
 
     const strapiRes = await fetch(
-      `${process.env.STRAPI_URL}/api/orders?populate[0]=order_items&populate[1]=order_items.order_item&filters[customer][id][$eq]=${userId}`,
+      `${process.env.STRAPI_URL}/api/orders?populate[0]=order_items&populate[1]=order_items.order_item&populate[2]=customer&filters[customer][id][$eq]=${userId}`,
       {
         method: 'GET',
         headers: {

@@ -12,7 +12,9 @@ export const FilteredItem = ({ itemKey, itemValue }: Props) => {
   const { pathname, query } = router;
 
   function handleClose() {
-    const currentItem = (query[itemKey]! as string)
+    const currentValue = query[itemKey];
+    if (!currentValue || typeof currentValue !== 'string') return;
+    const currentItem = currentValue
       .split(',')
       .filter((i) => i !== itemValue);
     delete query[itemKey];

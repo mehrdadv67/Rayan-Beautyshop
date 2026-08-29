@@ -1,8 +1,20 @@
+import { useWishlist } from "@contexts/wishlist/wishlist.context";
+import { useRouter } from "next/router";
+import { ROUTES } from "@utils/routes";
+
 export default function WishButton() {
+  const { totalItems } = useWishlist();
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(ROUTES.WISHLIST);
+  };
+
   return (
     <button
       className="relative flex items-center justify-center flex-shrink-0 h-auto transform focus:outline-none"
       aria-label="wishlist-button"
+      onClick={handleClick}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +32,7 @@ export default function WishButton() {
       </svg>
 
       <span className="cart-counter-badge flex items-center justify-center bg-heading text-white absolute -top-2.5 xl:-top-3 ltr:-right-2.5 ltr:xl:-right-3 rtl:-left-2.5 rtl:xl:-left-3 rounded-full font-bold">
-        0
+        {totalItems}
       </span>
     </button>
   );

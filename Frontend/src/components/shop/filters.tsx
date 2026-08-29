@@ -37,19 +37,18 @@ export const ShopFilters: React.FC = () => {
 					</p>
 				)}
 				<div className="flex flex-wrap -m-1.5 pt-2">
-					{!isEmpty(query) &&
-						Object.values(query)
-							.join(",")
-							.split(",")
-							.map((v, idx) => (
+					{Object.entries(query)
+						.filter(([, value]) => typeof value === 'string' && value && value !== 'undefined' && value !== 'null')
+						.map(([key, value]) => {
+							const values = String(value).split(",");
+							return values.map((v, idx) => (
 								<FilteredItem
-									itemKey={
-										Object.keys(query).find((k) => query[k]?.includes(v))!
-									}
+									itemKey={key}
 									itemValue={v}
-									key={idx}
+									key={`${key}-${idx}`}
 								/>
-							))}
+							));
+						})}
 				</div>
 			</div>
 

@@ -14,7 +14,7 @@ const OrderItemCard = ({ product }: { product: OrderItem }) => {
       key={product.id}
     >
       <td className='p-4'>
-        {product.name} * {product.quantity}
+        {product.name} × {product.quantity}
       </td>
       <td className='p-4'>{itemTotal}</td>
     </tr>
@@ -48,8 +48,8 @@ const OrderDetails: React.FC<{ className?: string }> = ({
       currencyCode: "IRR",
     }
   );
-  if (isLoading) return <p>در حال بارگذاری...</p>;
-  if (!order) return <p>سفارش یافت نشد</p>;
+  if (isLoading) return <p>{t('text-loading')}</p>;
+  if (!order) return <p>{t('text-orders-not-found')}</p>;
   return (
     <div className={className}>
       <h2 className='mb-6 text-lg font-bold md:text-xl xl:text-2xl text-heading xl:mb-8'>

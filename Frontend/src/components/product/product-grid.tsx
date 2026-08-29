@@ -14,6 +14,12 @@ interface ProductGridProps {
 export const ProductGrid: FC<ProductGridProps> = ({ className = "", itemCount, query: queryProp }) => {
   const router = useRouter();
   const query = queryProp ?? router.query;
+  const sanitizedQuery = Object.fromEntries(
+    Object.entries(query).filter(([, v]) => typeof v === 'string')
+  );
+  if (sanitizedQuery.q && !sanitizedQuery.text) {
+    sanitizedQuery.text = sanitizedQuery.q;
+  }
   const {
     isFetching: isLoading,
     isFetchingNextPage: loadingMore,
@@ -21,7 +27,7 @@ export const ProductGrid: FC<ProductGridProps> = ({ className = "", itemCount, q
     hasNextPage,
     data,
     error,
-  } = useProductsQuery({ limit: 10, ...query });
+  } = useProductsQuery({ limit: 10, ...sanitizedQuery });
   const { t } = useTranslation("common");
 
   const totalItems =

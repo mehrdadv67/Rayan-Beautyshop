@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { normalizeOrder } from '@framework/utils/normalize'
 
 function parseCookies(cookieHeader: string | undefined): Record<string, string> {
   if (!cookieHeader) return {}
@@ -72,7 +73,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   const strapiData = await strapiRes.json()
-  const order = strapiData.data
+  const order = normalizeOrder(strapiData.data)
 
   if (!order || String(order.customer?.id) !== String(user.id)) {
     return res.status(404).json({ error: 'Order not found' })

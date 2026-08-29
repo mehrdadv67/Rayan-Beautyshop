@@ -22,7 +22,7 @@ const Header: React.FC = () => {
   const { openSearch, openModal, setModalView, isAuthorized } = useUI();
   const { t } = useTranslation("common");
   const { data: user } = useGetUserQuery();
-  const siteHeaderRef = useRef() as DivElementRef;
+  const siteHeaderRef = useRef(null) as any as DivElementRef;
   useAddActiveScroll(siteHeaderRef);
   // Live menu from Strapi; fall back to the hardcoded settings while loading
   // or if the request fails, so the header never renders empty.

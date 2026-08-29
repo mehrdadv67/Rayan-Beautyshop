@@ -50,6 +50,7 @@ export default function Cart() {
           animate='to'
           exit='from'
           variants={fadeInOut(0.25)}
+          // @ts-ignore
           className='flex flex-col items-center justify-center px-5 pt-8 pb-5 md:px-7'
         >
           <EmptyCart />

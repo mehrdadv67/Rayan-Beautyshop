@@ -15,7 +15,7 @@ import { useEffect } from 'react';
 
 const AccountDetails: React.FC = () => {
   const { mutate: updateUser, isPending } = useUpdateUserMutation();
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const { data: user, isLoading } = useGetUserQuery();
 
   const {
@@ -62,7 +62,7 @@ const AccountDetails: React.FC = () => {
   }
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>{t('text-loading')}</div>;
   }
 
   return (
@@ -76,7 +76,7 @@ const AccountDetails: React.FC = () => {
       className={`w-full flex flex-col`}
     >
       <h2 className="text-lg md:text-xl xl:text-2xl font-bold text-heading mb-6 xl:mb-8">
-        {t('common:text-account-details')}
+        {t('text-account-details')}
       </h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -177,7 +177,7 @@ const AccountDetails: React.FC = () => {
               disabled={isPending}
               className="h-12 mt-3 w-full sm:w-32"
             >
-              {isPending ? 'در حال ذخیره...' : t('common:button-save')}
+              {isPending ? t('text-saving') : t('button-save')}
             </Button>
           </div>
         </div>

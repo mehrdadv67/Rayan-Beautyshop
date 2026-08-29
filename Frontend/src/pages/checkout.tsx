@@ -10,6 +10,8 @@ import { NextSeo } from "next-seo";
 import { siteSettings } from "@settings/site-settings";
 import { absoluteSiteUrl } from "@utils/site-url";
 import { useTranslation } from "next-i18next";
+import { strapiBannerParams } from "@framework/utils/api-endpoints";
+import { normalizeBanner, unwrapList } from "@framework/utils/normalize";
 
 interface CheckoutPageProps {
   bannerImage?: string;
@@ -47,14 +49,19 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
 
   try {
     const res = await fetch(
-      `${process.env.STRAPI_URL || "http://localhost:1337"}/api/banners?filters[position][$eq]=checkout&populate=image`,
+      `${process.env.STRAPI_URL || "http://localhost:1337"}/api/banners${strapiBannerParams("checkout")}`,
       {
         headers: { Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}` },
         cache: "no-store",
       }
     );
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch checkout banner: ${res.status}`);
+    }
+
     const data = await res.json();
-    const banners = data.data || [];
+    const banners = unwrapList(data, normalizeBanner);
     if (banners.length > 0 && banners[0]?.image?.desktop?.url) {
       bannerImage = banners[0].image.desktop.url;
     }
