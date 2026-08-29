@@ -23,7 +23,7 @@ export default function Newsletter() {
   });
   const { closeModal } = useUI();
   const [isSuccess, setIsSuccess] = useState(false);
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   async function onSubmit(values: NewsLetterFormValues) {
     try {
       const res = await fetch('/api/subscribe', {

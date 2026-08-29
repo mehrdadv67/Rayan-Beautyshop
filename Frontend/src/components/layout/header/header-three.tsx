@@ -27,7 +27,7 @@ const { site_header } = siteSettings;
 export default function Header() {
   const { openSidebar, setDrawerView, openModal, setModalView, isAuthorized } =
     useUI();
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const siteHeaderRef = useRef(null) as any as DivElementRef;
   useAddActiveScroll(siteHeaderRef);
   // Live menu from Strapi; fall back to hardcoded settings while loading.

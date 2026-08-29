@@ -15,7 +15,7 @@ async function getStrapiUser(req: NextApiRequest): Promise<any | null> {
   if (!jwt) return null
 
   try {
-    const res = await fetch(`${process.env.STRAPI_URL}/api/users/me`, {
+    const res = await fetch(`${(process.env.STRAPI_URL || "http://localhost:1337")}/api/users/me`, {
       headers: { Authorization: `Bearer ${jwt}` },
       cache: 'no-store',
     })
@@ -41,7 +41,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   if (req.method === 'PUT') {
     const items = Array.isArray(req.body?.items) ? req.body.items : []
-    const strapiRes = await fetch(`${process.env.STRAPI_URL}/api/users/me`, {
+    const strapiRes = await fetch(`${(process.env.STRAPI_URL || "http://localhost:1337")}/api/users/me`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

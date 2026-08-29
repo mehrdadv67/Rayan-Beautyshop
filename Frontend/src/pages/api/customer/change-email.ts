@@ -27,7 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ message: 'Email and current password are required' });
   }
 
-  const strapiRes = await fetch(`${process.env.STRAPI_URL}/api/auth/change-email`, {
+  const strapiRes = await fetch(`${(process.env.STRAPI_URL || "http://localhost:1337")}/api/auth/change-email`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

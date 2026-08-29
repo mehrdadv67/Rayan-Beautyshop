@@ -22,7 +22,7 @@ interface CheckoutInputType {
 }
 
 const CheckoutForm: React.FC = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const { mutate: placeOrder, isPending } = useCheckoutMutation();
   const { data: user } = useGetUserQuery();
   const { items: savedAddresses, getAddressById } = useAddress();

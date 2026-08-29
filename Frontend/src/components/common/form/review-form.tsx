@@ -28,7 +28,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ productId }) => {
     formState: { errors },
   } = useForm<ReviewFormValues>();
   const [rating, setRating] = useState(0);
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
 
   async function onSubmit(values: ReviewFormValues) {
     if (!rating) {

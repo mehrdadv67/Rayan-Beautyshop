@@ -31,7 +31,7 @@ const PasswordInput = React.forwardRef<HTMLInputElement, Props>(
     const [show, setShow] = useState(false);
 
     const rootClassName = cn(classes.root, inputClassName);
-    const { t } = useTranslation();
+    const { t } = useTranslation('common');
     return (
       <div className={className}>
         {labelKey && (

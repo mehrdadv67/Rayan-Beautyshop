@@ -13,7 +13,7 @@ const defaultValues = {
 };
 
 const ForgetPasswordForm = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const { setModalView, openModal, closeModal } = useUI();
   const { mutate: forgetPassword, isPending, error } = useForgetPasswordMutation();
   const {

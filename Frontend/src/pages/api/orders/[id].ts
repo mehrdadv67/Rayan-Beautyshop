@@ -19,7 +19,7 @@ async function getStrapiUser(req: NextApiRequest): Promise<any | null> {
   }
 
   try {
-    const res = await fetch(`${process.env.STRAPI_URL}/api/users/me`, {
+    const res = await fetch(`${(process.env.STRAPI_URL || "http://localhost:1337")}/api/users/me`, {
       headers: {
         Authorization: `Bearer ${jwt}`,
       },
@@ -56,7 +56,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   const strapiRes = await fetch(
-    `${process.env.STRAPI_URL}/api/orders/${encodeURIComponent(orderId)}?populate[0]=order_items&populate[1]=order_items.order_item&populate[2]=customer`,
+    `${(process.env.STRAPI_URL || "http://localhost:1337")}/api/orders/${encodeURIComponent(orderId)}?populate[0]=order_items&populate[1]=order_items.order_item&populate[2]=customer`,
     {
       method: 'GET',
       headers: {

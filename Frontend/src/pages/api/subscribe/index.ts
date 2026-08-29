@@ -37,7 +37,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const strapiRes = await fetch(`${process.env.STRAPI_URL}/api/discount-subscriptions`, {
+    const strapiRes = await fetch(`${(process.env.STRAPI_URL || "http://localhost:1337")}/api/discount-subscriptions`, {
       method: 'POST',
       headers: API_TOKEN_HEADERS,
       body: JSON.stringify({ data: { phone: normalizedPhone, date: new Date().toISOString() } }),

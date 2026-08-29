@@ -10,7 +10,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const strapiRes = await fetch(
-      `${process.env.STRAPI_URL}/api/banners?populate[0]=logo&populate[1]=favicon&filters[position][$eq]=global`,
+      `${(process.env.STRAPI_URL || "http://localhost:1337")}/api/banners?populate[0]=logo&populate[1]=favicon&filters[position][$eq]=global`,
       {
         headers: API_TOKEN_HEADERS,
         cache: 'no-store',

@@ -31,7 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ message: 'New password and confirm password do not match' });
   }
 
-  const strapiRes = await fetch(`${process.env.STRAPI_URL}/api/auth/change-password`, {
+  const strapiRes = await fetch(`${(process.env.STRAPI_URL || "http://localhost:1337")}/api/auth/change-password`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

@@ -26,7 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ message: 'Password and reset code are required' });
   }
 
-  const strapiRes = await fetch(`${process.env.STRAPI_URL}/api/auth/reset-password`, {
+  const strapiRes = await fetch(`${(process.env.STRAPI_URL || "http://localhost:1337")}/api/auth/reset-password`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ password, passwordConfirmation: passwordConfirmation || password, code }),

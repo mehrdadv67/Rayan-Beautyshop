@@ -17,7 +17,7 @@ const defaultValues = {
 };
 
 const ResetPasswordForm = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const { setModalView, openModal, closeModal } = useUI();
   const router = useRouter();
   const code = router.query.code as string | undefined;

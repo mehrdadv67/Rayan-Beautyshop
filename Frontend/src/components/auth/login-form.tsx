@@ -9,7 +9,7 @@ import { useTranslation } from 'next-i18next';
 import { toast } from 'react-toastify';
 
 const LoginForm: React.FC = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const { setModalView, openModal, closeModal } = useUI();
   const { mutate: login, isPending, error } = useLoginMutation();
 

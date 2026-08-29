@@ -49,7 +49,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     console.log('Creating review with payload:', JSON.stringify(payload, null, 2));
 
-    const strapiRes = await fetch(`${process.env.STRAPI_URL}/api/reviews`, {
+    const strapiRes = await fetch(`${(process.env.STRAPI_URL || "http://localhost:1337")}/api/reviews`, {
       method: 'POST',
       headers: API_TOKEN_HEADERS,
       body: JSON.stringify({ data: payload }),

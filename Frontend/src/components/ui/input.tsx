@@ -52,7 +52,7 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
       },
       inputClassName
     );
-    const { t } = useTranslation();
+    const { t } = useTranslation('common');
     const autocompleteMap: Record<string, string> = {
       email: "email",
       password: "current-password",

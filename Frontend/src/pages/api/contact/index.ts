@@ -31,7 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const strapiRes = await fetch(`${process.env.STRAPI_URL}/api/contact-messages`, {
+    const strapiRes = await fetch(`${(process.env.STRAPI_URL || "http://localhost:1337")}/api/contact-messages`, {
       method: 'POST',
       headers: API_TOKEN_HEADERS,
       body: JSON.stringify({

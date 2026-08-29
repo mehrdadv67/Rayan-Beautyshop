@@ -14,7 +14,7 @@ import SearchProduct from "@components/common/search-product";
 import { useTranslation } from "next-i18next";
 
 export default function Search() {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const { displaySearch, closeSearch } = useUI();
   const [searchText, setSearchText] = React.useState("");
   const { data, isLoading } = useSearchQuery({

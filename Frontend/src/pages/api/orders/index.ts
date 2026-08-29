@@ -18,7 +18,7 @@ async function getStrapiUser(req: NextApiRequest): Promise<any | null> {
   }
 
   try {
-    const res = await fetch(`${process.env.STRAPI_URL}/api/users/me`, {
+    const res = await fetch(`${(process.env.STRAPI_URL || "http://localhost:1337")}/api/users/me`, {
       headers: {
         Authorization: `Bearer ${jwt}`,
       },
@@ -90,7 +90,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const productIds = [...new Set(parsed.map((p) => p.baseId))].filter(Boolean)
 
     const productsRes = await fetch(
-      `${process.env.STRAPI_URL}/api/products?filters[id][$in]=${productIds.join(',')}` +
+      `${(process.env.STRAPI_URL || "http://localhost:1337")}/api/products?filters[id][$in]=${productIds.join(',')}` +
         `&populate[variants][populate][options][populate][attribute_value][fields][0]=id`,
       { headers: API_TOKEN_HEADERS, cache: 'no-store' },
     )
@@ -186,7 +186,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       },
     }
 
-    const strapiRes = await fetch(`${process.env.STRAPI_URL}/api/orders`, {
+    const strapiRes = await fetch(`${(process.env.STRAPI_URL || "http://localhost:1337")}/api/orders`, {
       method: 'POST',
       headers: API_TOKEN_HEADERS,
       body: JSON.stringify(orderPayload),
@@ -227,7 +227,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     for (const [documentId, qty] of variantDeltas) {
       const line = lines.find((l) => l.variantDocumentId === documentId)!
       stockUpdates.push(
-        fetch(`${process.env.STRAPI_URL}/api/product-variants/${documentId}`, {
+        fetch(`${(process.env.STRAPI_URL || "http://localhost:1337")}/api/product-variants/${documentId}`, {
           method: 'PUT',
           headers: API_TOKEN_HEADERS,
           body: JSON.stringify({ data: { stock: (line.stock ?? 0) - qty } }),
@@ -239,7 +239,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         (l) => !l.variantDocumentId && l.productDocumentId === documentId,
       )!
       stockUpdates.push(
-        fetch(`${process.env.STRAPI_URL}/api/products/${documentId}`, {
+        fetch(`${(process.env.STRAPI_URL || "http://localhost:1337")}/api/products/${documentId}`, {
           method: 'PUT',
           headers: API_TOKEN_HEADERS,
           body: JSON.stringify({ data: { stock: (line.stock ?? 0) - qty } }),
@@ -266,7 +266,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     const strapiRes = await fetch(
-      `${process.env.STRAPI_URL}/api/orders?populate[0]=order_items&populate[1]=order_items.order_item&populate[2]=customer&filters[customer][id][$eq]=${userId}`,
+      `${(process.env.STRAPI_URL || "http://localhost:1337")}/api/orders?populate[0]=order_items&populate[1]=order_items.order_item&populate[2]=customer&filters[customer][id][$eq]=${userId}`,
       {
         method: 'GET',
         headers: {

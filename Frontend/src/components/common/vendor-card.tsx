@@ -11,7 +11,7 @@ type VendorCardProps = {
 };
 
 const VendorCard: React.FC<VendorCardProps> = ({ shop, variant = "list" }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const placeholderImage = `/assets/placeholder/products/product-grid.svg`;
   const { name, slug, address, logo, is_active } = shop;
   return (

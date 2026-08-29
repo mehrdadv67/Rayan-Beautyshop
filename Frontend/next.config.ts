@@ -29,6 +29,7 @@ export default withPWA({
       },
     ],
   },
+  outputFileTracingRoot: __dirname,
   async rewrites() {
     return [
       {

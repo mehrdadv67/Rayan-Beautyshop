@@ -18,7 +18,7 @@ const TestimonialCard: React.FC<Props> = ({
   disableBoarderRadius = false,
   demoVariant,
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   return (
     <div
       className={`bg-gray-200 w-full ${

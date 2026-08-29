@@ -13,7 +13,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const strapiRes = await fetch(
-      `${process.env.STRAPI_URL}/api/banners${strapiBannerParams(positionStr)}`,
+      `${(process.env.STRAPI_URL || "http://localhost:1337")}/api/banners${strapiBannerParams(positionStr)}`,
       {
         headers: API_TOKEN_HEADERS,
         cache: 'no-store',

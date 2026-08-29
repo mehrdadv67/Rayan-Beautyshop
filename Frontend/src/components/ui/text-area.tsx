@@ -22,7 +22,7 @@ const variantClasses = {
 };
 
 const TextArea = React.forwardRef<HTMLTextAreaElement, Props>((props, ref) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const {
     className,
     labelKey,

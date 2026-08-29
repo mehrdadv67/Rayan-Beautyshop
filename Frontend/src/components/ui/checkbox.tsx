@@ -6,7 +6,7 @@ interface CheckBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 export const CheckBox = React.forwardRef<HTMLInputElement, CheckBoxProps>(
   ({ labelKey, label, ...rest }, ref) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('common');
     return (
       <label className="group flex items-center text-heading text-sm cursor-pointer">
         <input

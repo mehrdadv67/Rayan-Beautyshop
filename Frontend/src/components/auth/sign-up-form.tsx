@@ -11,7 +11,7 @@ import { useTranslation } from 'next-i18next';
 import { toast } from 'react-toastify';
 
 const SignUpForm: React.FC = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const { mutate: signUp, isPending, error } = useSignUpMutation();
   const { setModalView, openModal, closeModal } = useUI();
   const {

@@ -20,7 +20,7 @@ const ContactForm: React.FC = () => {
     reset,
     formState: { errors },
   } = useForm<ContactFormValues>();
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
 
   async function onSubmit(values: ContactFormValues) {
     try {

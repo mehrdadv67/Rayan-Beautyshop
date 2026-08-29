@@ -38,7 +38,7 @@ const SubscriptionWithBg: React.FC<Props> = ({
   });
   const { locale } = useRouter();
   const dir = getDirection(locale);
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const { title, description, buttonText } = data;
   async function onSubmit(input: FormValues) {
     try {

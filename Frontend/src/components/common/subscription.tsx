@@ -36,7 +36,7 @@ const Subscription: React.FC<Props> = ({
   } = useForm<FormValues>({
     defaultValues,
   });
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const { title, description, buttonText } = data;
   async function onSubmit(input: FormValues) {
     try {

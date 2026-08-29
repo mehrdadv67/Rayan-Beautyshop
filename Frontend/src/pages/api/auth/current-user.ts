@@ -36,7 +36,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(200).json({ user: null });
   }
 
-  const strapiRes = await fetch(`${process.env.STRAPI_URL}/api/users/me`, {
+  const strapiRes = await fetch(`${(process.env.STRAPI_URL || "http://localhost:1337")}/api/users/me`, {
     headers: {
       Authorization: `Bearer ${jwt}`,
     },
