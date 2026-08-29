@@ -43,7 +43,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }),
   });
 
-  const data = await strapiRes.json();
+  let data: any;
+  try {
+    data = await strapiRes.json();
+  } catch {
+    return res.status(502).json({ message: 'Invalid response from authentication server' });
+  }
 
   if (!strapiRes.ok) {
     return res.status(400).json({

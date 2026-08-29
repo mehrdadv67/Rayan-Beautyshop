@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function AuthCallback() {
   const router = useRouter();
@@ -10,10 +11,17 @@ export default function AuthCallback() {
   }, [router]);
 
   return null;
-}
+};
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   return {
-    props: {},
+    props: {
+      ...(await serverSideTranslations(locale!, [
+        "common",
+        "forms",
+        "menu",
+        "footer",
+      ])),
+    },
   };
 };

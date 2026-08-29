@@ -32,7 +32,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     body: JSON.stringify({ identifier: email, password }),
   });
 
-  const data = await strapiRes.json();
+  let data: any;
+  try {
+    data = await strapiRes.json();
+  } catch {
+    return res.status(502).json({ message: 'Invalid response from authentication server' });
+  }
 
   if (!strapiRes.ok) {
     return res.status(401).json({

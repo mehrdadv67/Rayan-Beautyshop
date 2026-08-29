@@ -24,18 +24,19 @@ export async function middleware(request: NextRequest) {
   const user = await getStrapiUser(strapiJwt);
 
   const { pathname } = request.nextUrl;
+  const locale = pathname.split('/')[1] || 'fa';
 
   const isProtected = protectedPaths.some((path) => pathname.startsWith(path));
   const isAuthPage = authPaths.some((path) => pathname.startsWith(path));
 
   if (isProtected && !user) {
-    const redirectUrl = new URL('/signin', request.url);
+    const redirectUrl = new URL(`/${locale}/signin`, request.url);
     redirectUrl.searchParams.set('redirectTo', pathname);
     return NextResponse.redirect(redirectUrl);
   }
 
   if (isAuthPage && user) {
-    return NextResponse.redirect(new URL('/my-account', request.url));
+    return NextResponse.redirect(new URL(`/${locale}/my-account`, request.url));
   }
 
   return NextResponse.next();
