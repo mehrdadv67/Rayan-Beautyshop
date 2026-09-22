@@ -1,7 +1,7 @@
 import SectionHeader from "@components/common/section-header";
 import ProductOverlayCard from "@components/product/product-overlay-card";
 import { useQuery } from "@tanstack/react-query";
-import { API_ENDPOINTS, strapiTaggedParams } from "@framework/utils/api-endpoints";
+import { API_ENDPOINTS, strapiListParams } from "@framework/utils/api-endpoints";
 import http from "@framework/utils/http";
 import { normalizeProduct, unwrapList } from "@framework/utils/normalize";
 import Alert from "@components/ui/alert";
@@ -31,11 +31,11 @@ const ProductsFeatured: React.FC<ProductsProps> = ({
   disableBorderRadius = false,
 }) => {
   const { data, error } = useQuery<Product[], Error>({
-    queryKey: ["featuredProducts", { tag: "new-products" }],
+    queryKey: ["featuredProducts", { collection: "onsale-collection" }],
     queryFn: () =>
       http
         .get(
-          `${API_ENDPOINTS.PRODUCTS}${strapiTaggedParams("new-products")}`
+          `${API_ENDPOINTS.PRODUCTS}${strapiListParams()}&filters[collections][slug][$eq]=onsale-collection`
         )
         .then(({ data }) => unwrapList(data, normalizeProduct) as Product[]),
   });

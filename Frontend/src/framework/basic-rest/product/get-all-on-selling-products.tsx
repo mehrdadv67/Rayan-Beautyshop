@@ -1,7 +1,7 @@
 import { QueryOptionsType, Product } from "@framework/types";
 import {
   API_ENDPOINTS,
-  strapiTaggedParams,
+  strapiListParams,
 } from "@framework/utils/api-endpoints";
 import http from "@framework/utils/http";
 import { normalizeProduct, unwrapList } from "@framework/utils/normalize";
@@ -9,7 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export const fetchOnSellingProducts = async () => {
   const { data } = await http.get(
-    `${API_ENDPOINTS.ON_SELLING_PRODUCTS}${strapiTaggedParams("on-sale")}`
+    `${API_ENDPOINTS.ON_SELLING_PRODUCTS}${strapiListParams()}&filters[collections][slug][$eq]=OnSaleProducts`
   );
   return unwrapList(data, normalizeProduct) as Product[];
 };
