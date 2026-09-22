@@ -34,7 +34,7 @@ export default function Home({ bottomBanners }: HomeProps) {
       <NextSeo
         title={siteSettings.name}
         description={siteSettings.description}
-        canonical={absoluteSiteUrl('/')}
+        canonical={absoluteSiteUrl("/")}
       />
       <BannerBlockStrapi position='home_top' />
       <Container>
@@ -43,12 +43,15 @@ export default function Home({ bottomBanners }: HomeProps) {
       <BannerSliderBlock />
       <Container>
         <CategoryBlock sectionHeading='text-shop-by-category' type='rounded' />
-        <ProductsFeatured sectionHeading='text-featured-products' limit={5} />
+        <ProductsFeatured sectionHeading='text-featured-products' limit={10} />
         {bottomBanners[0] && (
           <BannerCard
             key={`banner--key${bottomBanners[0].id}`}
             banner={bottomBanners[0]}
-            href={bottomBanners[0].link || `${ROUTES.COLLECTIONS}/${bottomBanners[0].slug}`}
+            href={
+              bottomBanners[0].link ||
+              `${ROUTES.COLLECTIONS}/${bottomBanners[0].slug}`
+            }
             className='mb-12 lg:mb-14 xl:mb-16 pb-0.5 lg:pb-1 xl:pb-0'
           />
         )}
@@ -57,7 +60,10 @@ export default function Home({ bottomBanners }: HomeProps) {
           <BannerCard
             key={`banner--key${bottomBanners[1].id}`}
             banner={bottomBanners[1]}
-            href={bottomBanners[1].link || `${ROUTES.COLLECTIONS}/${bottomBanners[1].slug}`}
+            href={
+              bottomBanners[1].link ||
+              `${ROUTES.COLLECTIONS}/${bottomBanners[1].slug}`
+            }
             className='mb-12 lg:mb-14 xl:mb-16 pb-0.5 lg:pb-1 xl:pb-0'
           />
         )}
@@ -86,7 +92,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       {
         headers: { Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}` },
         next: { revalidate: 3600 },
-      }
+      },
     );
 
     if (!res.ok) {

@@ -1,6 +1,6 @@
 {
-  "name": "chawkbazar",
-  "version": "2.4.0",
+  "name": "Mehrdad",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "clean": "rm -rf .next dist build out node_modules",
