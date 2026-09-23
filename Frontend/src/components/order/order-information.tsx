@@ -1,9 +1,11 @@
 import { IoCheckmarkCircle } from "react-icons/io5";
+import Link from "@components/ui/link";
 import OrderDetails from "@components/order/order-details";
 import { useOrderQuery } from "@framework/order/get-order";
 import { useRouter } from "next/router";
 import usePrice from "@framework/product/use-price";
 import { useTranslation } from "next-i18next";
+import { ROUTES } from "@utils/routes";
 
 export default function OrderInformation() {
   const {
@@ -17,6 +19,17 @@ export default function OrderInformation() {
       currencyCode: "IRR",
     }
   );
+  if (!id || id === "undefined") {
+    return (
+      <div className="xl:px-32 2xl:px-44 3xl:px-56 py-16 lg:py-20 text-center">
+        <h2 className="text-2xl font-bold text-heading mb-4">شناسه سفارش معتبر نیست</h2>
+        <p className="text-body mb-8">لطفا از لیست سفارشات خود وارد سفارش مورد نظر شوید.</p>
+        <Link href={ROUTES.ORDERS} className="px-6 py-3 bg-heading text-white rounded-md hover:bg-gray-600 transition">
+          {t("text-view-orders", "مشاهده سفارشات")}
+        </Link>
+      </div>
+    );
+  }
   if (isLoading) return <p>{t('text-loading')}</p>;
   return (
     <div className='xl:px-32 2xl:px-44 3xl:px-56 py-16 lg:py-20'>

@@ -15,7 +15,7 @@ import { NextSeo } from "next-seo";
 import { siteSettings } from "@settings/site-settings";
 import { absoluteSiteUrl } from "@utils/site-url";
 
-export default function Collections() {
+export default function Collections({ slug }: { slug: string }) {
   const { t } = useTranslation("common");
 
   return (
@@ -23,7 +23,7 @@ export default function Collections() {
       <NextSeo
         title={siteSettings.name}
         description={siteSettings.description}
-        canonical={absoluteSiteUrl('/collections/[slug]')}
+        canonical={absoluteSiteUrl(`/collections/${slug}`)}
       />
       <Container>
         <div className={`flex pt-8 pb-16 lg:pb-20`}>
@@ -52,7 +52,7 @@ export default function Collections() {
 
           <div className="w-full ltr:lg:-ml-9 rtl:lg:-mr-9">
             <CollectionTopBar />
-            <ProductGrid />
+            <ProductGrid query={{ collection: slug }} />
           </div>
         </div>
         <Subscription />
@@ -63,10 +63,11 @@ export default function Collections() {
 
 Collections.Layout = Layout;
 
-export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale!, [
+      slug: params?.slug || "",
+      ...(await serverSideTranslations("fa", [
         "common",
         "forms",
         "menu",

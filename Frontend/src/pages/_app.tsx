@@ -9,9 +9,9 @@ import { SiteConfigProvider } from "@contexts/site-config.context";
 import { useEffect, useRef } from "react";
 import { QueryClient, QueryClientProvider, HydrationBoundary } from "@tanstack/react-query";
 import { ToastContainer } from "react-toastify";
-// import { ReactQueryDevtools } from "@tanstack/react-query/devtools";
 import { appWithTranslation } from "next-i18next";
 import { DefaultSeo } from "@components/common/default-seo";
+import ErrorBoundary from "@components/ui/error-boundary";
 
 // Load Open Sans and satisfy typeface font
 import "@fontsource/open-sans";
@@ -80,13 +80,15 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
             <ManagedUIContext>
               <StrapiProvider>
                 <SiteConfigProvider>
-                  <Layout pageProps={pageProps}>
-                    <DefaultSeo />
-                    <Component {...pageProps} key={router.route} />
-                    <ToastContainer />
-                  </Layout>
-                  <ManagedModal />
-                  <ManagedDrawer />
+                  <ErrorBoundary>
+                    <Layout pageProps={pageProps}>
+                      <DefaultSeo />
+                      <Component {...pageProps} key={router.route} />
+                      <ToastContainer />
+                    </Layout>
+                    <ManagedModal />
+                    <ManagedDrawer />
+                  </ErrorBoundary>
                 </SiteConfigProvider>
               </StrapiProvider>
           </ManagedUIContext>

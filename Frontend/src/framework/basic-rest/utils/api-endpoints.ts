@@ -90,7 +90,11 @@ const BRAND_POPULATE =
   "&populate[1]=coverImage";
 
 /** Full list query for Products (used for the main products grid). */
-export const strapiListParams = () => `?${PRODUCT_POPULATE}${POPULATED_PAGE}`;
+export const strapiListParams = (limit?: number, page?: number) => {
+  const size = limit ?? 100;
+  const pageParam = page ?? 1;
+  return `?${PRODUCT_POPULATE}&pagination[pageSize]=${size}&pagination[page]=${pageParam}`;
+};
 
 /** Full list query for Categories (has image only, no brand/categories). */
 export const strapiCategoryParams = () =>

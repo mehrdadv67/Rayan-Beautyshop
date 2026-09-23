@@ -2,7 +2,6 @@ import { QueryOptionsType, Product } from "@framework/types";
 import { API_ENDPOINTS, strapiListParams } from "@framework/utils/api-endpoints";
 import http from "@framework/utils/http";
 import { normalizeProduct, unwrapList } from "@framework/utils/normalize";
-import shuffle from "lodash/shuffle";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 type PaginatedProduct = {
@@ -57,6 +56,12 @@ const buildFilterParams = (query: Record<string, any>): string => {
     orIndex += 2;
   });
 
+  if (query.collection) {
+    parts.push(
+      `filters[collections][slug][$eq]=${encodeURIComponent(String(query.collection))}`
+    );
+  }
+
   if (query.text) {
     parts.push(
       `filters[name][$containsi]=${encodeURIComponent(String(query.text))}`
@@ -81,14 +86,15 @@ const buildFilterParams = (query: Record<string, any>): string => {
   return parts.length > 0 ? `&${parts.join("&")}` : "";
 };
 
-const fetchProducts = async (query: Record<string, any> = {}) => {
+const fetchProducts = async (query: Record<string, any> = {}, page: number = 1) => {
+  const limit = query.limit || 100;
   const { data } = await http.get(
-    `${API_ENDPOINTS.PRODUCTS}${strapiListParams()}${buildFilterParams(query)}`
+    `${API_ENDPOINTS.PRODUCTS}${strapiListParams(limit, page)}${buildFilterParams(query)}`
   );
   const products = unwrapList(data, normalizeProduct);
 
   let sorted = products;
-  if (query.sort_by === 'low-high' || query.sort_by === 'high-low') {
+  if (query.sort_by === 'low-high') {
     sorted = [...products].sort((a, b) => {
       const defaultVariantA = a?.variants?.find((v: any) => v.isDefault) ?? a?.variants?.[0];
       const defaultVariantB = b?.variants?.find((v: any) => v.isDefault) ?? b?.variants?.[0];
@@ -104,12 +110,32 @@ const fetchProducts = async (query: Record<string, any> = {}) => {
         defaultVariantB?.price ??
         b.price ??
         0;
-      const numA = Number(priceA) || 0;
-      const numB = Number(priceB) || 0;
-      return query.sort_by === 'low-high' ? numA - numB : numB - numA;
+      return Number(priceA) || 0 - (Number(priceB) || 0);
+    });
+  } else if (query.sort_by === 'high-low') {
+    sorted = [...products].sort((a, b) => {
+      const defaultVariantA = a?.variants?.find((v: any) => v.isDefault) ?? a?.variants?.[0];
+      const defaultVariantB = b?.variants?.find((v: any) => v.isDefault) ?? b?.variants?.[0];
+      const priceA =
+        a.display_price ??
+        defaultVariantA?.salePrice ??
+        defaultVariantA?.price ??
+        a.price ??
+        0;
+      const priceB =
+        b.display_price ??
+        defaultVariantB?.salePrice ??
+        defaultVariantB?.price ??
+        b.price ??
+        0;
+      return (Number(priceB) || 0) - (Number(priceA) || 0);
     });
   } else if (!query.sort_by) {
-    sorted = shuffle(products);
+    sorted = [...products].sort((a, b) => {
+      const dateA = new Date(String(a.createdAt || "")).getTime();
+      const dateB = new Date(String(b.createdAt || "")).getTime();
+      return dateB - dateA;
+    });
   }
 
   const total =
@@ -119,7 +145,7 @@ const fetchProducts = async (query: Record<string, any> = {}) => {
   return {
     data: sorted,
     paginatorInfo: {
-      nextPageUrl: undefined,
+      nextPageUrl: sorted.length >= limit ? String(page + 1) : undefined,
       total,
     },
   };
@@ -128,9 +154,9 @@ const fetchProducts = async (query: Record<string, any> = {}) => {
 const useProductsQuery = (options: QueryOptionsType) => {
   return useInfiniteQuery<PaginatedProduct, Error>({
     queryKey: ["products", options],
-    queryFn: () => fetchProducts(options as Record<string, any>),
+    queryFn: ({ pageParam = 1 }) => fetchProducts(options as Record<string, any>, pageParam as number),
     initialPageParam: 1,
-    getNextPageParam: () => undefined,
+    getNextPageParam: (lastPage) => lastPage.paginatorInfo.nextPageUrl,
   });
 };
 
